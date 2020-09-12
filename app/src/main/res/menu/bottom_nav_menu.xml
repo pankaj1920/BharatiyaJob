@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:title="Jobs"
+        android:icon="@drawable/ic_school"/>
+
+    <item
+        android:id="@+id/findJobFragment"
+        android:title="Search"
+        android:icon="@drawable/ic_search"/>
+
+    <item
+        android:id="@+id/alertFragment"
+        android:title="Saved Job"
+        android:icon="@drawable/ic_save" />
+    <item
+        android:id="@+id/profileFragment"
+        android:title="Profile"
+        android:icon="@drawable/ic_account_circle"/>
+</menu>

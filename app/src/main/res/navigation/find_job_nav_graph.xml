@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/find_job_nav_graph"
+    app:startDestination="@id/searchJobFragment2">
+    <fragment
+        android:id="@+id/searchJobFragment2"
+        android:name="com.bharatiyajob.bharatiyajob.HomePage.FindJob.SearchJobFragment"
+        android:label="fragment_search_job"
+        tools:layout="@layout/fragment_search_job" >
+        <action
+            android:id="@+id/action_searchJobFragment2_to_jobByTypeFragment3"
+            app:destination="@id/jobByTypeFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/jobByTypeFragment3"
+        android:name="com.bharatiyajob.bharatiyajob.HomePage.FindJob.JobByTypeFragment"
+        android:label="fragment_job_by_type"
+        tools:layout="@layout/fragment_job_by_type" >
+        <action
+            android:id="@+id/action_jobByTypeFragment3_to_searchJobFragment2"
+            app:destination="@id/searchJobFragment2" />
+        <argument
+            android:name="SearchJobArgument"
+            app:argType="com.bharatiyajob.bharatiyajob.HomePage.FindJob.SearchJobArguments"
+            app:nullable="true" />
+    </fragment>
+</navigation>

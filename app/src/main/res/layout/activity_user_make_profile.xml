@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".UserMakeProfileActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/account_image_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/makeProfie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20sp"
+                    android:layout_marginTop="40dp"
+                    android:text="Make your profile"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/userImage"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/accont_img"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/makeProfie" />
+
+                <ImageButton
+                    android:id="@+id/formCameraPick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="57dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="2.5dp"
+                    android:background="@android:color/transparent"
+                    android:tint="@color/black"
+                    android:src="@drawable/ic_camera"
+                    app:layout_constraintEnd_toEndOf="@id/userImage"
+                    app:layout_constraintTop_toTopOf="@id/userImage" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Proilefname_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/account_image_layout">
+
+                <EditText
+                    android:id="@+id/R_fname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Full Name"
+                    android:maxLines="1"
+                    android:textSize="18sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/seletGenderTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20sp"
+                android:layout_marginTop="25dp"
+                android:text="Gender"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Proilefname_layout" />
+
+            <RadioGroup
+                android:id="@+id/selectGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/seletGenderTxt">
+
+                <RadioButton
+                    android:id="@+id/male"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_marginStart="20sp"
+                    android:button="@drawable/male"
+                    android:onClick="selectGender"
+                    android:buttonTint="@drawable/select_gender"
+                    android:elevation="4dp" />
+
+                <RadioButton
+                    android:id="@+id/female"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_marginStart="40sp"
+                    android:button="@drawable/woman"
+                    android:buttonTint="@drawable/select_gender"
+                    android:onClick="selectGender" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/seletHigherEdu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20sp"
+                android:layout_marginTop="30dp"
+                android:text="Higher Qualification"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/selectGender" />
+
+            <RadioGroup
+                android:id="@+id/selectHigherQua"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/seletHigherEdu">
+
+                <RadioButton
+                    android:id="@+id/belowTen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20sp"
+                    android:onClick="selectGender"
+                    android:text="Below 10th"
+                    android:textSize="14sp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:background="@drawable/select_education_selector_radiobtn"
+                    android:button="@android:color/transparent"
+                    android:textColor="@drawable/select_education_radiobtn_txtcolor"
+                    android:elevation="4dp" />
+
+
+                <RadioButton
+                    android:id="@+id/TenPass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20sp"
+                    android:background="@drawable/select_education_selector_radiobtn"
+                    android:button="@android:color/transparent"
+                    android:textColor="@drawable/select_education_radiobtn_txtcolor"
+                    android:elevation="4dp"
+                    android:onClick="selectGender"
+                    android:padding="10dp"
+                    android:text="10th Pass"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/TwelevePass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20sp"
+                    android:onClick="selectGender"
+                    android:text="12th Pass"
+                    android:textSize="14sp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"                    android:background="@drawable/select_education_selector_radiobtn"
+                    android:button="@android:color/transparent"
+                    android:textColor="@drawable/select_education_radiobtn_txtcolor"
+                    android:elevation="4dp" />
+
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/selectHigherGrad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/selectHigherQua">
+
+                <RadioButton
+                    android:id="@+id/Diploma"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20sp"
+                    android:onClick="selectGender"
+                    android:text="Diploma"
+                    android:textSize="14sp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:background="@drawable/select_education_selector_radiobtn"
+                    android:button="@android:color/transparent"
+                    android:textColor="@drawable/select_education_radiobtn_txtcolor"
+                    android:elevation="4dp"/>
+
+                <RadioButton
+                    android:id="@+id/Graduate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20sp"
+                    android:onClick="selectGender"
+                    android:text="Graduate"
+                    android:textSize="14sp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"                    android:background="@drawable/select_education_selector_radiobtn"
+                    android:button="@android:color/transparent"
+                    android:textColor="@drawable/select_education_radiobtn_txtcolor"
+                    android:elevation="4dp" />
+
+                <RadioButton
+                    android:id="@+id/PostGraduate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20sp"
+                    android:onClick="selectGender"
+                    android:text="Post Graduate"
+                    android:textSize="14sp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:background="@drawable/select_education_selector_radiobtn"
+                    android:button="@android:color/transparent"
+                    android:textColor="@drawable/select_education_radiobtn_txtcolor"
+                    android:elevation="4dp" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/seletWorkExp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20sp"
+                android:layout_marginTop="30dp"
+                android:text="Work Experience"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/selectHigherGrad" />
+
+            <RadioGroup
+                android:id="@+id/selectExperience"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/seletWorkExp">
+
+                <RadioButton
+                    android:id="@+id/experience"
+                    android:layout_width="140dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="20sp"
+                    android:onClick="selectGender"
+                    android:padding="8dp"
+                    android:text="Experienced"
+                    android:background="@drawable/form_experience_selector"
+                    android:textColor="@drawable/form_experience_txt_color"
+                    android:elevation="4dp"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/fresher"
+                    android:layout_width="140dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="20sp"
+                    android:background="@drawable/form_experience_selector"
+                    android:textColor="@drawable/form_experience_txt_color"
+                    android:text="Fresher"
+                    android:padding="8dp"
+                    android:textSize="14sp"
+                    android:onClick="selectGender" />
+
+            </RadioGroup>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/skillLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/selectExperience">
+                <TextView
+                    android:id="@+id/skillTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20sp"
+                    android:text="Skills"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/skill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:minHeight="30dp"
+                    android:paddingTop="10dp"
+                    android:textSize="14sp"
+                    android:hint="Skills"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/skillTxt" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/skillLayout">
+
+                <TextView
+                    android:id="@+id/locationTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20sp"
+                    android:text="Where are you currently staying?"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/locationState"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:minHeight="30dp"
+                    android:paddingTop="10dp"
+                    android:textSize="14sp"
+                    android:hint="Location"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/locationTxt" />
+
+
+                <TextView
+                    android:id="@+id/currentLocalityTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="Complete address"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/locationState" />
+
+                <EditText
+                    android:id="@+id/currentLocality"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:inputType="none"
+                    android:textSize="14sp"
+                    android:hint="Current Locality"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/currentLocalityTxt" />
+
+
+                <Button
+                    android:id="@+id/saveProceed"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/select_education_selected_radiobtn"
+                    android:text="Submit"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/currentLocality" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

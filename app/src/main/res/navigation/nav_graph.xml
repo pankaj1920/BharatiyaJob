@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation.xml"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.bharatiyajob.bharatiyajob.HomePage.HomeJob.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_findJobFragment"
+            app:destination="@id/findJobFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/findJobFragment"
+        android:name="com.bharatiyajob.bharatiyajob.HomePage.FindJob.FindJobFragment"
+        android:label="fragment_find_job"
+        tools:layout="@layout/fragment_find_job" >
+        <action
+            android:id="@+id/action_findJobFragment_to_alertFragment"
+            app:destination="@id/alertFragment" />
+        <action
+            android:id="@+id/action_findJobFragment_to_jobByTypeFragment"
+            app:destination="@id/jobByTypeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/alertFragment"
+        android:name="com.bharatiyajob.bharatiyajob.HomePage.BokmarkedJob.SaveJobFragment"
+        android:label="fragment_alert"
+        tools:layout="@layout/fragment_save_job" >
+        <action
+            android:id="@+id/action_alertFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.bharatiyajob.bharatiyajob.HomePage.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/jobByTypeFragment"
+        android:name="com.bharatiyajob.bharatiyajob.HomePage.FindJob.JobByTypeFragment"
+        android:label="fragment_job_by_type"
+        tools:layout="@layout/fragment_job_by_type" />
+</navigation>
