@@ -31,11 +31,15 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".AboutUs"></activity>
+        <activity android:name=".UpdateDetails.UpdateProfileImageActivity"></activity>
+        <activity android:name=".UpdateDetails.UpdatePasswordActivity" />
+        <activity android:name=".UpdateDetails.UpdateNameActivity" />
+        <activity android:name=".ShareAppActivity" />
+        <activity android:name=".AboutUs" />
         <activity android:name=".NotificationActivity" />
         <activity android:name=".ProfileSettingActivity" />
         <activity android:name=".CustomerCareActivity" />
-        <activity android:name=".SplashScreen" >
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,9 +55,7 @@
         <activity android:name=".RegisterOtpActivity" />
         <activity
             android:name=".HomePage.HomePageActivity"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
-
-        </activity>
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity android:name=".Login.LoginPasswordActivity" />
         <activity android:name=".Login.EnterOtpActivity" />
         <activity android:name=".RegistrationActivity" />

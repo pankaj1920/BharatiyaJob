@@ -22,6 +22,7 @@ import com.bharatiyajob.bharatiyajob.Login.LoginActivity;
 import com.bharatiyajob.bharatiyajob.NotificationActivity;
 import com.bharatiyajob.bharatiyajob.ProfileSettingActivity;
 import com.bharatiyajob.bharatiyajob.R;
+import com.bharatiyajob.bharatiyajob.ShareAppActivity;
 import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 
 
@@ -119,6 +120,8 @@ public class ProfileFragment extends Fragment {
     }
 
     private void shareApp() {
+        Intent intent = new Intent(getActivity(), ShareAppActivity.class);
+        startActivity(intent);
     }
 
     private void goToNotification() {
