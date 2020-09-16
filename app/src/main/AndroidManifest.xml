@@ -31,7 +31,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".UpdateDetails.UpdateProfileImageActivity"></activity>
+        <activity android:name=".Company.CompanyRegistrationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".UpdateDetails.UpdateProfileImageActivity" />
         <activity android:name=".UpdateDetails.UpdatePasswordActivity" />
         <activity android:name=".UpdateDetails.UpdateNameActivity" />
         <activity android:name=".ShareAppActivity" />
@@ -40,11 +47,7 @@
         <activity android:name=".ProfileSettingActivity" />
         <activity android:name=".CustomerCareActivity" />
         <activity android:name=".SplashScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".HomePage.JobDetailActivity" />
         <activity android:name=".UserMakeProfileActivity" />
