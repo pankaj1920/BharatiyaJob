@@ -108,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             LoginEntrNumResponse entrNumResponse = response.body();
 
-                            if (response.isSuccessful() && entrNumResponse.getStatus().equals("1")) {
+                            if (response.isSuccessful()) {
                                 Toast.makeText(LoginActivity.this, entrNumResponse.getData(), Toast.LENGTH_SHORT).show();
 
                                 Intent intent = new Intent(LoginActivity.this, EnterOtpActivity.class);
