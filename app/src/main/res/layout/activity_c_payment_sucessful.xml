@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".User.CPaymentSucessfulActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/transactionTxt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Transaction ID : "
+            android:textColor="@color/black"
+            android:layout_marginBottom="50dp"
+            android:textSize="17sp"
+            android:gravity="end"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/transactionID"
+            app:layout_constraintBottom_toTopOf="@id/sucessImg"/>
+
+        <TextView
+            android:id="@+id/transactionID"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="sdkfakdls156"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginBottom="50dp"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/transactionTxt"
+            app:layout_constraintBottom_toTopOf="@id/sucessImg"/>
+
+
+        <ImageView
+            android:id="@+id/sucessImg"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/successs"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/FPCSText"/>
+
+        <TextView
+            android:id="@+id/FPCSText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text=" Payment done successfully "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Button
+            android:id="@+id/paymentSucessBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:textColor="@color/white"
+            android:background="@color/green"
+            android:layout_marginTop="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/FPCSText"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

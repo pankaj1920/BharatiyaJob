@@ -31,7 +31,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".UpdateDetails.UpdateProfileImageActivity"></activity>
+        <activity android:name=".User.CPaymentFailedActivity"></activity>
+        <activity android:name=".User.CPaymentSucessfulActivity" >
+
+        </activity>
+        <activity android:name=".UpdateDetails.UpdateProfileImageActivity" />
         <activity android:name=".UpdateDetails.UpdatePasswordActivity" />
         <activity android:name=".UpdateDetails.UpdateNameActivity" />
         <activity android:name=".ShareAppActivity" />
@@ -39,8 +43,7 @@
         <activity android:name=".NotificationActivity" />
         <activity android:name=".ProfileSettingActivity" />
         <activity android:name=".CustomerCareActivity" />
-        <activity android:name=".SplashScreen">
-        </activity>
+        <activity android:name=".SplashScreen" />
         <activity android:name=".HomePage.JobDetailActivity" />
         <activity android:name=".UserMakeProfileActivity" />
         <activity android:name=".ForgotPassword.PasswordChangeSucessfullyActivity" />
@@ -50,24 +53,28 @@
         <activity android:name=".RegisterOtpActivity" />
         <activity
             android:name=".HomePage.HomePageActivity"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
-        <activity android:name=".Login.LoginPasswordActivity" />
-        <activity android:name=".Login.EnterOtpActivity" />
-        <activity android:name=".RegistrationActivity" />
-        <activity android:name=".Login.LoginActivity" />
-        <activity android:name=".MainActivity" />
-
-        <activity android:name=".User.UserPaymentActivity">
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Login.LoginPasswordActivity" />
+        <activity android:name=".Login.EnterOtpActivity" />
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".Login.LoginActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".User.UserPaymentActivity">
+
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+            android:resource="@array/preloaded_fonts" /> <!-- Add your API key here -->
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_live_Dt4bfKj6DDu1gi" />
     </application>
 
 </manifest>

@@ -7,6 +7,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -21,12 +23,16 @@ import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.Json.SubscriptionPackage.SubscriptionResponse;
 import com.bharatiyajob.bharatiyajob.R;
+import com.razorpay.Checkout;
+import com.razorpay.PaymentResultListener;
+
+import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UserPaymentActivity extends AppCompatActivity {
+public class UserPaymentActivity extends AppCompatActivity implements PaymentResultListener {
 
     RecyclerView candidateRecycler;
     CandidatePaymentAdapter candidatePaymentAdapter;
@@ -37,6 +43,7 @@ public class UserPaymentActivity extends AppCompatActivity {
     String SubscriptionFee = null;
     Button buySubscription;
     TextView amount;
+    int razorpayLogo = R.drawable.razorpay_logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +64,8 @@ public class UserPaymentActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Toast.makeText(UserPaymentActivity.this, "Sub"+ SubscriptionFee, Toast.LENGTH_SHORT).show();
-                Toast.makeText(UserPaymentActivity.this, "Sub"+ SubscriptionFee, Toast.LENGTH_SHORT).show();
-//                if (SubscriptionFee != null) {
-//                    Toast.makeText(UserPaymentActivity.this, SubscriptionFee, Toast.LENGTH_SHORT).show();
-//
-//                }else {
-//                    Toast.makeText(UserPaymentActivity.this, "Selet The Price", Toast.LENGTH_SHORT).show();
-//                }
+
+                startPayment();
 
             }
         });
@@ -109,6 +111,74 @@ public class UserPaymentActivity extends AppCompatActivity {
         });
     }
 
+
+
+    private void startPayment() {
+
+        double totalAmount = Double.parseDouble(SubscriptionFee);
+        totalAmount = totalAmount*100;
+
+        //Initiate Checkout
+        Checkout checkout = new Checkout();
+        checkout.setKeyID("rzp_live_Dt4bfKj6DDu1gi");
+
+        //Set your logo here
+        checkout.setImage(R.drawable.razorpay_logo);
+
+        final Activity activity = this;
+
+        /**
+         * Pass your payment options to the Razorpay Checkout as a JSONObject
+         */
+        try {
+            JSONObject options = new JSONObject();
+
+            options.put("name", "Bharatiya Job");
+            options.put("description", "Subscription Fees");
+            //You can omit the image option to fetch the image from dashboard
+            options.put("currency", "INR");
+            options.put("amount", totalAmount);//pass amount in currency subunits Eg 100 => INR 1.00 Rs
+
+//            Email and contact number of Customer who is going to pay
+            JSONObject preFill = new JSONObject();
+            preFill.put("email", "bohrapankaj1920@gmail.com");
+            preFill.put("contact", "8755420120");
+
+            options.put("prefill", preFill);
+
+            checkout.open(activity, options);
+        } catch(Exception e) {
+            Toast.makeText(activity, "Error in payment: " + e.getMessage(), Toast.LENGTH_SHORT)
+                    .show();
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void onPaymentSuccess(String razorpayPaymentID) {
+        try {
+            Toast.makeText(this, "Payment Successful: " + razorpayPaymentID, Toast.LENGTH_SHORT).show();
+            Bundle bundle = new Bundle();
+            bundle.putString("TransactionId",razorpayPaymentID);
+            Intent intent = new Intent(UserPaymentActivity.this,CPaymentSucessfulActivity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+
+
+        } catch (Exception e) {
+//            Log.e(TAG, "Exception in onPaymentSuccess", e);
+        }
+    }
+
+    @Override
+    public void onPaymentError(int code, String response) {
+        try {
+            Toast.makeText(this, "Payment failed: " + code + " " + response, Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+//            Log.e(TAG, "Exception in onPaymentError", e);e
+        }
+    }
 
 
 }

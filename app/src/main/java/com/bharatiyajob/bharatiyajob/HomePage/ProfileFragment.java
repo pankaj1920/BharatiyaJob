@@ -22,12 +22,13 @@ import com.bharatiyajob.bharatiyajob.ProfileSettingActivity;
 import com.bharatiyajob.bharatiyajob.R;
 import com.bharatiyajob.bharatiyajob.ShareAppActivity;
 import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
+import com.bharatiyajob.bharatiyajob.User.UserPaymentActivity;
 
 
 public class ProfileFragment extends Fragment {
 
     ConstraintLayout PAccountSettingLayout,PNotificationLayout,
-            PShareAppLayout,PRateLayout,PContactLayout,PAboutUsLayout,SignoutLayout;
+            PShareAppLayout,PRateLayout,PContactLayout,PAboutUsLayout,SignoutLayout,PPaymentLayout;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -51,6 +52,7 @@ public class ProfileFragment extends Fragment {
         PRateLayout = view.findViewById(R.id.PRateLayout);
         PContactLayout = view.findViewById(R.id.PContactLayout);
         PAboutUsLayout = view.findViewById(R.id.PAboutUsLayout);
+        PPaymentLayout = view.findViewById(R.id.PPaymentLayout);
         SignoutLayout = view.findViewById(R.id.SignoutLayout);
 
 
@@ -96,12 +98,24 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        PPaymentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToPayment();
+            }
+        });
+
         SignoutLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Signout();
             }
         });
+    }
+
+    private void goToPayment() {
+        Intent intent = new Intent(getActivity(), UserPaymentActivity.class);
+        startActivity(intent);
     }
 
     private void aboutUs() {
@@ -131,6 +145,7 @@ public class ProfileFragment extends Fragment {
         Intent intent = new Intent(getActivity(), ProfileSettingActivity.class);
         startActivity(intent);
     }
+
 
     public void Signout() {
         //we are callin Logout Method from SharePrefManager will will delet all user detail from share prefrences
