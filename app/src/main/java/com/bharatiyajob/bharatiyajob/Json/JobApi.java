@@ -1,15 +1,19 @@
 package com.bharatiyajob.bharatiyajob.Json;
 
-import com.bharatiyajob.bharatiyajob.Json.ForgetPassword.ChangePasswordResponse;
-import com.bharatiyajob.bharatiyajob.Json.GetUserDetails.GetUserDetailResponse;
-import com.bharatiyajob.bharatiyajob.Json.JobDetails.JobDetailsResponse;
-import com.bharatiyajob.bharatiyajob.Json.Login.LoginEntrNumResponse;
-import com.bharatiyajob.bharatiyajob.Json.Login.LoginOtpResponse;
-import com.bharatiyajob.bharatiyajob.Json.MakeBookmark.MakeBookmarkResponse;
-import com.bharatiyajob.bharatiyajob.Json.Register.MobileRegisterResponse;
-import com.bharatiyajob.bharatiyajob.Json.Register.RegVerifyOtpResponse;
-import com.bharatiyajob.bharatiyajob.Json.SavedJob.BookmarkJobResponse;
-import com.bharatiyajob.bharatiyajob.Json.SearchJob.JobResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.ForgetPassword.ChangePasswordResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.GetUserDetails.GetUserDetailResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.JobDetails.JobDetailsResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginEntrNumResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.MakeBookmark.MakeBookmarkResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Register.MobileRegisterResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Register.RegVerifyOtpResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.SavedJob.BookmarkJobResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.SearchJob.JobResponse;
+import com.bharatiyajob.bharatiyajob.Json.SubscriptionPackage.SubscriptionResponse;
+import com.bharatiyajob.bharatiyajob.Json.UpdateCanImage.UpdateImageResponse;
+import com.bharatiyajob.bharatiyajob.Json.UpdateUserName.UpdateUserName;
+import com.bharatiyajob.bharatiyajob.Json.UpdateUserName.UpdateUserNameResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -100,11 +104,42 @@ public interface JobApi {
 
     );
 
-
-
     //Get User Details
     @GET("get_can_details.php")
     Call<GetUserDetailResponse> getUserDetails(
             @Query("can_id") String canId
     );
+
+    @FormUrlEncoded
+    @POST("update_user_image.php")
+    Call<UpdateImageResponse> updateCanImage(
+            @Field("profile_pic") String profile_pic,
+            @Field("profile_name") String profile_name,
+            @Field("can_id") String can_id
+    );
+
+    @FormUrlEncoded
+    @POST("update_user_name.php")
+    Call<UpdateUserName>upDateUserName(
+            @Field("can_id") String can_id,
+            @Field("name") String name
+    );
+
+    @FormUrlEncoded
+    @POST("update_user_password.php")
+    Call<UpdateUserName>upDateUserPassword(
+            @Field("can_id") String can_id,
+            @Field("password") String password
+    );
+
+    @FormUrlEncoded
+    @POST("update_user_skills.php")
+    Call<UpdateUserNameResponse>updateUserSkill(
+            @Field("can_id") String can_id,
+            @Field("skills") String skills
+    );
+
+    //Get Candidate Subscription Pack
+    @GET("get_candidate_payment.php")
+    Call<SubscriptionResponse> getCandidateSubscription();
 }

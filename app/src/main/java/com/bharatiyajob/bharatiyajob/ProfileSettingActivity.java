@@ -10,8 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
-import com.bharatiyajob.bharatiyajob.Json.GetUserDetails.GetUserDetailData;
-import com.bharatiyajob.bharatiyajob.Json.GetUserDetails.GetUserDetailResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.GetUserDetails.GetUserDetailResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.UpdateDetails.UpdateNameActivity;
 import com.bharatiyajob.bharatiyajob.UpdateDetails.UpdatePasswordActivity;
