@@ -1,4 +1,4 @@
-package com.bharatiyajob.bharatiyajob.Json.Login;
+package com.bharatiyajob.bharatiyajob.Json.Candidate.Login;
 
 public class LoginOtpResponse {
 

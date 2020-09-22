@@ -11,13 +11,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.AboutUs;
 import com.bharatiyajob.bharatiyajob.CustomerCareActivity;
-import com.bharatiyajob.bharatiyajob.Json.Login.LoginOtpResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Login.LoginActivity;
 import com.bharatiyajob.bharatiyajob.NotificationActivity;
 import com.bharatiyajob.bharatiyajob.ProfileSettingActivity;

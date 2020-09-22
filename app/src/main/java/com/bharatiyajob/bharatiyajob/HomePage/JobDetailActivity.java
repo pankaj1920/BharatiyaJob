@@ -8,8 +8,8 @@ import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
-import com.bharatiyajob.bharatiyajob.Json.JobDetails.JobDetailsData;
-import com.bharatiyajob.bharatiyajob.Json.JobDetails.JobDetailsResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.JobDetails.JobDetailsData;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.JobDetails.JobDetailsResponse;
 import com.bharatiyajob.bharatiyajob.R;
 
 import java.net.HttpURLConnection;

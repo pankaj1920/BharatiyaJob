@@ -19,9 +19,8 @@ import android.widget.Toast;
 import com.bharatiyajob.bharatiyajob.HomePage.HomeJob.HomeJobAdapter;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
-import com.bharatiyajob.bharatiyajob.Json.SearchJob.JobResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.SearchJob.JobResponse;
 import com.bharatiyajob.bharatiyajob.R;
-import com.facebook.shimmer.Shimmer;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.net.HttpURLConnection;

@@ -1,15 +1,16 @@
 package com.bharatiyajob.bharatiyajob.Json;
 
-import com.bharatiyajob.bharatiyajob.Json.ForgetPassword.ChangePasswordResponse;
-import com.bharatiyajob.bharatiyajob.Json.GetUserDetails.GetUserDetailResponse;
-import com.bharatiyajob.bharatiyajob.Json.JobDetails.JobDetailsResponse;
-import com.bharatiyajob.bharatiyajob.Json.Login.LoginEntrNumResponse;
-import com.bharatiyajob.bharatiyajob.Json.Login.LoginOtpResponse;
-import com.bharatiyajob.bharatiyajob.Json.MakeBookmark.MakeBookmarkResponse;
-import com.bharatiyajob.bharatiyajob.Json.Register.MobileRegisterResponse;
-import com.bharatiyajob.bharatiyajob.Json.Register.RegVerifyOtpResponse;
-import com.bharatiyajob.bharatiyajob.Json.SavedJob.BookmarkJobResponse;
-import com.bharatiyajob.bharatiyajob.Json.SearchJob.JobResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.ForgetPassword.ChangePasswordResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.GetUserDetails.GetUserDetailResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.JobDetails.JobDetailsResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginEntrNumResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.MakeBookmark.MakeBookmarkResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Register.MobileRegisterResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Register.RegVerifyOtpResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.SavedJob.BookmarkJobResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.SearchJob.JobResponse;
+import com.bharatiyajob.bharatiyajob.Json.SubscriptionPackage.SubscriptionResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -107,4 +108,9 @@ public interface JobApi {
     Call<GetUserDetailResponse> getUserDetails(
             @Query("can_id") String canId
     );
+
+    //Get Candidate Subscription Pack
+    @GET("get_candidate_payment.php")
+    Call<SubscriptionResponse> getCandidateSubscription();
+
 }

@@ -1,6 +1,5 @@
 package com.bharatiyajob.bharatiyajob.HomePage.BokmarkedJob;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,18 +16,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bharatiyajob.bharatiyajob.HomePage.HomeJob.HomeJobAdapter;
-import com.bharatiyajob.bharatiyajob.HomePage.JobDetailActivity;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
-import com.bharatiyajob.bharatiyajob.Json.Login.LoginOtpResponse;
-import com.bharatiyajob.bharatiyajob.Json.SavedJob.BookmarkJobResponse;
-import com.bharatiyajob.bharatiyajob.Json.SearchJob.JobResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.SavedJob.BookmarkJobResponse;
 import com.bharatiyajob.bharatiyajob.R;
 import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 import com.facebook.shimmer.ShimmerFrameLayout;
-
-import java.net.HttpURLConnection;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -14,8 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bharatiyajob.bharatiyajob.HomePage.HomePageActivity;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
-import com.bharatiyajob.bharatiyajob.Json.Login.LoginEntrNumResponse;
-import com.bharatiyajob.bharatiyajob.Json.Login.LoginOtpResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginEntrNumResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.R;
 import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 

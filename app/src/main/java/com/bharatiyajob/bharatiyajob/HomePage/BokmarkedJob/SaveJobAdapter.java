@@ -12,8 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bharatiyajob.bharatiyajob.HomePage.HomeJob.HomeJobAdapter;
-import com.bharatiyajob.bharatiyajob.Json.SavedJob.BookmarkJobData;
-import com.bharatiyajob.bharatiyajob.Json.SavedJob.BookmarkJobResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.SavedJob.BookmarkJobData;
 import com.bharatiyajob.bharatiyajob.R;
 
 import java.util.List;

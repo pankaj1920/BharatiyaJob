@@ -31,13 +31,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".Company.CompanyRegistrationActivity">
+        <activity android:name=".User.UserPaymentActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Company.CompanyRegistrationActivity" />
         <activity android:name=".UpdateDetails.UpdateProfileImageActivity" />
         <activity android:name=".UpdateDetails.UpdatePasswordActivity" />
         <activity android:name=".UpdateDetails.UpdateNameActivity" />
@@ -46,9 +47,7 @@
         <activity android:name=".NotificationActivity" />
         <activity android:name=".ProfileSettingActivity" />
         <activity android:name=".CustomerCareActivity" />
-        <activity android:name=".SplashScreen">
-
-        </activity>
+        <activity android:name=".SplashScreen"></activity>
         <activity android:name=".HomePage.JobDetailActivity" />
         <activity android:name=".UserMakeProfileActivity" />
         <activity android:name=".ForgotPassword.PasswordChangeSucessfullyActivity" />
@@ -58,7 +57,9 @@
         <activity android:name=".RegisterOtpActivity" />
         <activity
             android:name=".HomePage.HomePageActivity"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
+
+        </activity>
         <activity android:name=".Login.LoginPasswordActivity" />
         <activity android:name=".Login.EnterOtpActivity" />
         <activity android:name=".RegistrationActivity" />

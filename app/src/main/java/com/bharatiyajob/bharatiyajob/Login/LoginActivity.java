@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
-import com.bharatiyajob.bharatiyajob.Json.Login.LoginEntrNumResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginEntrNumResponse;
 import com.bharatiyajob.bharatiyajob.R;
 import com.bharatiyajob.bharatiyajob.RegistrationActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;

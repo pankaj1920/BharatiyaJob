@@ -1,4 +1,4 @@
-package com.bharatiyajob.bharatiyajob.Json.GetUserDetails;
+package com.bharatiyajob.bharatiyajob.Json.Candidate.GetUserDetails;
 
 public class GetUserDetailData {
 

@@ -1,30 +1,28 @@
-package com.bharatiyajob.bharatiyajob.Json.JobDetails;
+package com.bharatiyajob.bharatiyajob.Json.Candidate.SearchJob;
 
-public class JobDetailsData {
+public class JobData {
 
-    private String job_id;
-    private String can_id;
-    private String job_title;
-    private String location;
-    private String company_logo;
-    private String experience;
-    private String skill;
-    private String company_name;
-    private String salary;
-    private String role;
-    private String description;
-    private String age;
-    private String job_reg_date;
-    private String number_of_vacancy;
-    private String industry_type;
-    private String functional_area;
-    private String walk_in_date;
-    private String walk_in_venue;
-    private String language;
-    private String emp_type;
+   private String job_id;
+   private String can_id;
+   private String job_title;
+   private String location;
+   private String company_logo;
+   private String experience;
+   private String skill;
+   private String company_name;
+   private String salary;
+   private String role;
+   private String description;
+   private String age;
+   private String job_reg_date;
+   private String number_of_vacancy;
+   private String industry_type;
+   private String functional_area;
+   private String walk_in_venue;
+   private String language;
+   private String emp_type;
 
-
-    public JobDetailsData(String job_id, String can_id, String job_title, String location, String company_logo, String experience, String skill, String company_name, String salary, String role, String description, String age, String job_reg_date, String number_of_vacancy, String industry_type, String functional_area, String walk_in_date, String walk_in_venue, String language, String emp_type) {
+    public JobData(String job_id, String can_id, String job_title, String location, String company_logo, String experience, String skill, String company_name, String salary, String role, String description, String age, String job_reg_date, String number_of_vacancy, String industry_type, String functional_area, String walk_in_venue, String language, String emp_type) {
         this.job_id = job_id;
         this.can_id = can_id;
         this.job_title = job_title;
@@ -41,12 +39,10 @@ public class JobDetailsData {
         this.number_of_vacancy = number_of_vacancy;
         this.industry_type = industry_type;
         this.functional_area = functional_area;
-        this.walk_in_date = walk_in_date;
         this.walk_in_venue = walk_in_venue;
         this.language = language;
         this.emp_type = emp_type;
     }
-
 
     public String getJob_id() {
         return job_id;
@@ -174,14 +170,6 @@ public class JobDetailsData {
 
     public void setFunctional_area(String functional_area) {
         this.functional_area = functional_area;
-    }
-
-    public String getWalk_in_date() {
-        return walk_in_date;
-    }
-
-    public void setWalk_in_date(String walk_in_date) {
-        this.walk_in_date = walk_in_date;
     }
 
     public String getWalk_in_venue() {

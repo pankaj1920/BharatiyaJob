@@ -3,8 +3,7 @@ package com.bharatiyajob.bharatiyajob.SharePrefeManger;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.bharatiyajob.bharatiyajob.Json.Login.LoginEntrNumResponse;
-import com.bharatiyajob.bharatiyajob.Json.Login.LoginOtpResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 
 public class LoginDetailSharePref {
 

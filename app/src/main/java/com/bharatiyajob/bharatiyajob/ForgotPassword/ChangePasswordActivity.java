@@ -12,10 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
-import com.bharatiyajob.bharatiyajob.Json.ForgetPassword.ChangePasswordResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.ForgetPassword.ChangePasswordResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
-import com.bharatiyajob.bharatiyajob.Json.Login.LoginEntrNumResponse;
-import com.bharatiyajob.bharatiyajob.Login.EnterOtpActivity;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginEntrNumResponse;
 import com.bharatiyajob.bharatiyajob.R;
 
 import java.util.Locale;

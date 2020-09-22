@@ -1,4 +1,4 @@
-package com.bharatiyajob.bharatiyajob.Json.Register;
+package com.bharatiyajob.bharatiyajob.Json.Candidate.Register;
 
 public class MobileRegisterResponse {
 

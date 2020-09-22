@@ -1,4 +1,4 @@
-package com.bharatiyajob.bharatiyajob.Json.ForgetPassword;
+package com.bharatiyajob.bharatiyajob.Json.Candidate.ForgetPassword;
 
 public class ChangePasswordResponse {
 

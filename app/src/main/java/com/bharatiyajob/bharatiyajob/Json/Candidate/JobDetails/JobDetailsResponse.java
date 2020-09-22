@@ -1,4 +1,4 @@
-package com.bharatiyajob.bharatiyajob.Json.JobDetails;
+package com.bharatiyajob.bharatiyajob.Json.Candidate.JobDetails;
 
 import java.util.List;
 

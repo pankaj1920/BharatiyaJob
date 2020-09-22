@@ -1,7 +1,5 @@
 package com.bharatiyajob.bharatiyajob.HomePage.HomeJob;
 
-import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bharatiyajob.bharatiyajob.Json.SearchJob.JobData;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.SearchJob.JobData;
 import com.bharatiyajob.bharatiyajob.R;
 
 import java.util.List;

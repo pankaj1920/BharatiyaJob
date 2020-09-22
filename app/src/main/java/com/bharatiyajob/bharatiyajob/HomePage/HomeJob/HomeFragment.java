@@ -16,11 +16,11 @@ import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.HomePage.JobDetailActivity;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
-import com.bharatiyajob.bharatiyajob.Json.GetUserDetails.GetUserDetailResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.GetUserDetails.GetUserDetailResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
-import com.bharatiyajob.bharatiyajob.Json.Login.LoginOtpResponse;
-import com.bharatiyajob.bharatiyajob.Json.MakeBookmark.MakeBookmarkResponse;
-import com.bharatiyajob.bharatiyajob.Json.SearchJob.JobResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.MakeBookmark.MakeBookmarkResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.SearchJob.JobResponse;
 import com.bharatiyajob.bharatiyajob.R;
 import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 import com.facebook.shimmer.ShimmerFrameLayout;

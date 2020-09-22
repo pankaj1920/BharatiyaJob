@@ -14,8 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
-import com.bharatiyajob.bharatiyajob.Json.Register.MobileRegisterResponse;
-import com.bharatiyajob.bharatiyajob.Login.EnterOtpActivity;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Register.MobileRegisterResponse;
 import com.bharatiyajob.bharatiyajob.Login.LoginActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;

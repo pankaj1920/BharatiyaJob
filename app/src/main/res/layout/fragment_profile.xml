@@ -99,6 +99,40 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/PPaymentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/PNotificationLayout">
+
+                <ImageView
+                    android:id="@+id/PaymentImg"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/payment_ic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/PaymentTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="Payment"
+                    android:textColor="@color/Darkergrey"
+                    app:layout_constraintBottom_toBottomOf="@id/PaymentImg"
+                    app:layout_constraintStart_toEndOf="@id/PaymentImg"
+                    app:layout_constraintTop_toTopOf="@id/PaymentImg" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/PShareAppLayout"
                 android:layout_width="match_parent"
@@ -106,7 +140,7 @@
                 android:layout_marginTop="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/PNotificationLayout">
+                app:layout_constraintTop_toBottomOf="@id/PPaymentLayout">
 
                 <ImageView
                     android:id="@+id/ShareAppImg"

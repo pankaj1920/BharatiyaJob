@@ -13,9 +13,8 @@ import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
-import com.bharatiyajob.bharatiyajob.Json.Login.LoginEntrNumResponse;
-import com.bharatiyajob.bharatiyajob.Json.Register.RegVerifyOtpResponse;
-import com.bharatiyajob.bharatiyajob.Login.EnterOtpActivity;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginEntrNumResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Register.RegVerifyOtpResponse;
 
 import java.util.Locale;
 
