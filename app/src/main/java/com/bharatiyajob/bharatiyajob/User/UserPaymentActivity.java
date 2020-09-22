@@ -34,7 +34,7 @@ public class UserPaymentActivity extends AppCompatActivity {
     int Position;
     RadioButton subscriptionRadioBtn;
     ConstraintLayout selectSubscriptionLayout;
-    String price;
+    String SubscriptionFee = null;
     Button buySubscription;
     TextView amount;
 
@@ -55,7 +55,15 @@ public class UserPaymentActivity extends AppCompatActivity {
         buySubscription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(UserPaymentActivity.this, price, Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(UserPaymentActivity.this, "Sub"+ SubscriptionFee, Toast.LENGTH_SHORT).show();
+//                if (SubscriptionFee != null) {
+//                    Toast.makeText(UserPaymentActivity.this, SubscriptionFee, Toast.LENGTH_SHORT).show();
+//
+//                }else {
+//                    Toast.makeText(UserPaymentActivity.this, "Selet The Price", Toast.LENGTH_SHORT).show();
+//                }
+
             }
         });
 
@@ -73,10 +81,17 @@ public class UserPaymentActivity extends AppCompatActivity {
                 final SubscriptionResponse subscriptionResponse = response.body();
 
                 if (response.isSuccessful() && subscriptionResponse.getStatus().equals("1")){
+
                     candidatePaymentAdapter = new CandidatePaymentAdapter(subscriptionResponse.getData(),UserPaymentActivity.this);
                     candidateRecycler.setAdapter(candidatePaymentAdapter);
 
-
+                    candidatePaymentAdapter.setOnItemClickListner(new CandidatePaymentAdapter.OnItemClickListner() {
+                        @Override
+                        public void onSubscriptionLayoutClicked(View itemview, int position, String price) {
+                            SubscriptionFee = price;
+                            Toast.makeText(UserPaymentActivity.this, "This is Price "+ SubscriptionFee, Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
 
 

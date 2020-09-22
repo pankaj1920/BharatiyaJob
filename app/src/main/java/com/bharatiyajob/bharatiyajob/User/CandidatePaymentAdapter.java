@@ -27,6 +27,12 @@ import java.util.List;
 
 public class CandidatePaymentAdapter extends RecyclerView.Adapter<CandidatePaymentAdapter.Subscription_VH> {
 
+    private CandidatePaymentAdapter.OnItemClickListner onItemClickListner;
+
+    public void setOnItemClickListner(CandidatePaymentAdapter.OnItemClickListner onItemClickListner) {
+        this.onItemClickListner = onItemClickListner;
+    }
+
     List<SubscriptionData> subscriptionDataList;
     Context context;
     int row_index = -1;
@@ -50,9 +56,9 @@ public class CandidatePaymentAdapter extends RecyclerView.Adapter<CandidatePayme
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Subscription_VH holder, final int position) {
+    public void onBindViewHolder(@NonNull final Subscription_VH holder, final int position) {
         SubscriptionData data = subscriptionDataList.get(position);
-         String price = data.getCost();
+         final String price = data.getCost();
         String days = data.getDays();
 
         String Subscription = "INR " +price+ " for "+ days+ " days ";
@@ -65,6 +71,8 @@ public class CandidatePaymentAdapter extends RecyclerView.Adapter<CandidatePayme
             public void onClick(View view) {
                 row_index = position;
                 notifyDataSetChanged();
+
+                onItemClickListner.onSubscriptionLayoutClicked(holder.itemView,position, price);
             }
         });
 
@@ -98,11 +106,7 @@ public class CandidatePaymentAdapter extends RecyclerView.Adapter<CandidatePayme
         return subscriptionDataList.size();
     }
 
-    private CandidatePaymentAdapter.OnItemClickListner onItemClickListner;
 
-    public void setOnItemClickListner(CandidatePaymentAdapter.OnItemClickListner onItemClickListner) {
-        this.onItemClickListner = onItemClickListner;
-    }
 
     class Subscription_VH extends RecyclerView.ViewHolder{
 
@@ -120,24 +124,24 @@ public class CandidatePaymentAdapter extends RecyclerView.Adapter<CandidatePayme
             selectSubscriptionLayout = itemView.findViewById(R.id.selectSubscriptionLayout);
             buySubscription = itemView.findViewById(R.id.buySubscription);
 
-            selectSubscriptionLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    Toast.makeText(context, "sdfsdf", Toast.LENGTH_SHORT).show();
-
-                    if(onItemClickListner != null){
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION){
-
-                            onItemClickListner.onSubscriptionLayoutClicked(itemView,position);
-
-
-
-                        }
-                    }
-                }
-            });
+//            selectSubscriptionLayout.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//
+//                    Toast.makeText(context, "sdfsdf", Toast.LENGTH_SHORT).show();
+//
+//                    if(onItemClickListner != null){
+//                        int position = getAdapterPosition();
+//                        if (position != RecyclerView.NO_POSITION){
+//
+//                            onItemClickListner.onSubscriptionLayoutClicked(itemView,position);
+//
+//
+//
+//                        }
+//                    }
+//                }
+//            });
 
 
         }
@@ -146,7 +150,7 @@ public class CandidatePaymentAdapter extends RecyclerView.Adapter<CandidatePayme
     // Define the listener interface
     public interface OnItemClickListner {
 
-        void onSubscriptionLayoutClicked(View itemview, int position);
+        void onSubscriptionLayoutClicked(View itemview, int position,String price);
 
 //        void onSubscriptionRadioBtnClicked(View itemview,int position);
 
