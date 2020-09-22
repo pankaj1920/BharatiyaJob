@@ -57,6 +57,7 @@ public class UserPaymentActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Toast.makeText(UserPaymentActivity.this, "Sub"+ SubscriptionFee, Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserPaymentActivity.this, "Sub"+ SubscriptionFee, Toast.LENGTH_SHORT).show();
 //                if (SubscriptionFee != null) {
 //                    Toast.makeText(UserPaymentActivity.this, SubscriptionFee, Toast.LENGTH_SHORT).show();
 //
