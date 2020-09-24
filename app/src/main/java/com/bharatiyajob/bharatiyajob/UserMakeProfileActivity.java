@@ -43,7 +43,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class UserMakeProfileActivity extends AppCompatActivity {
-    RadioButton male;
+    RadioButton male,female;
     ImageButton formCameraPick;
     CircleImageView userImage;
     String photoPath;
@@ -52,17 +52,19 @@ public class UserMakeProfileActivity extends AppCompatActivity {
     EditText R_fname;
     Uri imageuri;
     Bitmap bitmap;
-
+    String filepath;
+    String Genter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_make_profile);
 
         male = findViewById(R.id.male);
+        female = findViewById(R.id.female);
         userImage = findViewById(R.id.userImage);
         formCameraPick = findViewById(R.id.formCameraPick);
         saveProceed = findViewById(R.id.saveProceed);
-
+        R_fname=findViewById(R.id.R_fname);
 //        SavecaData();
         formCameraPick.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,11 +139,13 @@ public class UserMakeProfileActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.male:
                 if (checked)
-                    Toast.makeText(this, "Male is selected", Toast.LENGTH_SHORT).show();
+                    Genter="male";
+                Toast.makeText(this, "Male is selected", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.female:
                 if (checked)
-                    Toast.makeText(this, "Female is selected", Toast.LENGTH_SHORT).show();
+                    Genter="Female";
+                Toast.makeText(this, "Female is selected", Toast.LENGTH_SHORT).show();
                 break;
 
         }
@@ -154,6 +158,9 @@ public class UserMakeProfileActivity extends AppCompatActivity {
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(galleryIntent, 0);
     }
+
+
+
 
 
     //Runtime Permission so that it can AutoVerify The Otp in EnterOtpActivity
@@ -213,7 +220,8 @@ public class UserMakeProfileActivity extends AppCompatActivity {
     }
 
     public void SavecaData(){
-
+        File file=new File(filepath);
+        String f_name=R_fname.getText().toString();
         ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
         byte[] imageinbyte=byteArrayOutputStream.toByteArray();
@@ -223,14 +231,14 @@ public class UserMakeProfileActivity extends AppCompatActivity {
 
         JobApi jobApi= BaseClient.getBaseClient().create(JobApi.class);
 
-        Call<CanProfileResponse> call=jobApi.SaveCanDetail("76","lo","female","5th",
-                "9 years","karnataka","pjp","add");
+        Call<CanProfileResponse> call=jobApi.SaveCanDetail("76",imagestring,Genter,"5th",
+                "9 years","karnataka","pjp","add",file.getName());
         call.enqueue(new Callback<CanProfileResponse>() {
             @Override
             public void onResponse(Call<CanProfileResponse> call, Response<CanProfileResponse> response) {
-                CanProfileResponse canProfileResponse = response.body();
+                CanProfileResponse saveCanDetailResponse = response.body();
                 if (response.isSuccessful() ){
-                    Toast.makeText(UserMakeProfileActivity.this, canProfileResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserMakeProfileActivity.this, saveCanDetailResponse.getMessage(), Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(UserMakeProfileActivity.this, "Try Agarin", Toast.LENGTH_SHORT).show();
                 }
@@ -248,7 +256,7 @@ public class UserMakeProfileActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==2 && resultCode==RESULT_OK && data.getData()!=null){
-            String filepath=data.getData().toString();
+            filepath=data.getData().toString();
             imageuri=Uri.parse(filepath);
             try {
                 bitmap=MediaStore.Images.Media.getBitmap(getContentResolver(),imageuri);

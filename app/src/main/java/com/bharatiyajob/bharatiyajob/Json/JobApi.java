@@ -154,7 +154,9 @@ public interface JobApi {
             @Field("work_experience") String work_experience,
             @Field("state") String state,
             @Field("skills") String skills,
-            @Field("address") String address
+            @Field("address") String address,
+            @Field("profile_name") String profile_name
+
 
     );
 }
