@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomePage.HomePageActivity">
+    tools:context=".Company.HomePage.CompanyHomePageActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -17,22 +17,22 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/bottomNav"
+            app:layout_constraintBottom_toTopOf="@id/companyBottomNav"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/candidate_nav_graph" />
+            app:navGraph="@navigation/company_nav_graph" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNav"
+            android:id="@+id/companyBottomNav"
             android:layout_width="match_parent"
-            app:menu="@menu/candidate_bottom_nav_menu"
+            app:menu="@menu/company_bottom_nav_menu"
             android:background="@color/colorPrimary"
             app:itemIconTint="@color/white"
             app:itemTextColor="@color/white"
+            app:labelVisibilityMode="labeled"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

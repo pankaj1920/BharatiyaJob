@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/companyHomeFragment"
+    android:title="Home"
+    android:icon="@drawable/ic_home"/>
+
+<item
+    android:id="@+id/candidateListFragment"
+    android:title="Candidate"
+    android:icon="@drawable/ic_candi"/>
+
+<item
+    android:id="@+id/postJobFragment"
+    android:title="Post Job"
+    android:icon="@drawable/pllus" />
+<item
+    android:id="@+id/bookmarkCandidateFragment"
+    android:title="Bookmark"
+    android:icon="@drawable/ic_star_filled"/>
+
+    <item
+    android:id="@+id/companyProfileFragment"
+    android:title="Profile"
+    android:icon="@drawable/ic_setting"/>
+</menu>

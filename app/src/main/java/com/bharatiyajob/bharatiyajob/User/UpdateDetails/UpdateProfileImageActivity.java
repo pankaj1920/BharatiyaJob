@@ -1,4 +1,4 @@
-package com.bharatiyajob.bharatiyajob.UpdateDetails;
+package com.bharatiyajob.bharatiyajob.User.UpdateDetails;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

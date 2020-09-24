@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.bharatiyajob.bharatiyajob.Login.LoginActivity;
+import com.bharatiyajob.bharatiyajob.User.Login.LoginActivity;
 
 public class RegistrationSucessfulActivity extends AppCompatActivity {
 

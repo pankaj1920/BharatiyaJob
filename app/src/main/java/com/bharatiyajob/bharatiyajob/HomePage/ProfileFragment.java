@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.bharatiyajob.bharatiyajob.AboutUs;
 import com.bharatiyajob.bharatiyajob.CustomerCareActivity;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
-import com.bharatiyajob.bharatiyajob.Login.LoginActivity;
+import com.bharatiyajob.bharatiyajob.User.Login.LoginActivity;
 import com.bharatiyajob.bharatiyajob.NotificationActivity;
 import com.bharatiyajob.bharatiyajob.ProfileSettingActivity;
 import com.bharatiyajob.bharatiyajob.R;

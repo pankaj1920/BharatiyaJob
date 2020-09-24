@@ -31,13 +31,18 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".User.CPaymentFailedActivity"></activity>
-        <activity android:name=".User.CPaymentSucessfulActivity" >
+        <activity android:name=".Company.HomePage.CompanyHomePageActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".UpdateDetails.UpdateProfileImageActivity" />
-        <activity android:name=".UpdateDetails.UpdatePasswordActivity" />
-        <activity android:name=".UpdateDetails.UpdateNameActivity" />
+        <activity android:name=".User.CPaymentFailedActivity" />
+        <activity android:name=".User.CPaymentSucessfulActivity"></activity>
+        <activity android:name=".User.UpdateDetails.UpdateProfileImageActivity" />
+        <activity android:name=".User.UpdateDetails.UpdatePasswordActivity" />
+        <activity android:name=".User.UpdateDetails.UpdateNameActivity" />
         <activity android:name=".ShareAppActivity" />
         <activity android:name=".AboutUs" />
         <activity android:name=".NotificationActivity" />
@@ -53,21 +58,15 @@
         <activity android:name=".RegisterOtpActivity" />
         <activity
             android:name=".HomePage.HomePageActivity"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".Login.LoginPasswordActivity" />
-        <activity android:name=".Login.EnterOtpActivity" />
+        <activity android:name=".User.Login.LoginPasswordActivity" />
+        <activity android:name=".User.Login.EnterOtpActivity" />
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".Login.LoginActivity" />
+        <activity android:name=".User.Login.LoginActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".User.UserPaymentActivity">
-
-        </activity>
+        <activity android:name=".User.UserPaymentActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

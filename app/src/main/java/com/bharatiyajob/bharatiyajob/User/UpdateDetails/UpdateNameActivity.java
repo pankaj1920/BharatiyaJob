@@ -1,4 +1,4 @@
-package com.bharatiyajob.bharatiyajob.UpdateDetails;
+package com.bharatiyajob.bharatiyajob.User.UpdateDetails;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,13 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.Json.UpdateUserName.UpdateUserName;
-import com.bharatiyajob.bharatiyajob.Json.UpdateUserName.UpdateUserNameResponse;
 import com.bharatiyajob.bharatiyajob.ProfileSettingActivity;
 import com.bharatiyajob.bharatiyajob.R;
 

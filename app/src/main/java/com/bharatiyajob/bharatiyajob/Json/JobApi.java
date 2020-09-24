@@ -6,6 +6,7 @@ import com.bharatiyajob.bharatiyajob.Json.Candidate.JobDetails.JobDetailsRespons
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginEntrNumResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.MakeBookmark.MakeBookmarkResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.ProfileForm.CanProfileResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Register.MobileRegisterResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Register.RegVerifyOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.SavedJob.BookmarkJobResponse;
@@ -142,4 +143,18 @@ public interface JobApi {
     //Get Candidate Subscription Pack
     @GET("get_candidate_payment.php")
     Call<SubscriptionResponse> getCandidateSubscription();
+
+    @FormUrlEncoded
+    @POST("save_can_details.php")
+    Call<CanProfileResponse>SaveCanDetail(
+            @Field("can_id") String can_id,
+            @Field("profile_pic") String profile_pic,
+            @Field("gender") String gender,
+            @Field("heighest_qualification") String heighest_qualification,
+            @Field("work_experience") String work_experience,
+            @Field("state") String state,
+            @Field("skills") String skills,
+            @Field("address") String address
+
+    );
 }

@@ -1,4 +1,4 @@
-package com.bharatiyajob.bharatiyajob.HomePage;
+package com.bharatiyajob.bharatiyajob.Company.HomePage;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -10,21 +10,20 @@ import android.os.Bundle;
 import com.bharatiyajob.bharatiyajob.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class HomePageActivity extends AppCompatActivity {
+public class CompanyHomePageActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigationView;
+    BottomNavigationView companyBottomNav;
     NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);
+        setContentView(R.layout.activity_company_home_page);
 
-        bottomNavigationView = findViewById(R.id.bottomNav);
+        companyBottomNav = findViewById(R.id.companyBottomNav);
         navController = Navigation.findNavController(this,R.id.nav_host_fragment);
 
         //Bottom navigation
-        NavigationUI.setupWithNavController(bottomNavigationView,navController);
-
+        NavigationUI.setupWithNavController(companyBottomNav,navController);
     }
 }

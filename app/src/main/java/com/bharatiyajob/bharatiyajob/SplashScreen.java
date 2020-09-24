@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.HomePage.HomePageActivity;
-import com.bharatiyajob.bharatiyajob.Login.LoginActivity;
+import com.bharatiyajob.bharatiyajob.User.Login.LoginActivity;
 import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 
 public class SplashScreen extends AppCompatActivity {

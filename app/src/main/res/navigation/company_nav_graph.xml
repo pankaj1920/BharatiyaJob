@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/company_nav_graph"
+    app:startDestination="@id/companyHomeFragment">
+
+    <fragment
+        android:id="@+id/companyHomeFragment"
+        android:name="com.bharatiyajob.bharatiyajob.Company.HomePage.CompanyHomeFragment"
+        android:label="fragment_company_home"
+        tools:layout="@layout/fragment_company_home" >
+        <action
+            android:id="@+id/action_companyHomeFragment_to_candidateListFragment"
+            app:destination="@id/candidateListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/candidateListFragment"
+        android:name="com.bharatiyajob.bharatiyajob.Company.HomePage.CandidateListFragment"
+        android:label="fragment_candidate_list"
+        tools:layout="@layout/fragment_candidate_list" >
+        <action
+            android:id="@+id/action_candidateListFragment_to_postJobFragment"
+            app:destination="@id/postJobFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postJobFragment"
+        android:name="com.bharatiyajob.bharatiyajob.Company.HomePage.PostJobFragment"
+        android:label="fragment_post_job"
+        tools:layout="@layout/fragment_post_job" >
+        <action
+            android:id="@+id/action_postJobFragment_to_bookmarkCandidateFragment"
+            app:destination="@id/bookmarkCandidateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookmarkCandidateFragment"
+        android:name="com.bharatiyajob.bharatiyajob.Company.HomePage.BookmarkCandidateFragment"
+        android:label="fragment_bookmark_candidate"
+        tools:layout="@layout/fragment_bookmark_candidate" >
+        <action
+            android:id="@+id/action_bookmarkCandidateFragment_to_companyProfileFragment"
+            app:destination="@id/companyProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/companyProfileFragment"
+        android:name="com.bharatiyajob.bharatiyajob.Company.HomePage.CompanyProfileFragment"
+        android:label="fragment_company_profile"
+        tools:layout="@layout/fragment_company_profile" />
+</navigation>

@@ -1,4 +1,4 @@
-package com.bharatiyajob.bharatiyajob.Login;
+package com.bharatiyajob.bharatiyajob.User.Login;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -12,10 +12,10 @@ import android.widget.Toast;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.GetUserDetails.GetUserDetailResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
-import com.bharatiyajob.bharatiyajob.UpdateDetails.UpdateNameActivity;
-import com.bharatiyajob.bharatiyajob.UpdateDetails.UpdatePasswordActivity;
-import com.bharatiyajob.bharatiyajob.UpdateDetails.UpdateProfileImageActivity;
-import com.bharatiyajob.bharatiyajob.UpdateDetails.UpdateSkillsActivity;
+import com.bharatiyajob.bharatiyajob.User.UpdateDetails.UpdateNameActivity;
+import com.bharatiyajob.bharatiyajob.User.UpdateDetails.UpdatePasswordActivity;
+import com.bharatiyajob.bharatiyajob.User.UpdateDetails.UpdateProfileImageActivity;
+import com.bharatiyajob.bharatiyajob.User.UpdateDetails.UpdateSkillsActivity;
 import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
