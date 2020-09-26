@@ -11,6 +11,11 @@ import com.bharatiyajob.bharatiyajob.Json.Candidate.Register.MobileRegisterRespo
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Register.RegVerifyOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.SavedJob.BookmarkJobResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.SearchJob.JobResponse;
+import com.bharatiyajob.bharatiyajob.Json.Company.BookmarkCandidate.BookmarkCandidateResponse;
+import com.bharatiyajob.bharatiyajob.Json.Company.CandidateApplied.CandidateAppliedResponse;
+import com.bharatiyajob.bharatiyajob.Json.Company.CompanyJobList.CompanyJobListResponse;
+import com.bharatiyajob.bharatiyajob.Json.Company.GetBookmarkedCanList.GetBookMarkedCandidateResponse;
+import com.bharatiyajob.bharatiyajob.Json.Company.RemoveBookmarkedCan.RemoveBookMarkedCandidateResponse;
 import com.bharatiyajob.bharatiyajob.Json.SubscriptionPackage.SubscriptionResponse;
 import com.bharatiyajob.bharatiyajob.Json.UpdateCanImage.UpdateImageResponse;
 import com.bharatiyajob.bharatiyajob.Json.UpdateUserName.UpdateUserName;
@@ -156,7 +161,37 @@ public interface JobApi {
             @Field("skills") String skills,
             @Field("address") String address,
             @Field("profile_name") String profile_name
+    );
 
+    @GET("get_company_job_posted.php")
+    Call<CompanyJobListResponse> getappliedjob(
+            @Query("company_id") String company_id
+    );
 
+  @GET("get_bookmark_candidate.php")
+    Call<GetBookMarkedCandidateResponse> getbookMarkCandidate(
+            @Query("company_id") String company_id
+    );
+
+    @FormUrlEncoded
+    @POST("remove_candidate_bookmark.php")
+    Call<RemoveBookMarkedCandidateResponse>removebookmark(
+            @Field("company_id") String company_id,
+            @Field("candidate_id") String candidate_id
+    );
+
+    //Get Candidate List
+    @GET("get_job_applied_candidates.php")
+    Call<CandidateAppliedResponse> getCandidateList(
+            @Query("company_id") String company_id
+    );
+
+    //Bookmark Candidate
+
+    @FormUrlEncoded
+    @POST("save_candidate_to_company.php")
+    Call<BookmarkCandidateResponse>bookmarkCandidate(
+            @Field("company_id") String company_id,
+            @Field("candidate_id") String candidate_id
     );
 }

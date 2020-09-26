@@ -31,6 +31,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".Company.HomePage.AccountSetting.CompanyPayment.CompanyPaymentFailed"></activity>
+        <activity android:name=".Company.HomePage.AccountSetting.CompanyPayment.CompanyPaymentSucessfull" />
+        <activity android:name=".Company.HomePage.AccountSetting.CompanyPayment.CompanyPaymentActivity" />
+        <activity android:name=".Company.HomePage.AccountSetting.CompanyNotification.CompanyNotificationActivity" />
+        <activity android:name=".Company.HomePage.AccountSetting.CompanyProfile.CompanyProfileSetting" />
         <activity android:name=".Company.HomePage.CompanyHomePageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,7 +44,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".User.CPaymentFailedActivity" />
-        <activity android:name=".User.CPaymentSucessfulActivity"></activity>
+        <activity android:name=".User.CPaymentSucessfulActivity" />
         <activity android:name=".User.UpdateDetails.UpdateProfileImageActivity" />
         <activity android:name=".User.UpdateDetails.UpdatePasswordActivity" />
         <activity android:name=".User.UpdateDetails.UpdateNameActivity" />
@@ -58,15 +63,13 @@
         <activity android:name=".RegisterOtpActivity" />
         <activity
             android:name=".HomePage.HomePageActivity"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
-
-        </activity>
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity android:name=".User.Login.LoginPasswordActivity" />
         <activity android:name=".User.Login.EnterOtpActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".User.Login.LoginActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".User.UserPaymentActivity"></activity>
+        <activity android:name=".User.UserPaymentActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

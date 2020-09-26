@@ -1,4 +1,4 @@
-package com.bharatiyajob.bharatiyajob.Company.HomePage;
+package com.bharatiyajob.bharatiyajob.Company.HomePage.PostJob;
 
 import android.os.Bundle;
 
