@@ -63,7 +63,9 @@
         <activity android:name=".RegisterOtpActivity" />
         <activity
             android:name=".HomePage.HomePageActivity"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
+
+        </activity>
         <activity android:name=".User.Login.LoginPasswordActivity" />
         <activity android:name=".User.Login.EnterOtpActivity" />
         <activity android:name=".RegistrationActivity" />

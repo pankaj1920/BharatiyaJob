@@ -28,8 +28,10 @@
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
+        android:id="@+id/candPaymentScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/paymentToolbar"
@@ -156,6 +158,48 @@
 
     </ScrollView>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/paymentToolbar">
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/candiPaymentSimmerEffect"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include layout="@layout/payment_simmer_effect" />
+
+                <include layout="@layout/payment_simmer_effect" />
+
+                <include layout="@layout/payment_simmer_effect" />
+
+                <include layout="@layout/payment_simmer_effect" />
+                <include layout="@layout/payment_simmer_effect" />
+                <include layout="@layout/payment_simmer_effect" />
+                <include layout="@layout/payment_simmer_effect" />
+                <include layout="@layout/payment_simmer_effect" />
+                <include layout="@layout/payment_simmer_effect" />
+                <include layout="@layout/payment_simmer_effect" />
+                <include layout="@layout/payment_simmer_effect" />
+                <include layout="@layout/payment_simmer_effect" />
+                <include layout="@layout/payment_simmer_effect" />
+
+            </LinearLayout>
+
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <Button
         android:id="@+id/buySubscription"
         android:layout_width="300dp"
@@ -163,6 +207,7 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/select_education_selected_radiobtn"
         android:text="Continue"
+        android:visibility="gone"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

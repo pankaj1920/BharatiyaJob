@@ -16,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.Json.SubscriptionPackage.SubscriptionResponse;
 import com.bharatiyajob.bharatiyajob.R;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 
@@ -36,14 +38,10 @@ public class UserPaymentActivity extends AppCompatActivity implements PaymentRes
 
     RecyclerView candidateRecycler;
     CandidatePaymentAdapter candidatePaymentAdapter;
-    int row_index = -1;
-    int Position;
-    RadioButton subscriptionRadioBtn;
-    ConstraintLayout selectSubscriptionLayout;
     String SubscriptionFee = null;
     Button buySubscription;
-    TextView amount;
-    int razorpayLogo = R.drawable.razorpay_logo;
+    ShimmerFrameLayout candiPaymentSimmerEffect;
+    ScrollView candPaymentScrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +51,10 @@ public class UserPaymentActivity extends AppCompatActivity implements PaymentRes
         candidateRecycler = findViewById(R.id.candidateRecycler);
 
         buySubscription = findViewById(R.id.buySubscription);
+        candiPaymentSimmerEffect = findViewById(R.id.candiPaymentSimmerEffect);
+        candPaymentScrollView = findViewById(R.id.candPaymentScrollView);
+
+        candiPaymentSimmerEffect.startShimmer();
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         candidateRecycler.setLayoutManager(layoutManager);
@@ -84,6 +86,12 @@ public class UserPaymentActivity extends AppCompatActivity implements PaymentRes
                 final SubscriptionResponse subscriptionResponse = response.body();
 
                 if (response.isSuccessful() && subscriptionResponse.getStatus().equals("1")){
+
+                    candiPaymentSimmerEffect.stopShimmer();
+                    candiPaymentSimmerEffect.setVisibility(View.GONE);
+                    buySubscription.setVisibility(View.VISIBLE);
+                    candPaymentScrollView.setVisibility(View.VISIBLE);
+
 
                     candidatePaymentAdapter = new CandidatePaymentAdapter(subscriptionResponse.getData(),UserPaymentActivity.this);
                     candidateRecycler.setAdapter(candidatePaymentAdapter);

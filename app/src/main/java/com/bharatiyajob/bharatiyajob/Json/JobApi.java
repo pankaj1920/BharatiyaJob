@@ -149,6 +149,10 @@ public interface JobApi {
     @GET("get_candidate_payment.php")
     Call<SubscriptionResponse> getCandidateSubscription();
 
+    //Get Company Subscription Pack
+    @GET("get_company_payment.php")
+    Call<SubscriptionResponse> getCompanySubscription();
+
     @FormUrlEncoded
     @POST("save_can_details.php")
     Call<CanProfileResponse>SaveCanDetail(
