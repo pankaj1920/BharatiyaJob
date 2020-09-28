@@ -15,6 +15,7 @@ import com.bharatiyajob.bharatiyajob.Json.Company.BookmarkCandidate.BookmarkCand
 import com.bharatiyajob.bharatiyajob.Json.Company.CandidateApplied.CandidateAppliedResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.CompanyJobList.CompanyJobListResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.GetBookmarkedCanList.GetBookMarkedCandidateResponse;
+import com.bharatiyajob.bharatiyajob.Json.Company.GetCompanyDetails.GetCompanyDetailsResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.RemoveBookmarkedCan.RemoveBookMarkedCandidateResponse;
 import com.bharatiyajob.bharatiyajob.Json.SubscriptionPackage.SubscriptionResponse;
 import com.bharatiyajob.bharatiyajob.Json.UpdateCanImage.UpdateImageResponse;
@@ -197,5 +198,11 @@ public interface JobApi {
     Call<BookmarkCandidateResponse>bookmarkCandidate(
             @Field("company_id") String company_id,
             @Field("candidate_id") String candidate_id
+    );
+
+    //Get Company Details
+    @GET("get_company_details.php")
+    Call<GetCompanyDetailsResponse> getCompanyDetails(
+      @Query("company_id") String companyId
     );
 }

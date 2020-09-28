@@ -4,10 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bharatiyajob.bharatiyajob.Json.BaseClient;
+import com.bharatiyajob.bharatiyajob.Json.Company.GetCompanyDetails.GetCompanyDetailsResponse;
+import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CompanyProfileSetting extends AppCompatActivity {
 
@@ -25,5 +32,31 @@ public class CompanyProfileSetting extends AppCompatActivity {
         CPasswordTextView = findViewById(R.id.CPasswordTextView);
         CAdressTextView = findViewById(R.id.CAdressTextView);
 
+        getCompanyDetails();
+    }
+
+    private void getCompanyDetails() {
+        JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
+        Call<GetCompanyDetailsResponse> call = jobApi.getCompanyDetails("1");
+        call.enqueue(new Callback<GetCompanyDetailsResponse>() {
+            @Override
+            public void onResponse(Call<GetCompanyDetailsResponse> call, Response<GetCompanyDetailsResponse> response) {
+
+                GetCompanyDetailsResponse companyDetailsResponse = response.body();
+                if (response.isSuccessful() && companyDetailsResponse.getStatus().equals("1")){
+                    CNameTextView.setText(companyDetailsResponse.getData().getCompany_name());
+                    CNumberTextView.setText(companyDetailsResponse.getData().getOwner_mobile());
+                    CEmailTextView.setText(companyDetailsResponse.getData().getFirm_email());
+                    CAdressTextView.setText(companyDetailsResponse.getData().getAddress());
+                }else {
+                    Toast.makeText(CompanyProfileSetting.this, "Failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetCompanyDetailsResponse> call, Throwable t) {
+
+            }
+        });
     }
 }

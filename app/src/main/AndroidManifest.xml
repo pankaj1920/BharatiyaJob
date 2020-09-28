@@ -36,12 +36,15 @@
         <activity android:name=".Company.HomePage.AccountSetting.CompanyPayment.CompanyPaymentActivity" />
         <activity android:name=".Company.HomePage.AccountSetting.CompanyNotification.CompanyNotificationActivity" />
         <activity android:name=".Company.HomePage.AccountSetting.CompanyProfile.CompanyProfileSetting" />
-        <activity android:name=".Company.HomePage.CompanyHomePageActivity">
+        <activity android:name=".Company.CompanyRegistrationActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Company.HomePage.CompanyHomePageActivity">
+
         </activity>
         <activity android:name=".User.CPaymentFailedActivity" />
         <activity android:name=".User.CPaymentSucessfulActivity" />
