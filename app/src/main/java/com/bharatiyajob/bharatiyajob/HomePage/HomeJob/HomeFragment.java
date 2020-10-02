@@ -114,7 +114,7 @@ public class HomeFragment extends Fragment {
 
     private void getHomeJob() {
         final JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
-        Call<JobResponse> call = jobApi.searchJob("p", "");
+        Call<JobResponse> call = jobApi.searchJob("ra", "");
         call.enqueue(new Callback<JobResponse>() {
             @Override
             public void onResponse(Call<JobResponse> call, Response<JobResponse> response) {

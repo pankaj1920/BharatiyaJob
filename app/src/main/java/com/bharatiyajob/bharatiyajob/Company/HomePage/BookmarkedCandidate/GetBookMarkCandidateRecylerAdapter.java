@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,12 +56,17 @@ public class GetBookMarkCandidateRecylerAdapter extends RecyclerView.Adapter<Get
         canId = data.getCandidate_id();
         holder.BCanName.setText(bokkmarklist.get(position).getCandidate_name());
 
-
-
         holder.BCanStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onUnBcItemClickListner.onUnBookmarkCanClicked(holder.itemView,position);
+            }
+        });
+
+        holder.BCanViewJob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onUnBcItemClickListner.onBookCanViewDetailCilcked(holder.itemView,position);
             }
         });
     }
@@ -75,14 +81,17 @@ public class GetBookMarkCandidateRecylerAdapter extends RecyclerView.Adapter<Get
     public class Vholder  extends RecyclerView.ViewHolder{
         TextView BCanName;
         ImageView BCanStar;
+        Button BCanViewJob;
         public Vholder(@NonNull View itemView) {
             super(itemView);
             BCanName=itemView.findViewById(R.id.BCanName);
             BCanStar=itemView.findViewById(R.id.BCanStar);
+            BCanViewJob=itemView.findViewById(R.id.BCanViewJob);
         }
     }
 
     public interface OnUnBcItemClickListner{
         void onUnBookmarkCanClicked(View view,int position);
+        void onBookCanViewDetailCilcked(View view,int position);
     }
 }

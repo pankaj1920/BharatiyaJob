@@ -1,6 +1,6 @@
-package com.bharatiyajob.bharatiyajob.Json.Company.CompanyJobList;
+package com.bharatiyajob.bharatiyajob.Json.Company.CompanyJobPosted;
 
-public class CompanyJobListData {
+public class CompanyJobPostData {
 
     private String job_id;
     private String jobtitle;
@@ -11,20 +11,16 @@ public class CompanyJobListData {
     private String salary;
     private String location;
     private String jobrole;
+    private String agerequired;
     private String known_language;
     private String emp_type;
     private String description;
     private String number_of_vacancy;
     private String company_logo;
-    private String walk_in_date;
     private String walk_in_venue;
-    private String contact_number;
-    private String contact_email;
     private String jobregdte;
-    private String jobstatus;
 
-
-    public CompanyJobListData(String job_id, String jobtitle, String industry_type, String functional_area, String requiredskill, String work_experience, String salary, String location, String jobrole, String known_language, String emp_type, String description, String number_of_vacancy, String company_logo, String walk_in_date, String walk_in_venue, String contact_number, String contact_email, String jobregdte, String jobstatus) {
+    public CompanyJobPostData(String job_id, String jobtitle, String industry_type, String functional_area, String requiredskill, String work_experience, String salary, String location, String jobrole, String agerequired, String known_language, String emp_type, String description, String number_of_vacancy, String company_logo, String walk_in_venue, String jobregdte) {
         this.job_id = job_id;
         this.jobtitle = jobtitle;
         this.industry_type = industry_type;
@@ -34,17 +30,14 @@ public class CompanyJobListData {
         this.salary = salary;
         this.location = location;
         this.jobrole = jobrole;
+        this.agerequired = agerequired;
         this.known_language = known_language;
         this.emp_type = emp_type;
         this.description = description;
         this.number_of_vacancy = number_of_vacancy;
         this.company_logo = company_logo;
-        this.walk_in_date = walk_in_date;
         this.walk_in_venue = walk_in_venue;
-        this.contact_number = contact_number;
-        this.contact_email = contact_email;
         this.jobregdte = jobregdte;
-        this.jobstatus = jobstatus;
     }
 
     public String getJob_id() {
@@ -119,6 +112,14 @@ public class CompanyJobListData {
         this.jobrole = jobrole;
     }
 
+    public String getAgerequired() {
+        return agerequired;
+    }
+
+    public void setAgerequired(String agerequired) {
+        this.agerequired = agerequired;
+    }
+
     public String getKnown_language() {
         return known_language;
     }
@@ -159,14 +160,6 @@ public class CompanyJobListData {
         this.company_logo = company_logo;
     }
 
-    public String getWalk_in_date() {
-        return walk_in_date;
-    }
-
-    public void setWalk_in_date(String walk_in_date) {
-        this.walk_in_date = walk_in_date;
-    }
-
     public String getWalk_in_venue() {
         return walk_in_venue;
     }
@@ -175,35 +168,11 @@ public class CompanyJobListData {
         this.walk_in_venue = walk_in_venue;
     }
 
-    public String getContact_number() {
-        return contact_number;
-    }
-
-    public void setContact_number(String contact_number) {
-        this.contact_number = contact_number;
-    }
-
-    public String getContact_email() {
-        return contact_email;
-    }
-
-    public void setContact_email(String contact_email) {
-        this.contact_email = contact_email;
-    }
-
     public String getJobregdte() {
         return jobregdte;
     }
 
     public void setJobregdte(String jobregdte) {
         this.jobregdte = jobregdte;
-    }
-
-    public String getJobstatus() {
-        return jobstatus;
-    }
-
-    public void setJobstatus(String jobstatus) {
-        this.jobstatus = jobstatus;
     }
 }

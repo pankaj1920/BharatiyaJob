@@ -4,9 +4,9 @@ import java.util.List;
 
 public class JobDetailsResponse {
     private String status;
-    private List<JobDetailsData> data;
+    private  JobDetailsData data;
 
-    public JobDetailsResponse(String status, List<JobDetailsData> data) {
+    public JobDetailsResponse(String status, JobDetailsData data) {
         this.status = status;
         this.data = data;
     }
@@ -19,11 +19,11 @@ public class JobDetailsResponse {
         this.status = status;
     }
 
-    public List<JobDetailsData> getData() {
+    public JobDetailsData getData() {
         return data;
     }
 
-    public void setData(List<JobDetailsData> data) {
+    public void setData(JobDetailsData data) {
         this.data = data;
     }
 }

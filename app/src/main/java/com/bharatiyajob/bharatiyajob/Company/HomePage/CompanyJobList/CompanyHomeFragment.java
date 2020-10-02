@@ -1,5 +1,6 @@
 package com.bharatiyajob.bharatiyajob.Company.HomePage.CompanyJobList;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -12,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.bharatiyajob.bharatiyajob.Company.HomePage.CompanyHomePageRecyleAdapter;
+import com.bharatiyajob.bharatiyajob.CustomerCareActivity;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.Company.CompanyJobList.CompanyJobListResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
@@ -55,18 +56,18 @@ public class CompanyHomeFragment extends Fragment {
 
         recycler_home_fragment.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        GetAppliedCandidate();
+        GetJobPostedList();
         return view;
     }
 
-    public void GetAppliedCandidate(){
+    public void GetJobPostedList(){
         JobApi jobApi= BaseClient.getBaseClient().create(JobApi.class);
 
-        Call<CompanyJobListResponse> call=jobApi.getappliedjob("1");
+        Call<CompanyJobListResponse> call=jobApi.getPostedJob("1");
         call.enqueue(new Callback<CompanyJobListResponse>() {
             @Override
             public void onResponse(Call<CompanyJobListResponse> call, Response<CompanyJobListResponse> response) {
-                CompanyJobListResponse companyJobListResponse = response.body();
+                final CompanyJobListResponse companyJobListResponse = response.body();
                 if (response.isSuccessful() && companyJobListResponse.getStatus().equals("1")){
                     jobPostSimmerEffect.stopShimmer();
                     jobPostSimmerEffect.setVisibility(View.GONE);
@@ -74,6 +75,18 @@ public class CompanyHomeFragment extends Fragment {
                     creatDocLayout.setVisibility(View.GONE);
                     companyHomePageRecyleAdapter=new CompanyHomePageRecyleAdapter(response.body().getData(),getContext());
                     recycler_home_fragment.setAdapter(companyHomePageRecyleAdapter);
+
+                    companyHomePageRecyleAdapter.setOnJobItemClickListner(new CompanyHomePageRecyleAdapter.OnJobItemClickListner() {
+                        @Override
+                        public void onJobItemClicked(View view, int position) {
+                            Bundle bundle = new Bundle();
+                            String jobId = companyJobListResponse.getData().get(position).getJob_id();
+                            bundle.putString("comJdJobId",jobId);
+                            Intent intent=new Intent(getActivity(), CompanyJobDetailActivity.class);
+                            intent.putExtras(bundle);
+                           startActivity(intent);
+                        }
+                    });
 
                 }else {
                     Toast.makeText(getContext(), "failed", Toast.LENGTH_SHORT).show();

@@ -31,20 +31,21 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".Company.HomePage.AccountSetting.CompanyPayment.CompanyPaymentFailed"></activity>
+        <activity android:name=".Company.CompanyVerifyOtpActivity"></activity>
+        <activity android:name=".Company.HomePage.CandidateDetail.CandidateDetailActivity" />
+        <activity android:name=".Company.HomePage.CompanyJobList.CompanyJobDetailActivity"></activity>
+        <activity android:name=".Company.HomePage.AccountSetting.CompanyPayment.CompanyPaymentFailed" />
         <activity android:name=".Company.HomePage.AccountSetting.CompanyPayment.CompanyPaymentSucessfull" />
         <activity android:name=".Company.HomePage.AccountSetting.CompanyPayment.CompanyPaymentActivity" />
         <activity android:name=".Company.HomePage.AccountSetting.CompanyNotification.CompanyNotificationActivity" />
         <activity android:name=".Company.HomePage.AccountSetting.CompanyProfile.CompanyProfileSetting" />
-        <activity android:name=".Company.CompanyRegistrationActivity" >
+        <activity android:name=".Company.CompanyRegistrationActivity" />
+        <activity android:name=".Company.HomePage.CompanyHomePageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".Company.HomePage.CompanyHomePageActivity">
-
         </activity>
         <activity android:name=".User.CPaymentFailedActivity" />
         <activity android:name=".User.CPaymentSucessfulActivity" />
@@ -66,9 +67,7 @@
         <activity android:name=".RegisterOtpActivity" />
         <activity
             android:name=".HomePage.HomePageActivity"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-
-        </activity>
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"></activity>
         <activity android:name=".User.Login.LoginPasswordActivity" />
         <activity android:name=".User.Login.EnterOtpActivity" />
         <activity android:name=".RegistrationActivity" />
@@ -82,6 +81,14 @@
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_live_Dt4bfKj6DDu1gi" />
+
+        <service android:name=".Notification.FCMMessageReceiverService" android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+
+            </intent-filter>
+        </service>
     </application>
+
 
 </manifest>

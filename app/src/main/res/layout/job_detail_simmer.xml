@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B8B8B8">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/JdCompanyDetailLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@color/grey">
+
+                    <ImageView
+                        android:id="@+id/companyBackBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="5dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/companyJobTitle"
+                        android:layout_width="170dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/prompt"
+                        android:background="@color/Darkgrey"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/companyBackBtn" />
+
+                    <TextView
+                        android:id="@+id/companyName"
+                        android:layout_width="80dp"
+                        android:layout_height="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="15dp"
+                        android:background="@color/Darkgrey"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/companyJobTitle"/>
+
+                    <ImageView
+                        android:id="@+id/cLogo"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@color/Darkgrey"
+                        android:padding="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/compayJobLocation"
+                        android:layout_width="70dp"
+                        android:layout_height="15dp"
+                        android:background="@color/Darkgrey"
+                        android:layout_marginStart="20dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/companyName"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/jobDetailsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/JdCompanyDetailLayout">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="10dp"
+                        app:cardUseCompatPadding="true">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="@color/grey"
+                            android:background="@drawable/card_view_border"
+                            android:padding="20dp">
+                            <TextView
+                                android:id="@+id/JdTitleTxt"
+                                android:layout_width="120dp"
+                                android:layout_height="15dp"
+                               android:background="@color/Darkgrey"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"/>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/jobPostedLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/JdTitleTxt">
+                                <TextView
+                                    android:id="@+id/JbJobPostedTxt"
+                                    android:layout_width="180dp"
+                                    android:layout_height="15dp"
+                                    android:background="@color/Darkgrey"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"/>
+
+
+                                <TextView
+                                    android:id="@+id/JdExperienceTxt"
+                                    android:layout_width="200dp"
+                                    android:layout_height="15dp"
+                                    android:background="@color/Darkgrey"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/JbJobPostedTxt"/>
+
+                                <TextView
+                                    android:id="@+id/JdSalaryTxt"
+                                    android:layout_width="180dp"
+                                    android:layout_height="15dp"
+                                    android:background="@color/Darkgrey"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/JdExperienceTxt"/>
+
+                                <TextView
+                                    android:id="@+id/JdJobTypeTxt"
+                                    android:layout_width="230dp"
+                                    android:layout_height="15dp"
+                                    android:background="@color/Darkgrey"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/JdSalaryTxt"/>
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/jobDescriptionLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/jobDetailsLayout">
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="10dp"
+                        app:cardUseCompatPadding="true">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/grey"
+                            android:padding="20dp">
+                            <TextView
+                                android:id="@+id/JdDescriptionTxt"
+                                android:layout_width="120dp"
+                                android:layout_height="15dp"
+                                android:background="@color/Darkgrey"
+                                android:layout_marginTop="10dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"/>
+
+                            <TextView
+                                android:id="@+id/comDescription"
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp"
+                                android:layout_marginTop="24dp"
+                                android:background="@color/Darkgrey"
+                                android:textSize="16sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/JdDescriptionTxt" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/al"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/jobDescriptionLayout">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="10dp"
+                        app:cardUseCompatPadding="true">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="@color/grey"
+                            android:background="@drawable/card_view_border"
+                            android:padding="20dp">
+                            <TextView
+                                android:id="@+id/JdTitleTxtd"
+                                android:layout_width="120dp"
+                                android:layout_height="15dp"
+                                android:background="@color/Darkgrey"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"/>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/jobPostedLayoutd"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/JdTitleTxtd">
+                                <TextView
+                                    android:id="@+id/JbJobPostedTxtd"
+                                    android:layout_width="180dp"
+                                    android:layout_height="15dp"
+                                    android:background="@color/Darkgrey"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"/>
+
+
+                                <TextView
+                                    android:id="@+id/JdExperienceTxtd"
+                                    android:layout_width="200dp"
+                                    android:layout_height="15dp"
+                                    android:background="@color/Darkgrey"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/JbJobPostedTxtd"/>
+
+                                <TextView
+                                    android:id="@+id/JdSalaryTxtd"
+                                    android:layout_width="180dp"
+                                    android:layout_height="15dp"
+                                    android:background="@color/Darkgrey"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/JdExperienceTxtd"/>
+
+                                <TextView
+                                    android:id="@+id/JdJobTypeTxtd"
+                                    android:layout_width="230dp"
+                                    android:layout_height="15dp"
+                                    android:background="@color/Darkgrey"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/JdSalaryTxtd"/>
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/alb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/jobDescriptionLayout">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="10dp"
+                        app:cardUseCompatPadding="true">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="@color/grey"
+                            android:background="@drawable/card_view_border"
+                            android:padding="20dp">
+                            <TextView
+                                android:id="@+id/JdTitleTxtdb"
+                                android:layout_width="120dp"
+                                android:layout_height="15dp"
+                                android:background="@color/Darkgrey"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"/>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/jobPostedLayoutdb"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/JdTitleTxtdb">
+                                <TextView
+                                    android:id="@+id/JbJobPostedTxtdb"
+                                    android:layout_width="180dp"
+                                    android:layout_height="15dp"
+                                    android:background="@color/Darkgrey"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"/>
+
+
+                                <TextView
+                                    android:id="@+id/JdExperienceTxtdb"
+                                    android:layout_width="200dp"
+                                    android:layout_height="15dp"
+                                    android:background="@color/Darkgrey"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/JbJobPostedTxtdb"/>
+
+                                <TextView
+                                    android:id="@+id/JdSalaryTxtdb"
+                                    android:layout_width="180dp"
+                                    android:layout_height="15dp"
+                                    android:background="@color/Darkgrey"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/JdExperienceTxtdb"/>
+
+                                <TextView
+                                    android:id="@+id/JdJobTypeTxtdb"
+                                    android:layout_width="230dp"
+                                    android:layout_height="15dp"
+                                    android:background="@color/Darkgrey"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/JdSalaryTxtdb"/>
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

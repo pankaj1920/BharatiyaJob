@@ -1,14 +1,19 @@
 package com.bharatiyajob.bharatiyajob.User.Login;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bharatiyajob.bharatiyajob.HomePage.HomePageActivity;
@@ -18,6 +23,10 @@ import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginEntrNumResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.R;
 import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.Locale;
 
@@ -31,6 +40,11 @@ public class EnterOtpActivity extends AppCompatActivity {
     Button LoginVerifyOtp;
     String mobNum, otp;
     TextView resendOTP,DisableResendOtp,ResendCountDown;
+
+    final static String Channel_name="bhartiyaJob";
+    final public static String Channel_id="bhartyiaJob";
+    final static String Channel_descvription="bhartyiaJob";
+    String token;
 
     // starting time 2min
     private static long START_TIME_IN_MILLI = 20000; //120000;
@@ -57,6 +71,23 @@ public class EnterOtpActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         mobNum = bundle.getString("logiId");
 
+
+        // to generate the firebase token
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (task.isSuccessful()){
+                            token=task.getResult().getToken();
+
+                            Log.d("token",token);
+                        }else{
+                            Toast.makeText(EnterOtpActivity.this, "failed to generate", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
         // Start Resend Timer
         startResendTimer();
 
@@ -75,11 +106,21 @@ public class EnterOtpActivity extends AppCompatActivity {
                 ResendOtp();
             }
         });
+
+
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+            NotificationChannel notificationChannel=new NotificationChannel(Channel_id,Channel_name, NotificationManager.IMPORTANCE_DEFAULT);
+            notificationChannel.setDescription(Channel_descvription);
+
+            NotificationManager notificationManager=(NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
     }
 
 
 
     private void verifyLoginOtp() {
+
 
         otp = LoginOtpEditText.getText().toString();
 
@@ -89,24 +130,23 @@ public class EnterOtpActivity extends AppCompatActivity {
             return;
         }
         JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
-        Call<LoginOtpResponse> call = jobApi.mobilelLogin(mobNum,otp);
+        Call<LoginOtpResponse> call = jobApi.mobilelLogin(mobNum,otp,token);
 
         call.enqueue(new Callback<LoginOtpResponse>() {
             @Override
             public void onResponse(Call<LoginOtpResponse> call, Response<LoginOtpResponse> response) {
                 LoginOtpResponse loginOtpResponse = response.body();
 
-                if (response.isSuccessful() && loginOtpResponse.getError().equals("false")){
+                if (response.isSuccessful() ){
 
                     //if the login Responwe is sucessfull we will save the user
                     LoginDetailSharePref.getInstance(EnterOtpActivity.this).saveLoginDetails(loginOtpResponse);
 
-                    Toast.makeText(EnterOtpActivity.this, loginOtpResponse.getError(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(EnterOtpActivity.this, HomePageActivity.class);
                     startActivity(intent);
                     finish();
                 }else {
-                    Toast.makeText(EnterOtpActivity.this, loginOtpResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EnterOtpActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
                 }
             }
             

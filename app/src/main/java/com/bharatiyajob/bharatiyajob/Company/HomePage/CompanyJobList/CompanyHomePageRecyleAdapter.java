@@ -1,4 +1,4 @@
-package com.bharatiyajob.bharatiyajob.Company.HomePage;
+package com.bharatiyajob.bharatiyajob.Company.HomePage.CompanyJobList;
 
 import android.content.Context;
 import android.content.Intent;
@@ -25,6 +25,13 @@ public class CompanyHomePageRecyleAdapter extends RecyclerView.Adapter<CompanyHo
 
     List<CompanyJobListData> appliedjoblist;
     Context context;
+    private OnJobItemClickListner onJobItemClickListner;
+    String [] dateTime;
+    String date,time;
+
+    public void setOnJobItemClickListner(OnJobItemClickListner onJobItemClickListner) {
+        this.onJobItemClickListner = onJobItemClickListner;
+    }
 
     public CompanyHomePageRecyleAdapter(List<CompanyJobListData> appliedjoblist, Context context) {
         this.appliedjoblist = appliedjoblist;
@@ -40,21 +47,25 @@ public class CompanyHomePageRecyleAdapter extends RecyclerView.Adapter<CompanyHo
 
     @Override
     public void onBindViewHolder(@NonNull final Vholder holder, final int position) {
-        holder.jobExperience.setText(appliedjoblist.get(position).getWork_experience());
-        holder.jobLocation.setText(appliedjoblist.get(position).getLocation());
-        holder.jobSkill.setText(appliedjoblist.get(position).getRequiredskill());
-        holder.jobSalary.setText(appliedjoblist.get(position).getSalary());
-        holder.jobVacanncy.setText(appliedjoblist.get(position).getNumber_of_vacancy());
-        holder.txt_date.setText(appliedjoblist.get(position).getJobregdte());
-        holder.txt_date.setText(appliedjoblist.get(position).getJobregdte());
+        CompanyJobListData data = appliedjoblist.get(position);
+
+        dateTime = data.getJobregdte().split((" "));
+        date = dateTime[0];
+        time = dateTime[1];
+
+        holder.jobTitle.setText(data.getJobtitle());
+        holder.jobExperience.setText(data.getWork_experience());
+        holder.jobLocation.setText(data.getLocation());
+        holder.jobSkill.setText(data.getRequiredskill());
+        holder.jobSalary.setText(data.getSalary());
+        holder.jobVacanncy.setText(data.getNumber_of_vacancy());
+        holder.txt_date.setText(date);
         Log.d("MyTAG",String.valueOf(position));
 //        Picasso.get().load(appliedjoblist.get(position).getCompany_logo()).into(holder.bookmarkedStar);
         holder.viewJob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(holder.bookmarkedStar.getContext(), CustomerCareActivity.class);
-                intent.putExtra("position",position);
-                holder.txt_date.getContext().startActivity(intent);
+                onJobItemClickListner.onJobItemClicked(holder.itemView,position);
             }
         });
     }
@@ -65,11 +76,12 @@ public class CompanyHomePageRecyleAdapter extends RecyclerView.Adapter<CompanyHo
     }
 
     public class Vholder extends RecyclerView.ViewHolder {
-        TextView jobExperience,jobLocation,jobSalary,jobVacanncy,jobSkill,txt_date;
+        TextView jobTitle,jobExperience,jobLocation,jobSalary,jobVacanncy,jobSkill,txt_date;
         ImageView bookmarkedStar;
         Button viewJob;
         public Vholder(@NonNull View itemView) {
             super(itemView);
+            jobTitle = itemView.findViewById(R.id.jobTitle);
             jobExperience = itemView.findViewById(R.id.jobExperience);
             jobLocation = itemView.findViewById(R.id.jobLocation);
             jobSalary = itemView.findViewById(R.id.jobSalary);
@@ -79,5 +91,9 @@ public class CompanyHomePageRecyleAdapter extends RecyclerView.Adapter<CompanyHo
             bookmarkedStar = itemView.findViewById(R.id.bookmarkedStar);
             viewJob=itemView.findViewById(R.id.viewJob);
         }
+    }
+
+    interface OnJobItemClickListner {
+        void onJobItemClicked(View view, int position);
     }
 }

@@ -53,6 +53,13 @@ public class CandidateListAdapter extends RecyclerView.Adapter<CandidateListAdap
             }
         });
 
+        holder.CanViewDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemClickListner.onCanViewDetailCilcked(holder.itemView,position);
+            }
+        });
+
     }
 
     @Override
@@ -64,7 +71,7 @@ public class CandidateListAdapter extends RecyclerView.Adapter<CandidateListAdap
 
         ImageView canPic,bookmarkCanStar;
         TextView CanName,CanEmail,canJobExperience,CanjobLocation,CanJobSkill;
-        Button CanViewJob;
+        Button CanViewDetail;
 
         public Candidate_VH(@NonNull View itemView) {
             super(itemView);
@@ -74,12 +81,13 @@ public class CandidateListAdapter extends RecyclerView.Adapter<CandidateListAdap
             canJobExperience = itemView.findViewById(R.id.canJobExperience);
             CanjobLocation = itemView.findViewById(R.id.CanjobLocation);
             CanJobSkill = itemView.findViewById(R.id.CanJobSkill);
-            CanViewJob = itemView.findViewById(R.id.CanViewJob);
+            CanViewDetail = itemView.findViewById(R.id.CanViewDetail);
             CanEmail = itemView.findViewById(R.id.CanEmail);
         }
     }
 
     public interface OnItemClickListner{
         void onCanBookmarkClicked(View view,int position);
+        void onCanViewDetailCilcked(View view,int position);
     }
 }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "136930076917",
+    "firebase_url": "https://bharatiya-job.firebaseio.com",
+    "project_id": "bharatiya-job",
+    "storage_bucket": "bharatiya-job.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136930076917:android:7836ab1621eadb00f47dbc",
+        "android_client_info": {
+          "package_name": "com.bharatiyajob.bharatiyajob"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136930076917-4aaqvgcomhl34u3d5nc5h03unmkbos6o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDU58t5UImlo14TQXCBknFVhIOzNqU1QRw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "136930076917-4aaqvgcomhl34u3d5nc5h03unmkbos6o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,12 +2,14 @@ package com.bharatiyajob.bharatiyajob.User.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
@@ -19,6 +21,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,23 +41,18 @@ public class LoginActivity extends AppCompatActivity {
     int RC_Sign_In = 0;
     Bundle bundle;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Configure sign-in to request the user's ID, email address, and basic
-        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-
-        // Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
         Register = findViewById(R.id.RegisterTextView);
         loginEditext = findViewById(R.id.loginEditext);
         signBtn = findViewById(R.id.signBtn);
+
+
 
         loginGoogleSign = findViewById(R.id.loginGoogleSign);
         loginGoogleSign.setSize(SignInButton.SIZE_STANDARD);
@@ -73,16 +74,11 @@ public class LoginActivity extends AppCompatActivity {
         loginGoogleSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                googleSignIn();
+
             }
         });
     }
 
-    private void googleSignIn() {
-        Intent intent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(intent, RC_Sign_In);
-        finish();
-    }
 
     private void signIn() {
         loginId = loginEditext.getText().toString();

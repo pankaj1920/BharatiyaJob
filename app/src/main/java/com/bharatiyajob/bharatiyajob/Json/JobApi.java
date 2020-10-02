@@ -14,9 +14,14 @@ import com.bharatiyajob.bharatiyajob.Json.Candidate.SearchJob.JobResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.BookmarkCandidate.BookmarkCandidateResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.CandidateApplied.CandidateAppliedResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.CompanyJobList.CompanyJobListResponse;
+import com.bharatiyajob.bharatiyajob.Json.Company.CompanyJobPosted.CompanyJobPostedResponse;
+import com.bharatiyajob.bharatiyajob.Json.Company.CompanyRegistrationResponse.CompanyRegistrationResponse;
+import com.bharatiyajob.bharatiyajob.Json.Company.EnableDisableJobPost.EnableDisableJobResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.GetBookmarkedCanList.GetBookMarkedCandidateResponse;
+import com.bharatiyajob.bharatiyajob.Json.Company.GetCandidateDetails.GetCandidateDetaiResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.GetCompanyDetails.GetCompanyDetailsResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.RemoveBookmarkedCan.RemoveBookMarkedCandidateResponse;
+import com.bharatiyajob.bharatiyajob.Json.Company.VerifyOtpResponse.VerifyOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.SubscriptionPackage.SubscriptionResponse;
 import com.bharatiyajob.bharatiyajob.Json.UpdateCanImage.UpdateImageResponse;
 import com.bharatiyajob.bharatiyajob.Json.UpdateUserName.UpdateUserName;
@@ -51,7 +56,8 @@ public interface JobApi {
     @POST("Login.php")
     Call<LoginOtpResponse> mobilelLogin(
             @Field("mobile") String mobile,
-            @Field(("otp")) String otp
+            @Field(("otp")) String otp,
+            @Field("token") String token
     );
 
     //MobileRegister
@@ -169,7 +175,7 @@ public interface JobApi {
     );
 
     @GET("get_company_job_posted.php")
-    Call<CompanyJobListResponse> getappliedjob(
+    Call<CompanyJobListResponse> getPostedJob(
             @Query("company_id") String company_id
     );
 
@@ -205,4 +211,84 @@ public interface JobApi {
     Call<GetCompanyDetailsResponse> getCompanyDetails(
       @Query("company_id") String companyId
     );
+
+    //Get Candidate Details
+    @GET("get_can_details.php")
+    Call<GetCandidateDetaiResponse> getCandidateDetail(
+      @Query("can_id") String CanId
+    );
+
+//    Enable Job Post
+    @FormUrlEncoded
+    @POST("disable_job_post.php")
+    Call<EnableDisableJobResponse> disableJobPost(
+      @Field("company_id") String companyId,
+      @Field("job_id") String jobId
+    );
+
+    //    Enable Job Post
+    @FormUrlEncoded
+    @POST("enable_job_post.php")
+    Call<EnableDisableJobResponse> enableJobPost(
+            @Field("company_id") String companyId,
+            @Field("job_id") String jobId
+    );
+
+    @FormUrlEncoded
+    @POST("SaveUserMobileNumber.php")
+    Call<CompanyRegistrationResponse>saveCompanyMobilenumber(
+            @Field("mobile") String mobile
+    );
+    @FormUrlEncoded
+    @POST("companyRegistration.php")
+    Call<VerifyOtpResponse>RegisterCmpany(
+            @Field("companyname") String companyname,
+            @Field("email") String email,
+            @Field("mobile") String mobile,
+            @Field("otp") String otp,
+            @Field("gst_reg") String gst_reg,
+            @Field("gstno") String gstno,
+            @Field("aadhaarno") String aadhaarno,
+            @Field("address") String address,
+            @Field("city") String city,
+            @Field("state") String state,
+            @Field("country") String country,
+            @Field("password") String password,
+            @Field("profile_pic") String profile_pic,
+            @Field("profile_pic_name") String profile_pic_name
+
+    );
+
+//    @FormUrlEncoded
+//    @POST("Login.php")
+//    Call<GetNotification>Notification(
+//            @Field("mobile") String mobile,
+//            @Field("otp") String otp,
+//            @Field("token") String token
+//    );
+
+    @FormUrlEncoded
+    @POST("save_post_job_details.php")
+    Call<CompanyJobPostedResponse>PostJob(
+            @Field("company_id") String company_id,
+            @Field("cname") String cname,
+            @Field("jobtitle") String jobtitle,
+            @Field("industry_type") String industry_type,
+            @Field("functional_area") String functional_area,
+            @Field("skill") String skill,
+            @Field("experience") String experience,
+            @Field("salary") String salary,
+            @Field("location") String location,
+            @Field("jobrole") String jobrole,
+            @Field("lang") String lang,
+            @Field("emp_type") String emp_type,
+            @Field("description") String description,
+            @Field("number_of_vacancy") String number_of_vacancy,
+            @Field("company_logo") String company_logo,
+            @Field("company_logo_name") String company_logo_name,
+            @Field("walk_in_venue") String walk_in_venue,
+            @Field("contact_number") String contact_number,
+            @Field("contact_email") String contact_email
+    );
+
 }

@@ -1,5 +1,6 @@
 package com.bharatiyajob.bharatiyajob.Company.HomePage.AppliedCandidateList;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bharatiyajob.bharatiyajob.Company.HomePage.CandidateDetail.CandidateDetailActivity;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.Company.BookmarkCandidate.BookmarkCandidateResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.CandidateApplied.CandidateAppliedResponse;
@@ -95,6 +97,16 @@ public class CandidateListFragment extends Fragment {
 
                             boomarkCanId = appliedResponse.getData().get(position).getCandidate_id();
                             bookMarkCandidate();
+                        }
+
+                        @Override
+                        public void onCanViewDetailCilcked(View view, int position) {
+                            String canDetId = appliedResponse.getData().get(position).getCandidate_id();
+                            Bundle bundle = new Bundle();
+                            bundle.putString("canDetId",canDetId);
+                            Intent intent = new Intent(getActivity(), CandidateDetailActivity.class);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
                         }
                     });
 

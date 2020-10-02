@@ -1,5 +1,6 @@
 package com.bharatiyajob.bharatiyajob.Company.HomePage.BookmarkedCandidate;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.bharatiyajob.bharatiyajob.Company.HomePage.CandidateDetail.CandidateDetailActivity;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.Company.GetBookmarkedCanList.GetBookMarkedCandidateResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.RemoveBookmarkedCan.RemoveBookMarkedCandidateResponse;
@@ -82,6 +84,16 @@ public class BookmarkCandidateFragment extends Fragment {
                         public void onUnBookmarkCanClicked(View view, int position) {
                             canId = getBookMarkedCanResponse.getData().get(position).getCandidate_id();
                             removeBookMarkCandidate();
+                        }
+
+                        @Override
+                        public void onBookCanViewDetailCilcked(View view, int position) {
+                            String canDetId = getBookMarkedCanResponse.getData().get(position).getCandidate_id();
+                            Bundle bundle = new Bundle();
+                            bundle.putString("canDetId",canDetId);
+                            Intent intent = new Intent(getActivity(), CandidateDetailActivity.class);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
                         }
                     });
                 }else{

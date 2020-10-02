@@ -2,29 +2,29 @@ package com.bharatiyajob.bharatiyajob.Json.Candidate.Login;
 
 public class LoginOtpResponse {
 
-    private String error;
-    private String id;
-    private String name;
-    private String email;
-    private String mobile;
-    private String message;
+    boolean error;
+    String id;
+    String name;
+    String email;
+    String mobile;
+    String reg_type;
+    String token;
 
-    public LoginOtpResponse(String error, String id, String name, String email, String mobile, String message) {
+    public LoginOtpResponse(boolean error, String id, String name, String email, String mobile, String reg_type, String token) {
         this.error = error;
         this.id = id;
         this.name = name;
         this.email = email;
         this.mobile = mobile;
-        this.message = message;
+        this.reg_type = reg_type;
+        this.token = token;
     }
 
-
-
-    public String getError() {
+    public boolean isError() {
         return error;
     }
 
-    public void setError(String error) {
+    public void setError(boolean error) {
         this.error = error;
     }
 
@@ -60,11 +60,19 @@ public class LoginOtpResponse {
         this.mobile = mobile;
     }
 
-    public String getMessage() {
-        return message;
+    public String getReg_type() {
+        return reg_type;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setReg_type(String reg_type) {
+        this.reg_type = reg_type;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }
