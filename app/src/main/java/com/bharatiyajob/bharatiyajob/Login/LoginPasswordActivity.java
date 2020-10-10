@@ -1,4 +1,4 @@
-package com.bharatiyajob.bharatiyajob.User.Login;
+package com.bharatiyajob.bharatiyajob.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -76,17 +76,17 @@ public class LoginPasswordActivity extends AppCompatActivity {
             public void onResponse(Call<LoginOtpResponse> call, Response<LoginOtpResponse> response) {
                 LoginOtpResponse loginOtpResponse = response.body();
 
-                if (response.isSuccessful() && loginOtpResponse.getError().equals("false")){
+                if (response.isSuccessful() ){
 
                     //if the login Responwe is sucessfull we will save the user
                     LoginDetailSharePref.getInstance(LoginPasswordActivity.this).saveLoginDetails(loginOtpResponse);
 
-                    Toast.makeText(LoginPasswordActivity.this, loginOtpResponse.getError(), Toast.LENGTH_SHORT).show();
+
                     Intent intent = new Intent(LoginPasswordActivity.this, HomePageActivity.class);
                     startActivity(intent);
                     finish();
                 }else {
-                    Toast.makeText(LoginPasswordActivity.this, loginOtpResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginPasswordActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
                 }
             }
 

@@ -15,11 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Register.MobileRegisterResponse;
-import com.bharatiyajob.bharatiyajob.User.Login.LoginActivity;
+import com.bharatiyajob.bharatiyajob.Login.LoginActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
@@ -38,20 +37,14 @@ public class RegistrationActivity extends AppCompatActivity {
     GoogleSignInClient googleSignInClient;
     int RC_Sign_In = 0;
     String G_email,personEmail;
+    String canId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        // Configure sign-in to request the user's ID, email address, and basic
-        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
 
-        // Build a GoogleSignInClient with the options specified by gso.
-        googleSignInClient = GoogleSignIn.getClient(this, gso);
 
         rigsterBtn = findViewById(R.id.rigsterBtn);
         loginTextView = findViewById(R.id.loginTextView);
@@ -94,28 +87,29 @@ public class RegistrationActivity extends AppCompatActivity {
         mobile = R_mobile.getText().toString();
 
         JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
-        Call<MobileRegisterResponse> call = jobApi.mobileRegister(mobile);
+        Call<MobileRegisterResponse> call = jobApi.mobileRegister(mobile,"candidate");
 
         call.enqueue(new Callback<MobileRegisterResponse>() {
             @Override
             public void onResponse(Call<MobileRegisterResponse> call, Response<MobileRegisterResponse> response) {
                 MobileRegisterResponse mobileRegisterResponse = response.body();
 
-                if (response.isSuccessful() && mobileRegisterResponse.getMessage().equals("success")){
-                    Toast.makeText(RegistrationActivity.this, "Sucess", Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful() && mobileRegisterResponse.getError().equals("success")){
+                    Toast.makeText(RegistrationActivity.this, mobileRegisterResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    canId = mobileRegisterResponse.getCan_id();
+
                     Bundle bundle = new Bundle();
                     bundle.putString("name",name);
                     bundle.putString("email",email);
                     bundle.putString("password",password);
                     bundle.putString("mobile",mobile);
+                    bundle.putString("canId",canId);
                     Intent intent = new Intent(RegistrationActivity.this,RegisterOtpActivity.class);
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }else {
-                    Toast.makeText(RegistrationActivity.this, "dfdsf", Toast.LENGTH_SHORT).show();
-                    if (mobileRegisterResponse != null) {
                         Toast.makeText(RegistrationActivity.this, mobileRegisterResponse.getMessage()+" failed", Toast.LENGTH_SHORT).show();
-                    }
+
                 }
             }
 

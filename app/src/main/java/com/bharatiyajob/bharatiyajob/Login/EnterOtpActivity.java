@@ -1,4 +1,4 @@
-package com.bharatiyajob.bharatiyajob.User.Login;
+package com.bharatiyajob.bharatiyajob.Login;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bharatiyajob.bharatiyajob.Company.HomePage.CompanyHomePageActivity;
 import com.bharatiyajob.bharatiyajob.HomePage.HomePageActivity;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
@@ -39,6 +40,7 @@ public class EnterOtpActivity extends AppCompatActivity {
     EditText LoginOtpEditText;
     Button LoginVerifyOtp;
     String mobNum, otp;
+    String canId;
     TextView resendOTP,DisableResendOtp,ResendCountDown;
 
     final static String Channel_name="bhartiyaJob";
@@ -137,16 +139,23 @@ public class EnterOtpActivity extends AppCompatActivity {
             public void onResponse(Call<LoginOtpResponse> call, Response<LoginOtpResponse> response) {
                 LoginOtpResponse loginOtpResponse = response.body();
 
-                if (response.isSuccessful() ){
-
+                if (response.isSuccessful() && loginOtpResponse.getStatus().equals("success")){
+                    Toast.makeText(EnterOtpActivity.this, loginOtpResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     //if the login Responwe is sucessfull we will save the user
                     LoginDetailSharePref.getInstance(EnterOtpActivity.this).saveLoginDetails(loginOtpResponse);
+                    if(loginOtpResponse.getReg_type().equals("company")){
+                        Intent intent = new Intent(EnterOtpActivity.this, CompanyHomePageActivity.class);
+                        startActivity(intent);
+                    }else if (loginOtpResponse.getReg_type().equals("candidate")){
+                        Intent intent = new Intent(EnterOtpActivity.this, HomePageActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }else {
+                        Toast.makeText(EnterOtpActivity.this, "Not company not candidate", Toast.LENGTH_SHORT).show();
+                    }
 
-                    Intent intent = new Intent(EnterOtpActivity.this, HomePageActivity.class);
-                    startActivity(intent);
-                    finish();
                 }else {
-                    Toast.makeText(EnterOtpActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EnterOtpActivity.this, "Try Again" +loginOtpResponse.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
             

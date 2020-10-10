@@ -44,7 +44,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
                 <ImageView
-                    android:id="@+id/bookmarkedStar"
+                    android:id="@+id/compLogo"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/wipro_logo"

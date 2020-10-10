@@ -16,8 +16,9 @@ import android.widget.Toast;
 import com.bharatiyajob.bharatiyajob.AboutUs;
 import com.bharatiyajob.bharatiyajob.CustomerCareActivity;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
-import com.bharatiyajob.bharatiyajob.User.Login.LoginActivity;
-import com.bharatiyajob.bharatiyajob.NotificationActivity;
+import com.bharatiyajob.bharatiyajob.User.CreateJobAlert.CreateJobAlertActivity;
+import com.bharatiyajob.bharatiyajob.Login.LoginActivity;
+import com.bharatiyajob.bharatiyajob.User.CandidateNotification.CandidateNotificationActivity;
 import com.bharatiyajob.bharatiyajob.ProfileSettingActivity;
 import com.bharatiyajob.bharatiyajob.R;
 import com.bharatiyajob.bharatiyajob.ShareAppActivity;
@@ -27,8 +28,10 @@ import com.bharatiyajob.bharatiyajob.User.UserPaymentActivity;
 
 public class ProfileFragment extends Fragment {
 
-    ConstraintLayout PAccountSettingLayout,PNotificationLayout,
+    ConstraintLayout PAccountSettingLayout,PNotificationLayout,PCreateAlertLayout,
             PShareAppLayout,PRateLayout,PContactLayout,PAboutUsLayout,SignoutLayout,PPaymentLayout;
+
+    String userId;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -54,6 +57,9 @@ public class ProfileFragment extends Fragment {
         PAboutUsLayout = view.findViewById(R.id.PAboutUsLayout);
         PPaymentLayout = view.findViewById(R.id.PPaymentLayout);
         SignoutLayout = view.findViewById(R.id.SignoutLayout);
+        PCreateAlertLayout = view.findViewById(R.id.PCreateAlertLayout);
+
+        getCanDetail();
 
 
         PAccountSettingLayout.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +117,18 @@ public class ProfileFragment extends Fragment {
                 Signout();
             }
         });
+
+        PCreateAlertLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getToCreateAlert();
+            }
+        });
+    }
+
+    private void getToCreateAlert() {
+        Intent intent = new Intent(getActivity(), CreateJobAlertActivity.class);
+        startActivity(intent);
     }
 
     private void goToPayment() {
@@ -137,7 +155,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void goToNotification() {
-        Intent intent = new Intent(getActivity(), NotificationActivity.class);
+        Intent intent = new Intent(getActivity(), CandidateNotificationActivity.class);
         startActivity(intent);
     }
 
@@ -149,7 +167,7 @@ public class ProfileFragment extends Fragment {
 
     public void Signout() {
         //we are callin Logout Method from SharePrefManager will will delet all user detail from share prefrences
-        LoginDetailSharePref.getInstance(getActivity()).UserLogout();
+        LoginDetailSharePref.getInstance(getActivity()).Logout();
 
         Toast.makeText(getActivity(), "SignOut", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), LoginActivity.class);
@@ -163,12 +181,10 @@ public class ProfileFragment extends Fragment {
         super.onStart();
     }
 
-    private void getUserDetail() {
-     LoginOtpResponse loginOtpResponse =  LoginDetailSharePref.getInstance(getActivity()).getUserDetail();
-//     email = loginOtpResponse.getEmail();
-//     name = loginOtpResponse.getName();
-//     number = loginOtpResponse.getMobile();
+    private void getCanDetail() {
+        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
 
+        userId = loginOtpResponse.getId();
 
     }
 }

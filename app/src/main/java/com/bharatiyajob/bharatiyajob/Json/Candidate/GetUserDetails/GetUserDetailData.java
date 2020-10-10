@@ -5,7 +5,6 @@ public class GetUserDetailData {
     private String name;
     private String mobile;
     private String email;
-    private String full_name;
     private String id;
     private String gender;
     private String heighest_qualification;
@@ -17,12 +16,10 @@ public class GetUserDetailData {
     private String resume;
     private String skill;
 
-
-    public GetUserDetailData(String name, String mobile, String email, String full_name, String id, String gender, String heighest_qualification, String work_experience, String state, String address, String membership_plan, String profile_pic, String resume, String skill) {
+    public GetUserDetailData(String name, String mobile, String email, String id, String gender, String heighest_qualification, String work_experience, String state, String address, String membership_plan, String profile_pic, String resume, String skill) {
         this.name = name;
         this.mobile = mobile;
         this.email = email;
-        this.full_name = full_name;
         this.id = id;
         this.gender = gender;
         this.heighest_qualification = heighest_qualification;
@@ -57,14 +54,6 @@ public class GetUserDetailData {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getFull_name() {
-        return full_name;
-    }
-
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
     }
 
     public String getId() {

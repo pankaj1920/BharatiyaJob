@@ -26,7 +26,7 @@ public class RegisterOtpActivity extends AppCompatActivity {
 
     EditText RegOtpEditText;
     Button RegVerifyOtp;
-    String name,email,password,mobile,otp;
+    String name,email,password,mobile,otp,canId;
 
     TextView RegResendCountDown,RegDisableResendOtp,RegResendOTP;
 
@@ -58,6 +58,7 @@ public class RegisterOtpActivity extends AppCompatActivity {
         email = bundle.getString("email");
         password = bundle.getString("password");
         mobile = bundle.getString("mobile");
+        canId = bundle.getString("canId");
 
         startResendTimer();
 
@@ -94,7 +95,11 @@ public class RegisterOtpActivity extends AppCompatActivity {
 
                 if (response.isSuccessful() && verifyOtpResponse.getError().equals("false")){
                     Toast.makeText(RegisterOtpActivity.this, verifyOtpResponse.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("canId",canId);
                     Intent intent = new Intent(RegisterOtpActivity.this,UserMakeProfileActivity.class);
+                    intent.putExtras(bundle);
                     startActivity(intent);
                 }else {
                     Toast.makeText(RegisterOtpActivity.this, verifyOtpResponse.getMessage(), Toast.LENGTH_SHORT).show();

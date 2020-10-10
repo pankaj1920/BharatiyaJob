@@ -157,7 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20sp"
-                    android:onClick="selectGender"
+                    android:onClick="selectQulification"
                     android:text="Below 10th"
                     android:textSize="14sp"
                     android:paddingStart="14dp"
@@ -179,7 +179,7 @@
                     android:button="@android:color/transparent"
                     android:textColor="@drawable/select_education_radiobtn_txtcolor"
                     android:elevation="4dp"
-                    android:onClick="selectGender"
+                    android:onClick="selectQulification"
                     android:padding="10dp"
                     android:text="10th Pass"
                     android:textSize="12sp" />
@@ -189,7 +189,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20sp"
-                    android:onClick="selectGender"
+                    android:onClick="selectQulification"
                     android:text="12th Pass"
                     android:textSize="14sp"
                     android:paddingStart="14dp"
@@ -219,7 +219,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20sp"
-                    android:onClick="selectGender"
+                    android:onClick="selectQulification"
                     android:text="Diploma"
                     android:textSize="14sp"
                     android:paddingStart="14dp"
@@ -236,7 +236,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20sp"
-                    android:onClick="selectGender"
+                    android:onClick="selectQulification"
                     android:text="Graduate"
                     android:textSize="14sp"
                     android:paddingStart="14dp"
@@ -252,7 +252,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20sp"
-                    android:onClick="selectGender"
+                    android:onClick="selectQulification"
                     android:text="Post Graduate"
                     android:textSize="14sp"
                     android:paddingStart="14dp"
@@ -294,7 +294,7 @@
                     android:layout_width="140dp"
                     android:layout_height="70dp"
                     android:layout_marginStart="20sp"
-                    android:onClick="selectGender"
+                    android:onClick="selectExperience"
                     android:padding="8dp"
                     android:text="Experienced"
                     android:background="@drawable/form_experience_selector"
@@ -312,7 +312,7 @@
                     android:text="Fresher"
                     android:padding="8dp"
                     android:textSize="14sp"
-                    android:onClick="selectGender" />
+                    android:onClick="selectExperience" />
 
             </RadioGroup>
 
@@ -337,7 +337,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/skill"
+                    android:id="@+id/userSkill"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"

@@ -66,7 +66,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
-                        android:id="@+id/bookmarkedStar"
+                        android:id="@+id/bookmarkStar"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@drawable/ic_star_border"
@@ -75,6 +75,20 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/bookmarkedStar"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_star_filled"
+                        android:visibility="gone"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="#FFC107"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -208,13 +222,28 @@
                     app:layout_constraintBottom_toBottomOf="@id/postedText"/>
 
                 <Button
-                    android:id="@+id/c"
+                    android:id="@+id/homeApplyJobBtn"
                     android:layout_width="110dp"
                     android:layout_height="40dp"
                     android:background="@drawable/select_education_selected_radiobtn"
                     android:text="Apply"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="20dp"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/skillLayout" />
+
+                <Button
+                    android:id="@+id/homeAppliedJobBtn"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/select_education_selected_radiobtn"
+                    android:text="Applied"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="20dp"
+                    android:visibility="gone"
                     android:textColor="@color/white"
                     android:layout_marginBottom="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"

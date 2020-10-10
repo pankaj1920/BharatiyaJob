@@ -1,16 +1,24 @@
 package com.bharatiyajob.bharatiyajob.HomePage;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.ApplyJob.ApplyJobResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.JobDetails.JobDetailsData;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.JobDetails.JobDetailsResponse;
 import com.bharatiyajob.bharatiyajob.R;
+import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.net.HttpURLConnection;
 import java.util.List;
@@ -26,6 +34,10 @@ public class JobDetailActivity extends AppCompatActivity {
     TextView JdJobTitle, JdCompanyName, JdJobLocation, JbJobPostedDate, JdExperience,jdCompanyEmail,
             JdSalary, JdJobType, JdDescription, JbFunctionalArea, JdIndustry, jdCompanyNumber;
     String jobId;
+    ConstraintLayout jobDetailMainLayout;
+    ShimmerFrameLayout jobDetailSimmerLayout;
+    String userId;
+    Button jobDetailApply,jobDetailApplied;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +56,28 @@ public class JobDetailActivity extends AppCompatActivity {
         JdIndustry = findViewById(R.id.JdIndustry);
         jdCompanyNumber = findViewById(R.id.jdCompanyNumber);
         jdCompanyEmail = findViewById(R.id.jdCompanyEmail);
+        jobDetailMainLayout = findViewById(R.id.jobDetailMainLayout);
+        jobDetailSimmerLayout = findViewById(R.id.jobDetailSimmerLayout);
+        jobDetailApply = findViewById(R.id.jobDetailApply);
+        jobDetailApplied = findViewById(R.id.jobDetailApplied);
+
+        getCandidateDetail();
+
+        jobDetailSimmerLayout.startShimmer();
 
         Bundle bundle = getIntent().getExtras();
         jobId = bundle.getString("jobId");
 
         getJobDetails();
+
+        jobDetailApply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(JobDetailActivity.this, "Apply Button Clicked", Toast.LENGTH_SHORT).show();
+
+                ApplyJob();
+            }
+        });
     }
 
     private void getJobDetails() {
@@ -65,6 +94,10 @@ public class JobDetailActivity extends AppCompatActivity {
 
                 if (jobDetailsResponse != null) {
                     if (response.isSuccessful() && HttpURLConnection.HTTP_OK == response.code() && jobDetailsResponse.getStatus().equals("1")) {
+
+                        jobDetailSimmerLayout.stopShimmer();
+                        jobDetailSimmerLayout.setVisibility(View.GONE);
+                        jobDetailMainLayout.setVisibility(View.VISIBLE);
 
                             dateTime = jobDetailsResponse.getData().getJob_reg_date().split((" "));
                             date = dateTime[0];
@@ -98,4 +131,35 @@ public class JobDetailActivity extends AppCompatActivity {
         });
 
     }
+
+    private void ApplyJob() {
+        JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
+
+        Call<ApplyJobResponse> call = jobApi.applyJob(userId,jobId);
+        call.enqueue(new Callback<ApplyJobResponse>() {
+            @Override
+            public void onResponse(Call<ApplyJobResponse> call, Response<ApplyJobResponse> response) {
+                ApplyJobResponse applyJobResponse = response.body();
+                if (response.isSuccessful() && applyJobResponse.getStatus().equals("1")){
+                    Toast.makeText(JobDetailActivity.this, applyJobResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    jobDetailApplied.setVisibility(View.VISIBLE);
+                    jobDetailApply.setVisibility(View.GONE);
+                }else {
+                    Toast.makeText(JobDetailActivity.this, applyJobResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApplyJobResponse> call, Throwable t) {
+                Toast.makeText(JobDetailActivity.this, "On Failure", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void getCandidateDetail() {
+        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+
+        userId = loginOtpResponse.getId();
+    }
+
 }

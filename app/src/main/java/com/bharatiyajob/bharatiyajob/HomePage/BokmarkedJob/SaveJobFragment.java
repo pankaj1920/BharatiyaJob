@@ -1,5 +1,6 @@
 package com.bharatiyajob.bharatiyajob.HomePage.BokmarkedJob;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,7 +17,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bharatiyajob.bharatiyajob.HomePage.JobDetailActivity;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.UnBookmarkJob.UnBookmarJobResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.SavedJob.BookmarkJobResponse;
@@ -34,9 +37,9 @@ public class SaveJobFragment extends Fragment {
     RecyclerView savedJobRecycler;
     SaveJobAdapter saveJobAdapter;
     ShimmerFrameLayout findJobSimmerEffect;
-    String jobId,jobTitle,canId;
+    String jobId,jobTitle,canId,userId;
     TextView candidateName,candidateJobTitle;
-    ConstraintLayout noJobFoundLayout;
+    ConstraintLayout noJobFoundLayout,canBookmarkedJob;
 
     public SaveJobFragment() {
         // Required empty public constructor
@@ -64,8 +67,9 @@ public class SaveJobFragment extends Fragment {
         candidateName = view.findViewById(R.id.candidateName);
         candidateJobTitle = view.findViewById(R.id.candidateJobTitle);
         noJobFoundLayout = view.findViewById(R.id.noJobFoundLayout);
+        canBookmarkedJob = view.findViewById(R.id.canBookmarkedJob);
 
-        getCandidateDetail();
+        getCanDetail();
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         savedJobRecycler.setLayoutManager(layoutManager);
@@ -77,19 +81,20 @@ public class SaveJobFragment extends Fragment {
         Toast.makeText(getActivity(), canId, Toast.LENGTH_SHORT).show();
     }
 
-    private void getCandidateDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getUserDetail();
+    private void getCanDetail() {
+        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
 
-        canId = loginOtpResponse.getId();
+        userId = loginOtpResponse.getId();
     }
+
 
     private void getBookmarkJob() {
         final JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
-        Call<BookmarkJobResponse> call = jobApi.getBookmarkJob(canId);
+        Call<BookmarkJobResponse> call = jobApi.getBookmarkJob(userId);
         call.enqueue(new Callback<BookmarkJobResponse>() {
             @Override
             public void onResponse(Call<BookmarkJobResponse> call, Response<BookmarkJobResponse> response) {
-                BookmarkJobResponse jobResponse = response.body();
+                final BookmarkJobResponse jobResponse = response.body();
                 if (response.isSuccessful() && jobResponse.getStatus().equals("1")){
 
                     Toast.makeText(getActivity(), "Sucess", Toast.LENGTH_SHORT).show();
@@ -97,10 +102,39 @@ public class SaveJobFragment extends Fragment {
                     findJobSimmerEffect.stopShimmer();
                     findJobSimmerEffect.setVisibility(View.GONE);
                     savedJobRecycler.setVisibility(View.VISIBLE);
+
                     saveJobAdapter = new SaveJobAdapter(jobResponse.getData());
                     savedJobRecycler.setAdapter(saveJobAdapter);
 
+                    saveJobAdapter.setOnItemClickListner(new SaveJobAdapter.OnSaveJobItemClickListner() {
+                        @Override
+                        public void onJobLayoutClicked(View itemview, int position) {
+                            jobId = jobResponse.getData().get(position).getJob_id();
+                            jobTitle = jobResponse.getData().get(position).getJob_title();
+
+                            Toast.makeText(getActivity(), jobId + " " + jobTitle, Toast.LENGTH_SHORT).show();
+
+                            Bundle bundle = new Bundle();
+                            bundle.putString("jobId",jobId);
+                            Intent intent = new Intent(getActivity(), JobDetailActivity.class);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void onBookmarkedButtonCicked(View itemview, int position) {
+                            jobId = jobResponse.getData().get(position).getJob_id();
+                            unBookmarkJob();
+                            Toast.makeText(getActivity(), "Bookmarked Clicked", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
                 }else {
+                    findJobSimmerEffect.stopShimmer();
+                    findJobSimmerEffect.setVisibility(View.GONE);
+                    savedJobRecycler.setVisibility(View.GONE);
+                    canBookmarkedJob.setVisibility(View.VISIBLE);
+
                     Toast.makeText(getActivity(), "UnSucess", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -109,11 +143,38 @@ public class SaveJobFragment extends Fragment {
             public void onFailure(Call<BookmarkJobResponse> call, Throwable t) {
                 findJobSimmerEffect.stopShimmer();
                 findJobSimmerEffect.setVisibility(View.GONE);
-                noJobFoundLayout.setVisibility(View.VISIBLE);
+                savedJobRecycler.setVisibility(View.GONE);
+                canBookmarkedJob.setVisibility(View.VISIBLE);
                 Toast.makeText(getActivity(), "On Failure", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+    private void unBookmarkJob(){
+
+        Toast.makeText(getActivity(), "CanId : "+userId+ "JobId :" + jobId, Toast.LENGTH_SHORT).show();
+        JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
+        Call<UnBookmarJobResponse> call = jobApi.unBookmarkJob(userId,jobId);
+        call.enqueue(new Callback<UnBookmarJobResponse>() {
+            @Override
+            public void onResponse(Call<UnBookmarJobResponse> call, Response<UnBookmarJobResponse> response) {
+                UnBookmarJobResponse unBookmarJobResponse = response.body();
+                if (response.isSuccessful() && unBookmarJobResponse.getStatus().equals("1")){
+
+                    getBookmarkJob();
+                    Toast.makeText(getActivity(), unBookmarJobResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getActivity(), "Try Again Unnbookmark", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UnBookmarJobResponse> call, Throwable t) {
+                Toast.makeText(getActivity(), "On Failure UnBookmark Job", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
 }
 

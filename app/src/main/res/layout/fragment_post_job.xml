@@ -58,8 +58,8 @@
                     android:padding="2.5dp"
                     android:src="@drawable/ic_camera"
                     android:tint="@color/colorPrimaryDark"
-                    app:layout_constraintEnd_toEndOf="@id/companyLogo"
-                    app:layout_constraintTop_toTopOf="@id/companyLogo" />
+                    app:layout_constraintEnd_toEndOf="@id/PcompanyLogo"
+                    app:layout_constraintTop_toTopOf="@id/PcompanyLogo" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

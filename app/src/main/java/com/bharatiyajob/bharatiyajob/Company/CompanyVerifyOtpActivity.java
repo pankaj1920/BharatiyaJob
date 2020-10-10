@@ -11,9 +11,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
-import com.bharatiyajob.bharatiyajob.Json.Company.VerifyOtpResponse.VerifyOtpResponse;
+import com.bharatiyajob.bharatiyajob.Json.Company.VerifyOtpResponse.ComVerifyOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.R;
 
@@ -27,7 +28,7 @@ import retrofit2.Response;
 
 public class CompanyVerifyOtpActivity extends AppCompatActivity {
 
-    String cname, gst_no = " ", adhar_no, password, email, number, country, state, address, gst_reg = "Yes", ImageInString = "";
+    String companyName,email,mobile,typeOfRegistration,gstNo="gstNo",aadhaarNo="aadharNO",address,state,country,password,profilePic,profilePicName;
     Button ComVerifyOtpBtn;
     EditText ComOtpEditText;
     //    String cname, gst_no, adhar_no, email, password, number, country, state, address;
@@ -36,6 +37,7 @@ public class CompanyVerifyOtpActivity extends AppCompatActivity {
     byte[] IMageInByte;
     String ImageString;
     String path;
+    TextView otpTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,21 +46,23 @@ public class CompanyVerifyOtpActivity extends AppCompatActivity {
 
         ComVerifyOtpBtn = findViewById(R.id.ComVerifyOtpBtn);
         ComOtpEditText = findViewById(R.id.ComOtpEditText);
+        otpTxt = findViewById(R.id.otpTxt);
 
-        if (gst_no.isEmpty()) {
-            gst_reg = "No";
+        if (gstNo.isEmpty()) {
+            typeOfRegistration = "No";
         } else {
-            gst_reg = "yes";
+            typeOfRegistration = "yes";
         }
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            cname = bundle.getString("cname");
-            gst_no = bundle.getString("gst");
-            adhar_no = bundle.getString("Adhar");
+            companyName = bundle.getString("cname");
+            typeOfRegistration = bundle.getString("typeOfRegistration");
+            aadhaarNo = bundle.getString("Adhar");
+            gstNo = bundle.getString("gstNo");
             email = bundle.getString("email");
             password = bundle.getString("password");
-            number = bundle.getString("number");
+            mobile = bundle.getString("number");
             country = bundle.getString("country");
             state = bundle.getString("state");
             address = bundle.getString("address");
@@ -95,30 +99,34 @@ public class CompanyVerifyOtpActivity extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
         IMageInByte=byteArrayOutputStream.toByteArray();
         ImageString= Base64.encodeToString(IMageInByte,Base64.DEFAULT);
-        Toast.makeText(this, ImageString, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, ImageString, Toast.LENGTH_SHORT).show();
         Log.d("ImageString",ImageString);
         String otp = ComOtpEditText.getText().toString();
         JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
 
-        Call<VerifyOtpResponse> call = jobApi.RegisterCmpany(cname, email, number, otp
-                , gst_reg, gst_no,adhar_no, address,"my" , state, country, password,ImageString,file.getName());
+        otpTxt.setText(mobile+" "+otp+" "+email+" "+companyName+" "+password+" "+typeOfRegistration+" "+gstNo+" "+
+                address+" "+country+" "+state+" "+address);
 
-        call.enqueue(new Callback<VerifyOtpResponse>() {
+//        ImageString,file.getName()
+        Call<ComVerifyOtpResponse> call = jobApi.RegisterCompany("8755420120","109513","email","companyName","password","typeOfRegistration","gstNo",
+                "address","country","state","city","address",file.getName(),ImageString);
+
+        call.enqueue(new Callback<ComVerifyOtpResponse>() {
             @Override
-            public void onResponse(Call<VerifyOtpResponse> call, Response<VerifyOtpResponse> response) {
-                VerifyOtpResponse registerCompanyResponse = response.body();
-                if (response.isSuccessful()) {
-                    Toast.makeText(CompanyVerifyOtpActivity.this, registerCompanyResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(CompanyVerifyOtpActivity.this, "failed", Toast.LENGTH_SHORT).show();
+            public void onResponse(Call<ComVerifyOtpResponse> call, Response<ComVerifyOtpResponse> response) {
+                ComVerifyOtpResponse comVerifyOtpResponse = response.body();
+
+                if (response.isSuccessful() &&  comVerifyOtpResponse.getStatus().equals("success")){
+                    Toast.makeText(CompanyVerifyOtpActivity.this, "Success"+ comVerifyOtpResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(CompanyVerifyOtpActivity.this, "Failed"+ comVerifyOtpResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
             }
 
             @Override
-            public void onFailure(Call<VerifyOtpResponse> call, Throwable t) {
-                Toast.makeText(CompanyVerifyOtpActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-
+            public void onFailure(Call<ComVerifyOtpResponse> call, Throwable t) {
+                Toast.makeText(CompanyVerifyOtpActivity.this, "OnFaiure"+ t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

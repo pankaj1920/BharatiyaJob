@@ -41,7 +41,7 @@ public class CompanyRegistrationActivity extends AppCompatActivity implements Vi
             enterCountry, enterState, enterClocality;
     Button CsaveProceed;
     String selected = "";
-    ImageView companyLogo;
+    ImageView companyLogo,formCameraPick;
     boolean imagechecking = false;
     int IMAGE_PICK = 100;
     String photo_path;
@@ -68,9 +68,10 @@ public class CompanyRegistrationActivity extends AppCompatActivity implements Vi
         enterClocality = findViewById(R.id.enterClocality);
         CsaveProceed = findViewById(R.id.CsaveProceed);
         companyLogo = findViewById(R.id.companyLogo);
+        formCameraPick = findViewById(R.id.formCameraPick);
 
 
-        companyLogo.setImageDrawable(ContextCompat.getDrawable(CompanyRegistrationActivity.this, R.drawable.ic_star));
+//        companyLogo.setImageDrawable(ContextCompat.getDrawable(CompanyRegistrationActivity.this, R.drawable.ic_star));
         companyLogo.setTag("one");
 
         if (companyLogo.getTag().equals("one")) {
@@ -86,13 +87,18 @@ public class CompanyRegistrationActivity extends AppCompatActivity implements Vi
         CsaveProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 SaveCompanyMobileNumber();
+            }
+        });
 
+        formCameraPick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChooseImaeg();
             }
         });
     }
+
 
     public void selectGst(View view) {
 
@@ -188,8 +194,9 @@ public class CompanyRegistrationActivity extends AppCompatActivity implements Vi
 //        companyLogo.setImageDrawable(ContextCompat.getDrawable(CompanyRegistrationActivity.this,R.drawable.company));
 
         String cname = companyNameEditTxt.getText().toString();
-        String gst = enterGstNum.getText().toString();
+        String typeOfRegistration = enterGstNum.getText().toString();
         String Adhar = enterAdhaarNum.getText().toString();
+        String gstNo = enterGstNum.getText().toString();
         String email = enterCemailNum.getText().toString();
         String password = enterCpassword.getText().toString();
         String  number = enterCnumber.getText().toString();
@@ -199,8 +206,9 @@ public class CompanyRegistrationActivity extends AppCompatActivity implements Vi
         Intent intent = new Intent(CompanyRegistrationActivity.this, CompanyVerifyOtpActivity.class);
 
         intent.putExtra("cname", cname);
-        intent.putExtra("gst", gst);
+        intent.putExtra("typeOfRegistration", typeOfRegistration);
         intent.putExtra("Adhar", Adhar);
+        intent.putExtra("gstNo", gstNo);
         intent.putExtra("email", email);
         intent.putExtra("password", password);
         intent.putExtra("number", number);
@@ -214,7 +222,7 @@ public class CompanyRegistrationActivity extends AppCompatActivity implements Vi
 
     }
 
-    public void ChooseImaeg(View view) {
+    public void ChooseImaeg() {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent, IMAGE_PICK);
@@ -254,19 +262,21 @@ public class CompanyRegistrationActivity extends AppCompatActivity implements Vi
 
         JobApi jobApi= BaseClient.getBaseClient().create(JobApi.class);
 
-        Call<CompanyRegistrationResponse> call =jobApi.saveCompanyMobilenumber(mnumber);
+        Call<CompanyRegistrationResponse> call =jobApi.saveCompanyMobilenumber(mnumber,"company");
 
         call.enqueue(new Callback<CompanyRegistrationResponse>() {
             @Override
             public void onResponse(Call<CompanyRegistrationResponse> call, Response<CompanyRegistrationResponse> response) {
                 CompanyRegistrationResponse companyMobileVerificationResponse=response.body();
-                if (response.isSuccessful() && companyMobileVerificationResponse.isError()==false ){
+
+                if (response.isSuccessful() && companyMobileVerificationResponse.getError().equals("success")){
 //                    CompanyMobileVerificationResponse companyMobileVerificationResponse=response.body();
-                    Toast.makeText(CompanyRegistrationActivity.this, companyMobileVerificationResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CompanyRegistrationActivity.this, companyMobileVerificationResponse.getMessage() +"Success", Toast.LENGTH_SHORT).show();
 
                     sendToVerifyOtpActivity();
+
                 }else{
-                    Toast.makeText(CompanyRegistrationActivity.this, "failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CompanyRegistrationActivity.this, companyMobileVerificationResponse.getMessage()+"Try Again", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -277,8 +287,9 @@ public class CompanyRegistrationActivity extends AppCompatActivity implements Vi
         });
     }
 
+
     @Override
-    public void onClick(View v) {
+    public void onClick(View view) {
 
     }
 }

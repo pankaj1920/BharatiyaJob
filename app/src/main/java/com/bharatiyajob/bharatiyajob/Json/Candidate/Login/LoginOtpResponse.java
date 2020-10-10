@@ -1,8 +1,9 @@
 package com.bharatiyajob.bharatiyajob.Json.Candidate.Login;
 
-public class LoginOtpResponse {
+public class    LoginOtpResponse {
 
-    boolean error;
+    String status;
+    String message;
     String id;
     String name;
     String email;
@@ -10,8 +11,9 @@ public class LoginOtpResponse {
     String reg_type;
     String token;
 
-    public LoginOtpResponse(boolean error, String id, String name, String email, String mobile, String reg_type, String token) {
-        this.error = error;
+    public LoginOtpResponse(String status, String message, String id, String name, String email, String mobile, String reg_type, String token) {
+        this.status = status;
+        this.message = message;
         this.id = id;
         this.name = name;
         this.email = email;
@@ -20,12 +22,20 @@ public class LoginOtpResponse {
         this.token = token;
     }
 
-    public boolean isError() {
-        return error;
+    public String getStatus() {
+        return status;
     }
 
-    public void setError(boolean error) {
-        this.error = error;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public String getId() {

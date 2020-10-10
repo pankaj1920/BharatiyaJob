@@ -11,7 +11,9 @@ import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.GetUserDetails.GetUserDetailResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
+import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 import com.bharatiyajob.bharatiyajob.User.UpdateDetails.UpdateNameActivity;
 import com.bharatiyajob.bharatiyajob.User.UpdateDetails.UpdatePasswordActivity;
 import com.bharatiyajob.bharatiyajob.User.UpdateDetails.UpdateProfileImageActivity;
@@ -27,6 +29,7 @@ public class ProfileSettingActivity extends AppCompatActivity {
 
     TextView NameTextView,PasswordTextView,SkillTextView,NumberTextView,EmailTextView;
     ImageView userImage;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,10 @@ public class ProfileSettingActivity extends AppCompatActivity {
         userImage = findViewById(R.id.userImage);
         NumberTextView = findViewById(R.id.NumberTextView);
         EmailTextView = findViewById(R.id.EmailTextView);
+
+        getCanDetail();
+
+        setUserDetils();
 
         NameTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +74,9 @@ public class ProfileSettingActivity extends AppCompatActivity {
                 goToUpdateSkill();
             }
         });
-        setUserDetils();
+
+
+
 
 
     }
@@ -78,13 +87,13 @@ public class ProfileSettingActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void goToUpdatePassword() {
-        Intent intent = new Intent(ProfileSettingActivity.this, UpdatePasswordActivity.class);
+    private void goToUpdateName() {
+        Intent intent = new Intent(ProfileSettingActivity.this, UpdateNameActivity.class);
         startActivity(intent);
     }
 
-    private void goToUpdateName() {
-        Intent intent = new Intent(ProfileSettingActivity.this, UpdateNameActivity.class);
+    private void goToUpdatePassword() {
+        Intent intent = new Intent(ProfileSettingActivity.this, UpdatePasswordActivity.class);
         startActivity(intent);
     }
 
@@ -97,16 +106,23 @@ public class ProfileSettingActivity extends AppCompatActivity {
       Retrofit retrofit= BaseClient.getBaseClient();
       JobApi jobApi=retrofit.create(JobApi.class);
 
-      Call<GetUserDetailResponse> call=jobApi.getUserDetails("45");
+      Call<GetUserDetailResponse> call=jobApi.getUserDetails(userId);
       call.enqueue(new Callback<GetUserDetailResponse>() {
           @Override
           public void onResponse(Call<GetUserDetailResponse> call, Response<GetUserDetailResponse> response) {
+
                GetUserDetailResponse getUserDetailResponse=response.body();
-              Picasso.get().load(getUserDetailResponse.getData().getProfile_pic()).into(userImage);
-              NameTextView.setText(getUserDetailResponse.getData().getName());
-              NumberTextView.setText(getUserDetailResponse.getData().getMobile());
-              EmailTextView.setText(getUserDetailResponse.getData().getEmail());
-              SkillTextView.setText(getUserDetailResponse.getData().getSkill());
+
+               if (response.isSuccessful() && getUserDetailResponse.getStatus().equals("1")){
+                   Picasso.get().load(getUserDetailResponse.getData().getProfile_pic()).into(userImage);
+                   NameTextView.setText(getUserDetailResponse.getData().getName());
+                   SkillTextView.setText(getUserDetailResponse.getData().getSkill());
+                   NumberTextView.setText(getUserDetailResponse.getData().getMobile());
+                   EmailTextView.setText(getUserDetailResponse.getData().getEmail());
+               }else {
+                   Toast.makeText(ProfileSettingActivity.this, "No Data Found", Toast.LENGTH_SHORT).show();
+               }
+
 
           }
 
@@ -117,5 +133,10 @@ public class ProfileSettingActivity extends AppCompatActivity {
       });
 
   }
+
+  private void getCanDetail() {
+        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+        userId = loginOtpResponse.getId();
+    }
 
 }

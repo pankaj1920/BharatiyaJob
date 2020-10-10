@@ -12,7 +12,7 @@ import com.bharatiyajob.bharatiyajob.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-import static com.bharatiyajob.bharatiyajob.User.Login.EnterOtpActivity.Channel_id;
+import static com.bharatiyajob.bharatiyajob.Login.EnterOtpActivity.Channel_id;
 
 public class FCMMessageReceiverService extends FirebaseMessagingService {
 

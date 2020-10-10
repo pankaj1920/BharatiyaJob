@@ -1,4 +1,4 @@
-package com.bharatiyajob.bharatiyajob.Json.UpdateUserName;
+package com.bharatiyajob.bharatiyajob.Json.UpdateCandidateProfile;
 
 public class UpdateUserName {
 

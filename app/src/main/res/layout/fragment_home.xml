@@ -1,53 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomePage.HomeJob.HomeFragment">
 
-    <TextView
-        android:id="@+id/candidateName"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/homeProfileDetail"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pankaj Bohra"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="20dp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
-        android:id="@+id/candidateJobTitle"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:maxWidth="200dp"
-        android:text="Full Stack Developer"
-        android:textSize="16sp"
-        android:paddingBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/Darkgrey"
-        app:layout_constraintStart_toStartOf="@id/candidateName"
-        app:layout_constraintTop_toBottomOf="@id/candidateName"/>
-
-    <ImageView
-        android:id="@+id/candidateLogo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/accont_img"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/candidateName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pankaj Bohra"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/candidateJobTitle"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:maxWidth="200dp"
+            android:text="Full Stack Developer"
+            android:textSize="16sp"
+            android:paddingBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/Darkgrey"
+            app:layout_constraintStart_toStartOf="@id/candidateName"
+            app:layout_constraintTop_toBottomOf="@id/candidateName"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/candidateLogo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/accont_img"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/circular_image_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/homProfieLay"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/candidateJobTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/findJobLay">
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/homeProfileSimmerEffect"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/can_home_profile_simmer" />
+
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/findJobLay"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeProfileDetail"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <com.facebook.shimmer.ShimmerFrameLayout
@@ -66,8 +107,6 @@
                 <include layout="@layout/find_job_simmer_effect" />
 
             </LinearLayout>
-
-
         </com.facebook.shimmer.ShimmerFrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -79,7 +118,40 @@
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/candidateJobTitle"
+        app:layout_constraintTop_toBottomOf="@id/homeProfileDetail"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/homeNoJobLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeProfileDetail"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <ImageView
+            android:id="@+id/creatDoc"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/no_search"
+            android:layout_marginBottom="70dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:text="No Job Found.\n Matching your sikills"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/creatDoc"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

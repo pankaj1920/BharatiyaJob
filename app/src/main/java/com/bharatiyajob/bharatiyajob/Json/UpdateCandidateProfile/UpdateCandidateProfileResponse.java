@@ -1,21 +1,20 @@
-package com.bharatiyajob.bharatiyajob.Json.Company.VerifyOtpResponse;
+package com.bharatiyajob.bharatiyajob.Json.UpdateCandidateProfile;
 
-public class VerifyOtpResponse {
+public class UpdateCandidateProfileResponse {
 
-    private boolean error;
+    private String error;
     private String message;
 
-    public VerifyOtpResponse(boolean error, String message) {
+    public UpdateCandidateProfileResponse(String error, String message) {
         this.error = error;
         this.message = message;
     }
 
-
-    public boolean isError() {
+    public String getError() {
         return error;
     }
 
-    public void setError(boolean error) {
+    public void setError(String error) {
         this.error = error;
     }
 

@@ -20,6 +20,12 @@ public class HomeJobAdapter extends RecyclerView.Adapter<HomeJobAdapter.HomeJob_
 
     List<JobData> data;
 
+    private OnItemClickListner onItemClickListner;
+
+    public void setOnItemClickListner(OnItemClickListner onItemClickListner) {
+        this.onItemClickListner = onItemClickListner;
+    }
+
     public HomeJobAdapter(List<JobData> data) {
         this.data = data;
     }
@@ -33,12 +39,33 @@ public class HomeJobAdapter extends RecyclerView.Adapter<HomeJobAdapter.HomeJob_
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HomeJob_VH holder, int position) {
+    public void onBindViewHolder(@NonNull final HomeJob_VH holder, final int position) {
         JobData jobList = data.get(position);
         holder.jobTitle.setText(jobList.getJob_title());
         holder.jobExperience.setText(jobList.getExperience());
         holder.jobLocation.setText(jobList.getLocation());
         holder.jobSkill.setText(jobList.getSkill());
+
+        holder.bookmarkStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemClickListner.onBookmarkBtnClicked(holder.itemView,position);
+            }
+        });
+
+        holder.bookmarkedStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemClickListner.onUnBookmarkBtnClicked(holder.itemView,position);
+            }
+        });
+
+        holder.homeApplyJobBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemClickListner.onApplyJobButtonClicked(holder.itemView,position);
+            }
+        });
 
     }
 
@@ -47,18 +74,13 @@ public class HomeJobAdapter extends RecyclerView.Adapter<HomeJobAdapter.HomeJob_
         return data.size();
     }
 
-    private OnItemClickListner onItemClickListner;
-
-    public void setOnItemClickListner(OnItemClickListner onItemClickListner) {
-        this.onItemClickListner = onItemClickListner;
-    }
 
     class HomeJob_VH extends RecyclerView.ViewHolder{
 
         TextView jobTitle,jobExperience,jobLocation,jobSkill;
-        Button jobApplyBtn;
+        Button homeApplyJobBtn;
         ConstraintLayout jobLayout;
-        ImageView bookmarkedStar;
+        ImageView bookmarkStar,bookmarkedStar;
 
         public HomeJob_VH(@NonNull final View itemView) {
             super(itemView);
@@ -67,23 +89,10 @@ public class HomeJobAdapter extends RecyclerView.Adapter<HomeJobAdapter.HomeJob_
             jobExperience = itemView.findViewById(R.id.jobExperience);
             jobLocation = itemView.findViewById(R.id.jobLocation);
             jobSkill = itemView.findViewById(R.id.jobSkill);
-            jobApplyBtn = itemView.findViewById(R.id.jobApplyBtn);
+            homeApplyJobBtn = itemView.findViewById(R.id.homeApplyJobBtn);
             jobLayout = itemView.findViewById(R.id.jobLayout);
+            bookmarkStar = itemView.findViewById(R.id.bookmarkStar);
             bookmarkedStar = itemView.findViewById(R.id.bookmarkedStar);
-
-
-            bookmarkedStar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (onItemClickListner!=null){
-                        int starPosition = getAdapterPosition();
-
-                        if (starPosition!=RecyclerView.NO_POSITION){
-                            onItemClickListner.onBookmarkBtnClicked(itemView,starPosition);
-                        }
-                    }
-                }
-            });
 
             jobLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -107,6 +116,10 @@ public class HomeJobAdapter extends RecyclerView.Adapter<HomeJobAdapter.HomeJob_
         void onJobLayoutClicked(View itemview, int position);
 
         void onBookmarkBtnClicked(View itemview,int position);
+
+        void onUnBookmarkBtnClicked(View itemview,int position);
+
+        void  onApplyJobButtonClicked(View itemview,int position);
 
     }
 

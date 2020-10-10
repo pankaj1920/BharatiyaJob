@@ -46,14 +46,14 @@ public class UserMakeProfileActivity extends AppCompatActivity {
     RadioButton male,female;
     ImageButton formCameraPick;
     CircleImageView userImage;
-    String photoPath;
     Button saveProceed;
     private  static final int IMAGE = 100;
-    EditText R_fname;
+    EditText R_fname,userSkill,locationState,currentLocality;
     Uri imageuri;
     Bitmap bitmap;
     String filepath;
-    String Genter;
+    String f_name;
+    String canId,Gender,HQlification,workExperience,state,skill,address;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,8 +64,16 @@ public class UserMakeProfileActivity extends AppCompatActivity {
         userImage = findViewById(R.id.userImage);
         formCameraPick = findViewById(R.id.formCameraPick);
         saveProceed = findViewById(R.id.saveProceed);
+
         R_fname=findViewById(R.id.R_fname);
-//        SavecaData();
+        userSkill=findViewById(R.id.userSkill);
+        currentLocality=findViewById(R.id.currentLocality);
+        locationState=findViewById(R.id.locationState);
+
+        Bundle bundle = getIntent().getExtras();
+        canId = bundle.getString("canId");
+
+
         formCameraPick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,10 +96,7 @@ public class UserMakeProfileActivity extends AppCompatActivity {
         saveProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(UserMakeProfileActivity.this,RegistrationSucessfulActivity.class);
-//                startActivity(intent);
-//                finish();
-                SavecaData();
+                SaveCanData();
             }
         });
 
@@ -101,34 +106,7 @@ public class UserMakeProfileActivity extends AppCompatActivity {
         }else{
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},2);
         }
-
-
     }
-
-    private void dispatchPictureTakerAction() {
-//        Create a Intent to Open a Camera
-        Intent takePic = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-        //Checking if there is any app to handle our intent in our case it is camera appp
-        if(takePic.resolveActivity(getPackageManager()) != null){
-            // it mean there is an app avilable to handle action of our intent
-
-            //we will create a file where photo will stored
-            File photoFile = null;
-            try {
-//                photoFile = createPhotoFile();
-            }catch (Exception e){
-
-            }
-        }
-    }
-
-//    // In this method we will create a file where photo will be stored
-//    private File createPhotoFile() {
-//        String name = new  SimpleDateFormat((getString(R.string.DateFormat))).format(new Date());
-//        File storageDir = getExternalStoragePublicDirectory()
-//    }
-
 
     public void selectGender(View view) {
 
@@ -139,18 +117,83 @@ public class UserMakeProfileActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.male:
                 if (checked)
-                    Genter="male";
+                    Gender="male";
                 Toast.makeText(this, "Male is selected", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.female:
                 if (checked)
-                    Genter="Female";
+                    Gender="Female";
                 Toast.makeText(this, "Female is selected", Toast.LENGTH_SHORT).show();
                 break;
 
         }
     }
 
+    public void selectQulification(View view) {
+
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch (view.getId()) {
+            case R.id.belowTen:
+                if (checked)
+                    HQlification="Below 10th";
+                Toast.makeText(this, "Below 10th is selected", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.TenPass:
+                if (checked)
+                    HQlification="10th Pass";
+                Toast.makeText(this, "10th Pass is selected", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.TwelevePass:
+                if (checked)
+                    HQlification="12th Pass";
+                Toast.makeText(this, "12th Pass is selected", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.Diploma:
+                if (checked)
+                    HQlification="Diploma";
+                Toast.makeText(this, "Diploma is selected", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.Graduate:
+                if (checked)
+                    HQlification="Graduate";
+                Toast.makeText(this, "Graduate is selected", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.PostGraduate:
+                if (checked)
+                    HQlification="Post Graduate";
+                Toast.makeText(this, "Post Graduate is selected", Toast.LENGTH_SHORT).show();
+                break;
+
+        }
+    }
+
+    public void selectExperience(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch (view.getId()) {
+            case R.id.experience:
+                if (checked)
+                    workExperience="Experience";
+                Toast.makeText(this, "Experience is selected", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.fresher:
+                if (checked)
+                    workExperience="Fresher";
+                Toast.makeText(this, "fresher is selected", Toast.LENGTH_SHORT).show();
+                break;
+
+        }
+    }
 
     private void showFileChooser() {
 
@@ -158,10 +201,6 @@ public class UserMakeProfileActivity extends AppCompatActivity {
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(galleryIntent, 0);
     }
-
-
-
-
 
     //Runtime Permission so that it can AutoVerify The Otp in EnterOtpActivity
     private void requestMediaFilePermission() {
@@ -206,7 +245,7 @@ public class UserMakeProfileActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (ActivityCompat.checkSelfPermission(this, permissions[1]) == PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, permissions[0]) == PackageManager.PERMISSION_GRANTED) {
 
             if (requestCode == 1) {
                 requestMediaFilePermission();
@@ -219,9 +258,39 @@ public class UserMakeProfileActivity extends AppCompatActivity {
         }
     }
 
-    public void SavecaData(){
+    public void SaveCanData(){
+        f_name = R_fname.getText().toString();
+        state = locationState.getText().toString();
+        skill = userSkill.getText().toString();
+        address = currentLocality.getText().toString();
+
+        if (f_name.equals("")){
+            R_fname.setError("Enter Name");
+            R_fname.requestFocus();
+            return;
+        }
+
+        if (state.equals("")){
+            locationState.setError("Enter Name");
+            locationState.requestFocus();
+            return;
+        }
+
+        if (skill.equals("")){
+            userSkill.setError("Enter Name");
+            userSkill.requestFocus();
+            return;
+        }
+
+        if (address.equals("")){
+            currentLocality.setError("Enter Name");
+            currentLocality.requestFocus();
+            return;
+        }
+
+
         File file=new File(filepath);
-        String f_name=R_fname.getText().toString();
+
         ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
         byte[] imageinbyte=byteArrayOutputStream.toByteArray();
@@ -231,14 +300,17 @@ public class UserMakeProfileActivity extends AppCompatActivity {
 
         JobApi jobApi= BaseClient.getBaseClient().create(JobApi.class);
 
-        Call<CanProfileResponse> call=jobApi.SaveCanDetail("76",imagestring,Genter,"5th",
-                "9 years","karnataka","pjp","add",file.getName());
+        Call<CanProfileResponse> call=jobApi.SaveCanDetail(canId,imagestring,Gender,HQlification,
+                workExperience,state,skill,address,file.getName());
+
         call.enqueue(new Callback<CanProfileResponse>() {
             @Override
             public void onResponse(Call<CanProfileResponse> call, Response<CanProfileResponse> response) {
                 CanProfileResponse saveCanDetailResponse = response.body();
                 if (response.isSuccessful() ){
                     Toast.makeText(UserMakeProfileActivity.this, saveCanDetailResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(UserMakeProfileActivity.this,RegistrationSucessfulActivity.class);
+                    startActivity(intent);
                 }else {
                     Toast.makeText(UserMakeProfileActivity.this, "Try Agarin", Toast.LENGTH_SHORT).show();
                 }
@@ -269,4 +341,7 @@ public class UserMakeProfileActivity extends AppCompatActivity {
         }
 
     }
+
+
+
 }

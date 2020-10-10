@@ -8,8 +8,10 @@
     tools:context=".HomePage.JobDetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/jobDetailMainLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
 
 <ScrollView
@@ -46,7 +48,6 @@
                 android:id="@+id/jdAddBookmark"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_star_border"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -514,6 +515,41 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             />
+
+        <Button
+            android:id="@+id/jobDetailApplied"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/select_education_selected_radiobtn"
+            android:text="Applied"
+            android:visibility="gone"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/jobDetailSimmerLayout"
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/job_detail_simmer" />
+
+
+        </LinearLayout>
+
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
 </FrameLayout>

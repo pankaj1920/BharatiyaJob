@@ -64,11 +64,8 @@ public class UserPaymentActivity extends AppCompatActivity implements PaymentRes
         buySubscription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Toast.makeText(UserPaymentActivity.this, "Sub"+ SubscriptionFee, Toast.LENGTH_SHORT).show();
-
                 startPayment();
-
             }
         });
 
@@ -86,7 +83,6 @@ public class UserPaymentActivity extends AppCompatActivity implements PaymentRes
                 final SubscriptionResponse subscriptionResponse = response.body();
 
                 if (response.isSuccessful() && subscriptionResponse.getStatus().equals("1")){
-
                     candiPaymentSimmerEffect.stopShimmer();
                     candiPaymentSimmerEffect.setVisibility(View.GONE);
                     buySubscription.setVisibility(View.VISIBLE);
@@ -103,9 +99,6 @@ public class UserPaymentActivity extends AppCompatActivity implements PaymentRes
                             Toast.makeText(UserPaymentActivity.this, "This is Price "+ SubscriptionFee, Toast.LENGTH_SHORT).show();
                         }
                     });
-
-
-
 
                 }else {
                     Toast.makeText(UserPaymentActivity.this, "Failed", Toast.LENGTH_SHORT).show();

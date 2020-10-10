@@ -27,14 +27,17 @@ public class LoginDetailSharePref {
     //now we will create method that will store User login Details
 
     public  void saveLoginDetails(LoginOtpResponse loginResponse){
-
         //here mode is private bcz we only want this application to access shared prefrence
         SharedPreferences sharedPreferences = context.getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("status", loginResponse.getStatus());
+        editor.putString("message", loginResponse.getMessage());
         editor.putString("id", loginResponse.getId());
         editor.putString("name", loginResponse.getName());
         editor.putString("email", loginResponse.getEmail());
         editor.putString("mobile", loginResponse.getMobile());
+        editor.putString("reg_type", loginResponse.getReg_type());
+        editor.putString("token", loginResponse.getToken());
 
         editor.apply();
     }
@@ -52,18 +55,20 @@ public class LoginDetailSharePref {
 
     // this method will use to get back USer Driver Detail which is saved in any activty
     //now we need to get back the user and Driver
-    public LoginOtpResponse getUserDetail() {
+    public LoginOtpResponse getDetail() {
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
 
         //now we can read the value form sharePrefrences object
         LoginOtpResponse loginOtpResponse = new LoginOtpResponse(
-                sharedPreferences.getString("error", null),
+                sharedPreferences.getString("status", null),
+                sharedPreferences.getString("message", null),
                 sharedPreferences.getString("id", null),
                 sharedPreferences.getString("name", null),
                 sharedPreferences.getString("email", null),
                 sharedPreferences.getString("mobile", null),
-                sharedPreferences.getString("message", null)
+                sharedPreferences.getString("reg_type", null),
+                sharedPreferences.getString("token", null)
         );
 
         return loginOtpResponse;
@@ -71,7 +76,7 @@ public class LoginDetailSharePref {
 
 
     //Create a method to Logout
-    public void UserLogout() {
+    public void Logout() {
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

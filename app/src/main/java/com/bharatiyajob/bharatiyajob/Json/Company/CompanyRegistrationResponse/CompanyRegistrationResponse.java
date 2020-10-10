@@ -1,19 +1,19 @@
 package com.bharatiyajob.bharatiyajob.Json.Company.CompanyRegistrationResponse;
 
 public class CompanyRegistrationResponse {
-    private boolean error;
+    private String error;
     private String message;
 
-    public CompanyRegistrationResponse(boolean error, String message) {
+    public CompanyRegistrationResponse(String error, String message) {
         this.error = error;
         this.message = message;
     }
 
-    public boolean isError() {
+    public String getError() {
         return error;
     }
 
-    public void setError(boolean error) {
+    public void setError(String error) {
         this.error = error;
     }
 
