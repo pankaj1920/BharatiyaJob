@@ -15,10 +15,12 @@ import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.Company.HomePage.CandidateDetail.CandidateDetailActivity;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.GetBookmarkedCanList.GetBookMarkedCandidateResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.RemoveBookmarkedCan.RemoveBookMarkedCandidateResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.R;
+import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 import retrofit2.Call;
@@ -30,7 +32,7 @@ public class BookmarkCandidateFragment extends Fragment {
 
     GetBookMarkCandidateRecylerAdapter adapter;
     RecyclerView recycler_bookmark_fragment;
-    String canId;
+    String canId,companyId;
     ShimmerFrameLayout BcanSimmerEffect;
     ConstraintLayout BcanListLayout;
 
@@ -55,20 +57,22 @@ public class BookmarkCandidateFragment extends Fragment {
 
         BcanSimmerEffect.startShimmer();
 
+        getCompanyDetail();
+
         recycler_bookmark_fragment.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }
 
-    public void getBookMaredCandidate(){
+    public void getBookMaredCandidate()                                          {
         JobApi jobApi= BaseClient.getBaseClient().create(JobApi.class);
 
-        Call<GetBookMarkedCandidateResponse> call=jobApi.getbookMarkCandidate("1");
+        Call<GetBookMarkedCandidateResponse> call=jobApi.getbookMarkCandidate(companyId);
         call.enqueue(new Callback<GetBookMarkedCandidateResponse>() {
             @Override
             public void onResponse(Call<GetBookMarkedCandidateResponse> call, Response<GetBookMarkedCandidateResponse> response) {
 
                 final GetBookMarkedCandidateResponse getBookMarkedCanResponse = response.body();
-                if (response.isSuccessful()){
+                if (response.isSuccessful() && getBookMarkedCanResponse.getStatus().equals("1")){
 
                     BcanSimmerEffect.stopShimmer();
                     BcanSimmerEffect.setVisibility(View.GONE);
@@ -120,7 +124,7 @@ public class BookmarkCandidateFragment extends Fragment {
     public void removeBookMarkCandidate(){
         JobApi jobApi= BaseClient.getBaseClient().create(JobApi.class);
 
-        Call<RemoveBookMarkedCandidateResponse> call=jobApi.removebookmark("1",canId);
+        Call<RemoveBookMarkedCandidateResponse> call=jobApi.removebookmark(companyId,canId);
         call.enqueue(new Callback<RemoveBookMarkedCandidateResponse>() {
             @Override
             public void onResponse(Call<RemoveBookMarkedCandidateResponse> call, Response<RemoveBookMarkedCandidateResponse> response) {
@@ -139,5 +143,11 @@ public class BookmarkCandidateFragment extends Fragment {
 
             }
         });
+    }
+
+    private void getCompanyDetail() {
+        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
+
+        companyId = loginOtpResponse.getId();
     }
 }

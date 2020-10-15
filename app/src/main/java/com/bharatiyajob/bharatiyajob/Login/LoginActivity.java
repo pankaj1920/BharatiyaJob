@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void signIn() {
-        loginId = loginEditext.getText().toString();
+        loginId = loginEditext.getText().toString().trim();
 
         if (loginId.equals("")) {
             loginEditext.setError("Enter Email or Number");

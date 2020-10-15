@@ -7,9 +7,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.GetCompanyDetails.GetCompanyDetailsResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.R;
+import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
@@ -20,6 +22,8 @@ public class CompanyProfileSetting extends AppCompatActivity {
 
     CircleImageView companyLogo;
     TextView CNameTextView,CNumberTextView,CEmailTextView,CPasswordTextView,CAdressTextView;
+    String companyId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +35,14 @@ public class CompanyProfileSetting extends AppCompatActivity {
         CEmailTextView = findViewById(R.id.CEmailTextView);
         CPasswordTextView = findViewById(R.id.CPasswordTextView);
         CAdressTextView = findViewById(R.id.CAdressTextView);
+        getCompanyDetail();
 
         getCompanyDetails();
     }
 
     private void getCompanyDetails() {
         JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
-        Call<GetCompanyDetailsResponse> call = jobApi.getCompanyDetails("1");
+        Call<GetCompanyDetailsResponse> call = jobApi.getCompanyDetails(companyId);
         call.enqueue(new Callback<GetCompanyDetailsResponse>() {
             @Override
             public void onResponse(Call<GetCompanyDetailsResponse> call, Response<GetCompanyDetailsResponse> response) {
@@ -58,5 +63,11 @@ public class CompanyProfileSetting extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void getCompanyDetail() {
+        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+
+        companyId = loginOtpResponse.getId();
     }
 }

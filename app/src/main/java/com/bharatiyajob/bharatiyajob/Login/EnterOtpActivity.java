@@ -49,7 +49,7 @@ public class EnterOtpActivity extends AppCompatActivity {
     String token;
 
     // starting time 2min
-    private static long START_TIME_IN_MILLI = 20000; //120000;
+    private static final long START_TIME_IN_MILLI = 20000; //120000;
 
     private CountDownTimer countDownTimer;
 
@@ -141,8 +141,10 @@ public class EnterOtpActivity extends AppCompatActivity {
 
                 if (response.isSuccessful() && loginOtpResponse.getStatus().equals("success")){
                     Toast.makeText(EnterOtpActivity.this, loginOtpResponse.getMessage(), Toast.LENGTH_SHORT).show();
+
                     //if the login Responwe is sucessfull we will save the user
                     LoginDetailSharePref.getInstance(EnterOtpActivity.this).saveLoginDetails(loginOtpResponse);
+
                     if(loginOtpResponse.getReg_type().equals("company")){
                         Intent intent = new Intent(EnterOtpActivity.this, CompanyHomePageActivity.class);
                         startActivity(intent);

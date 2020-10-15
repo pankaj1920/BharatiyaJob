@@ -25,6 +25,7 @@ import com.bharatiyajob.bharatiyajob.Json.Company.GetCandidateDetails.GetCandida
 import com.bharatiyajob.bharatiyajob.Json.Company.GetCompanyDetails.GetCompanyDetailsResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.RemoveBookmarkedCan.RemoveBookMarkedCandidateResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.VerifyOtpResponse.ComVerifyOtpResponse;
+import com.bharatiyajob.bharatiyajob.Json.CustomerCare.CustomerCareResponse;
 import com.bharatiyajob.bharatiyajob.Json.SubscriptionPackage.SubscriptionResponse;
 import com.bharatiyajob.bharatiyajob.Json.UpdateCanImage.UpdateImageResponse;
 import com.bharatiyajob.bharatiyajob.Json.UpdateCandidateProfile.UpdateCandidateProfileResponse;
@@ -41,7 +42,7 @@ public interface JobApi {
     //MobileRegister
     @FormUrlEncoded
     @POST("SaveUserMobileNumber.php")
-    Call<MobileRegisterResponse>    mobileRegister(
+    Call<MobileRegisterResponse>mobileRegister(
             @Field("mobile") String mobile,
             @Field("regtype") String regtype
     );
@@ -69,7 +70,8 @@ public interface JobApi {
     @POST("Login.php")
     Call<LoginOtpResponse> emailLogin(
             @Field("email") String email,
-            @Field(("password")) String password
+            @Field(("password")) String password,
+            @Field(("token")) String token
     );
 
     //    Mobile Login
@@ -169,6 +171,18 @@ public interface JobApi {
     Call<UpdateCandidateProfileResponse>updateUserSkill(
             @Field("can_id") String can_id,
             @Field("skills") String skills
+    );
+
+    //Customer Care
+    @FormUrlEncoded
+    @POST("customercare.php")
+    Call<CustomerCareResponse>customerCare(
+            @Field("mobile") String mobile,
+            @Field("name") String name,
+            @Field("email") String email,
+            @Field("message") String message,
+            @Field("language") String language
+
     );
 
     //Get Candidate Subscription Pack
@@ -338,5 +352,10 @@ public interface JobApi {
             @Field("functional_area") String functional_area,
             @Field("industry") String industry
     );
+
+//    Customer Care
+//
+
+
 
 }

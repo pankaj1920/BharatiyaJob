@@ -31,7 +31,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
     TextView ChangePasswordResendOtp,ChangePasswordDisableResendOtp,ChangePasswordResendCountDown;
 
     // starting time 2min
-    private static long START_TIME_IN_MILLI = 20000; //120000;
+    private static final long START_TIME_IN_MILLI = 20000; //120000;
 
     private CountDownTimer countDownTimer;
 

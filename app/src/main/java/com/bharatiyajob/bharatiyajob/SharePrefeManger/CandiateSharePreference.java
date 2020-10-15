@@ -5,7 +5,7 @@ import android.content.Context;
 public class CandiateSharePreference {
 
     private static CandiateSharePreference sharePrefMamager;
-     private Context context;
+     private final Context context;
 
     public CandiateSharePreference(Context context) {
         this.context = context;

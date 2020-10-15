@@ -2,8 +2,8 @@ package com.bharatiyajob.bharatiyajob.Json.Company.RemoveBookmarkedCan;
 
 public class RemoveBookMarkedCandidateResponse {
 
-    private String status;
-    private String message;
+    private final String status;
+    private final String message;
 
     public RemoveBookMarkedCandidateResponse(String status, String message) {
         this.status = status;

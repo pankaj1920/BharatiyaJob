@@ -19,10 +19,12 @@ import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.Company.HomePage.CandidateDetail.CandidateDetailActivity;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.BookmarkCandidate.BookmarkCandidateResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.CandidateApplied.CandidateAppliedResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.R;
+import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 import retrofit2.Call;
@@ -33,7 +35,7 @@ public class CandidateListFragment extends Fragment {
 
     RecyclerView candidateListRecyclerView;
     CandidateListAdapter candidateListAdapter;
-    String boomarkCanId;
+    String boomarkCanId,companyId;
     ImageView bookmarkCanStar;
     ShimmerFrameLayout canListSimmerEffect;
     ConstraintLayout canListLayout;
@@ -65,6 +67,8 @@ public class CandidateListFragment extends Fragment {
 
         canListSimmerEffect.startShimmer();
 
+        getCompanyDetail();
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         candidateListRecyclerView.setLayoutManager(layoutManager);
 
@@ -74,7 +78,9 @@ public class CandidateListFragment extends Fragment {
 
     private void getCandidateList() {
         JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
-        Call<CandidateAppliedResponse> call = jobApi.getCandidateList("1");
+        Call<CandidateAppliedResponse> call = jobApi.getCandidateList(companyId);
+
+        Toast.makeText(getActivity(), "Comapan " + companyId, Toast.LENGTH_SHORT).show();
 
         call.enqueue(new Callback<CandidateAppliedResponse>() {
             @Override
@@ -111,7 +117,7 @@ public class CandidateListFragment extends Fragment {
                     });
 
                 } else {
-                    Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_SHORT).show();
                     canListSimmerEffect.stopShimmer();
                     canListSimmerEffect.setVisibility(View.GONE);
                     candidateListRecyclerView.setVisibility(View.GONE);
@@ -136,7 +142,7 @@ public class CandidateListFragment extends Fragment {
         Toast.makeText(getActivity(), "bookmar Can id "+boomarkCanId, Toast.LENGTH_SHORT).show();
         
         JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
-        Call<BookmarkCandidateResponse> call = jobApi.bookmarkCandidate("1",boomarkCanId);
+        Call<BookmarkCandidateResponse> call = jobApi.bookmarkCandidate(companyId,boomarkCanId);
         call.enqueue(new Callback<BookmarkCandidateResponse>() {
             @Override
             public void onResponse(Call<BookmarkCandidateResponse> call, Response<BookmarkCandidateResponse> response) {
@@ -154,5 +160,11 @@ public class CandidateListFragment extends Fragment {
                 Toast.makeText(getActivity(), "On Failure" + t.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void getCompanyDetail() {
+        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
+
+        companyId = loginOtpResponse.getId();
     }
 }

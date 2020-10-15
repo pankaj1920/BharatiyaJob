@@ -59,7 +59,11 @@
         <activity android:name=".ProfileSettingActivity"></activity>
         <activity android:name=".CustomerCareActivity" />
         <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".HomePage.JobDetailActivity" />
         <activity android:name=".UserMakeProfileActivity"></activity>
@@ -71,11 +75,7 @@
         <activity
             android:name=".HomePage.HomePageActivity"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Login.LoginPasswordActivity" />
         <activity android:name=".Login.EnterOtpActivity" />

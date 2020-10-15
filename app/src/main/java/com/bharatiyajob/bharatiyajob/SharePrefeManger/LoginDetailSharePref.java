@@ -10,7 +10,7 @@ public class LoginDetailSharePref {
     private  static LoginDetailSharePref sharePrefMamager;
 
     //to handle we need Context object
-    private Context context;
+    private final Context context;
 
     public LoginDetailSharePref(Context context) {
         this.context = context;

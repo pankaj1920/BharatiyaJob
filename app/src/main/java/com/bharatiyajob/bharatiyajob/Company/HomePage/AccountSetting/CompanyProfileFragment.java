@@ -11,12 +11,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.Company.HomePage.AccountSetting.CompanyNotification.CompanyNotificationActivity;
 import com.bharatiyajob.bharatiyajob.Company.HomePage.AccountSetting.CompanyPayment.CompanyPaymentActivity;
 import com.bharatiyajob.bharatiyajob.Company.HomePage.AccountSetting.CompanyProfile.CompanyProfileSetting;
+import com.bharatiyajob.bharatiyajob.Login.LoginActivity;
 import com.bharatiyajob.bharatiyajob.R;
 import com.bharatiyajob.bharatiyajob.ShareAppActivity;
+import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 
 
 public class CompanyProfileFragment extends Fragment {
@@ -88,6 +91,22 @@ public class CompanyProfileFragment extends Fragment {
             }
         });
 
+        CSignoutLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Signout();
+            }
+        });
 
+    }
+
+    public void Signout() {
+        //we are callin Logout Method from SharePrefManager will will delet all user detail from share prefrences
+        LoginDetailSharePref.getInstance(getActivity()).Logout();
+
+        Toast.makeText(getActivity(), "SignOut", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        startActivity(intent);
+        getActivity().finish();
     }
 }

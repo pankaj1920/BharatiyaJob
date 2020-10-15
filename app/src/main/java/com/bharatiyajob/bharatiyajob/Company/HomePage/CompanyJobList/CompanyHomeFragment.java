@@ -15,9 +15,11 @@ import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.CustomerCareActivity;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.CompanyJobList.CompanyJobListResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.R;
+import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 import retrofit2.Call;
@@ -31,6 +33,7 @@ public class CompanyHomeFragment extends Fragment {
     CompanyHomePageRecyleAdapter companyHomePageRecyleAdapter;
     ConstraintLayout creatDocLayout;
     ShimmerFrameLayout jobPostSimmerEffect;
+    String companyId;
 
     public CompanyHomeFragment() {
         // Required empty public constructor
@@ -53,6 +56,7 @@ public class CompanyHomeFragment extends Fragment {
         jobPostSimmerEffect=view.findViewById(R.id.jobPostSimmerEffect);
 
         jobPostSimmerEffect.startShimmer();
+        getCompanyDetail();
 
         recycler_home_fragment.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -63,7 +67,9 @@ public class CompanyHomeFragment extends Fragment {
     public void GetJobPostedList(){
         JobApi jobApi= BaseClient.getBaseClient().create(JobApi.class);
 
-        Call<CompanyJobListResponse> call=jobApi.getPostedJob("1");
+        Toast.makeText(getActivity(), companyId, Toast.LENGTH_SHORT).show();
+
+        Call<CompanyJobListResponse> call=jobApi.getPostedJob(companyId);
         call.enqueue(new Callback<CompanyJobListResponse>() {
             @Override
             public void onResponse(Call<CompanyJobListResponse> call, Response<CompanyJobListResponse> response) {
@@ -106,5 +112,11 @@ public class CompanyHomeFragment extends Fragment {
                 creatDocLayout.setVisibility(View.VISIBLE);
             }
         });
+    }
+
+    private void getCompanyDetail() {
+        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
+
+        companyId = loginOtpResponse.getId();
     }
 }

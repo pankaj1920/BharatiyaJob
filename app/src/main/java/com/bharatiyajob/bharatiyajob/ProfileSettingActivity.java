@@ -19,7 +19,6 @@ import com.bharatiyajob.bharatiyajob.User.UpdateDetails.UpdatePasswordActivity;
 import com.bharatiyajob.bharatiyajob.User.UpdateDetails.UpdateProfileImageActivity;
 import com.bharatiyajob.bharatiyajob.User.UpdateDetails.UpdateSkillsActivity;
 import com.squareup.picasso.Picasso;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

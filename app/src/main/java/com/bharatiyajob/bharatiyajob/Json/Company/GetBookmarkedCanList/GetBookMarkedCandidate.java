@@ -1,18 +1,18 @@
 package com.bharatiyajob.bharatiyajob.Json.Company.GetBookmarkedCanList;
 
 public class GetBookMarkedCandidate {
-    private String candidate_id;
-    private String Candidate_name;
-    private String Candidate_email;
-    private String Candidate_number;
-    private String gender;
-    private String heighest_qualification;
-    private String work_experience;
-    private String state;
-    private String address;
-    private String skills;
-    private String profile_pic;
-    private String resume;
+    private final String candidate_id;
+    private final String Candidate_name;
+    private final String Candidate_email;
+    private final String Candidate_number;
+    private final String gender;
+    private final String heighest_qualification;
+    private final String work_experience;
+    private final String state;
+    private final String address;
+    private final String skills;
+    private final String profile_pic;
+    private final String resume;
 
     public GetBookMarkedCandidate(String candidate_id, String candidate_name, String candidate_email, String candidate_number, String gender, String heighest_qualification, String work_experience, String state, String address, String skills, String profile_pic, String resume) {
         this.candidate_id = candidate_id;

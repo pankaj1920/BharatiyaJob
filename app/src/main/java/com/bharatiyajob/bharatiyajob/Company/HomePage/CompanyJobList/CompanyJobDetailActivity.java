@@ -10,9 +10,11 @@ import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.JobDetails.JobDetailsResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.EnableDisableJobPost.EnableDisableJobResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.R;
+import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,7 +30,7 @@ public class CompanyJobDetailActivity extends AppCompatActivity {
 
     String [] dateTime;
     String date,time;
-    String jobId;
+    String jobId,companyId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,8 @@ public class CompanyJobDetailActivity extends AppCompatActivity {
         DisableJob = findViewById(R.id.DisableJob);
 
         getJobDetails();
+
+        getCompanyDetail();
 
 
         EnableJob.setOnClickListener(new View.OnClickListener() {
@@ -119,7 +123,7 @@ public class CompanyJobDetailActivity extends AppCompatActivity {
 
     private void disableJobPost() {
         JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
-        Call<EnableDisableJobResponse> call = jobApi.disableJobPost("1","1");
+        Call<EnableDisableJobResponse> call = jobApi.disableJobPost(companyId,jobId);
 
         call.enqueue(new Callback<EnableDisableJobResponse>() {
             @Override
@@ -143,7 +147,7 @@ public class CompanyJobDetailActivity extends AppCompatActivity {
 
     private void enableJobPost() {
         JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
-        Call<EnableDisableJobResponse> call = jobApi.enableJobPost("1","1");
+        Call<EnableDisableJobResponse> call = jobApi.enableJobPost(companyId,jobId);
 
         call.enqueue(new Callback<EnableDisableJobResponse>() {
             @Override
@@ -163,5 +167,12 @@ public class CompanyJobDetailActivity extends AppCompatActivity {
                 Toast.makeText(CompanyJobDetailActivity.this, "On Faiure"+ t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void getCompanyDetail() {
+        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this
+        ).getDetail();
+
+        companyId = loginOtpResponse.getId();
     }
 }

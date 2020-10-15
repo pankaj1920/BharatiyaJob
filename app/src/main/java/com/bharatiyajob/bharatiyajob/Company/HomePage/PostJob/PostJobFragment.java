@@ -27,9 +27,11 @@ import android.widget.Toast;
 
 
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.CompanyJobPosted.CompanyJobPostedResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.R;
+import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 
 
 import java.io.ByteArrayOutputStream;
@@ -58,7 +60,7 @@ public class PostJobFragment extends Fragment {
     View v;
     Uri imageUri;
     Bitmap imagebitmap;
-    String filepath;
+    String filepath,companyId;
     Button submitPostBtn;
 
     public PostJobFragment() {
@@ -81,7 +83,7 @@ public class PostJobFragment extends Fragment {
         JpExperience = v.findViewById(R.id.JpExperience);
         formCameraPick = v.findViewById(R.id.formCameraPick);
         JpFresher = v.findViewById(R.id.JpFresher);
-        PcompanyLogo = (CircleImageView) v.findViewById(R.id.PcompanyLogo);
+        PcompanyLogo = v.findViewById(R.id.PcompanyLogo);
         JPCompanyName = v.findViewById(R.id.JPCompanyName);
         JPJobTitle = v.findViewById(R.id.JPJobTitle);
         JPJobLocation = v.findViewById(R.id.JPJobLocation);
@@ -99,6 +101,7 @@ public class PostJobFragment extends Fragment {
         submitPostBtn = v.findViewById(R.id.submitPostBtn);
         JPLanguageKnown = v.findViewById(R.id.JPLanguageKnown);
 
+        getCompanyDetail();
 
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(getActivity(), "Camera permission granted", Toast.LENGTH_SHORT).show();
@@ -311,7 +314,7 @@ public class PostJobFragment extends Fragment {
         Toast.makeText(getActivity(), imagestring, Toast.LENGTH_SHORT).show();
         JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
 
-        Call<CompanyJobPostedResponse> call=jobApi.PostJob("1",cname,Jobtitle,industry_type,functional_area
+        Call<CompanyJobPostedResponse> call=jobApi.PostJob(companyId,cname,Jobtitle,industry_type,functional_area
                 ,skill,experience,salary,location,jobrole
                 ,lang,Job_type,description,no_vacancy
                 ,imagestring,file.getName(),venue,contact_no,contact_email);
@@ -336,5 +339,9 @@ public class PostJobFragment extends Fragment {
 
     }
 
+    private void getCompanyDetail() {
+        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
 
+        companyId = loginOtpResponse.getId();
+    }
 }
