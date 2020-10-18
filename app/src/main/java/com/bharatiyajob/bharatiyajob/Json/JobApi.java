@@ -26,6 +26,7 @@ import com.bharatiyajob.bharatiyajob.Json.Company.GetCompanyDetails.GetCompanyDe
 import com.bharatiyajob.bharatiyajob.Json.Company.RemoveBookmarkedCan.RemoveBookMarkedCandidateResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.VerifyOtpResponse.ComVerifyOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.CustomerCare.CustomerCareResponse;
+import com.bharatiyajob.bharatiyajob.Json.SubscriptionPackage.PostPaymentDetailResponse;
 import com.bharatiyajob.bharatiyajob.Json.SubscriptionPackage.SubscriptionResponse;
 import com.bharatiyajob.bharatiyajob.Json.UpdateCanImage.UpdateImageResponse;
 import com.bharatiyajob.bharatiyajob.Json.UpdateCandidateProfile.UpdateCandidateProfileResponse;
@@ -98,13 +99,15 @@ public interface JobApi {
     @GET("search_job.php")
     Call<JobResponse> searchJob(
       @Query("skill") String skills,
-      @Query("location") String location
+      @Query("location") String location,
+      @Query("candidate_id") String canId
     );
 
     //Get Job Details
     @GET("job_description.php")
     Call<JobDetailsResponse> getJobDetail(
-            @Query("job_id") String jobId
+            @Query("job_id") String jobId,
+            @Query("can_id") String canId
     );
 
 //Apply Job
@@ -145,7 +148,7 @@ public interface JobApi {
     );
 
     @FormUrlEncoded
-    @POST("update_user_image.php")
+        @POST("update_user_image.php")
     Call<UpdateImageResponse> updateCanImage(
             @Field("profile_pic") String profile_pic,
             @Field("profile_name") String profile_name,
@@ -181,7 +184,9 @@ public interface JobApi {
             @Field("name") String name,
             @Field("email") String email,
             @Field("message") String message,
-            @Field("language") String language
+            @Field("language") String language,
+            @Field("registration_type") String registration_type,
+            @Field("customer_id") String customer_id
 
     );
 
@@ -192,6 +197,19 @@ public interface JobApi {
     //Get Company Subscription Pack
     @GET("get_company_payment.php")
     Call<SubscriptionResponse> getCompanySubscription();
+
+//    Post Payment Details
+    @FormUrlEncoded
+    @POST("post_paymentdetails.php")
+    Call<PostPaymentDetailResponse> postPaymentDetails(
+            @Field("customer_id") String customerId,
+            @Field("customer_name") String customerName,
+            @Field("registration_type") String registrationType,
+            @Field("package_amount") String packageAmount,
+            @Field("transactionId") String transactionId,
+            @Field("transaction_status") String transactionStatus,
+            @Field("subscription_days") String subscriptionDays
+    );
 
     @FormUrlEncoded
     @POST("save_can_details.php")

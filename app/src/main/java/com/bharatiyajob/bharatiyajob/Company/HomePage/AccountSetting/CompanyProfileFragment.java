@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.bharatiyajob.bharatiyajob.Company.HomePage.AccountSetting.CompanyNotification.CompanyNotificationActivity;
 import com.bharatiyajob.bharatiyajob.Company.HomePage.AccountSetting.CompanyPayment.CompanyPaymentActivity;
 import com.bharatiyajob.bharatiyajob.Company.HomePage.AccountSetting.CompanyProfile.CompanyProfileSetting;
+import com.bharatiyajob.bharatiyajob.CustomerCare.CustomerCareActivity;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Login.LoginActivity;
 import com.bharatiyajob.bharatiyajob.R;
 import com.bharatiyajob.bharatiyajob.ShareAppActivity;
@@ -26,6 +28,7 @@ public class CompanyProfileFragment extends Fragment {
 
     ConstraintLayout CAccountSettingLayout,CNotificationLayout,CPaymentLayout,CShareAppLayout,
             CRateLayout,CContactLayout,CAboutUsLayout,CSignoutLayout;
+    String comId,regType;
 
     public CompanyProfileFragment() {
         // Required empty public constructor
@@ -35,7 +38,7 @@ public class CompanyProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        getCompanyDetail();
     }
 
     @Override
@@ -91,6 +94,13 @@ public class CompanyProfileFragment extends Fragment {
             }
         });
 
+        CContactLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               contactUs();
+            }
+        });
+
         CSignoutLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,5 +118,22 @@ public class CompanyProfileFragment extends Fragment {
         Intent intent = new Intent(getActivity(), LoginActivity.class);
         startActivity(intent);
         getActivity().finish();
+    }
+
+    private void contactUs() {
+        Bundle bundle = new Bundle();
+        bundle.putString("Id",comId);
+        bundle.putString("regType",regType);
+        Intent intent = new Intent(getActivity(), CustomerCareActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    private void getCompanyDetail() {
+        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
+
+        comId = loginOtpResponse.getId();
+        regType = loginOtpResponse.getReg_type();
+
     }
 }

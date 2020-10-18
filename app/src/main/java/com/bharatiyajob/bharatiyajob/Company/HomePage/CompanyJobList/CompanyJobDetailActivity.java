@@ -74,15 +74,13 @@ public class CompanyJobDetailActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
 
 
     private void getJobDetails() {
 
         JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
-        Call<JobDetailsResponse> call = jobApi.getJobDetail(jobId);
+        Call<JobDetailsResponse> call = jobApi.getJobDetail(jobId,"1");
         call.enqueue(new Callback<JobDetailsResponse>() {
             @Override
             public void onResponse(Call<JobDetailsResponse> call, Response<JobDetailsResponse> response) {

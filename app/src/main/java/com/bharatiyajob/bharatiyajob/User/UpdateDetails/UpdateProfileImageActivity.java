@@ -2,6 +2,8 @@ package com.bharatiyajob.bharatiyajob.User.UpdateDetails;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,16 +12,20 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.agrawalsuneet.dotsloader.loaders.LazyLoader;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.Json.UpdateCanImage.UpdateImageResponse;
 import com.bharatiyajob.bharatiyajob.ProfileSettingActivity;
 import com.bharatiyajob.bharatiyajob.R;
+import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -40,6 +46,9 @@ public class UpdateProfileImageActivity extends AppCompatActivity {
     String filepath;
     Button upladBtn;
     ProgressBar progrssbar_image_uplaod;
+    LazyLoader CuiLazyloader;
+    ConstraintLayout cuiLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +57,9 @@ public class UpdateProfileImageActivity extends AppCompatActivity {
         ibpick=findViewById(R.id.ibpick);
         ProfileImage=findViewById(R.id.ProfileImage);
         upladBtn=findViewById(R.id.upladBtn);
-        progrssbar_image_uplaod=findViewById(R.id.progrssbar_image_uplaod);
+        CuiLazyloader=findViewById(R.id.CuiLazyloader);
+        cuiLayout=findViewById(R.id.cuiLayout);
+//        progrssbar_image_uplaod=findViewById(R.id.progrssbar_image_uplaod);
 
 
     }
@@ -77,6 +88,9 @@ public class UpdateProfileImageActivity extends AppCompatActivity {
 
 
     public void uploadProfileImage(){
+        upladBtn.setClickable(false);
+        upladBtn.setText("Uploading...");
+        cuiLayout.setAlpha(0.5f);
         File file=new File(filepath);
         ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
@@ -85,31 +99,44 @@ public class UpdateProfileImageActivity extends AppCompatActivity {
 
         Retrofit retrofit= BaseClient.getBaseClient();
         JobApi jobApi=retrofit.create(JobApi.class);
-        Call<UpdateImageResponse> call=jobApi.updateCanImage(ImageInString,file.getName(),"45");
+        Call<UpdateImageResponse> call=jobApi.updateCanImage(ImageInString,file.getName(),"89");
 
         call.enqueue(new Callback<UpdateImageResponse>() {
             @Override
             public void onResponse(Call<UpdateImageResponse> call, Response<UpdateImageResponse> response) {
                 Toast.makeText(UpdateProfileImageActivity.this, "success", Toast.LENGTH_SHORT).show();
-               Intent intent_gobackprofilesetting=new Intent(UpdateProfileImageActivity.this, ProfileSettingActivity.class);
-               startActivity(intent_gobackprofilesetting);
-               finish();
+                Intent intent_gobackprofilesetting=new Intent(UpdateProfileImageActivity.this, ProfileSettingActivity.class);
+                startActivity(intent_gobackprofilesetting);
+                finish();
             }
 
             @Override
             public void onFailure(Call<UpdateImageResponse> call, Throwable t) {
                 Toast.makeText(UpdateProfileImageActivity.this, "failed", Toast.LENGTH_SHORT).show();
 
+                upladBtn.setClickable(true);
+                upladBtn.setText("Uploading");
+                cuiLayout.setAlpha(0.9f);
             }
         });
     }
 
     public void OnClickuploadProfileImage(View view) {
+
+        LazyLoader loader = new LazyLoader(this, 30, 20, ContextCompat.getColor(this, R.color.loader_selected),
+                ContextCompat.getColor(this, R.color.loader_selected),
+                ContextCompat.getColor(this, R.color.loader_selected));
+        loader.setAnimDuration(500);
+        loader.setFirstDelayDuration(100);
+        loader.setSecondDelayDuration(200);
+        loader.setInterpolator(new LinearInterpolator());
+
+        Toast.makeText(this, "Uploading...", Toast.LENGTH_SHORT).show();
+
+        CuiLazyloader.addView(loader);
+
         uploadProfileImage();
-        upladBtn.setVisibility(View.GONE);
-        progrssbar_image_uplaod.setVisibility(View.VISIBLE);
-        ProfileImage.setVisibility(View.GONE);
-        ibpick.setVisibility(View.GONE);
+        CuiLazyloader.setVisibility(View.VISIBLE);
 
 
     }

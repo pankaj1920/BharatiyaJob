@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.AboutUs;
-import com.bharatiyajob.bharatiyajob.CustomerCareActivity;
+import com.bharatiyajob.bharatiyajob.CustomerCare.CustomerCareActivity;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.User.CreateJobAlert.CreateJobAlertActivity;
 import com.bharatiyajob.bharatiyajob.Login.LoginActivity;
@@ -31,7 +31,7 @@ public class ProfileFragment extends Fragment {
     ConstraintLayout PAccountSettingLayout,PNotificationLayout,PCreateAlertLayout,
             PShareAppLayout,PRateLayout,PContactLayout,PAboutUsLayout,SignoutLayout,PPaymentLayout;
 
-    String userId;
+    String userId,regType;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -142,7 +142,11 @@ public class ProfileFragment extends Fragment {
     }
 
     private void contactUs() {
+        Bundle bundle = new Bundle();
+        bundle.putString("Id",userId);
+        bundle.putString("regType",regType);
         Intent intent = new Intent(getActivity(), CustomerCareActivity.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
@@ -185,6 +189,7 @@ public class ProfileFragment extends Fragment {
         LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
 
         userId = loginOtpResponse.getId();
+        regType = loginOtpResponse.getReg_type();
 
     }
 }

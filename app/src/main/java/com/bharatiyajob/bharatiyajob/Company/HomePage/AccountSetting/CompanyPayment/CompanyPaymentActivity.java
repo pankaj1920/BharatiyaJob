@@ -93,9 +93,8 @@ public class CompanyPaymentActivity extends AppCompatActivity implements Payment
 
                     candidatePaymentAdapter.setOnItemClickListner(new CandidatePaymentAdapter.OnItemClickListner() {
                         @Override
-                        public void onSubscriptionLayoutClicked(View itemview, int position, String price) {
-                            SubscriptionFee = price;
-                            Toast.makeText(CompanyPaymentActivity.this, "This is Price "+ SubscriptionFee, Toast.LENGTH_SHORT).show();
+                        public void onSubscriptionLayoutClicked(View itemview, int position, String price, String days) {
+                                SubscriptionFee = price;
                         }
                     });
 

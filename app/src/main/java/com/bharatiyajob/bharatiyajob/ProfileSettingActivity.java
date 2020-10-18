@@ -1,6 +1,7 @@
 package com.bharatiyajob.bharatiyajob;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -113,7 +114,12 @@ public class ProfileSettingActivity extends AppCompatActivity {
                GetUserDetailResponse getUserDetailResponse=response.body();
 
                if (response.isSuccessful() && getUserDetailResponse.getStatus().equals("1")){
-                   Picasso.get().load(getUserDetailResponse.getData().getProfile_pic()).into(userImage);
+                   if (!getUserDetailResponse.getData().getProfile_pic().isEmpty() || getUserDetailResponse.getData().getProfile_pic().equals("")){
+                       Picasso.get().load(getUserDetailResponse.getData().getProfile_pic()).into(userImage);
+                   }else{
+                       userImage.setImageDrawable(ContextCompat.getDrawable(ProfileSettingActivity.this,R.drawable.accont_img));
+                   }
+
                    NameTextView.setText(getUserDetailResponse.getData().getName());
                    SkillTextView.setText(getUserDetailResponse.getData().getSkill());
                    NumberTextView.setText(getUserDetailResponse.getData().getMobile());

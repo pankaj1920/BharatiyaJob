@@ -2,29 +2,32 @@ package com.bharatiyajob.bharatiyajob.Json.Candidate.JobDetails;
 
 public class JobDetailsData {
 
-    private String company_name;
-    private String job_title;
-    private String location;
-    private String emp_type;
-    private String skill;
-    private String experience;
-    private String salary;
-    private String language;
-    private String number_of_vacancy;
-    private String role;
-    private String industry_type;
-    private String functional_area;
-    private String walk_in_venue;
-    private String email;
-    private String mobile;
-    private String description;
-    private String company_logo;
-    private String job_id;
-    private String can_id;
-    private String job_reg_date;
-    private String walk_in_date;
+    public String company_name;
+    public String job_title;
+    public String location;
+    public String emp_type;
+    public String skill;
+    public String experience;
+    public String salary;
+    public String language;
+    public String number_of_vacancy;
+    public String role;
+    public String industry_type;
+    public String functional_area;
+    public String walk_in_venue;
+    public String email;
+    public String mobile;
+    public String description;
+    public String company_logo;
+    public String job_id;
+    public String company_id;
+    public String job_reg_date;
+    public String walk_in_date;
+    public String jobstatus;
+    public String already_applied;
 
-    public JobDetailsData(String company_name, String job_title, String location, String emp_type, String skill, String experience, String salary, String language, String number_of_vacancy, String role, String industry_type, String functional_area, String walk_in_venue, String email, String mobile, String description, String company_logo, String job_id, String can_id, String job_reg_date, String walk_in_date) {
+
+    public JobDetailsData(String company_name, String job_title, String location, String emp_type, String skill, String experience, String salary, String language, String number_of_vacancy, String role, String industry_type, String functional_area, String walk_in_venue, String email, String mobile, String description, String company_logo, String job_id, String company_id, String job_reg_date, String walk_in_date, String jobstatus, String already_applied) {
         this.company_name = company_name;
         this.job_title = job_title;
         this.location = location;
@@ -43,9 +46,11 @@ public class JobDetailsData {
         this.description = description;
         this.company_logo = company_logo;
         this.job_id = job_id;
-        this.can_id = can_id;
+        this.company_id = company_id;
         this.job_reg_date = job_reg_date;
         this.walk_in_date = walk_in_date;
+        this.jobstatus = jobstatus;
+        this.already_applied = already_applied;
     }
 
     public String getCompany_name() {
@@ -192,12 +197,12 @@ public class JobDetailsData {
         this.job_id = job_id;
     }
 
-    public String getCan_id() {
-        return can_id;
+    public String getCompany_id() {
+        return company_id;
     }
 
-    public void setCan_id(String can_id) {
-        this.can_id = can_id;
+    public void setCompany_id(String company_id) {
+        this.company_id = company_id;
     }
 
     public String getJob_reg_date() {
@@ -215,4 +220,22 @@ public class JobDetailsData {
     public void setWalk_in_date(String walk_in_date) {
         this.walk_in_date = walk_in_date;
     }
+
+    public String getJobstatus() {
+        return jobstatus;
+    }
+
+    public void setJobstatus(String jobstatus) {
+        this.jobstatus = jobstatus;
+    }
+
+    public String getAlready_applied() {
+        return already_applied;
+    }
+
+    public void setAlready_applied(String already_applied) {
+        this.already_applied = already_applied;
+    }
 }
+
+

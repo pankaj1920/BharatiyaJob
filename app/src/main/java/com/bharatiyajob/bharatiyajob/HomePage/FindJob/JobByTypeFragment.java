@@ -102,7 +102,7 @@ public class JobByTypeFragment extends Fragment {
         }
 
         JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
-        Call<JobResponse> call = jobApi.searchJob(skill, location);
+        Call<JobResponse> call = jobApi.searchJob(skill, location,userId);
         call.enqueue(new Callback<JobResponse>() {
             @Override
             public void onResponse(Call<JobResponse> call, Response<JobResponse> response) {

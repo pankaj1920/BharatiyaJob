@@ -52,7 +52,7 @@ public class CandidatePaymentAdapter extends RecyclerView.Adapter<CandidatePayme
     public void onBindViewHolder(@NonNull final Subscription_VH holder, final int position) {
         SubscriptionData data = subscriptionDataList.get(position);
          final String price = data.getCost();
-        String days = data.getDays();
+        final String days = data.getDays();
 
         String Subscription = "INR " +price+ " for "+ days+ " days ";
         holder.amount.setText(Subscription);
@@ -65,7 +65,7 @@ public class CandidatePaymentAdapter extends RecyclerView.Adapter<CandidatePayme
                 row_index = position;
                 notifyDataSetChanged();
 
-                onItemClickListner.onSubscriptionLayoutClicked(holder.itemView,position, price);
+                onItemClickListner.onSubscriptionLayoutClicked(holder.itemView,position, price,days);
             }
         });
 
@@ -143,7 +143,7 @@ public class CandidatePaymentAdapter extends RecyclerView.Adapter<CandidatePayme
     // Define the listener interface
     public interface OnItemClickListner {
 
-        void onSubscriptionLayoutClicked(View itemview, int position,String price);
+        void onSubscriptionLayoutClicked(View itemview, int position,String price,String days);
 
 //        void onSubscriptionRadioBtnClicked(View itemview,int position);
 

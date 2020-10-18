@@ -1,7 +1,6 @@
 package com.bharatiyajob.bharatiyajob.Company.HomePage.CompanyJobList;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.bharatiyajob.bharatiyajob.CustomerCareActivity;
 import com.bharatiyajob.bharatiyajob.Json.Company.CompanyJobList.CompanyJobListData;
 import com.bharatiyajob.bharatiyajob.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 

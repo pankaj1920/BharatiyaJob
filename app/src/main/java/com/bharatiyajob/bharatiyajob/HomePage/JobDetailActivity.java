@@ -36,7 +36,7 @@ public class JobDetailActivity extends AppCompatActivity {
     String jobId;
     ConstraintLayout jobDetailMainLayout;
     ShimmerFrameLayout jobDetailSimmerLayout;
-    String userId;
+    String userId,jobAlreadyApplied;
     Button jobDetailApply,jobDetailApplied;
 
     @Override
@@ -73,7 +73,7 @@ public class JobDetailActivity extends AppCompatActivity {
         jobDetailApply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(JobDetailActivity.this, "Apply Button Clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(JobDetailActivity.this, "can id : "+userId +" JobId : "+jobId, Toast.LENGTH_SHORT).show();
 
                 ApplyJob();
             }
@@ -84,7 +84,7 @@ public class JobDetailActivity extends AppCompatActivity {
 
         final JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
 
-        Call<JobDetailsResponse> call = jobApi.getJobDetail(jobId);
+        Call<JobDetailsResponse> call = jobApi.getJobDetail(jobId,userId);
 
         call.enqueue(new Callback<JobDetailsResponse>() {
             @Override
@@ -95,9 +95,20 @@ public class JobDetailActivity extends AppCompatActivity {
                 if (jobDetailsResponse != null) {
                     if (response.isSuccessful() && HttpURLConnection.HTTP_OK == response.code() && jobDetailsResponse.getStatus().equals("1")) {
 
+                        jobAlreadyApplied = jobDetailsResponse.getData().getAlready_applied();
                         jobDetailSimmerLayout.stopShimmer();
                         jobDetailSimmerLayout.setVisibility(View.GONE);
                         jobDetailMainLayout.setVisibility(View.VISIBLE);
+
+                        if (jobDetailsResponse.getData().getAlready_applied().equals("false")){
+                            jobDetailApply.setVisibility(View.VISIBLE);
+                            jobDetailApplied.setVisibility(View.GONE);
+                        }else if(jobDetailsResponse.getData().getAlready_applied().equals("true")) {
+                            jobDetailApply.setVisibility(View.GONE);
+                            jobDetailApplied.setVisibility(View.VISIBLE);
+                        }else {
+                            Toast.makeText(JobDetailActivity.this, "Already applied status is something else", Toast.LENGTH_SHORT).show();
+                        }
 
                             dateTime = jobDetailsResponse.getData().getJob_reg_date().split((" "));
                             date = dateTime[0];
@@ -116,8 +127,8 @@ public class JobDetailActivity extends AppCompatActivity {
                             jdCompanyNumber.setText(jobDetailsResponse.getData().getIndustry_type());
                             jdCompanyEmail.setText(jobDetailsResponse.getData().getIndustry_type());
 
+                        Toast.makeText(JobDetailActivity.this, "Already Applied : "+ jobAlreadyApplied , Toast.LENGTH_SHORT).show();
 
-                        Toast.makeText(JobDetailActivity.this, jobId, Toast.LENGTH_SHORT).show();
                     }else {
                         Toast.makeText(JobDetailActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                     }
@@ -142,6 +153,7 @@ public class JobDetailActivity extends AppCompatActivity {
                 ApplyJobResponse applyJobResponse = response.body();
                 if (response.isSuccessful() && applyJobResponse.getStatus().equals("1")){
                     Toast.makeText(JobDetailActivity.this, applyJobResponse.getMessage(), Toast.LENGTH_SHORT).show();
+
                     jobDetailApplied.setVisibility(View.VISIBLE);
                     jobDetailApply.setVisibility(View.GONE);
                 }else {

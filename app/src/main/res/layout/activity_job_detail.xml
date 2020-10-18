@@ -508,6 +508,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/select_education_selected_radiobtn"
             android:text="Apply"
+            android:visibility="gone"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:textAllCaps="false"

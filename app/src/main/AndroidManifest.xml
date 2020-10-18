@@ -31,11 +31,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".RegisterAsActivity"></activity>
-        <activity android:name=".User.CreateJobAlert.CreateJobAlertActivity"></activity>
-        <activity android:name=".Company.CompanyVerifyOtpActivity" >
-
-        </activity>
+        <activity android:name=".User.UpdateDetails.UploadResumeActivity"></activity>
+        <activity android:name=".CustomerCare.FeedbackSentActivity" />
+        <activity android:name=".RegisterAsActivity" />
+        <activity android:name=".User.CreateJobAlert.CreateJobAlertActivity" />
+        <activity android:name=".Company.CompanyVerifyOtpActivity" />
         <activity android:name=".Company.HomePage.CandidateDetail.CandidateDetailActivity" />
         <activity android:name=".Company.HomePage.CompanyJobList.CompanyJobDetailActivity" />
         <activity android:name=".Company.HomePage.AccountSetting.CompanyPayment.CompanyPaymentFailed" />
@@ -43,10 +43,8 @@
         <activity android:name=".Company.HomePage.AccountSetting.CompanyPayment.CompanyPaymentActivity" />
         <activity android:name=".Company.HomePage.AccountSetting.CompanyNotification.CompanyNotificationActivity" />
         <activity android:name=".Company.HomePage.AccountSetting.CompanyProfile.CompanyProfileSetting" />
-        <activity android:name=".Company.CompanyRegistrationActivity" >
-
-        </activity>
-        <activity android:name=".Company.HomePage.CompanyHomePageActivity"></activity>
+        <activity android:name=".Company.CompanyRegistrationActivity" />
+        <activity android:name=".Company.HomePage.CompanyHomePageActivity" />
         <activity android:name=".User.CPaymentFailedActivity" />
         <activity android:name=".User.CPaymentSucessfulActivity" />
         <activity android:name=".User.UpdateDetails.UpdateProfileImageActivity" />
@@ -56,8 +54,8 @@
         <activity android:name=".ShareAppActivity" />
         <activity android:name=".AboutUs" />
         <activity android:name=".User.CandidateNotification.CandidateNotificationActivity" />
-        <activity android:name=".ProfileSettingActivity"></activity>
-        <activity android:name=".CustomerCareActivity" />
+        <activity android:name=".ProfileSettingActivity" />
+        <activity android:name=".CustomerCare.CustomerCareActivity" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -66,7 +64,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".HomePage.JobDetailActivity" />
-        <activity android:name=".UserMakeProfileActivity"></activity>
+        <activity android:name=".UserMakeProfileActivity" />
         <activity android:name=".ForgotPassword.PasswordChangeSucessfullyActivity" />
         <activity android:name=".ForgotPassword.ChangePasswordActivity" />
         <activity android:name=".ForgotPassword.ForgotPassword" />
@@ -74,9 +72,7 @@
         <activity android:name=".RegisterOtpActivity" />
         <activity
             android:name=".HomePage.HomePageActivity"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-
-        </activity>
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity android:name=".Login.LoginPasswordActivity" />
         <activity android:name=".Login.EnterOtpActivity" />
         <activity android:name=".RegistrationActivity" />

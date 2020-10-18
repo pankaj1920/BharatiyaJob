@@ -44,11 +44,6 @@ public class LoginActivity extends AppCompatActivity {
         loginEditext = findViewById(R.id.loginEditext);
         signBtn = findViewById(R.id.signBtn);
 
-
-
-        loginGoogleSign = findViewById(R.id.loginGoogleSign);
-        loginGoogleSign.setSize(SignInButton.SIZE_STANDARD);
-
         signBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,12 +58,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        loginGoogleSign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 
 

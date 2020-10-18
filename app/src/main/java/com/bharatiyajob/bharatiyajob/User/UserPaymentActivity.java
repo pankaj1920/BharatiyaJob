@@ -21,9 +21,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
+import com.bharatiyajob.bharatiyajob.Json.SubscriptionPackage.PostPaymentDetailResponse;
 import com.bharatiyajob.bharatiyajob.Json.SubscriptionPackage.SubscriptionResponse;
 import com.bharatiyajob.bharatiyajob.R;
+import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
@@ -39,9 +42,11 @@ public class UserPaymentActivity extends AppCompatActivity implements PaymentRes
     RecyclerView candidateRecycler;
     CandidatePaymentAdapter candidatePaymentAdapter;
     String SubscriptionFee = null;
+    String customerId, customerName, registrationType, packageAmount, transactionId, transactionStatus, subscriptionDays;
     Button buySubscription;
     ShimmerFrameLayout candiPaymentSimmerEffect;
     ScrollView candPaymentScrollView;
+    double totalAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +61,8 @@ public class UserPaymentActivity extends AppCompatActivity implements PaymentRes
 
         candiPaymentSimmerEffect.startShimmer();
 
+        getCandidateDetail();
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         candidateRecycler.setLayoutManager(layoutManager);
 
@@ -64,8 +71,14 @@ public class UserPaymentActivity extends AppCompatActivity implements PaymentRes
         buySubscription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(UserPaymentActivity.this, "Sub"+ SubscriptionFee, Toast.LENGTH_SHORT).show();
-                startPayment();
+                Toast.makeText(UserPaymentActivity.this, "Sub" + SubscriptionFee, Toast.LENGTH_SHORT).show();
+
+                if (SubscriptionFee!=null){
+                    startPayment();
+                }else {
+                    Toast.makeText(UserPaymentActivity.this, "Select Package", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -82,25 +95,27 @@ public class UserPaymentActivity extends AppCompatActivity implements PaymentRes
 
                 final SubscriptionResponse subscriptionResponse = response.body();
 
-                if (response.isSuccessful() && subscriptionResponse.getStatus().equals("1")){
+                if (response.isSuccessful() && subscriptionResponse.getStatus().equals("1")) {
                     candiPaymentSimmerEffect.stopShimmer();
                     candiPaymentSimmerEffect.setVisibility(View.GONE);
                     buySubscription.setVisibility(View.VISIBLE);
                     candPaymentScrollView.setVisibility(View.VISIBLE);
 
 
-                    candidatePaymentAdapter = new CandidatePaymentAdapter(subscriptionResponse.getData(),UserPaymentActivity.this);
+                    candidatePaymentAdapter = new CandidatePaymentAdapter(subscriptionResponse.getData(), UserPaymentActivity.this);
                     candidateRecycler.setAdapter(candidatePaymentAdapter);
 
                     candidatePaymentAdapter.setOnItemClickListner(new CandidatePaymentAdapter.OnItemClickListner() {
                         @Override
-                        public void onSubscriptionLayoutClicked(View itemview, int position, String price) {
+                        public void onSubscriptionLayoutClicked(View itemview, int position, String price, String days) {
+                            subscriptionDays = days;
                             SubscriptionFee = price;
-                            Toast.makeText(UserPaymentActivity.this, "This is Price "+ SubscriptionFee, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(UserPaymentActivity.this, "Price : "+ price + " Days : "+days, Toast.LENGTH_SHORT).show();
+
                         }
                     });
 
-                }else {
+                } else {
                     Toast.makeText(UserPaymentActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -113,11 +128,13 @@ public class UserPaymentActivity extends AppCompatActivity implements PaymentRes
     }
 
 
-
     private void startPayment() {
 
-        double totalAmount = Double.parseDouble(SubscriptionFee);
-        totalAmount = totalAmount*100;
+
+             totalAmount = Double.parseDouble(SubscriptionFee);
+            totalAmount = totalAmount * 100;
+
+
 
         //Initiate Checkout
         Checkout checkout = new Checkout();
@@ -148,7 +165,7 @@ public class UserPaymentActivity extends AppCompatActivity implements PaymentRes
             options.put("prefill", preFill);
 
             checkout.open(activity, options);
-        } catch(Exception e) {
+        } catch (Exception e) {
             Toast.makeText(activity, "Error in payment: " + e.getMessage(), Toast.LENGTH_SHORT)
                     .show();
             e.printStackTrace();
@@ -159,12 +176,9 @@ public class UserPaymentActivity extends AppCompatActivity implements PaymentRes
     @Override
     public void onPaymentSuccess(String razorpayPaymentID) {
         try {
+            transactionId = razorpayPaymentID;
             Toast.makeText(this, "Payment Successful: " + razorpayPaymentID, Toast.LENGTH_SHORT).show();
-            Bundle bundle = new Bundle();
-            bundle.putString("TransactionId",razorpayPaymentID);
-            Intent intent = new Intent(UserPaymentActivity.this,CPaymentSucessfulActivity.class);
-            intent.putExtras(bundle);
-            startActivity(intent);
+            postCanPaymentDetail();
 
 
         } catch (Exception e) {
@@ -181,5 +195,44 @@ public class UserPaymentActivity extends AppCompatActivity implements PaymentRes
         }
     }
 
+
+    private void postCanPaymentDetail() {
+
+        JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
+        Call<PostPaymentDetailResponse> call = jobApi.postPaymentDetails(customerId, customerName, registrationType, SubscriptionFee
+                , "transactionId", "success", subscriptionDays);
+
+        call.enqueue(new Callback<PostPaymentDetailResponse>() {
+            @Override
+            public void onResponse(Call<PostPaymentDetailResponse> call, Response<PostPaymentDetailResponse> response) {
+                PostPaymentDetailResponse paymentDetailResponse = response.body();
+               if (response.isSuccessful() && paymentDetailResponse.getStatus().equals("1")){
+                   Toast.makeText(UserPaymentActivity.this, paymentDetailResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                   Bundle bundle = new Bundle();
+                   bundle.putString("TransactionId", transactionId);
+                   Intent intent = new Intent(UserPaymentActivity.this, CPaymentSucessfulActivity.class);
+                   intent.putExtras(bundle);
+                   startActivity(intent);
+               }else{
+                   Toast.makeText(UserPaymentActivity.this, "Some Thing is worg", Toast.LENGTH_SHORT).show();
+               }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<PostPaymentDetailResponse> call, Throwable t) {
+                Toast.makeText(UserPaymentActivity.this, "On Failure Post Payment Detail", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private void getCandidateDetail() {
+        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+        customerId = loginOtpResponse.getId();
+        registrationType = loginOtpResponse.getReg_type();
+        customerName = loginOtpResponse.getName();
+    }
 
 }
