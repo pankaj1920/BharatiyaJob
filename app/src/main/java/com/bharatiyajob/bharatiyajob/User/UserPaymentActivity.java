@@ -200,7 +200,7 @@ public class UserPaymentActivity extends AppCompatActivity implements PaymentRes
 
         JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
         Call<PostPaymentDetailResponse> call = jobApi.postPaymentDetails(customerId, customerName, registrationType, SubscriptionFee
-                , "transactionId", "success", subscriptionDays);
+                , transactionId, "success", subscriptionDays);
 
         call.enqueue(new Callback<PostPaymentDetailResponse>() {
             @Override

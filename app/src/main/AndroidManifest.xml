@@ -37,7 +37,7 @@
         <activity android:name=".User.CreateJobAlert.CreateJobAlertActivity" />
         <activity android:name=".Company.CompanyVerifyOtpActivity" />
         <activity android:name=".Company.HomePage.CandidateDetail.CandidateDetailActivity" />
-        <activity android:name=".Company.HomePage.CompanyJobList.CompanyJobDetailActivity" />
+        <activity android:name=".Company.HomePage.CompanyHomeFragment.CompanyJobDetailActivity" />
         <activity android:name=".Company.HomePage.AccountSetting.CompanyPayment.CompanyPaymentFailed" />
         <activity android:name=".Company.HomePage.AccountSetting.CompanyPayment.CompanyPaymentSucessfull" />
         <activity android:name=".Company.HomePage.AccountSetting.CompanyPayment.CompanyPaymentActivity" />

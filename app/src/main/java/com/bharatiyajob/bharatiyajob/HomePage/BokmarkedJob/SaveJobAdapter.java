@@ -69,7 +69,7 @@ public class SaveJobAdapter extends RecyclerView.Adapter<SaveJobAdapter.SaveJob_
     }
 
 
-    class SaveJob_VH extends RecyclerView.ViewHolder{
+    static class SaveJob_VH extends RecyclerView.ViewHolder{
 
         TextView bookmarkTitle,bookmarkExperience,bookmarkLocation,bookmarkSkill;
         Button savedJobApplyBtn;

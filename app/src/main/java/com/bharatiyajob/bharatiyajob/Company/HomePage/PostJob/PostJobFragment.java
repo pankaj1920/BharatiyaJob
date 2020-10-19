@@ -10,7 +10,9 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
@@ -26,6 +28,8 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 
+import com.agrawalsuneet.dotsloader.loaders.CircularDotsLoader;
+import com.bharatiyajob.bharatiyajob.Company.HomePage.CompanyHomePageActivity;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.CompanyJobPosted.CompanyJobPostedResponse;
@@ -62,6 +66,8 @@ public class PostJobFragment extends Fragment {
     Bitmap imagebitmap;
     String filepath,companyId;
     Button submitPostBtn;
+    CircularDotsLoader jobPostProgress;
+    ConstraintLayout cJobPostLayout,comPostLayout;
 
     public PostJobFragment() {
         // Required empty public constructor
@@ -100,6 +106,9 @@ public class PostJobFragment extends Fragment {
         JPVacancy = v.findViewById(R.id.JPVacancy);
         submitPostBtn = v.findViewById(R.id.submitPostBtn);
         JPLanguageKnown = v.findViewById(R.id.JPLanguageKnown);
+        jobPostProgress = v.findViewById(R.id.jobPostProgress);
+        cJobPostLayout = v.findViewById(R.id.cJobPostLayout);
+        comPostLayout = v.findViewById(R.id.comPostLayout);
 
         getCompanyDetail();
 
@@ -110,8 +119,7 @@ public class PostJobFragment extends Fragment {
         }
         submitPostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View v){
                 SavecaData();
             }
         });
@@ -173,6 +181,20 @@ public class PostJobFragment extends Fragment {
     }
 
     public void SavecaData() {
+
+        cJobPostLayout.setVisibility(View.INVISIBLE);
+        comPostLayout.setAlpha(0.5f);
+        jobPostProgress.setVisibility(View.VISIBLE);
+
+        CircularDotsLoader loader = new CircularDotsLoader(getActivity());
+        loader.setDefaultColor(ContextCompat.getColor(getActivity(),R.color.blue_delfault));
+        loader.setSelectedColor(ContextCompat.getColor(getActivity(),R.color.blue_selected));
+        loader.setBigCircleRadius(80);
+        loader.setRadius(24);
+        loader.setAnimDur(300);
+        loader.setShowRunningShadow(true);
+        loader.setFirstShadowColor(ContextCompat.getColor(getActivity(), R.color.blue_selected));
+        loader.setSecondShadowColor(ContextCompat.getColor(getActivity(), R.color.blue_delfault));
 
         if (JPCompanyName.getText().toString().isEmpty()
         ) {
@@ -326,6 +348,9 @@ public class PostJobFragment extends Fragment {
                 CompanyJobPostedResponse getCompanyJobPostedResponse=response.body();
                 if (response.isSuccessful() ){
                     Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), CompanyHomePageActivity.class);
+                    startActivity(intent);
+
                 }else{
                     Toast.makeText(getContext(), "failed", Toast.LENGTH_SHORT).show();
                 }

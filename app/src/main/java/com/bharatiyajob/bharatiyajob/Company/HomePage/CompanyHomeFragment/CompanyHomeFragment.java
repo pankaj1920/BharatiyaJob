@@ -1,4 +1,4 @@
-package com.bharatiyajob.bharatiyajob.Company.HomePage.CompanyJobList;
+package com.bharatiyajob.bharatiyajob.Company.HomePage.CompanyHomeFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -66,7 +66,7 @@ public class CompanyHomeFragment extends Fragment {
     public void GetJobPostedList(){
         JobApi jobApi= BaseClient.getBaseClient().create(JobApi.class);
 
-        Toast.makeText(getActivity(), companyId, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Company Id : "+companyId, Toast.LENGTH_SHORT).show();
 
         Call<CompanyJobListResponse> call=jobApi.getPostedJob(companyId);
         call.enqueue(new Callback<CompanyJobListResponse>() {

@@ -1,4 +1,4 @@
-package com.bharatiyajob.bharatiyajob.Company.HomePage.CompanyJobList;
+package com.bharatiyajob.bharatiyajob.Company.HomePage.CompanyHomeFragment;
 
 import android.content.Context;
 import android.util.Log;
@@ -72,7 +72,7 @@ public class CompanyHomePageRecyleAdapter extends RecyclerView.Adapter<CompanyHo
         return appliedjoblist.size();
     }
 
-    public class Vholder extends RecyclerView.ViewHolder {
+    public static class Vholder extends RecyclerView.ViewHolder {
         TextView jobTitle,jobExperience,jobLocation,jobSalary,jobVacanncy,jobSkill,txt_date;
         ImageView bookmarkedStar;
         Button viewJob;

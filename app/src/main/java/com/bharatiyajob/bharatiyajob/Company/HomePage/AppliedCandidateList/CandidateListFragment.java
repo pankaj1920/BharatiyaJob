@@ -35,7 +35,7 @@ public class CandidateListFragment extends Fragment {
 
     RecyclerView candidateListRecyclerView;
     CandidateListAdapter candidateListAdapter;
-    String boomarkCanId,companyId;
+    String boomarkCanId,companyId,name;
     ImageView bookmarkCanStar;
     ShimmerFrameLayout canListSimmerEffect;
     ConstraintLayout canListLayout;
@@ -80,7 +80,7 @@ public class CandidateListFragment extends Fragment {
         JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
         Call<CandidateAppliedResponse> call = jobApi.getCandidateList(companyId);
 
-        Toast.makeText(getActivity(), "Comapan " + companyId, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Comapany ID : " + companyId, Toast.LENGTH_SHORT).show();
 
         call.enqueue(new Callback<CandidateAppliedResponse>() {
             @Override
@@ -127,7 +127,7 @@ public class CandidateListFragment extends Fragment {
 
             @Override
             public void onFailure(Call<CandidateAppliedResponse> call, Throwable t) {
-                Toast.makeText(getActivity(), "on Failure "+ t.getMessage(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "on Failure "+ t.getMessage(), Toast.LENGTH_SHORT).show();
                 canListSimmerEffect.stopShimmer();
                 canListSimmerEffect.setVisibility(View.GONE);
                 candidateListRecyclerView.setVisibility(View.GONE);

@@ -45,7 +45,7 @@ public class CandidatePaymentAdapter extends RecyclerView.Adapter<CandidatePayme
     @Override
     public Subscription_VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.payment_list_item,parent,false);
-        return new CandidatePaymentAdapter.Subscription_VH(view);
+        return new Subscription_VH(view);
     }
 
     @Override
@@ -101,7 +101,7 @@ public class CandidatePaymentAdapter extends RecyclerView.Adapter<CandidatePayme
 
 
 
-    class Subscription_VH extends RecyclerView.ViewHolder{
+    static class Subscription_VH extends RecyclerView.ViewHolder{
 
         TextView amount;
         RadioButton subscriptionRadioBtn;

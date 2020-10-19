@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/companyHomeFragment"
-        android:name="com.bharatiyajob.bharatiyajob.Company.HomePage.CompanyJobList.CompanyHomeFragment"
+        android:name="com.bharatiyajob.bharatiyajob.Company.HomePage.CompanyHomeFragment.CompanyHomeFragment"
         android:label="fragment_company_home"
         tools:layout="@layout/fragment_company_home" >
         <action

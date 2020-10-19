@@ -34,7 +34,7 @@ public class CandidateListAdapter extends RecyclerView.Adapter<CandidateListAdap
     @Override
     public Candidate_VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.candidate_list_item,parent,false);
-        return new CandidateListAdapter.Candidate_VH(view);
+        return new Candidate_VH(view);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class CandidateListAdapter extends RecyclerView.Adapter<CandidateListAdap
         return candidateAppliedList.size();
     }
 
-    class Candidate_VH extends RecyclerView.ViewHolder{
+    static class Candidate_VH extends RecyclerView.ViewHolder{
 
         ImageView canPic,bookmarkCanStar;
         TextView CanName,CanEmail,canJobExperience,CanjobLocation,CanJobSkill;

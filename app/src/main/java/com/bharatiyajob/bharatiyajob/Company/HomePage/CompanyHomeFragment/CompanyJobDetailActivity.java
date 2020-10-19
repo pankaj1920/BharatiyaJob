@@ -1,4 +1,4 @@
-package com.bharatiyajob.bharatiyajob.Company.HomePage.CompanyJobList;
+package com.bharatiyajob.bharatiyajob.Company.HomePage.CompanyHomeFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 

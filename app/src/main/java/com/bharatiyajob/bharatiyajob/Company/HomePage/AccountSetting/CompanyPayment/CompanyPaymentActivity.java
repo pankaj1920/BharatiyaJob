@@ -13,9 +13,12 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
+import com.bharatiyajob.bharatiyajob.Json.SubscriptionPackage.PostPaymentDetailResponse;
 import com.bharatiyajob.bharatiyajob.Json.SubscriptionPackage.SubscriptionResponse;
 import com.bharatiyajob.bharatiyajob.R;
+import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 import com.bharatiyajob.bharatiyajob.User.CPaymentSucessfulActivity;
 import com.bharatiyajob.bharatiyajob.User.CandidatePaymentAdapter;
 import com.bharatiyajob.bharatiyajob.User.UserPaymentActivity;
@@ -37,6 +40,7 @@ public class CompanyPaymentActivity extends AppCompatActivity implements Payment
     Button comBuySubscription;
     ShimmerFrameLayout companyPaymentSimmerEffect;
     ScrollView comPaymentScrollView;
+    String customerId, customerName, registrationType, packageAmount, transactionId, transactionStatus, subscriptionDays;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +99,7 @@ public class CompanyPaymentActivity extends AppCompatActivity implements Payment
                         @Override
                         public void onSubscriptionLayoutClicked(View itemview, int position, String price, String days) {
                                 SubscriptionFee = price;
+                            subscriptionDays =days;
                         }
                     });
 
@@ -157,6 +162,9 @@ public class CompanyPaymentActivity extends AppCompatActivity implements Payment
     @Override
     public void onPaymentSuccess(String razorpayPaymentID) {
         try {
+
+            transactionId = razorpayPaymentID;
+
             Toast.makeText(this, "Payment Successful: " + razorpayPaymentID, Toast.LENGTH_SHORT).show();
             Bundle bundle = new Bundle();
             bundle.putString("TransactionId",razorpayPaymentID);
@@ -179,5 +187,44 @@ public class CompanyPaymentActivity extends AppCompatActivity implements Payment
         }
     }
 
+
+    private void postCanPaymentDetail() {
+
+        JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
+        Call<PostPaymentDetailResponse> call = jobApi.postPaymentDetails(customerId, customerName, registrationType, SubscriptionFee
+                , transactionId, "success", subscriptionDays);
+
+        call.enqueue(new Callback<PostPaymentDetailResponse>() {
+            @Override
+            public void onResponse(Call<PostPaymentDetailResponse> call, Response<PostPaymentDetailResponse> response) {
+                PostPaymentDetailResponse paymentDetailResponse = response.body();
+                if (response.isSuccessful() && paymentDetailResponse.getStatus().equals("1")){
+                    Toast.makeText(CompanyPaymentActivity.this, paymentDetailResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("TransactionId", transactionId);
+                    Intent intent = new Intent(CompanyPaymentActivity.this, CPaymentSucessfulActivity.class);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(CompanyPaymentActivity.this, "Some Thing is worg", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<PostPaymentDetailResponse> call, Throwable t) {
+                Toast.makeText(CompanyPaymentActivity.this, "On Failure Post Payment Detail", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private void getCandidateDetail() {
+        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+        customerId = loginOtpResponse.getId();
+        registrationType = loginOtpResponse.getReg_type();
+        customerName = loginOtpResponse.getName();
+    }
 
 }

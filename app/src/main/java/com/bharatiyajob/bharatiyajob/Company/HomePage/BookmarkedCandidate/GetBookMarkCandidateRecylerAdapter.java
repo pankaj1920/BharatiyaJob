@@ -78,7 +78,7 @@ public class GetBookMarkCandidateRecylerAdapter extends RecyclerView.Adapter<Get
 
 
 
-    public class Vholder  extends RecyclerView.ViewHolder{
+    public static class Vholder  extends RecyclerView.ViewHolder{
         TextView BCanName;
         ImageView BCanStar;
         Button BCanViewJob;
