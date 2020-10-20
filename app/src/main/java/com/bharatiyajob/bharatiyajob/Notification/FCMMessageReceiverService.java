@@ -2,11 +2,13 @@ package com.bharatiyajob.bharatiyajob.Notification;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 
 import com.bharatiyajob.bharatiyajob.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -17,6 +19,7 @@ import static com.bharatiyajob.bharatiyajob.Login.EnterOtpActivity.Channel_id;
 public class FCMMessageReceiverService extends FirebaseMessagingService {
 
     String TAG="MyTag";
+
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
@@ -26,10 +29,11 @@ public class FCMMessageReceiverService extends FirebaseMessagingService {
             String body=remoteMessage.getNotification().getBody();
 
             Notification notification=new NotificationCompat.Builder(this,Channel_id)
-                    .setSmallIcon(R.drawable.ic_launcher_background)
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setLargeIcon(BitmapFactory.decodeResource(this.getResources(),
+                            R.mipmap.ic_launcher))
                     .setContentTitle(Title)
                     .setContentText(body)
-                    .setColor(Color.BLUE)
                     .build();
 
             NotificationManager notificationManager=(NotificationManager)getSystemService(NOTIFICATION_SERVICE);

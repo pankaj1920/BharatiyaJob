@@ -22,6 +22,7 @@ import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.BookmarkCandidate.BookmarkCandidateResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.CandidateApplied.CandidateAppliedResponse;
+import com.bharatiyajob.bharatiyajob.Json.Company.remove_candidate.RemoveCandidateResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.R;
 import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
@@ -35,7 +36,7 @@ public class CandidateListFragment extends Fragment {
 
     RecyclerView candidateListRecyclerView;
     CandidateListAdapter candidateListAdapter;
-    String boomarkCanId,companyId,name;
+    String boomarkCanId, companyId, name;
     ImageView bookmarkCanStar;
     ShimmerFrameLayout canListSimmerEffect;
     ConstraintLayout canListLayout;
@@ -98,7 +99,7 @@ public class CandidateListFragment extends Fragment {
 
                     candidateListAdapter.setOnItemClickListner(new CandidateListAdapter.OnItemClickListner() {
                         @Override
-                        public void onCanBookmarkClicked(View view, int position ) {
+                        public void onCanBookmarkClicked(View view, int position) {
                             bookmarkCanStar = view.findViewById(R.id.bookmarkCanStar);
 
                             boomarkCanId = appliedResponse.getData().get(position).getCandidate_id();
@@ -109,11 +110,18 @@ public class CandidateListFragment extends Fragment {
                         public void onCanViewDetailCilcked(View view, int position) {
                             String canDetId = appliedResponse.getData().get(position).getCandidate_id();
                             Bundle bundle = new Bundle();
-                            bundle.putString("canDetId",canDetId);
+                            bundle.putString("canDetId", canDetId);
                             Intent intent = new Intent(getActivity(), CandidateDetailActivity.class);
                             intent.putExtras(bundle);
                             startActivity(intent);
                         }
+
+                        @Override
+                        public void onCanRemoveCilcked(View view, String canId, String jobId) {
+                            removeCandidate(canId, jobId);
+                        }
+
+
                     });
 
                 } else {
@@ -138,26 +146,49 @@ public class CandidateListFragment extends Fragment {
         });
     }
 
-    private void bookMarkCandidate() {
-        Toast.makeText(getActivity(), "bookmar Can id "+boomarkCanId, Toast.LENGTH_SHORT).show();
-        
+    private void removeCandidate(String canId, String jobId) {
         JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
-        Call<BookmarkCandidateResponse> call = jobApi.bookmarkCandidate(companyId,boomarkCanId);
+        Call<RemoveCandidateResponse> call = jobApi.removeCandidate(canId, jobId);
+        call.enqueue(new Callback<RemoveCandidateResponse>() {
+            @Override
+            public void onResponse(Call<RemoveCandidateResponse> call, Response<RemoveCandidateResponse> response) {
+                RemoveCandidateResponse removeCandidateResponse = response.body();
+                if (response.isSuccessful() && removeCandidateResponse.getStatus().equals("1")) {
+                    Toast.makeText(getActivity(), removeCandidateResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    getCandidateList();
+                } else {
+                    Toast.makeText(getActivity(), "Try Again Later", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RemoveCandidateResponse> call, Throwable t) {
+                Toast.makeText(getActivity(), "On Failure remove Candidate", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+    private void bookMarkCandidate() {
+        Toast.makeText(getActivity(), "bookmar Can id " + boomarkCanId, Toast.LENGTH_SHORT).show();
+
+        JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
+        Call<BookmarkCandidateResponse> call = jobApi.bookmarkCandidate(companyId, boomarkCanId);
         call.enqueue(new Callback<BookmarkCandidateResponse>() {
             @Override
             public void onResponse(Call<BookmarkCandidateResponse> call, Response<BookmarkCandidateResponse> response) {
                 BookmarkCandidateResponse candidateResponse = response.body();
-                if (response.isSuccessful() && candidateResponse.getStatus().equals("1")){
+                if (response.isSuccessful() && candidateResponse.getStatus().equals("1")) {
                     Toast.makeText(getActivity(), "Bookmark added Sucessfuly", Toast.LENGTH_SHORT).show();
-                    bookmarkCanStar.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.ic_fill));
-                }else {
+                    bookmarkCanStar.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.ic_fill));
+                } else {
                     Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<BookmarkCandidateResponse> call, Throwable t) {
-                Toast.makeText(getActivity(), "On Failure" + t.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "On Failure" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

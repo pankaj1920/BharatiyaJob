@@ -4,6 +4,7 @@ import com.bharatiyajob.bharatiyajob.Json.Candidate.ApplyJob.ApplyJobResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.CreateJobAlert.CreateJobAlertResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.ForgetPassword.ChangePasswordResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.GetUserDetails.GetUserDetailResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.JobAlertList.GetJobAlertDataResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.JobDetails.JobDetailsResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginEntrNumResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
@@ -25,6 +26,8 @@ import com.bharatiyajob.bharatiyajob.Json.Company.GetCandidateDetails.GetCandida
 import com.bharatiyajob.bharatiyajob.Json.Company.GetCompanyDetails.GetCompanyDetailsResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.RemoveBookmarkedCan.RemoveBookMarkedCandidateResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.VerifyOtpResponse.ComVerifyOtpResponse;
+import com.bharatiyajob.bharatiyajob.Json.Company.company_job_detail.CompanyJobDetailResponse;
+import com.bharatiyajob.bharatiyajob.Json.Company.remove_candidate.RemoveCandidateResponse;
 import com.bharatiyajob.bharatiyajob.Json.CustomerCare.CustomerCareResponse;
 import com.bharatiyajob.bharatiyajob.Json.SubscriptionPackage.PostPaymentDetailResponse;
 import com.bharatiyajob.bharatiyajob.Json.SubscriptionPackage.SubscriptionResponse;
@@ -144,6 +147,12 @@ public interface JobApi {
     //Get User Details
     @GET("get_can_details.php")
     Call<GetUserDetailResponse> getUserDetails(
+            @Query("can_id") String canId
+    );
+
+    //Get User Details
+    @GET("get_user_job_alert_list.php")
+    Call<GetJobAlertDataResponse> getJobAlert(
             @Query("can_id") String canId
     );
 
@@ -313,14 +322,6 @@ public interface JobApi {
 
     );
 
-//    @FormUrlEncoded
-//    @POST("Login.php")
-//    Call<GetNotification>Notification(
-//            @Field("mobile") String mobile,
-//            @Field("otp") String otp,
-//            @Field("token") String token
-//    );
-
     @FormUrlEncoded
     @POST("save_post_job_details.php")
     Call<CompanyJobPostedResponse>PostJob(
@@ -371,9 +372,40 @@ public interface JobApi {
             @Field("industry") String industry
     );
 
-//    Customer Care
-//
+//Update CompanyName
+    @FormUrlEncoded
+    @POST("update_company_name.php")
+    Call<UpdateCandidateProfileResponse>upDateComName(
+            @Field("com_id") String can_id,
+            @Field("cname") String name
+    );
 
+
+    //Update Address
+    @FormUrlEncoded
+    @POST("update_company_address.php")
+    Call<UpdateCandidateProfileResponse>upDateComAddress(
+            @Field("com_id") String can_id,
+            @Field("address") String adress,
+            @Field("state") String state,
+            @Field("city") String city
+    );
+
+
+    //Update Address
+    @FormUrlEncoded
+    @POST("remove_candidate.php")
+    Call<RemoveCandidateResponse>removeCandidate(
+            @Field("candidate_id") String candidateId,
+            @Field("job_id") String jobId
+    );
+
+    //Get Company Details
+    @GET("company_job_description.php")
+    Call<CompanyJobDetailResponse> getCompanyJobDetails(
+            @Query("job_id") String jobId,
+            @Query("can_id") String companyId
+    );
 
 
 }

@@ -18,6 +18,7 @@ import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.GetBookmarkedCanList.GetBookMarkedCandidateResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.RemoveBookmarkedCan.RemoveBookMarkedCandidateResponse;
+import com.bharatiyajob.bharatiyajob.Json.Company.remove_candidate.RemoveCandidateResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.R;
 import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
@@ -44,6 +45,8 @@ public class BookmarkCandidateFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getCompanyDetail();
+
     }
 
     @Override
@@ -56,8 +59,6 @@ public class BookmarkCandidateFragment extends Fragment {
         BcanListLayout=view.findViewById(R.id.BcanListLayout);
 
         BcanSimmerEffect.startShimmer();
-
-        getCompanyDetail();
 
         recycler_bookmark_fragment.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
@@ -99,6 +100,11 @@ public class BookmarkCandidateFragment extends Fragment {
                             intent.putExtras(bundle);
                             startActivity(intent);
                         }
+
+                        @Override
+                        public void onBCanRemoveCilcked(View view, String canId, String jobId) {
+                            removeCandidate(canId, jobId);
+                        }
                     });
                 }else{
                     Toast.makeText(getContext(), "failed", Toast.LENGTH_SHORT).show();
@@ -121,6 +127,7 @@ public class BookmarkCandidateFragment extends Fragment {
 
     }
 
+//    Removing the bookmark
     public void removeBookMarkCandidate(){
         JobApi jobApi= BaseClient.getBaseClient().create(JobApi.class);
 
@@ -141,6 +148,30 @@ public class BookmarkCandidateFragment extends Fragment {
             public void onFailure(Call<RemoveBookMarkedCandidateResponse> call, Throwable t) {
                 Toast.makeText(getContext(), "Onfailure", Toast.LENGTH_SHORT).show();
 
+            }
+        });
+    }
+
+
+//    Removing Candidate
+    private void removeCandidate(String canId, String jobId) {
+        JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
+        Call<RemoveCandidateResponse> call = jobApi.removeCandidate(canId, jobId);
+        call.enqueue(new Callback<RemoveCandidateResponse>() {
+            @Override
+            public void onResponse(Call<RemoveCandidateResponse> call, Response<RemoveCandidateResponse> response) {
+                RemoveCandidateResponse removeCandidateResponse = response.body();
+                if (response.isSuccessful() && removeCandidateResponse.getStatus().equals("1")) {
+                    Toast.makeText(getActivity(), removeCandidateResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    getBookMaredCandidate();
+                } else {
+                    Toast.makeText(getActivity(), "Try Again Later", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RemoveCandidateResponse> call, Throwable t) {
+                Toast.makeText(getActivity(), "On Failure remove Candidate", Toast.LENGTH_SHORT).show();
             }
         });
     }

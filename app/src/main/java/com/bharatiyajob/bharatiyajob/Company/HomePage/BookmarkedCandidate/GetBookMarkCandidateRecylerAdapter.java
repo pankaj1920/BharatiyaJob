@@ -28,7 +28,7 @@ public class GetBookMarkCandidateRecylerAdapter extends RecyclerView.Adapter<Get
 
     List<GetBookMarkedCandidate> bokkmarklist;
     Context context;
-    String canId;
+    String canId,jobId;
     OnUnBcItemClickListner onUnBcItemClickListner;
 
     public void setOnUnBcItemClickListner(OnUnBcItemClickListner onUnBcItemClickListner){
@@ -54,6 +54,7 @@ public class GetBookMarkCandidateRecylerAdapter extends RecyclerView.Adapter<Get
 
         GetBookMarkedCandidate data = bokkmarklist.get(position);
         canId = data.getCandidate_id();
+
         holder.BCanName.setText(bokkmarklist.get(position).getCandidate_name());
 
         holder.BCanStar.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +70,13 @@ public class GetBookMarkCandidateRecylerAdapter extends RecyclerView.Adapter<Get
                 onUnBcItemClickListner.onBookCanViewDetailCilcked(holder.itemView,position);
             }
         });
+
+        holder.BCanRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onUnBcItemClickListner.onBCanRemoveCilcked(holder.itemView,canId,"1");
+            }
+        });
     }
 
     @Override
@@ -81,17 +89,19 @@ public class GetBookMarkCandidateRecylerAdapter extends RecyclerView.Adapter<Get
     public static class Vholder  extends RecyclerView.ViewHolder{
         TextView BCanName;
         ImageView BCanStar;
-        Button BCanViewJob;
+        Button BCanViewJob,BCanRemove;
         public Vholder(@NonNull View itemView) {
             super(itemView);
             BCanName=itemView.findViewById(R.id.BCanName);
             BCanStar=itemView.findViewById(R.id.BCanStar);
             BCanViewJob=itemView.findViewById(R.id.BCanViewJob);
+            BCanRemove=itemView.findViewById(R.id.BCanRemove);
         }
     }
 
     public interface OnUnBcItemClickListner{
         void onUnBookmarkCanClicked(View view,int position);
         void onBookCanViewDetailCilcked(View view,int position);
+        void onBCanRemoveCilcked(View view,String canId,String jobId);
     }
 }

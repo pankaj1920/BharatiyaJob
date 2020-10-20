@@ -1,4 +1,4 @@
-package com.bharatiyajob.bharatiyajob.User.CandidateNotification;
+package com.bharatiyajob.bharatiyajob.User.CandidateNotification.notification_list;
 
 import android.os.Bundle;
 

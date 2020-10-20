@@ -2,10 +2,15 @@ package com.bharatiyajob.bharatiyajob.Company.HomePage.AccountSetting.CompanyPro
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bharatiyajob.bharatiyajob.Company.HomePage.update_company_details.UpdateCompanyAddress;
+import com.bharatiyajob.bharatiyajob.Company.HomePage.update_company_details.UpdateCompanyName;
+import com.bharatiyajob.bharatiyajob.Company.HomePage.update_company_details.UpdateCompanyPassword;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.GetCompanyDetails.GetCompanyDetailsResponse;
@@ -69,5 +74,21 @@ public class CompanyProfileSetting extends AppCompatActivity {
         LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
 
         companyId = loginOtpResponse.getId();
+    }
+
+    public void updateCompanyName(View view) {
+        Intent intent = new Intent(CompanyProfileSetting.this, UpdateCompanyName.class);
+        startActivity(intent);
+
+    }
+
+    public void updateCompanyPassword(View view) {
+        Intent intent = new Intent(CompanyProfileSetting.this, UpdateCompanyPassword.class);
+        startActivity(intent);
+    }
+
+    public void updateCompanyAddress(View view) {
+        Intent intent = new Intent(CompanyProfileSetting.this, UpdateCompanyAddress.class);
+        startActivity(intent);
     }
 }

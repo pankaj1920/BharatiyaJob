@@ -31,7 +31,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".User.UpdateDetails.UploadResumeActivity"></activity>
+        <activity android:name=".Company.HomePage.update_company_details.UpdateCompanyPassword"></activity>
+        <activity android:name=".Company.HomePage.update_company_details.UpdateCompanyAddress" />
+        <activity android:name=".Company.HomePage.update_company_details.UpdateCompanyLogo" />
+        <activity android:name=".Company.HomePage.update_company_details.UpdateCompanyName" />
+        <activity android:name=".User.CandidateNotification.recommended_job.RecommendedJobActivity" />
+        <activity android:name=".User.UpdateDetails.UploadResumeActivity" />
         <activity android:name=".CustomerCare.FeedbackSentActivity" />
         <activity android:name=".RegisterAsActivity" />
         <activity android:name=".User.CreateJobAlert.CreateJobAlertActivity" />

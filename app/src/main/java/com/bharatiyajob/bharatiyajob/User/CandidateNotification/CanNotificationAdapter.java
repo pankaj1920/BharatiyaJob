@@ -5,7 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.google.android.material.tabs.TabLayout;
+import com.bharatiyajob.bharatiyajob.User.CandidateNotification.alert_list.CandidateAlertListFragment;
+import com.bharatiyajob.bharatiyajob.User.CandidateNotification.notification_list.CandidateNotificationFragment;
 
 public class CanNotificationAdapter extends FragmentStatePagerAdapter {
 

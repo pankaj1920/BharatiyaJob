@@ -19,6 +19,7 @@ import java.util.List;
 public class CandidateListAdapter extends RecyclerView.Adapter<CandidateListAdapter.Candidate_VH> {
 
     List<CandidateAppliedData>candidateAppliedList;
+    String job_id,canId;
 
     private OnItemClickListner onItemClickListner;
 
@@ -40,6 +41,8 @@ public class CandidateListAdapter extends RecyclerView.Adapter<CandidateListAdap
     @Override
     public void onBindViewHolder(@NonNull final Candidate_VH holder, final int position) {
         CandidateAppliedData data = candidateAppliedList.get(position);
+        job_id =data.getJob_id();
+        canId =data.getCandidate_id();
         holder.CanName.setText(data.getName());
         holder.CanJobSkill.setText(data.getSkill());
         holder.canJobExperience.setText(data.getWork_experience());
@@ -60,6 +63,13 @@ public class CandidateListAdapter extends RecyclerView.Adapter<CandidateListAdap
             }
         });
 
+        holder.CanRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickListner.onCanRemoveCilcked(holder.itemView,canId,job_id);
+            }
+        });
+
     }
 
     @Override
@@ -71,7 +81,7 @@ public class CandidateListAdapter extends RecyclerView.Adapter<CandidateListAdap
 
         ImageView canPic,bookmarkCanStar;
         TextView CanName,CanEmail,canJobExperience,CanjobLocation,CanJobSkill;
-        Button CanViewDetail;
+        Button CanViewDetail,CanRemove;
 
         public Candidate_VH(@NonNull View itemView) {
             super(itemView);
@@ -82,6 +92,7 @@ public class CandidateListAdapter extends RecyclerView.Adapter<CandidateListAdap
             CanjobLocation = itemView.findViewById(R.id.CanjobLocation);
             CanJobSkill = itemView.findViewById(R.id.CanJobSkill);
             CanViewDetail = itemView.findViewById(R.id.CanViewDetail);
+            CanRemove = itemView.findViewById(R.id.CanRemove);
             CanEmail = itemView.findViewById(R.id.CanEmail);
         }
     }
@@ -89,5 +100,6 @@ public class CandidateListAdapter extends RecyclerView.Adapter<CandidateListAdap
     public interface OnItemClickListner{
         void onCanBookmarkClicked(View view,int position);
         void onCanViewDetailCilcked(View view,int position);
+        void onCanRemoveCilcked(View view,String canId,String jobId);
     }
 }

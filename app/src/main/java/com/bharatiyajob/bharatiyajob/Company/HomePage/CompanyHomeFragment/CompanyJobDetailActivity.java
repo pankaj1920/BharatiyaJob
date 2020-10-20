@@ -8,10 +8,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bharatiyajob.bharatiyajob.HomePage.JobDetailActivity;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
-import com.bharatiyajob.bharatiyajob.Json.Candidate.JobDetails.JobDetailsResponse;
+
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.EnableDisableJobPost.EnableDisableJobResponse;
+import com.bharatiyajob.bharatiyajob.Json.Company.company_job_detail.CompanyJobDetailResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.R;
 import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
@@ -80,39 +82,49 @@ public class CompanyJobDetailActivity extends AppCompatActivity {
     private void getJobDetails() {
 
         JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
-        Call<JobDetailsResponse> call = jobApi.getJobDetail(jobId,"1");
-        call.enqueue(new Callback<JobDetailsResponse>() {
+        Call<CompanyJobDetailResponse> call = jobApi.getCompanyJobDetails(jobId,"1");
+        call.enqueue(new Callback<CompanyJobDetailResponse>() {
             @Override
-            public void onResponse(Call<JobDetailsResponse> call, Response<JobDetailsResponse> response) {
+            public void onResponse(Call<CompanyJobDetailResponse> call, Response<CompanyJobDetailResponse> response) {
 
-                JobDetailsResponse jobDetailsResponse = response.body();
-                if (response.isSuccessful() && jobDetailsResponse.getStatus().equals("1")){
+                CompanyJobDetailResponse companyJobDetailResponse = response.body();
+                if (response.isSuccessful() && companyJobDetailResponse.getStatus().equals("1")){
 
-                    companyJobTitle.setText(jobDetailsResponse.getData().getJob_title());
-                    companyName.setText(jobDetailsResponse.getData().getCompany_name());
-                    compayJobLocation.setText(jobDetailsResponse.getData().getLocation());
+                    if (companyJobDetailResponse.getData().getDisabled().equals("false")){
+                        EnableJob.setVisibility(View.GONE);
+                        DisableJob.setVisibility(View.VISIBLE);
+                    }else if(companyJobDetailResponse.getData().getDisabled().equals("true")) {
+                        EnableJob.setVisibility(View.VISIBLE);
+                        DisableJob.setVisibility(View.GONE);
+                    }else {
+                        Toast.makeText(CompanyJobDetailActivity.this, "Already applied status is something else", Toast.LENGTH_SHORT).show();
+                    }
+
+                    companyJobTitle.setText(companyJobDetailResponse.getData().getJob_title());
+                    companyName.setText(companyJobDetailResponse.getData().getCompany_name());
+                    compayJobLocation.setText(companyJobDetailResponse.getData().getLocation());
 
 
-                            dateTime = jobDetailsResponse.getData().getJob_reg_date().split((" "));
+                            dateTime = companyJobDetailResponse.getData().getJob_reg_date().split((" "));
                             date = dateTime[0];
                             time = dateTime[1];
                     comJobPostedDate.setText(date);
 
-                    comJobExperience.setText(jobDetailsResponse.getData().getExperience());
-                    comJobSalary.setText(jobDetailsResponse.getData().getSalary());
-                    comJobType.setText(jobDetailsResponse.getData().getEmp_type());
-                    comDescription.setText(jobDetailsResponse.getData().getDescription());
-                    comFunctionalArea.setText(jobDetailsResponse.getData().getFunctional_area());
-                    comIndustry.setText(jobDetailsResponse.getData().getIndustry_type());
-                    companyEmail.setText(jobDetailsResponse.getData().getEmail());
-                    comCompanyNumber.setText(jobDetailsResponse.getData().getMobile());
+                    comJobExperience.setText(companyJobDetailResponse.getData().getExperience());
+                    comJobSalary.setText(companyJobDetailResponse.getData().getSalary());
+                    comJobType.setText(companyJobDetailResponse.getData().getEmp_type());
+                    comDescription.setText(companyJobDetailResponse.getData().getDescription());
+                    comFunctionalArea.setText(companyJobDetailResponse.getData().getFunctional_area());
+                    comIndustry.setText(companyJobDetailResponse.getData().getIndustry_type());
+                    companyEmail.setText(companyJobDetailResponse.getData().getEmail());
+                    comCompanyNumber.setText(companyJobDetailResponse.getData().getMobile());
                 }else {
                     Toast.makeText(CompanyJobDetailActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<JobDetailsResponse> call, Throwable t) {
+            public void onFailure(Call<CompanyJobDetailResponse> call, Throwable t) {
                 Toast.makeText(CompanyJobDetailActivity.this, "On Faiure"+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
