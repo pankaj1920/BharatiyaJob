@@ -10,7 +10,7 @@ import com.bharatiyajob.bharatiyajob.User.CandidateNotification.notification_lis
 
 public class CanNotificationAdapter extends FragmentStatePagerAdapter {
 
-    int TabCount;
+    final int TabCount;
 
     public CanNotificationAdapter(@NonNull FragmentManager fm, int tabcount) {
         super(fm, tabcount);
@@ -23,12 +23,10 @@ public class CanNotificationAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case (0):
-                CandidateNotificationFragment canNotificationFragment = new CandidateNotificationFragment();
-                return canNotificationFragment;
+                return new CandidateNotificationFragment();
 
             case (1):
-                CandidateAlertListFragment candidateAlertListFragment = new CandidateAlertListFragment();
-                return candidateAlertListFragment;
+                return new CandidateAlertListFragment();
 
             default:
                 return null;

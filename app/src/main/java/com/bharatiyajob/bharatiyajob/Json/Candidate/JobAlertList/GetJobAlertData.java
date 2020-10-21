@@ -9,8 +9,9 @@ public class GetJobAlertData {
     private String functional_area;
     private String industry;
     private String datetime;
+    private String alert_id;
 
-    public GetJobAlertData(String alert_name, String location, String experience, String annual_salary, String functional_area, String industry, String datetime) {
+    public GetJobAlertData(String alert_name, String location, String experience, String annual_salary, String functional_area, String industry, String datetime, String alert_id) {
         this.alert_name = alert_name;
         this.location = location;
         this.experience = experience;
@@ -18,8 +19,8 @@ public class GetJobAlertData {
         this.functional_area = functional_area;
         this.industry = industry;
         this.datetime = datetime;
+        this.alert_id = alert_id;
     }
-
 
     public String getAlert_name() {
         return alert_name;
@@ -75,5 +76,13 @@ public class GetJobAlertData {
 
     public void setDatetime(String datetime) {
         this.datetime = datetime;
+    }
+
+    public String getAlert_id() {
+        return alert_id;
+    }
+
+    public void setAlert_id(String alert_id) {
+        this.alert_id = alert_id;
     }
 }

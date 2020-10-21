@@ -30,9 +30,8 @@ public class FindJobFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // In this fragment we are inflaating one more fragment which will contain two fragments
-        View view = inflater.inflate(R.layout.fragment_find_job, container, false);
 
 
-        return view;
+        return inflater.inflate(R.layout.fragment_find_job, container, false);
     }
 }

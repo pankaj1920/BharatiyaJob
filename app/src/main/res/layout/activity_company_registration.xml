@@ -12,7 +12,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/account_image_layout"
@@ -28,7 +28,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20sp"
                     android:layout_marginTop="40dp"
-                    android:text="Register"
+                    android:text="@string/register"
                     android:textColor="@color/black"
                     android:textSize="22sp"
                     android:textStyle="bold"
@@ -51,14 +51,15 @@
                     android:id="@+id/formCameraPick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="57dp"
+                    android:layout_marginStart="57dp"
                     android:layout_marginTop="8dp"
                     android:background="@android:color/transparent"
                     android:padding="2.5dp"
                     android:src="@drawable/ic_camera"
                     android:tint="@color/colorPrimaryDark"
                     app:layout_constraintEnd_toEndOf="@id/companyLogo"
-                    app:layout_constraintTop_toTopOf="@id/companyLogo" />
+                    app:layout_constraintTop_toTopOf="@id/companyLogo"
+                    android:contentDescription="@string/imagedescription" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -77,9 +78,10 @@
                     android:id="@+id/companyNameEditTxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Company Name"
+                    android:hint="@string/company_name"
                     android:maxLines="1"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:importantForAutofill="no" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20sp"
                 android:layout_marginTop="30dp"
-                android:text="GST Registered"
+                android:text="@string/gst_registred"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -122,7 +124,7 @@
                     android:paddingTop="10dp"
                     android:paddingEnd="14dp"
                     android:paddingBottom="10dp"
-                    android:text="GST Registered "
+                    android:text="@string/gst"
                     android:textAlignment="center"
                     android:textColor="@drawable/select_education_radiobtn_txtcolor"
                     android:textSize="14sp" />
@@ -139,7 +141,7 @@
                     android:layout_marginTop="10dp"
                     android:onClick="selectGst"
                     android:padding="10dp"
-                    android:text="Non GST"
+                    android:text="@string/non_gst"
                     android:textAlignment="center"
                     android:textColor="@drawable/select_education_radiobtn_txtcolor"
                     android:textSize="12sp" />
@@ -173,9 +175,10 @@
                         android:id="@+id/enterGstNum"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="GST Number"
+                        android:hint="@string/gst_number"
                         android:maxLines="1"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:importantForAutofill="no" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -195,9 +198,10 @@
                         android:id="@+id/enterAdhaarNum"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Adhaar Number"
+                        android:hint="@string/adhaar_number"
                         android:maxLines="1"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:importantForAutofill="no" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -205,7 +209,6 @@
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/CompanyDetailLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -227,9 +230,10 @@
                         android:id="@+id/enterCemailNum"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Email"
+                        android:hint="@string/enter_email"
                         android:maxLines="1"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:importantForAutofill="no" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -249,9 +253,10 @@
                         android:id="@+id/enterCpassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Password"
+                        android:hint="@string/enter_password"
                         android:maxLines="1"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:importantForAutofill="no" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -270,9 +275,10 @@
                         android:id="@+id/enterCnumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Number"
+                        android:hint="@string/enter_number"
                         android:maxLines="1"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:importantForAutofill="no" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -291,9 +297,10 @@
                         android:id="@+id/enterCountry"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Country"
+                        android:hint="@string/country"
                         android:maxLines="1"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:importantForAutofill="no" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -312,9 +319,10 @@
                         android:id="@+id/enterState"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="State"
+                        android:hint="@string/statee"
                         android:maxLines="1"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:importantForAutofill="no" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -333,9 +341,10 @@
                         android:id="@+id/enterClocality"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Address"
+                        android:hint="@string/enter_address"
                         android:maxLines="1"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:importantForAutofill="no" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -344,10 +353,10 @@
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/select_education_selected_radiobtn"
-                    android:text="Submit"
+                    android:text="@string/submit"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"

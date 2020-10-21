@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -365,8 +364,10 @@ public class PostJobFragment extends Fragment {
     }
 
     private void getCompanyDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
 
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(getActivity());
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
         companyId = loginOtpResponse.getId();
     }
 }

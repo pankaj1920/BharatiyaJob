@@ -18,7 +18,7 @@ import java.util.List;
 
 public class HomeJobAdapter extends RecyclerView.Adapter<HomeJobAdapter.HomeJob_VH> {
 
-    List<JobData> data;
+    final List<JobData> data;
 
     private OnItemClickListner onItemClickListner;
 
@@ -56,7 +56,7 @@ public class HomeJobAdapter extends RecyclerView.Adapter<HomeJobAdapter.HomeJob_
         holder.bookmarkedStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onItemClickListner.onUnBookmarkBtnClicked(holder.itemView,position);
+                onItemClickListner.onUnBookmarkBtnClicked(position);
             }
         });
 
@@ -77,10 +77,14 @@ public class HomeJobAdapter extends RecyclerView.Adapter<HomeJobAdapter.HomeJob_
 
     class HomeJob_VH extends RecyclerView.ViewHolder{
 
-        TextView jobTitle,jobExperience,jobLocation,jobSkill;
-        Button homeApplyJobBtn;
-        ConstraintLayout jobLayout;
-        ImageView bookmarkStar,bookmarkedStar;
+        final TextView jobTitle;
+        final TextView jobExperience;
+        final TextView jobLocation;
+        final TextView jobSkill;
+        final Button homeApplyJobBtn;
+        final ConstraintLayout jobLayout;
+        final ImageView bookmarkStar;
+        final ImageView bookmarkedStar;
 
         public HomeJob_VH(@NonNull final View itemView) {
             super(itemView);
@@ -102,7 +106,7 @@ public class HomeJobAdapter extends RecyclerView.Adapter<HomeJobAdapter.HomeJob_
 
                         if (postion!=RecyclerView.NO_POSITION){
 
-                            onItemClickListner.onJobLayoutClicked(itemView,postion);
+                            onItemClickListner.onJobLayoutClicked(postion);
                         }
                     }
                 }
@@ -113,11 +117,11 @@ public class HomeJobAdapter extends RecyclerView.Adapter<HomeJobAdapter.HomeJob_
     // Define the listener interface
     public interface OnItemClickListner {
 
-        void onJobLayoutClicked(View itemview, int position);
+        void onJobLayoutClicked(int position);
 
         void onBookmarkBtnClicked(View itemview,int position);
 
-        void onUnBookmarkBtnClicked(View itemview,int position);
+        void onUnBookmarkBtnClicked(int position);
 
         void  onApplyJobButtonClicked(View itemview,int position);
 

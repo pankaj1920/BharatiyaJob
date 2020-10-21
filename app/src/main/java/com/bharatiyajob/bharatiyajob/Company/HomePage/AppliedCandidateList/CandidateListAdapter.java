@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bharatiyajob.bharatiyajob.HomePage.HomeJob.HomeJobAdapter;
 import com.bharatiyajob.bharatiyajob.Json.Company.CandidateApplied.CandidateAppliedData;
 import com.bharatiyajob.bharatiyajob.R;
 
@@ -18,7 +17,7 @@ import java.util.List;
 
 public class CandidateListAdapter extends RecyclerView.Adapter<CandidateListAdapter.Candidate_VH> {
 
-    List<CandidateAppliedData>candidateAppliedList;
+    final List<CandidateAppliedData>candidateAppliedList;
     String job_id,canId;
 
     private OnItemClickListner onItemClickListner;
@@ -59,14 +58,14 @@ public class CandidateListAdapter extends RecyclerView.Adapter<CandidateListAdap
         holder.CanViewDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onItemClickListner.onCanViewDetailCilcked(holder.itemView,position);
+                onItemClickListner.onCanViewDetailCilcked(position);
             }
         });
 
         holder.CanRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClickListner.onCanRemoveCilcked(holder.itemView,canId,job_id);
+                onItemClickListner.onCanRemoveCilcked(canId,job_id);
             }
         });
 
@@ -79,9 +78,15 @@ public class CandidateListAdapter extends RecyclerView.Adapter<CandidateListAdap
 
     static class Candidate_VH extends RecyclerView.ViewHolder{
 
-        ImageView canPic,bookmarkCanStar;
-        TextView CanName,CanEmail,canJobExperience,CanjobLocation,CanJobSkill;
-        Button CanViewDetail,CanRemove;
+        final ImageView canPic;
+        final ImageView bookmarkCanStar;
+        final TextView CanName;
+        final TextView CanEmail;
+        final TextView canJobExperience;
+        final TextView CanjobLocation;
+        final TextView CanJobSkill;
+        final Button CanViewDetail;
+        final Button CanRemove;
 
         public Candidate_VH(@NonNull View itemView) {
             super(itemView);
@@ -99,7 +104,7 @@ public class CandidateListAdapter extends RecyclerView.Adapter<CandidateListAdap
 
     public interface OnItemClickListner{
         void onCanBookmarkClicked(View view,int position);
-        void onCanViewDetailCilcked(View view,int position);
-        void onCanRemoveCilcked(View view,String canId,String jobId);
+        void onCanViewDetailCilcked(int position);
+        void onCanRemoveCilcked(String canId, String jobId);
     }
 }

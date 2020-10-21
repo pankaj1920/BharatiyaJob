@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bharatiyajob.bharatiyajob.HomePage.JobDetailActivity;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
@@ -180,9 +179,10 @@ public class CompanyJobDetailActivity extends AppCompatActivity {
     }
 
     private void getCompanyDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this
-        ).getDetail();
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
 
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(this);
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
         companyId = loginOtpResponse.getId();
     }
 }

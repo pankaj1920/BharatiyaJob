@@ -1,7 +1,6 @@
 package com.bharatiyajob.bharatiyajob.HomePage.HomeJob;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -97,7 +96,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void getCanDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(getActivity());
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
 
         userId = loginOtpResponse.getId();
     }
@@ -121,6 +121,7 @@ public class HomeFragment extends Fragment {
                     candidateJobTitle.setText(skill);
                     if (!getUserDetailResponse.getData().getProfile_pic().isEmpty()) {
                         Picasso.get().load(getUserDetailResponse.getData().getProfile_pic()).into(candidateLogo);
+                        Toast.makeText(getActivity(), getUserDetailResponse.getData().getProfile_pic(), Toast.LENGTH_SHORT).show();
                     }else {
                         candidateLogo.setImageDrawable(ContextCompat.getDrawable(getActivity(),R.drawable.accont_img));
                     }
@@ -162,7 +163,7 @@ public class HomeFragment extends Fragment {
 
                        homeJobAdapter.setOnItemClickListner(new HomeJobAdapter.OnItemClickListner() {
                            @Override
-                           public void onJobLayoutClicked(View itemview, int position) {
+                           public void onJobLayoutClicked(int position) {
                                jobId = jobResponse.getData().get(position).getJob_id();
                                jobTitle = jobResponse.getData().get(position).getJob_title();
 
@@ -185,7 +186,7 @@ public class HomeFragment extends Fragment {
                            }
 
                            @Override
-                           public void onUnBookmarkBtnClicked(View itemview, int position) {
+                           public void onUnBookmarkBtnClicked(int position) {
                                jobId = jobResponse.getData().get(position).getJob_id();
                                starPosition = jobResponse.getData().get(position).getJob_id();
                                unBookmarkJob();
@@ -212,7 +213,7 @@ public class HomeFragment extends Fragment {
                     homeJobRecycler.setVisibility(View.GONE);
                     homeNoJobLayout.setVisibility(View.VISIBLE);
 //                    homeNoJobLayout.setBackgroundColor(getResources().getColor(R.color.white));
-                    Toast.makeText(getActivity(), "Response is null", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(), "Response is null", Toast.LENGTH_SHORT).show();
                 }
             }
 

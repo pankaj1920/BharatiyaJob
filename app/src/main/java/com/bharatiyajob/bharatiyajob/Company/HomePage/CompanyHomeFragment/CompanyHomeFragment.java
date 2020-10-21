@@ -83,7 +83,7 @@ public class CompanyHomeFragment extends Fragment {
 
                     companyHomePageRecyleAdapter.setOnJobItemClickListner(new CompanyHomePageRecyleAdapter.OnJobItemClickListner() {
                         @Override
-                        public void onJobItemClicked(View view, int position) {
+                        public void onJobItemClicked(int position) {
                             Bundle bundle = new Bundle();
                             String jobId = companyJobListResponse.getData().get(position).getJob_id();
                             bundle.putString("comJdJobId",jobId);
@@ -114,8 +114,10 @@ public class CompanyHomeFragment extends Fragment {
     }
 
     private void getCompanyDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
 
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(getActivity());
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
         companyId = loginOtpResponse.getId();
     }
 }

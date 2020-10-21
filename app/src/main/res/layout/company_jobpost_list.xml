@@ -36,7 +36,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:maxLines="2"
-                    android:text="Senior web developer"
+                    android:text="@string/senior_web_developer"
                     android:textColor="@color/Blue"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +44,6 @@
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
                 <ImageView
-                    android:id="@+id/compLogo"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/wipro_logo"
@@ -52,7 +51,8 @@
                     android:layout_marginEnd="30dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:contentDescription="@string/imagedescription" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -88,16 +88,17 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/Darkgrey" />
+                    app:tint="@color/Darkgrey"
+                    android:contentDescription="@string/imagedescription" />
 
                 <TextView
                     android:id="@+id/jobExperience"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10sp"
-                    android:text="3 - 4 Years"
+                    android:text="@string/_3_4_years"
                     android:textColor="@color/Darkgrey"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/expLogo"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -111,16 +112,17 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/jobExperience"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/Darkgrey" />
+                    app:tint="@color/Darkgrey"
+                    android:contentDescription="@string/imagedescription" />
 
                 <TextView
                     android:id="@+id/jobLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10sp"
-                    android:text="Delhi, Banglore"
+                    android:text="@string/delhi_banglore"
                     android:textColor="@color/Darkgrey"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/jobLoc"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -145,16 +147,17 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/Darkgrey" />
+                    app:tint="@color/Darkgrey"
+                    android:contentDescription="@string/imagedescription" />
 
                 <TextView
                     android:id="@+id/jobSalary"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10sp"
-                    android:text="25000"
+                    android:text="@string/_25000"
                     android:textColor="@color/Darkgrey"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/salaryLogo"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -168,16 +171,17 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/jobSalary"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/Darkgrey" />
+                    app:tint="@color/Darkgrey"
+                    android:contentDescription="@string/imagedescription" />
 
                 <TextView
                     android:id="@+id/jobVacanncy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10sp"
-                    android:text="5 vacancy"
+                    android:text="@string/_5_vacancy"
                     android:textColor="@color/Darkgrey"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/vacancy"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -200,7 +204,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/Darkgrey" />
+                    app:tint="@color/Darkgrey"
+                    android:contentDescription="@string/imagedescription" />
 
                 <TextView
                     android:id="@+id/jobSkill"
@@ -208,9 +213,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10sp"
                     android:maxLines="2"
-                    android:text="android, android develo, java, flutter react navite,angular, Retrofit  "
+                    android:text="@string/android_android_develo_java_flutter_react_navite_angular_retrofit"
                     android:textColor="@color/Darkgrey"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/skillLogo"
@@ -222,8 +227,8 @@
                 android:id="@+id/postedText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Posted on"
-                android:textSize="10sp"
+                android:text="@string/posted_on"
+                android:textSize="12sp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="10sp"
@@ -237,7 +242,7 @@
                 android:id="@+id/txt_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2020-09-04"
+                android:text="@string/_2020_09_04"
                 android:layout_marginStart="5sp"
                 android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@id/postedText"
@@ -249,7 +254,7 @@
                 android:layout_width="110dp"
                 android:layout_height="40dp"
                 android:background="@drawable/select_education_selected_radiobtn"
-                android:text="View"
+                android:text="@string/view"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="20dp"
                 android:textColor="@color/white"

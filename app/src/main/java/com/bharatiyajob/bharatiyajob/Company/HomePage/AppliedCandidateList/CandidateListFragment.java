@@ -107,7 +107,7 @@ public class CandidateListFragment extends Fragment {
                         }
 
                         @Override
-                        public void onCanViewDetailCilcked(View view, int position) {
+                        public void onCanViewDetailCilcked(int position) {
                             String canDetId = appliedResponse.getData().get(position).getCandidate_id();
                             Bundle bundle = new Bundle();
                             bundle.putString("canDetId", canDetId);
@@ -117,7 +117,7 @@ public class CandidateListFragment extends Fragment {
                         }
 
                         @Override
-                        public void onCanRemoveCilcked(View view, String canId, String jobId) {
+                        public void onCanRemoveCilcked(String canId, String jobId) {
                             removeCandidate(canId, jobId);
                         }
 
@@ -194,8 +194,10 @@ public class CandidateListFragment extends Fragment {
     }
 
     private void getCompanyDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
 
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(getActivity());
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
         companyId = loginOtpResponse.getId();
     }
 }

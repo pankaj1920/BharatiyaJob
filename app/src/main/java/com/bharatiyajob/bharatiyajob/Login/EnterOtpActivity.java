@@ -51,8 +51,6 @@ public class EnterOtpActivity extends AppCompatActivity {
     // starting time 2min
     private static final long START_TIME_IN_MILLI = 20000; //120000;
 
-    private CountDownTimer countDownTimer;
-
     // this will tell is timer is running or not
     private boolean TimmerRunning;
 
@@ -143,7 +141,9 @@ public class EnterOtpActivity extends AppCompatActivity {
                     Toast.makeText(EnterOtpActivity.this, loginOtpResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
                     //if the login Responwe is sucessfull we will save the user
-                    LoginDetailSharePref.getInstance(EnterOtpActivity.this).saveLoginDetails(loginOtpResponse);
+//                    LoginDetailSharePref.getInstance(EnterOtpActivity.this).saveLoginDetails(loginOtpResponse);
+                    LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(EnterOtpActivity.this);
+                    loginDetailSharePref.saveLoginDetails(loginOtpResponse);
 
                     if(loginOtpResponse.getReg_type().equals("company")){
                         Intent intent = new Intent(EnterOtpActivity.this, CompanyHomePageActivity.class);
@@ -203,7 +203,11 @@ public class EnterOtpActivity extends AppCompatActivity {
     public void startResendTimer() {
 
 // here we have to give two  parameter 1st one is TimeLett and 2nd is mill second after which the onTick method is called
-        countDownTimer = new CountDownTimer(TimeLeftInMillis, 1000) {
+        // it will convert sec in minute
+        // here we will get remaining second after getting minute
+        // here timmer is finished
+        // bcz we cannot start time again if timer is 0 we have to do reset
+        CountDownTimer countDownTimer = new CountDownTimer(TimeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 

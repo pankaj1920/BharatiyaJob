@@ -16,7 +16,8 @@ import java.util.List;
 
 public class JobAlertAdapter extends RecyclerView.Adapter<JobAlertAdapter.JobAlert_VH> {
 
-    List<GetJobAlertData> jobAlertDataList;
+    final List<GetJobAlertData> jobAlertDataList;
+    String alertId;
 
     public OnAlertDeleteListner onAlertDeleteListner;
 
@@ -32,12 +33,14 @@ public class JobAlertAdapter extends RecyclerView.Adapter<JobAlertAdapter.JobAle
     @Override
     public JobAlert_VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.job_alert_list,parent,false);
-        return new JobAlertAdapter.JobAlert_VH(view);
+        return new JobAlert_VH(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final JobAlert_VH holder, final int position) {
         GetJobAlertData data = jobAlertDataList.get(position);
+        alertId = data.getAlert_id();
+
         holder.alertTitle.setText(data.getAlert_name());
         holder.alertJobExperience.setText(data.getExperience());
         holder.alertjobLocation.setText(data.getLocation());
@@ -48,7 +51,7 @@ public class JobAlertAdapter extends RecyclerView.Adapter<JobAlertAdapter.JobAle
         holder.deleteAlert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onAlertDeleteListner.onAlertDeleteClicked(holder.itemView,position);
+                onAlertDeleteListner.onAlertDeleteClicked(alertId);
             }
         });
     }
@@ -58,10 +61,15 @@ public class JobAlertAdapter extends RecyclerView.Adapter<JobAlertAdapter.JobAle
         return jobAlertDataList.size();
     }
 
-    class JobAlert_VH extends RecyclerView.ViewHolder{
+    static class JobAlert_VH extends RecyclerView.ViewHolder{
 
-        TextView alertTitle,alertJobExperience,alertjobLocation,alertSalary,alertIndustry,alertJobSkill;
-        ImageView deleteAlert;
+        final TextView alertTitle;
+        final TextView alertJobExperience;
+        final TextView alertjobLocation;
+        final TextView alertSalary;
+        final TextView alertIndustry;
+        final TextView alertJobSkill;
+        final ImageView deleteAlert;
 
         public JobAlert_VH(@NonNull View itemView) {
             super(itemView);
@@ -77,6 +85,6 @@ public class JobAlertAdapter extends RecyclerView.Adapter<JobAlertAdapter.JobAle
     }
 
     public interface OnAlertDeleteListner{
-        void  onAlertDeleteClicked(View itemview,int position);
+        void  onAlertDeleteClicked(String alertId);
     }
 }

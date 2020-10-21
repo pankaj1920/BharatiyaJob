@@ -7,7 +7,7 @@
     tools:context=".HomePage.BokmarkedJob.SaveJobFragment"
     android:background="@color/white">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- imageDescription: Update blank fragment layout -->
   <androidx.appcompat.widget.Toolbar
       android:id="@+id/savedJobToolbar"
       android:layout_width="match_parent"
@@ -73,11 +73,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:tint="@color/colorPrimary" />
+            app:tint="@color/colorPrimary"
+            android:contentDescription="@string/imagedescription" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="You have not saved anyjob\n Go to job details to save job"
+            android:text="@string/you_have_not_saved_anyjob_n_go_to_job_details_to_save_job"
             android:gravity="center"
             android:layout_marginTop="5dp"
             android:textColor="@color/colorPrimary"
@@ -101,14 +102,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@string/imagedescription" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="@color/black"
-            android:text="No Job Saved"
+            android:text="@string/no_job_saved"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/creatDoc"/>

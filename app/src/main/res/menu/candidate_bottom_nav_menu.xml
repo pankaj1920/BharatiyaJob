@@ -2,21 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
-        android:title="Jobs"
+        android:title="@string/jobs"
         android:icon="@drawable/ic_school"/>
 
     <item
         android:id="@+id/findJobFragment"
-        android:title="Search"
+        android:title="@string/search"
         android:icon="@drawable/ic_search"/>
 
     <item
         android:id="@+id/alertFragment"
-        android:title="Saved Job"
+        android:title="@string/saved_job"
         android:icon="@drawable/ic_save" />
 
     <item
         android:id="@+id/profileFragment"
-        android:title="Profile"
+        android:title="@string/profile"
         android:icon="@drawable/ic_account_circle"/>
 </menu>

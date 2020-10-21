@@ -103,7 +103,10 @@ public class    LoginPasswordActivity extends AppCompatActivity {
                 if (response.isSuccessful() && loginOtpResponse.getStatus().equals("success")){
 
                     //if the login Responwe is sucessfull we will save the user
-                    LoginDetailSharePref.getInstance(LoginPasswordActivity.this).saveLoginDetails(loginOtpResponse);
+//                    LoginDetailSharePref.getInstance(LoginPasswordActivity.this).saveLoginDetails(loginOtpResponse);
+
+                    LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(LoginPasswordActivity.this);
+                    loginDetailSharePref.saveLoginDetails(loginOtpResponse);
 
                     if(loginOtpResponse.getReg_type().equals("company")){
                         Intent intent = new Intent(LoginPasswordActivity.this, CompanyHomePageActivity.class);

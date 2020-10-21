@@ -13,7 +13,8 @@
         android:src="@drawable/otp_img"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/imagedescription" />
 
     <TextView
         android:id="@+id/otpTxt"
@@ -25,8 +26,8 @@
         android:layout_marginBottom="30dp"
         android:gravity="center"
         android:padding="10dp"
-        android:text="OTP has been sent to your mobile phone. please enter it below"
-        android:textSize="20dp"
+        android:text="@string/otp_has_been_sent_to_your_mobile_phone_please_enter_it_below"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/otpLogo" />
@@ -39,12 +40,13 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="30dp"
-        android:hint="Enter Otp"
+        android:hint="@string/enter_otp"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/otpTxt" />
+        app:layout_constraintTop_toBottomOf="@id/otpTxt"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/resendOTP"
@@ -53,41 +55,29 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:gravity="end"
-        android:text="Resend OTP ? "
+        android:text="@string/resend_otp"
         android:textStyle="bold"
-        android:visibility="gone"
+        android:visibility="visible"
         android:textColor="@color/colorPrimary"
         app:layout_constraintTop_toBottomOf="@id/ComOtpEditText"
         app:layout_constraintBottom_toTopOf="@id/ComVerifyOtpBtn"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/DisableResendOtp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:gravity="end"
-        android:text="Resend OTP ? "
-        android:textColor="@color/Darkgrey"
-        app:layout_constraintTop_toBottomOf="@id/ComOtpEditText"
-        app:layout_constraintBottom_toTopOf="@id/ComVerifyOtpBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-
-    <TextView
         android:id="@+id/ResendCountDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/_00_00"
+        android:layout_marginEnd="15dp"
+        android:textAllCaps="true"
         android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintTop_toBottomOf="@id/ComOtpEditText"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/resendOTP"
         app:layout_constraintBottom_toTopOf="@id/ComVerifyOtpBtn"
-        app:layout_constraintEnd_toStartOf="@id/DisableResendOtp"
-        android:textAllCaps="true"
-        android:text="00:00" />
+        app:layout_constraintTop_toBottomOf="@id/ComOtpEditText"
+        tools:layout_editor_absoluteX="188dp" />
 
 
     <Button
@@ -96,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="120dp"
         android:background="@drawable/select_education_selected_radiobtn"
-        android:text="Verify"
+        android:text="@string/verify"
         android:layout_marginTop="100dp"
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/ComOtpEditText"

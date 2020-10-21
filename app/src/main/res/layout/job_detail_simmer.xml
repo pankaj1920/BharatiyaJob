@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#B8B8B8"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#B8B8B8">
 
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/JdCompanyDetailLayout"
@@ -29,7 +22,8 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginStart="5dp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:contentDescription="@string/imagedescription" />
 
                     <TextView
                         android:id="@+id/companyJobTitle"
@@ -53,7 +47,6 @@
                         app:layout_constraintTop_toBottomOf="@id/companyJobTitle"/>
 
                     <ImageView
-                        android:id="@+id/cLogo"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginEnd="20dp"
@@ -61,7 +54,8 @@
                         android:padding="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:contentDescription="@string/imagedescription" />
 
                     <TextView
                         android:id="@+id/compayJobLocation"
@@ -103,7 +97,6 @@
                                 app:layout_constraintTop_toTopOf="parent"/>
 
                             <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/jobPostedLayout"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
@@ -139,7 +132,6 @@
                                     app:layout_constraintTop_toBottomOf="@+id/JdExperienceTxt"/>
 
                                 <TextView
-                                    android:id="@+id/JdJobTypeTxt"
                                     android:layout_width="230dp"
                                     android:layout_height="15dp"
                                     android:background="@color/Darkgrey"
@@ -196,7 +188,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/al"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -224,7 +215,6 @@
                                 app:layout_constraintTop_toTopOf="parent"/>
 
                             <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/jobPostedLayoutd"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
@@ -260,7 +250,6 @@
                                     app:layout_constraintTop_toBottomOf="@+id/JdExperienceTxtd"/>
 
                                 <TextView
-                                    android:id="@+id/JdJobTypeTxtd"
                                     android:layout_width="230dp"
                                     android:layout_height="15dp"
                                     android:background="@color/Darkgrey"
@@ -276,7 +265,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/alb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -304,7 +292,6 @@
                                 app:layout_constraintTop_toTopOf="parent"/>
 
                             <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/jobPostedLayoutdb"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
@@ -340,7 +327,6 @@
                                     app:layout_constraintTop_toBottomOf="@+id/JdExperienceTxtdb"/>
 
                                 <TextView
-                                    android:id="@+id/JdJobTypeTxtdb"
                                     android:layout_width="230dp"
                                     android:layout_height="15dp"
                                     android:background="@color/Darkgrey"
@@ -357,8 +343,3 @@
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>

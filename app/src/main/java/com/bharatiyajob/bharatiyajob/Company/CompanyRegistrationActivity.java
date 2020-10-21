@@ -3,18 +3,15 @@ package com.bharatiyajob.bharatiyajob.Company;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,12 +40,13 @@ public class CompanyRegistrationActivity extends AppCompatActivity implements Vi
     String selected = "";
     ImageView companyLogo,formCameraPick;
     boolean imagechecking = false;
-    int IMAGE_PICK = 100;
+    final int IMAGE_PICK = 100;
     String photo_path;
     Uri imageuri;
     Bitmap bitmap;
     byte[] imageInbyteArray;
     String ImageInString;
+    RadioButton GST,NonGst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +67,8 @@ public class CompanyRegistrationActivity extends AppCompatActivity implements Vi
         CsaveProceed = findViewById(R.id.CsaveProceed);
         companyLogo = findViewById(R.id.companyLogo);
         formCameraPick = findViewById(R.id.formCameraPick);
+        NonGst = findViewById(R.id.NonGst);
+        GST = findViewById(R.id.GST);
 
 
 //        companyLogo.setImageDrawable(ContextCompat.getDrawable(CompanyRegistrationActivity.this, R.drawable.ic_star));
@@ -104,31 +104,41 @@ public class CompanyRegistrationActivity extends AppCompatActivity implements Vi
 
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
-
         // Check which radio button was clicked
-        switch (view.getId()) {
-            case R.id.GST:
-                if (checked)
-                    GstTextLayout.setVisibility(View.VISIBLE);
-                AdhaarTxtLayout.setVisibility(View.GONE);
-                selected = "Gst";
-//                    Toast.makeText(this, "Gst is selected", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.NonGst:
-                if (checked)
-                    GstTextLayout.setVisibility(View.GONE);
-                AdhaarTxtLayout.setVisibility(View.VISIBLE);
-                selected = "Adhar";
-//                    Toast.makeText(this, "Non Gst is selected", Toast.LENGTH_SHORT).show();
-                break;
-
+        if (view.getId() == R.id.GST){
+            if (checked)
+                GstTextLayout.setVisibility(View.VISIBLE);
+            AdhaarTxtLayout.setVisibility(View.GONE);
+            selected = "Gst";
+        }else if (view.getId() == R.id.NonGst){
+            if (checked)
+                GstTextLayout.setVisibility(View.GONE);
+            AdhaarTxtLayout.setVisibility(View.VISIBLE);
+            selected = "Adhar";
         }
+//        switch (view.getId()) {
+//            case R.id.GST:
+//                if (checked)
+//                    GstTextLayout.setVisibility(View.VISIBLE);
+//                AdhaarTxtLayout.setVisibility(View.GONE);
+//                selected = "Gst";
+////                    Toast.makeText(this, "Gst is selected", Toast.LENGTH_SHORT).show();
+//                break;
+//            case R.id.NonGst:
+//                if (checked)
+//                    GstTextLayout.setVisibility(View.GONE);
+//                AdhaarTxtLayout.setVisibility(View.VISIBLE);
+//                selected = "Adhar";
+////                    Toast.makeText(this, "Non Gst is selected", Toast.LENGTH_SHORT).show();
+//                break;
+//
+//        }
 
     }
 
     public void sendToVerifyOtpActivity() {
 
-        if (imagechecking==false) {
+        if (!imagechecking) {
             Toast.makeText(this, "please select the image", Toast.LENGTH_SHORT).show();
             return;
         }

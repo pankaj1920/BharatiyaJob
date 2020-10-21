@@ -7,27 +7,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.Company.GetBookmarkedCanList.GetBookMarkedCandidate;
-import com.bharatiyajob.bharatiyajob.Json.Company.RemoveBookmarkedCan.RemoveBookMarkedCandidateResponse;
-import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.R;
 
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class GetBookMarkCandidateRecylerAdapter extends RecyclerView.Adapter<GetBookMarkCandidateRecylerAdapter.Vholder> {
 
-    List<GetBookMarkedCandidate> bokkmarklist;
-    Context context;
+    final List<GetBookMarkedCandidate> bokkmarklist;
+    final Context context;
     String canId,jobId;
     OnUnBcItemClickListner onUnBcItemClickListner;
 
@@ -60,21 +52,21 @@ public class GetBookMarkCandidateRecylerAdapter extends RecyclerView.Adapter<Get
         holder.BCanStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onUnBcItemClickListner.onUnBookmarkCanClicked(holder.itemView,position);
+                onUnBcItemClickListner.onUnBookmarkCanClicked(position);
             }
         });
 
         holder.BCanViewJob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onUnBcItemClickListner.onBookCanViewDetailCilcked(holder.itemView,position);
+                onUnBcItemClickListner.onBookCanViewDetailCilcked(position);
             }
         });
 
         holder.BCanRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onUnBcItemClickListner.onBCanRemoveCilcked(holder.itemView,canId,"1");
+                onUnBcItemClickListner.onBCanRemoveCilcked(canId,"1");
             }
         });
     }
@@ -87,9 +79,10 @@ public class GetBookMarkCandidateRecylerAdapter extends RecyclerView.Adapter<Get
 
 
     public static class Vholder  extends RecyclerView.ViewHolder{
-        TextView BCanName;
-        ImageView BCanStar;
-        Button BCanViewJob,BCanRemove;
+        final TextView BCanName;
+        final ImageView BCanStar;
+        final Button BCanViewJob;
+        final Button BCanRemove;
         public Vholder(@NonNull View itemView) {
             super(itemView);
             BCanName=itemView.findViewById(R.id.BCanName);
@@ -100,8 +93,8 @@ public class GetBookMarkCandidateRecylerAdapter extends RecyclerView.Adapter<Get
     }
 
     public interface OnUnBcItemClickListner{
-        void onUnBookmarkCanClicked(View view,int position);
-        void onBookCanViewDetailCilcked(View view,int position);
-        void onBCanRemoveCilcked(View view,String canId,String jobId);
+        void onUnBookmarkCanClicked(int position);
+        void onBookCanViewDetailCilcked(int position);
+        void onBCanRemoveCilcked(String canId, String jobId);
     }
 }

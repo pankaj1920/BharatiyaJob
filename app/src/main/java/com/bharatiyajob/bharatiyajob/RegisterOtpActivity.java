@@ -33,8 +33,6 @@ public class RegisterOtpActivity extends AppCompatActivity {
     // starting time 2min
     private static final long START_TIME_IN_MILLI = 20000; //120000;
 
-    private CountDownTimer countDownTimer;
-
     // this will tell is timer is running or not
     private boolean TimmerRunning;
 
@@ -153,7 +151,11 @@ public class RegisterOtpActivity extends AppCompatActivity {
         RegResendOTP.setVisibility(View.GONE);
 
 // here we have to give two  parameter 1st one is TimeLett and 2nd is mill second after which the onTick method is called
-        countDownTimer = new CountDownTimer(TimeLeftInMillis, 1000) {
+        // it will convert sec in minute
+        // here we will get remaining second after getting minute
+        // here timmer is finished
+        // bcz we cannot start time again if timer is 0 we have to do reset
+        CountDownTimer countDownTimer = new CountDownTimer(TimeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 

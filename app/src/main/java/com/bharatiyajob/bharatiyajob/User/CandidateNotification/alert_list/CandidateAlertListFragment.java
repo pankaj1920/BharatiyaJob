@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.JobAlertList.GetJobAlertDataResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.remove_alert.RemoveAlertResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.R;
 import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
@@ -89,10 +90,12 @@ public class CandidateAlertListFragment extends Fragment {
 
                     jobAlertAdapter = new JobAlertAdapter(alertDataResponse.getData());
                     jobAlertRecycler.setAdapter(jobAlertAdapter);
+
                     jobAlertAdapter.setOnnAlertDeleteListner(new JobAlertAdapter.OnAlertDeleteListner() {
+
                         @Override
-                        public void onAlertDeleteClicked(View itemview, int position) {
-                            deletAlert(position);
+                        public void onAlertDeleteClicked(String alertId) {
+                            deletAlert(alertId);
                         }
                     });
 
@@ -114,13 +117,35 @@ public class CandidateAlertListFragment extends Fragment {
 
     }
 
-    private void deletAlert(int position) {
-        Toast.makeText(getActivity(), "Alert Deleted : "+position, Toast.LENGTH_SHORT).show();
+    private void deletAlert(String alertId) {
+        Toast.makeText(getActivity(), "Alert Deleted : "+alertId, Toast.LENGTH_SHORT).show();
+        JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
+        Call<RemoveAlertResponse> call = jobApi.removeAlert(userId,alertId);
+        call.enqueue(new Callback<RemoveAlertResponse>() {
+            @Override
+            public void onResponse(Call<RemoveAlertResponse> call, Response<RemoveAlertResponse> response) {
+                RemoveAlertResponse removeAlertResponse = response.body();
+                if (response.isSuccessful() && removeAlertResponse.getStatus().equals("1")){
+                    Toast.makeText(getContext(), removeAlertResponse.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    getAlertList();
+                }else {
+                    Toast.makeText(getContext(), "Try Again Late", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RemoveAlertResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "On Failure in Remove Alert", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
     private void getCanDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(getActivity());
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
         userId = loginOtpResponse.getId();
     }
 }

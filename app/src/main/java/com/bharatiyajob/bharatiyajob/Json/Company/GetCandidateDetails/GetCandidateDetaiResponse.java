@@ -1,7 +1,5 @@
 package com.bharatiyajob.bharatiyajob.Json.Company.GetCandidateDetails;
 
-import com.bharatiyajob.bharatiyajob.Json.Company.GetCompanyDetails.GetCompanyDetailData;
-
 public class GetCandidateDetaiResponse {
     private String status;
     private GetCandidateDetailData data;

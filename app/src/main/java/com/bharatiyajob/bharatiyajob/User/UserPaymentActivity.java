@@ -1,23 +1,15 @@
 package com.bharatiyajob.bharatiyajob.User;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.ScrollView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
@@ -107,7 +99,7 @@ public class UserPaymentActivity extends AppCompatActivity implements PaymentRes
 
                     candidatePaymentAdapter.setOnItemClickListner(new CandidatePaymentAdapter.OnItemClickListner() {
                         @Override
-                        public void onSubscriptionLayoutClicked(View itemview, int position, String price, String days) {
+                        public void onSubscriptionLayoutClicked(String price, String days) {
                             subscriptionDays = days;
                             SubscriptionFee = price;
 //                            Toast.makeText(UserPaymentActivity.this, "Price : "+ price + " Days : "+days, Toast.LENGTH_SHORT).show();
@@ -229,7 +221,9 @@ public class UserPaymentActivity extends AppCompatActivity implements PaymentRes
     }
 
     private void getCandidateDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(this);
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
         customerId = loginOtpResponse.getId();
         registrationType = loginOtpResponse.getReg_type();
         customerName = loginOtpResponse.getName();

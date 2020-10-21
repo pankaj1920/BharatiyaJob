@@ -104,9 +104,6 @@ public class CompanyVerifyOtpActivity extends AppCompatActivity {
         String otp = ComOtpEditText.getText().toString();
         JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
 
-        otpTxt.setText(mobile+" "+otp+" "+email+" "+companyName+" "+password+" "+typeOfRegistration+" "+gstNo+" "+
-                address+" "+country+" "+state+" "+address);
-
 //        ImageString,file.getName()
         Call<ComVerifyOtpResponse> call = jobApi.RegisterCompany("8755420120","109513","email","companyName","password","typeOfRegistration","gstNo",
                 "address","country","state","city","address",file.getName(),ImageString);

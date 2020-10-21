@@ -1,61 +1,18 @@
 <resources>
     <string name="app_name">Bharatiya Job</string>
-    <string name="first_name_txt">First Name</string>
-    <string name="last_name_txt">Last Name</string>
     <string name="email_address_txt">Email Address</string>
     <string name="create_password_txt">Create Password</string>
     <string name="mobile_number_txt">Mobile Number</string>
     <string name="rigster_txt">Rigster</string>
     <string name="google_txt">Google</string>
     <string name="facebook_txt">Facebook</string>
-    <string name="personal_details_txt">Personal Details</string>
-    <string name="student_fresher_txt">Student/Fresher</string>
-    <string name="registration_for_txt">Registration For</string>
-    <string name="full_name_txt">Full Name:</string>
-    <string name="father_s_name_txt">Father\'s Name:</string>
-    <string name="email_txt">Email:</string>
-    <string name="dcoument_name_img">Dcoument Name</string>
-    <string name="address_txt">Address</string>
-    <string name="country_txt">Country:</string>
-    <string name="city_txt">City:</string>
-    <string name="cancel_txt">Cancel</string>
-    <string name="next_txt">Next</string>
-    <string name="registration_form_txt">Registration Form</string>
-    <string name="mobile_no_text">Mobile no:</string>
-    <string name="aadhar_number_txt">Aadhar Number</string>
-    <string name="state">State:</string>
-    <string name="educational_details_txt">Educational Details</string>
-    <string name="primary_language_of_school_instruction_txt">Primary language of School instruction</string>
-    <string name="english_fluency_txt">English Fluency</string>
-    <string name="yes_txt">Yes</string>
-    <string name="no_txt">No</string>
-    <string name="graduation_txt"><u>Graduation</u></string>
-    <string name="degree_txt">Degree</string>
-    <string name="name_univercity_txt">Name of Univercity/College:</string>
-    <string name="city_town_txt">City/Town:</string>
-    <string name="year_of_passing_txt">Year of Passing:</string>
-    <string name="senior_secondary_txt">10+2 (Senior Secondary):</string>
-    <string name="board_txt">Board:</string>
-    <string name="state_board_txt">If State Board, Please Specify:</string>
-    <string name="name_of_college_txt">Name of College:</string>
-    <string name="high_school_txt">10th (High School):</string>
-    <string name="submit_txt">Submit</string>
-    <string name="employee_txt">Employee</string>
-    <string name="experience_details_txt">Experience Details</string>
     <string name="company_name">Company Name</string>
-    <string name="total_year_experience">Total Year Experience:</string>
-    <string name="worked_plateform">Worked Plateform:</string>
-    <string name="working_details">Working Details:</string>
-    <string name="google_sign_txt">Google Sign</string>
     <string name="login_txt">login</string>
     <string name="verify">Verify</string>
     <string name="forget_password">Forget Password?</string>
     <string name="get_otp">Get OTP</string>
-    <string name="email_mobile">\t Email/Mobile</string>
     <string name="forget_pass_text">Enter your mobile/email below and we will send OTP.</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_job_detail">ScrollingActivity</string>
 
     <string name="CustomareContactName">Name</string>
     <string name="CustomareContatUsNumber">Mobile Number</string>
@@ -77,7 +34,225 @@
     <string name="feedbackMessage">Your call request has been successfully submitted. we will get back to you soon. </string>
 
 
-    <string name="action_settings">Settings</string>
-    <string name="DateFormat">yyyyMMdd_HHmmss</string>
     <string name="sample_job_description"><![CDATA[We are looking for an passionate mobile developer to design, develop & enhance innovative & robust mobile Applications. Do you consider yourself to be a creative/out of the box thinker in an effort to raise the bar high in mobile technology development? If yes, you might just be the right member we are looking for.]]></string>
+    <string name="transaction_id">Transaction ID :</string>
+    <string name="sdkfakdls156">sdkfakdls156</string>
+    <string name="successimg">successImg</string>
+    <string name="payment_done_successfully">Payment done successfully</string>
+    <string name="ok">OK</string>
+    <string name="jdbackbtn">jdBackBtn</string>
+    <string name="imagedescription">imageDescription</string>
+    <string name="pankaj_bohra">Pankaj Bohra</string>
+    <string name="candetlogo">canDetLogo</string>
+    <string name="verified_candidate">Verified Candidate</string>
+    <string name="banglore">Banglore</string>
+    <string name="candidate_detail">Candidate Detail</string>
+    <string name="name">Name</string>
+    <string name="experience">Experience</string>
+    <string name="fresher">Fresher</string>
+    <string name="address">Address</string>
+    <string name="electronic_city_phase_1_banglore">Electronic City Phase 1 Banglore</string>
+    <string name="other_detail">Other Detail</string>
+    <string name="degree">Degree</string>
+    <string name="qualification">Qualification</string>
+    <string name="skills">Skills</string>
+    <string name="java_php_developerjava_php_developerjava_php_developer">Java,php developerJava,php developerJava,php developer</string>
+    <string name="contact_details">Contact Details</string>
+    <string name="info_unitedsoftek_com">info@unitedsoftek.com</string>
+    <string name="_0987654321">0987654321</string>
+    <string name="resume">Resume</string>
+    <string name="create_new_password">Create New Password</string>
+    <string name="please_enter_the_otp_that_has_been_sent_to_your_email_mobile">Please enter the OTP that has been sent to your email/mobile</string>
+    <string name="tenter_otp">\t Enter OTP</string>
+    <string name="tnew_password">\t New Password</string>
+    <string name="tconfirm_password">\t Confirm Password</string>
+    <string name="resend">Resend</string>
+    <string name="_00_00">00:00</string>
+    <string name="submit">Submit</string>
+    <string name="companybackbtn">companyBackBtn</string>
+    <string name="android_developer">Android Developer</string>
+    <string name="wipro">Wipro</string>
+
+    <string name="job_detail">Job Detail</string>
+    <string name="posted_on">Posted on</string>
+    <string name="_2020_09_05">2020–09-05</string>
+
+    <string name="_0_4_year">0 – 4 Year</string>
+    <string name="salary">Salary</string>
+    <string name="rs_15_000_22_000">Rs 15,000 – 22,000</string>
+    <string name="type">Type</string>
+    <string name="full_time">Full Time</string>
+    <string name="description">Description</string>
+
+    <string name="software_service">Software Service</string>
+    <string name="industry">Industry</string>
+    <string name="it_software">IT-Software</string>
+
+    <string name="_8755420120">8755420120</string>
+    <string name="disable">Disable</string>
+    <string name="enable">Enable</string>
+    <string name="become_a_member">Become a member</string>
+    <string name="subscription">Subscription</string>
+    <string name="benefits_includes">Benefits includes:</string>
+    <string name="verifiedimg">verifiedImg</string>
+    <string name="_100_verified_job">100% Verified Job</string>
+    <string name="get_100_verified_job_from_company">Get 100% verified job from company.</string>
+    <string name="adsimg">AdsImg</string>
+    <string name="no_ads">No Ads</string>
+    <string name="get_rid_of_all_those_banner_amp_videos"><![CDATA[Get rid of all those banner & videos]]></string>
+    <string name="continuee">Continue</string>
+
+    <string name="sucessimg">sucessImg</string>
+
+    <string name="profile">Profile</string>
+    <string name="first_name">First Name</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="mobile_no">Mobile No</string>
+    <string name="email">Email</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="pass">********</string>
+
+    <string name="electronic_city_banglore">Electronic City Banglore</string>
+    <string name="register">Register</string>
+
+    <string name="non_gst">Non GST</string>
+    <string name="gst_number">GST Number</string>
+    <string name="adhaar_number">Adhaar Number</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_number">Enter Number</string>
+    <string name="country">Country</string>
+    <string name="statee">State</string>
+    <string name="enter_address">Enter Address</string>
+    <string name="otp_has_been_sent_to_your_mobile_phone_please_enter_it_below">OTP has been sent to your mobile phone. please enter it below</string>
+    <string name="enter_otp">Enter Otp</string>
+
+    <string name="name_of_alert">Name of alert</string>
+    <string name="enter_skills">Enter Skills</string>
+    <string name="enter_location">Enter Location</string>
+    <string name="enter_experience">Enter Experience</string>
+    <string name="annual_salary">Annual Salary</string>
+
+    <string name="create_job_alert">Create Job Alert</string>
+
+    <string name="otplogo">otpLogo</string>
+
+    <string name="thank_you">Thank You!</string>
+    <string name="t_enter_mobile">\t Enter Mobile</string>
+
+    <string name="verified_job">Verified Job</string>
+
+    <string name="apply">Apply</string>
+    <string name="applied">Applied</string>
+    <string name="t_email_or_mobile_number">\t Email or Mobile Number</string>
+    <string name="sign_in">Sign In</string>
+    <string name="or">or</string>
+    <string name="don_t_have_an_account">Don\'t have an account ?</string>
+
+    <string name="we_just_need_your_password_to_login">We just need your password to login</string>
+
+    <string name="login_now">Login now</string>
+    <string name="android_php_mysql">Android, Php, MySql</string>
+    <string name="upload_resume">Upload Resume</string>
+    <string name="candidate">Candidate</string>
+    <string name="recruiter">Recruiter</string>
+    <string name="create_account">Create Account</string>
+    <string name="full_name">Full Name</string>
+    <string name="create_account_using">Create account using</string>
+    <string name="already_have_account">Already have account ?</string>
+    <string name="success">Success!</string>
+    <string name="your_account_has_been_created">Your account has been created</string>
+
+    <string name="we_value_friendship">We value friendship,</string>
+    <string name="refer_to_friend">Refer to friend.</string>
+    <string name="start_inviting_friends">Start inviting friends</string>
+
+    <string name="enter_state">Enter State</string>
+    <string name="make_your_profile">Make your profile</string>
+
+    <string name="gender">Gender</string>
+    <string name="higher_qualification">Higher Qualification</string>
+    <string name="below_10th">Below 10th</string>
+    <string name="_10th_pass">10th Pass</string>
+    <string name="_12th_pass">12th Pass</string>
+    <string name="diploma">Diploma</string>
+    <string name="graduate">Graduate</string>
+    <string name="post_graduate">Post Graduate</string>
+    <string name="work_experience">Work Experience</string>
+    <string name="experienced">Experienced</string>
+
+    <string name="where_are_you_currently_staying">Where are you currently staying?</string>
+    <string name="location">Location</string>
+    <string name="complete_address">Complete address</string>
+    <string name="current_locality">Current Locality</string>
+
+    <string name="senior_web_developer">Senior web developer</string>
+    <string name="_3_4_years">3 – 4 Years</string>
+    <string name="delhi_banglore">Delhi, Banglore</string>
+    <string name="android_android_develo_java_flutter_react_navite_angular_retrofit">android, android develo, java, flutter react navite,angular, Retrofit</string>
+    <string name="_2020_09_04">2020–09-04</string>
+    <string name="bohrapankaj1920_gmail_com">bohrapankaj1920@gmail.com</string>
+
+    <string name="remove">Remove</string>
+    <string name="view">View</string>
+    <string name="jobs">Jobs</string>
+    <string name="search">Search</string>
+    <string name="saved_job">Saved Job</string>
+    <string name="home">Home</string>
+    <string name="post_job">Post Job</string>
+    <string name="bookmark">Bookmark</string>
+
+    <string name="_25000">25000</string>
+    <string name="_5_vacancy">5 vacancy</string>
+
+    <string name="no_candidate_saved">No Candidate Saved</string>
+    <string name="you_have_not_created_any_job_alerts">You have not created any Job Alerts</string>
+    <string name="no_candidate_found">No Candidate Found</string>
+    <string name="you_have_not_posted_any_job_n_go_to_create_job_to_post_job">You have not posted any job \n Go to create Job to post job.</string>
+    <string name="account_settings">Account Settings</string>
+    <string name="notification">Notification</string>
+    <string name="payment">Payment</string>
+    <string name="share_app">Share App</string>
+    <string name="rate_us_5_star">Rate us 5 star</string>
+    <string name="contact_us_feedback">Contact us/Feedback</string>
+    <string name="about_us">About us</string>
+    <string name="sign_out">Sign out</string>
+    <string name="copyright_2020_bhartiya_job">Copyright © 2020 Bhartiya Job</string>
+    <string name="full_stack_developer">Full Stack Developer</string>
+    <string name="no_job_found_n_matching_your_sikills">No Job Found.\n Matching your sikills</string>
+    <string name="search_jobs">Search jobs</string>
+
+    <string name="job_title">Job Title</string>
+    <string name="city">City</string>
+    <string name="enter_skill">Enter Skill</string>
+    <string name="enter_salary">Enter Salary</string>
+    <string name="language_known">Language Known</string>
+    <string name="no_of_vacancy">No. of Vacancy</string>
+    <string name="job_role">Job Role</string>
+    <string name="industry_type">Industry Type</string>
+    <string name="interview_venue">Interview Venue</string>
+
+    <string name="create_alert">Create Alert</string>
+
+    <string name="you_have_not_saved_anyjob_n_go_to_job_details_to_save_job">You have not saved anyjob\n Go to job details to save job</string>
+    <string name="no_job_saved">No Job Saved</string>
+    <string name="job_title_skills">Job title,skills</string>
+
+    <string name="_10_000">10,000</string>
+    <string name="inr_99_for_30_days">INR 99 for 30 days</string>
+    <string name="gst_registred">Gst Registred</string>
+    <string name="resend_otp">Resend Otp</string>
+    <string name="save">Save</string>
+    <string name="upload">Upload</string>
+    <string name="enter_a_new_password">Enter a new password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="secure_passwords_are_at_least_8_characters_long_and_include_number_and_symbols">secure passwords are at least 8 characters long and include number and symbols</string>
+    <string name="update_password">Update Password</string>
+    <string name="gst">GST</string>
+    <string name="functional_area">Functional area</string>
+    <string name="enter_valid_number">Enter vaild number</string>
+    <string name="uploading">Uploading…</string>
+    <string name="setting_vector_icon">M19.14,12.94c0.04,-0.3 0.06,-0.61 0.06,-0.94c0,-0.32 -0.02,-0.64 -0.07,-0.94l2.03,-1.58c0.18,-0.14 0.23,-0.41 0.12,-0.61l-1.92,-3.32c-0.12,-0.22 -0.37,-0.29 -0.59,-0.22l-2.39,0.96c-0.5,-0.38 -1.03,-0.7 -1.62,-0.94L14.4,2.81c-0.04,-0.24 -0.24,-0.41 -0.48,-0.41h-3.84c-0.24,0 -0.43,0.17 -0.47,0.41L9.25,5.35C8.66,5.59 8.12,5.92 7.63,6.29L5.24,5.33c-0.22,-0.08 -0.47,0 -0.59,0.22L2.74,8.87C2.62,9.08 2.66,9.34 2.86,9.48l2.03,1.58C4.84,11.36 4.8,11.69 4.8,12s0.02,0.64 0.07,0.94l-2.03,1.58c-0.18,0.14 -0.23,0.41 -0.12,0.61l1.92,3.32c0.12,0.22 0.37,0.29 0.59,0.22l2.39,-0.96c0.5,0.38 1.03,0.7 1.62,0.94l0.36,2.54c0.05,0.24 0.24,0.41 0.48,0.41h3.84c0.24,0 0.44,-0.17 0.47,-0.41l0.36,-2.54c0.59,-0.24 1.13,-0.56 1.62,-0.94l2.39,0.96c0.22,0.08 0.47,0 0.59,-0.22l1.92,-3.32c0.12,-0.22 0.07,-0.47 -0.12,-0.61L19.14,12.94zM12,15.6c-1.98,0 -3.6,-1.62 -3.6,-3.6s1.62,-3.6 3.6,-3.6s3.6,1.62 3.6,3.6S13.98,15.6 12,15.6z</string>
 </resources>

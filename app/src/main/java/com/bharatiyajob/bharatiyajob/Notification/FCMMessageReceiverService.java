@@ -3,12 +3,10 @@ package com.bharatiyajob.bharatiyajob.Notification;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
 
 import com.bharatiyajob.bharatiyajob.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -18,7 +16,7 @@ import static com.bharatiyajob.bharatiyajob.Login.EnterOtpActivity.Channel_id;
 
 public class FCMMessageReceiverService extends FirebaseMessagingService {
 
-    String TAG="MyTag";
+    final String TAG="MyTag";
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {

@@ -21,7 +21,8 @@
                 android:src="@drawable/contac"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/imagedescription" />
 
             <TextView
                 android:id="@+id/Cid"
@@ -105,7 +106,8 @@
                 android:padding="7dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/Csat" />
+                app:layout_constraintTop_toBottomOf="@id/Csat"
+                />
             <EditText
                 android:id="@+id/ContatUsNumber"
                 android:layout_width="match_parent"
@@ -120,7 +122,8 @@
                 android:padding="7dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ContactName" />
+                app:layout_constraintTop_toBottomOf="@id/ContactName"
+                android:importantForAutofill="no" />
             <EditText
                 android:id="@+id/ContactUsEmail"
                 android:layout_width="match_parent"
@@ -135,7 +138,8 @@
                 android:padding="7dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ContatUsNumber" />
+                app:layout_constraintTop_toBottomOf="@id/ContatUsNumber"
+                android:importantForAutofill="no" />
 
 
             <EditText
@@ -152,7 +156,9 @@
                 android:padding="7dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ContactUsEmail" />
+                app:layout_constraintTop_toBottomOf="@id/ContactUsEmail"
+                android:importantForAutofill="no"
+                />
 
             <Button
                 android:id="@+id/ContactSubmitBtn"
@@ -161,7 +167,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/select_education_selected_radiobtn"
-                android:text="Submit"
+                android:text="@string/submit"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toTopOf="@id/Cview"
                 app:layout_constraintEnd_toEndOf="parent"

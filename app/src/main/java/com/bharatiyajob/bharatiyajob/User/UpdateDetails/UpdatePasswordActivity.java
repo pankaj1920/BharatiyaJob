@@ -13,7 +13,6 @@ import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.Json.UpdateCandidateProfile.UpdateCandidateProfileResponse;
-import com.bharatiyajob.bharatiyajob.Json.UpdateCandidateProfile.UpdateUserName;
 import com.bharatiyajob.bharatiyajob.ProfileSettingActivity;
 import com.bharatiyajob.bharatiyajob.R;
 import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
@@ -92,7 +91,9 @@ public class UpdatePasswordActivity extends AppCompatActivity {
     }
 
     private void getCanDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(this);
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
         userId = loginOtpResponse.getId();
     }
 

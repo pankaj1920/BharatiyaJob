@@ -63,14 +63,14 @@
                           android:src="@drawable/ic_account"
                           app:layout_constraintStart_toStartOf="parent"
                           app:layout_constraintTop_toTopOf="parent"
-                          app:tint="@color/colorPrimary" />
+                          app:tint="@color/colorPrimary"
+                          android:contentDescription="@string/imagedescription" />
 
                       <TextView
-                          android:id="@+id/accoutnSettingTxt"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="30dp"
-                          android:text="Account Settings"
+                          android:text="@string/account_settings"
                           android:textColor="@color/Darkergrey"
                           app:layout_constraintBottom_toBottomOf="@id/Pimg"
                           app:layout_constraintStart_toEndOf="@id/Pimg"
@@ -93,14 +93,14 @@
                           android:src="@drawable/ic_alert"
                           app:layout_constraintStart_toStartOf="parent"
                           app:layout_constraintTop_toTopOf="parent"
-                          app:tint="@color/colorPrimary" />
+                          app:tint="@color/colorPrimary"
+                          android:contentDescription="@string/imagedescription" />
 
                       <TextView
-                          android:id="@+id/createAlertTxt"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="30dp"
-                          android:text="Create Alert"
+                          android:text="@string/create_alert"
                           android:textColor="@color/Darkergrey"
                           app:layout_constraintBottom_toBottomOf="@id/createAertImg"
                           app:layout_constraintStart_toEndOf="@id/createAertImg"
@@ -125,14 +125,14 @@
                           android:src="@drawable/ic_notifications"
                           app:layout_constraintStart_toStartOf="parent"
                           app:layout_constraintTop_toTopOf="parent"
-                          app:tint="@color/colorPrimary" />
+                          app:tint="@color/colorPrimary"
+                          android:contentDescription="@string/imagedescription" />
 
                       <TextView
-                          android:id="@+id/NotificationTxt"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="30dp"
-                          android:text="Notification"
+                          android:text="@string/notification"
                           android:textColor="@color/Darkergrey"
                           app:layout_constraintBottom_toBottomOf="@id/PNotificationImg"
                           app:layout_constraintStart_toEndOf="@id/PNotificationImg"
@@ -158,14 +158,14 @@
                           android:src="@drawable/payment_ic"
                           app:layout_constraintStart_toStartOf="parent"
                           app:layout_constraintTop_toTopOf="parent"
-                          app:tint="@color/colorPrimary" />
+                          app:tint="@color/colorPrimary"
+                          android:contentDescription="@string/imagedescription" />
 
                       <TextView
-                          android:id="@+id/PaymentTxt"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="30dp"
-                          android:text="Payment"
+                          android:text="@string/payment"
                           android:textColor="@color/Darkergrey"
                           app:layout_constraintBottom_toBottomOf="@id/PaymentImg"
                           app:layout_constraintStart_toEndOf="@id/PaymentImg"
@@ -201,14 +201,14 @@
                           android:src="@drawable/ic_share"
                           app:layout_constraintStart_toStartOf="parent"
                           app:layout_constraintTop_toTopOf="parent"
-                          app:tint="@color/colorPrimary" />
+                          app:tint="@color/colorPrimary"
+                          android:contentDescription="@string/imagedescription" />
 
                       <TextView
-                          android:id="@+id/ShareAppTxt"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="30dp"
-                          android:text="Share App"
+                          android:text="@string/share_app"
                           android:textColor="@color/Darkergrey"
                           app:layout_constraintBottom_toBottomOf="@id/ShareAppImg"
                           app:layout_constraintStart_toEndOf="@id/ShareAppImg"
@@ -233,14 +233,14 @@
                           android:src="@drawable/ic_thum_up"
                           app:layout_constraintStart_toStartOf="parent"
                           app:layout_constraintTop_toTopOf="parent"
-                          app:tint="@color/colorPrimary" />
+                          app:tint="@color/colorPrimary"
+                          android:contentDescription="@string/imagedescription" />
 
                       <TextView
-                          android:id="@+id/RateTxt"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="30dp"
-                          android:text="Rate us 5 star"
+                          android:text="@string/rate_us_5_star"
                           android:textColor="@color/Darkergrey"
                           app:layout_constraintBottom_toBottomOf="@id/PRateImg"
                           app:layout_constraintStart_toEndOf="@id/PRateImg"
@@ -265,14 +265,14 @@
                           android:src="@drawable/ic_call"
                           app:layout_constraintStart_toStartOf="parent"
                           app:layout_constraintTop_toTopOf="parent"
-                          app:tint="@color/colorPrimary" />
+                          app:tint="@color/colorPrimary"
+                          android:contentDescription="@string/imagedescription" />
 
                       <TextView
-                          android:id="@+id/ContactTxt"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="30dp"
-                          android:text="Contact us/Feedback"
+                          android:text="@string/contact_us_feedback"
                           android:textColor="@color/Darkergrey"
                           app:layout_constraintBottom_toBottomOf="@id/PContactImg"
                           app:layout_constraintStart_toEndOf="@id/PContactImg"
@@ -296,14 +296,14 @@
                           android:src="@drawable/ic_info"
                           app:layout_constraintStart_toStartOf="parent"
                           app:layout_constraintTop_toTopOf="parent"
-                          app:tint="@color/colorPrimary" />
+                          app:tint="@color/colorPrimary"
+                          android:contentDescription="@string/imagedescription" />
 
                       <TextView
-                          android:id="@+id/AboutTxt"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="30dp"
-                          android:text="About us"
+                          android:text="@string/about_us"
                           android:textColor="@color/Darkergrey"
                           app:layout_constraintBottom_toBottomOf="@id/PAboutImg"
                           app:layout_constraintStart_toEndOf="@id/PAboutImg"
@@ -327,14 +327,14 @@
                           android:src="@drawable/power_off"
                           app:layout_constraintStart_toStartOf="parent"
                           app:layout_constraintTop_toTopOf="parent"
-                          app:tint="@color/colorPrimary" />
+                          app:tint="@color/colorPrimary"
+                          android:contentDescription="@string/imagedescription" />
 
                       <TextView
-                          android:id="@+id/SignoutTxt"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="30dp"
-                          android:text="Sign out"
+                          android:text="@string/sign_out"
                           android:textColor="@color/Darkergrey"
                           app:layout_constraintBottom_toBottomOf="@id/SignoutImg"
                           app:layout_constraintStart_toEndOf="@id/SignoutImg"
@@ -348,7 +348,7 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="Copyright © 2020 Bhartiya Job"
+              android:text="@string/copyright_2020_bhartiya_job"
               android:layout_marginTop="20dp"
               android:gravity="center"
               android:textSize="16sp"

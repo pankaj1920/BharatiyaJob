@@ -25,15 +25,15 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text_border_1dp"
             android:backgroundTint="@color/white"
-            android:hint="Search jobs"
+            android:hint="@string/search_jobs"
             android:textSize="15sp"
             android:padding="8dp"
-            android:drawableRight="@drawable/ic_search"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:drawableRightCompat="@drawable/ic_search" />
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.constraintlayout.widget.ConstraintLayout

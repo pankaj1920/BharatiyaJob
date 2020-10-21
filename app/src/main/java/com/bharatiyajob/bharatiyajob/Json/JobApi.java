@@ -15,6 +15,7 @@ import com.bharatiyajob.bharatiyajob.Json.Candidate.Register.RegVerifyOtpRespons
 import com.bharatiyajob.bharatiyajob.Json.Candidate.SavedJob.BookmarkJobResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.SearchJob.JobResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.UnBookmarkJob.UnBookmarJobResponse;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.remove_alert.RemoveAlertResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.BookmarkCandidate.BookmarkCandidateResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.CandidateApplied.CandidateAppliedResponse;
 import com.bharatiyajob.bharatiyajob.Json.Company.CompanyJobList.CompanyJobListResponse;
@@ -407,5 +408,12 @@ public interface JobApi {
             @Query("can_id") String companyId
     );
 
+    //Update Address
+    @FormUrlEncoded
+    @POST("remove_user_job_alert.php")
+    Call<RemoveAlertResponse>removeAlert(
+            @Field("can_id") String can_id,
+            @Field("alert_id") String alert_id
+    );
 
 }

@@ -3,7 +3,6 @@ package com.bharatiyajob.bharatiyajob.HomePage;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,14 +13,12 @@ import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.ApplyJob.ApplyJobResponse;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
-import com.bharatiyajob.bharatiyajob.Json.Candidate.JobDetails.JobDetailsData;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.JobDetails.JobDetailsResponse;
 import com.bharatiyajob.bharatiyajob.R;
 import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.net.HttpURLConnection;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -169,7 +166,10 @@ public class JobDetailActivity extends AppCompatActivity {
     }
 
     private void getCandidateDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(this);
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
 
         userId = loginOtpResponse.getId();
     }

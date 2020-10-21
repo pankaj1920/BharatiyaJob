@@ -2,25 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 <item
     android:id="@+id/companyHomeFragment"
-    android:title="Home"
+    android:title="@string/home"
     android:icon="@drawable/ic_home"/>
 
 <item
     android:id="@+id/candidateListFragment"
-    android:title="Candidate"
+    android:title="@string/candidate"
     android:icon="@drawable/ic_candi"/>
 
 <item
     android:id="@+id/postJobFragment"
-    android:title="Post Job"
+    android:title="@string/post_job"
     android:icon="@drawable/pllus" />
 <item
     android:id="@+id/bookmarkCandidateFragment"
-    android:title="Bookmark"
+    android:title="@string/bookmark"
     android:icon="@drawable/ic_star_filled"/>
 
     <item
     android:id="@+id/companyProfileFragment"
-    android:title="Profile"
+    android:title="@string/profile"
     android:icon="@drawable/ic_setting"/>
 </menu>

@@ -6,13 +6,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bharatiyajob.bharatiyajob.HomePage.HomeJob.HomeJobAdapter;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.SavedJob.BookmarkJobData;
 import com.bharatiyajob.bharatiyajob.R;
 
@@ -20,7 +18,7 @@ import java.util.List;
 
 public class SaveJobAdapter extends RecyclerView.Adapter<SaveJobAdapter.SaveJob_VH> {
 
-    List<BookmarkJobData> jobResponseList;
+    final List<BookmarkJobData> jobResponseList;
     OnSaveJobItemClickListner onSaveJobItemClickListner;
 
     public void setOnItemClickListner(OnSaveJobItemClickListner onSaveJobItemClickListner) {
@@ -49,7 +47,7 @@ public class SaveJobAdapter extends RecyclerView.Adapter<SaveJobAdapter.SaveJob_
         holder.bookmarkedLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onSaveJobItemClickListner.onJobLayoutClicked(holder.itemView,position);
+                onSaveJobItemClickListner.onJobLayoutClicked(position);
 //                Toast.makeText(holder.bookmarkSkill.getContext(), "Layout Clicked", Toast.LENGTH_SHORT).show();
             }
         });
@@ -57,7 +55,7 @@ public class SaveJobAdapter extends RecyclerView.Adapter<SaveJobAdapter.SaveJob_
         holder.bookmarkStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onSaveJobItemClickListner.onBookmarkedButtonCicked(holder.itemView,position);
+                onSaveJobItemClickListner.onBookmarkedButtonCicked(position);
 //                Toast.makeText(holder.bookmarkSkill.getContext(), "Star Clicked", Toast.LENGTH_SHORT).show();
             }
         });
@@ -71,10 +69,13 @@ public class SaveJobAdapter extends RecyclerView.Adapter<SaveJobAdapter.SaveJob_
 
     static class SaveJob_VH extends RecyclerView.ViewHolder{
 
-        TextView bookmarkTitle,bookmarkExperience,bookmarkLocation,bookmarkSkill;
-        Button savedJobApplyBtn;
-        ConstraintLayout bookmarkedLayout;
-        ImageView bookmarkStar;
+        final TextView bookmarkTitle;
+        final TextView bookmarkExperience;
+        final TextView bookmarkLocation;
+        final TextView bookmarkSkill;
+        final Button savedJobApplyBtn;
+        final ConstraintLayout bookmarkedLayout;
+        final ImageView bookmarkStar;
 
         public SaveJob_VH(@NonNull View itemView) {
             super(itemView);
@@ -93,9 +94,9 @@ public class SaveJobAdapter extends RecyclerView.Adapter<SaveJobAdapter.SaveJob_
 // Define the listener interface
 public interface OnSaveJobItemClickListner {
 
-    void onJobLayoutClicked(View itemview, int position);
+    void onJobLayoutClicked(int position);
 
-    void onBookmarkedButtonCicked(View itemview,int position);
+    void onBookmarkedButtonCicked(int position);
 
 
 }

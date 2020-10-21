@@ -20,11 +20,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Become a member"
+            android:text="@string/become_a_member"
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:layout_gravity="center"
-            android:id="@+id/toolbar_title" />
+            android:layout_gravity="center" />
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
@@ -38,7 +37,6 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -46,7 +44,7 @@
         android:id="@+id/subTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Subscription"
+        android:text="@string/subscription"
         android:textSize="25sp"
         android:layout_marginTop="20sp"
         android:layout_marginStart="20sp"
@@ -58,7 +56,7 @@
         android:id="@+id/benifitTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Benefits includes:"
+        android:text="@string/benefits_includes"
         android:textColor="@color/colorPrimary"
         android:layout_marginTop="10dp"
         android:textSize="16sp"
@@ -82,13 +80,13 @@
             android:src="@drawable/verified"
            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            />
+            android:contentDescription="@string/imagedescription" />
 
         <TextView
             android:id="@+id/verifiedTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="100% Verified Job"
+            android:text="@string/_100_verified_job"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginStart="15dp"
@@ -100,7 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:text="Get 100% verified job from company."
+            android:text="@string/get_100_verified_job_from_company"
             app:layout_constraintStart_toStartOf="@id/verifiedTxt"
             app:layout_constraintTop_toBottomOf="@id/verifiedTxt"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -122,13 +120,13 @@
             android:src="@drawable/speaker"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            />
+            android:contentDescription="@string/imagedescription" />
 
         <TextView
             android:id="@+id/AdsTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No Ads"
+            android:text="@string/no_ads"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginStart="15dp"
@@ -140,7 +138,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:text="Get rid of all those banner &amp; videos"
+            android:text="@string/get_rid_of_all_those_banner_amp_videos"
             app:layout_constraintStart_toStartOf="@id/AdsTxt"
             app:layout_constraintTop_toBottomOf="@id/AdsTxt"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -206,7 +204,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:background="@drawable/select_education_selected_radiobtn"
-        android:text="Continue"
+        android:text="@string/continuee"
         android:visibility="gone"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

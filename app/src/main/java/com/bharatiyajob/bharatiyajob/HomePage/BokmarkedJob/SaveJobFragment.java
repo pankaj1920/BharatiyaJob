@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,18 +72,21 @@ public class SaveJobFragment extends Fragment {
 
         getCanDetail();
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         savedJobRecycler.setLayoutManager(layoutManager);
 
         findJobSimmerEffect.startShimmer();
         savedJobRecycler.setVisibility(View.GONE);
         getBookmarkJob();
 
-        Toast.makeText(getActivity(), canId, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), canId, Toast.LENGTH_SHORT).show();
     }
 
     private void getCanDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getContext()).getDetail();
+
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(getContext());
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
 
         userId = loginOtpResponse.getId();
     }
@@ -97,7 +101,7 @@ public class SaveJobFragment extends Fragment {
                 final BookmarkJobResponse jobResponse = response.body();
                 if (response.isSuccessful() && jobResponse.getStatus().equals("1")){
 
-                    Toast.makeText(getActivity(), "Sucess", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Sucess", Toast.LENGTH_SHORT).show();
 
                     findJobSimmerEffect.stopShimmer();
                     findJobSimmerEffect.setVisibility(View.GONE);
@@ -108,24 +112,24 @@ public class SaveJobFragment extends Fragment {
 
                     saveJobAdapter.setOnItemClickListner(new SaveJobAdapter.OnSaveJobItemClickListner() {
                         @Override
-                        public void onJobLayoutClicked(View itemview, int position) {
+                        public void onJobLayoutClicked(int position) {
                             jobId = jobResponse.getData().get(position).getJob_id();
                             jobTitle = jobResponse.getData().get(position).getJob_title();
 
-                            Toast.makeText(getActivity(), jobId + " " + jobTitle, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), jobId + " " + jobTitle, Toast.LENGTH_SHORT).show();
 
                             Bundle bundle = new Bundle();
                             bundle.putString("jobId",jobId);
-                            Intent intent = new Intent(getActivity(), JobDetailActivity.class);
+                            Intent intent = new Intent(getContext(), JobDetailActivity.class);
                             intent.putExtras(bundle);
                             startActivity(intent);
                         }
 
                         @Override
-                        public void onBookmarkedButtonCicked(View itemview, int position) {
+                        public void onBookmarkedButtonCicked(int position) {
                             jobId = jobResponse.getData().get(position).getJob_id();
                             unBookmarkJob();
-                            Toast.makeText(getActivity(), "Bookmarked Clicked", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Bookmarked Clicked", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -135,7 +139,7 @@ public class SaveJobFragment extends Fragment {
                     savedJobRecycler.setVisibility(View.GONE);
                     canBookmarkedJob.setVisibility(View.VISIBLE);
 
-                    Toast.makeText(getActivity(), "UnSucess", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "UnSucess", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -145,14 +149,14 @@ public class SaveJobFragment extends Fragment {
                 findJobSimmerEffect.setVisibility(View.GONE);
                 savedJobRecycler.setVisibility(View.GONE);
                 canBookmarkedJob.setVisibility(View.VISIBLE);
-                Toast.makeText(getActivity(), "On Failure", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "On Failure", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void unBookmarkJob(){
 
-        Toast.makeText(getActivity(), "CanId : "+userId+ "JobId :" + jobId, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "CanId : "+userId+ "JobId :" + jobId, Toast.LENGTH_SHORT).show();
         JobApi jobApi = BaseClient.getBaseClient().create(JobApi.class);
         Call<UnBookmarJobResponse> call = jobApi.unBookmarkJob(userId,jobId);
         call.enqueue(new Callback<UnBookmarJobResponse>() {
@@ -162,15 +166,15 @@ public class SaveJobFragment extends Fragment {
                 if (response.isSuccessful() && unBookmarJobResponse.getStatus().equals("1")){
 
                     getBookmarkJob();
-                    Toast.makeText(getActivity(), unBookmarJobResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), unBookmarJobResponse.getMessage(), Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(getActivity(), "Try Again Unnbookmark", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Try Again Unnbookmark", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<UnBookmarJobResponse> call, Throwable t) {
-                Toast.makeText(getActivity(), "On Failure UnBookmark Job", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "On Failure UnBookmark Job", Toast.LENGTH_SHORT).show();
             }
         });
     }

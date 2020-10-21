@@ -20,8 +20,8 @@ import java.util.List;
 
 public class CompanyHomePageRecyleAdapter extends RecyclerView.Adapter<CompanyHomePageRecyleAdapter.Vholder> {
 
-    List<CompanyJobListData> appliedjoblist;
-    Context context;
+    final List<CompanyJobListData> appliedjoblist;
+    final Context context;
     private OnJobItemClickListner onJobItemClickListner;
     String [] dateTime;
     String date,time;
@@ -62,7 +62,7 @@ public class CompanyHomePageRecyleAdapter extends RecyclerView.Adapter<CompanyHo
         holder.viewJob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onJobItemClickListner.onJobItemClicked(holder.itemView,position);
+                onJobItemClickListner.onJobItemClicked(position);
             }
         });
     }
@@ -73,9 +73,15 @@ public class CompanyHomePageRecyleAdapter extends RecyclerView.Adapter<CompanyHo
     }
 
     public static class Vholder extends RecyclerView.ViewHolder {
-        TextView jobTitle,jobExperience,jobLocation,jobSalary,jobVacanncy,jobSkill,txt_date;
-        ImageView bookmarkedStar;
-        Button viewJob;
+        final TextView jobTitle;
+        final TextView jobExperience;
+        final TextView jobLocation;
+        final TextView jobSalary;
+        final TextView jobVacanncy;
+        final TextView jobSkill;
+        final TextView txt_date;
+        final ImageView bookmarkedStar;
+        final Button viewJob;
         public Vholder(@NonNull View itemView) {
             super(itemView);
             jobTitle = itemView.findViewById(R.id.jobTitle);
@@ -91,6 +97,6 @@ public class CompanyHomePageRecyleAdapter extends RecyclerView.Adapter<CompanyHo
     }
 
     interface OnJobItemClickListner {
-        void onJobItemClicked(View view, int position);
+        void onJobItemClicked(int position);
     }
 }

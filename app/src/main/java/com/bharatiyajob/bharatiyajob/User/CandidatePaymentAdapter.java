@@ -65,7 +65,7 @@ public class CandidatePaymentAdapter extends RecyclerView.Adapter<CandidatePayme
                 row_index = position;
                 notifyDataSetChanged();
 
-                onItemClickListner.onSubscriptionLayoutClicked(holder.itemView,position, price,days);
+                onItemClickListner.onSubscriptionLayoutClicked(price,days);
             }
         });
 
@@ -103,10 +103,10 @@ public class CandidatePaymentAdapter extends RecyclerView.Adapter<CandidatePayme
 
     static class Subscription_VH extends RecyclerView.ViewHolder{
 
-        TextView amount;
-        RadioButton subscriptionRadioBtn;
-        ConstraintLayout selectSubscriptionLayout;
-        Button buySubscription;
+        final TextView amount;
+        final RadioButton subscriptionRadioBtn;
+        final ConstraintLayout selectSubscriptionLayout;
+        final Button buySubscription;
 
 
         public Subscription_VH(@NonNull final View itemView) {
@@ -143,7 +143,7 @@ public class CandidatePaymentAdapter extends RecyclerView.Adapter<CandidatePayme
     // Define the listener interface
     public interface OnItemClickListner {
 
-        void onSubscriptionLayoutClicked(View itemview, int position,String price,String days);
+        void onSubscriptionLayoutClicked(String price, String days);
 
 //        void onSubscriptionRadioBtnClicked(View itemview,int position);
 

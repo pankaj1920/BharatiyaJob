@@ -31,85 +31,99 @@
                android:id="@+id/nameOfAlert"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:hint="Name of alert"
+               android:hint="@string/name_of_alert"
                android:layout_marginStart="20dp"
                android:layout_marginEnd="20dp"
                android:layout_marginTop="20dp"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintTop_toTopOf="parent"/>
+               app:layout_constraintTop_toTopOf="parent"
+               android:importantForAutofill="no"
+               />
 
            <EditText
                android:id="@+id/AlertSkill"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:hint="Enter Skills"
+               android:hint="@string/enter_skills"
                android:layout_marginStart="20dp"
                android:layout_marginEnd="20dp"
                android:layout_marginTop="20dp"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/nameOfAlert"/>
+               app:layout_constraintTop_toBottomOf="@id/nameOfAlert"
+               android:importantForAutofill="no"
+               />
 
            <EditText
                android:id="@+id/AlertLocation"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:hint="Enter Location"
+               android:hint="@string/enter_location"
                android:layout_marginStart="20dp"
                android:layout_marginEnd="20dp"
                android:layout_marginTop="20dp"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/AlertSkill"/>
+               app:layout_constraintTop_toBottomOf="@id/AlertSkill"
+               android:importantForAutofill="no"
+               />
 
            <EditText
                android:id="@+id/AlertExperience"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:hint="Enter Experience"
+               android:hint="@string/enter_experience"
                android:layout_marginStart="20dp"
                android:layout_marginEnd="20dp"
                android:layout_marginTop="20dp"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/AlertLocation"/>
+               app:layout_constraintTop_toBottomOf="@id/AlertLocation"
+               android:importantForAutofill="no"
+               />
 
            <EditText
                android:id="@+id/AlertSalary"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:hint="Annual Salary"
+               android:hint="@string/annual_salary"
                android:layout_marginStart="20dp"
                android:layout_marginEnd="20dp"
                android:layout_marginTop="20dp"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/AlertExperience"/>
+               app:layout_constraintTop_toBottomOf="@id/AlertExperience"
+               android:importantForAutofill="no"
+               />
 
            <EditText
                android:id="@+id/AlertFunctionalArea"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:hint="Functional Area"
+               android:hint="@string/functional_area"
                android:layout_marginStart="20dp"
                android:layout_marginEnd="20dp"
                android:layout_marginTop="20dp"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/AlertSalary"/>
+               app:layout_constraintTop_toBottomOf="@id/AlertSalary"
+               android:importantForAutofill="no"
+               />
 
            <EditText
                android:id="@+id/AlertIndustry"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:hint="Industry"
+               android:hint="@string/industry"
                android:layout_marginStart="20dp"
                android:layout_marginEnd="20dp"
                android:layout_marginTop="20dp"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/AlertFunctionalArea"/>
+               app:layout_constraintTop_toBottomOf="@id/AlertFunctionalArea"
+               android:importantForAutofill="no"
+               />
 
            <Button
                android:id="@+id/createAlertBtn"
@@ -120,7 +134,7 @@
                android:layout_marginRight="30dp"
                android:layout_marginBottom="30dp"
                android:background="@drawable/select_education_selected_radiobtn"
-               android:text="Create Job Alert"
+               android:text="@string/create_job_alert"
                android:textColor="@color/white"
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintStart_toStartOf="parent"

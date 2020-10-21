@@ -34,7 +34,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:maxLines="2"
-                    android:text="Senior web developer"
+                    android:text="@string/senior_web_developer"
                     android:textColor="@color/Blue"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,8 @@
                     android:layout_marginEnd="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:contentDescription="@string/imagedescription" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -85,16 +86,17 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/Darkgrey" />
+                    app:tint="@color/Darkgrey"
+                    android:contentDescription="@string/imagedescription" />
 
                 <TextView
                     android:id="@+id/alertJobExperience"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10sp"
-                    android:text="3 - 4 Years"
+                    android:text="@string/_3_4_years"
                     android:textColor="@color/Darkgrey"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/expLogo"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -108,16 +110,17 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/alertJobExperience"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/Darkgrey" />
+                    app:tint="@color/Darkgrey"
+                    android:contentDescription="@string/imagedescription" />
 
                 <TextView
                     android:id="@+id/alertjobLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10sp"
-                    android:text="Delhi, Banglore"
+                    android:text="@string/delhi_banglore"
                     android:textColor="@color/Darkgrey"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/jobLoc"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -142,16 +145,17 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/Darkgrey" />
+                    app:tint="@color/Darkgrey"
+                    android:contentDescription="@string/imagedescription" />
 
                 <TextView
                     android:id="@+id/alertSalary"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10sp"
-                    android:text="10,000"
+                    android:text="@string/_10_000"
                     android:textColor="@color/Darkgrey"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/alertSalLogo"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -165,16 +169,17 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/alertSalary"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/Darkgrey" />
+                    app:tint="@color/Darkgrey"
+                    android:contentDescription="@string/imagedescription" />
 
                 <TextView
                     android:id="@+id/alertIndustry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10sp"
-                    android:text="IT Software"
+                    android:text="@string/it_software"
                     android:textColor="@color/Darkgrey"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/alertIndustryLogo"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -197,7 +202,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/Darkgrey" />
+                    app:tint="@color/Darkgrey"
+                    android:contentDescription="@string/imagedescription" />
 
                 <TextView
                     android:id="@+id/alertJobSkill"
@@ -205,9 +211,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10sp"
                     android:maxLines="2"
-                    android:text="android, android develo, java, flutter react navite,angular, Retrofit  "
+                    android:text="@string/android_android_develo_java_flutter_react_navite_angular_retrofit"
                     android:textColor="@color/Darkgrey"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/skillLogo"

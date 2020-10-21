@@ -57,14 +57,15 @@
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintBottom_toBottomOf="parent"/>
+          app:layout_constraintBottom_toBottomOf="parent"
+          android:contentDescription="@string/imagedescription" />
 
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:gravity="center"
           android:textColor="@color/black"
-          android:text="You have not posted any job \n Go to create Job to post job."
+          android:text="@string/you_have_not_posted_any_job_n_go_to_create_job_to_post_job"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintTop_toBottomOf="@id/creatDoc"/>

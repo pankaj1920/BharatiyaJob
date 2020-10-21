@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="Success!"
+        android:text="@string/success"
         android:textColor="@color/black"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -29,7 +29,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
         android:gravity="center"
-        android:text="Your account has been created"
+        android:text="@string/your_account_has_been_created"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,8 @@
         android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/succTxt2"/>
+        app:layout_constraintTop_toBottomOf="@id/succTxt2"
+        android:contentDescription="@string/imagedescription" />
 
     <Button
         android:id="@+id/RegContinueBtn"
@@ -54,7 +55,7 @@
         android:layout_marginRight="30dp"
         android:background="@drawable/select_education_selected_radiobtn"
         android:textAllCaps="false"
-        android:text="Continue"
+        android:text="@string/continuee"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

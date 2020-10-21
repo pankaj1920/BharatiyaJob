@@ -71,8 +71,10 @@ public class CompanyProfileSetting extends AppCompatActivity {
     }
 
     private void getCompanyDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
 
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(this);
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
         companyId = loginOtpResponse.getId();
     }
 

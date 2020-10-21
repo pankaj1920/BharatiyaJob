@@ -112,7 +112,9 @@ public class CompanyProfileFragment extends Fragment {
 
     public void Signout() {
         //we are callin Logout Method from SharePrefManager will will delet all user detail from share prefrences
-        LoginDetailSharePref.getInstance(getActivity()).Logout();
+//        LoginDetailSharePref.getInstance(getActivity()).Logout();
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(getActivity());
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
 
         Toast.makeText(getActivity(), "SignOut", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), LoginActivity.class);
@@ -130,8 +132,9 @@ public class CompanyProfileFragment extends Fragment {
     }
 
     private void getCompanyDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
-
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(getActivity());
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
         comId = loginOtpResponse.getId();
         regType = loginOtpResponse.getReg_type();
 

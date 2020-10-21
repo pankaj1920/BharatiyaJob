@@ -11,7 +11,7 @@
        android:layout_height="match_parent">
        <androidx.constraintlayout.widget.ConstraintLayout
            android:layout_width="match_parent"
-           android:layout_height="match_parent">
+           android:layout_height="wrap_content">
            <ImageView
                android:id="@+id/loginLogo"
                android:layout_width="0dp"
@@ -20,7 +20,8 @@
                android:src="@drawable/bhartiyajob"
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toTopOf="parent" />
+               app:layout_constraintTop_toTopOf="parent"
+               android:contentDescription="@string/imagedescription" />
 
 
            <EditText
@@ -32,12 +33,14 @@
                android:layout_marginRight="30dp"
                android:background="@drawable/editt_tex_boder"
                android:drawableStart="@drawable/ic_account_box"
-               android:hint="\t Email or Mobile Number"
+               android:hint="@string/t_email_or_mobile_number"
                android:maxLines="1"
                android:padding="10dp"
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/loginLogo" />
+               app:layout_constraintTop_toBottomOf="@id/loginLogo"
+               android:importantForAutofill="no"
+               />
 
            <Button
                android:id="@+id/signBtn"
@@ -47,7 +50,7 @@
                android:layout_marginTop="60dp"
                android:layout_marginRight="30dp"
                android:background="@drawable/select_education_selected_radiobtn"
-               android:text="Sign In"
+               android:text="@string/sign_in"
                android:textColor="@color/white"
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +74,7 @@
                android:layout_marginTop="40dp"
                android:paddingStart="10dp"
                android:paddingEnd="10dp"
-               android:text="or"
+               android:text="@string/or"
                android:textColor="@color/black"
                app:layout_constraintEnd_toStartOf="@id/viewRight"
                app:layout_constraintStart_toEndOf="@id/viewLeft"
@@ -94,10 +97,11 @@
                android:layout_height="wrap_content"
                android:layout_marginTop="50dp"
                android:layout_marginBottom="50dp"
-               android:gravity="right"
+               android:gravity="end"
                android:layout_marginStart="20dp"
-               android:paddingLeft="37dp"
-               android:text="Don\'t have an account ? "
+               android:paddingStart="37dp"
+               android:paddingEnd="0dp"
+               android:text="@string/don_t_have_an_account"
                app:layout_constraintBottom_toBottomOf="parent"
                app:layout_constraintEnd_toStartOf="@id/RegisterTextView"
                app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +113,7 @@
                android:layout_height="wrap_content"
                android:layout_marginTop="50dp"
                android:layout_marginBottom="30dp"
-               android:text=" Register "
+               android:text="@string/register"
                android:textColor="@color/black"
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintStart_toEndOf="@id/dntAccountTxt"

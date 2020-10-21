@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".User.UpdateDetails.UpdateSkillsActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/first_layout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -20,11 +19,10 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/first_name_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
-                app:title="Update Name"
+                app:title="Update Skill"
                 android:minHeight="?attr/actionBarSize"
                 app:titleTextColor="@color/white" />
         </com.google.android.material.appbar.AppBarLayout>
@@ -51,7 +49,6 @@
                 app:layout_constraintGuide_end="24dp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraint_2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="@color/black"
@@ -74,7 +71,8 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:paddingTop="10dp"
-                        android:text="Enter skills"
+                        android:text="@string/enter_skills"
+                        android:textColor="@color/black"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -85,12 +83,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:hint="Enter skills"
+                        android:hint="@string/enter_skills"
                         android:maxLines="1"
                         android:inputType="textEmailAddress"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/text1" />
+                        app:layout_constraintTop_toBottomOf="@id/text1"
+                        android:importantForAutofill="no" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -113,9 +112,9 @@
                         android:background="@drawable/select_education_selected_radiobtn"
                         android:paddingTop="7dp"
                         android:paddingBottom="7dp"
-                        android:text="SAVE"
+                        android:text="@string/save"
                         android:textColor="@color/white"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

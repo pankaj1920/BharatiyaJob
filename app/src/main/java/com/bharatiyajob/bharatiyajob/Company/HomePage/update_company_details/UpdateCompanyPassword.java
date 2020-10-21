@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,7 +13,6 @@ import com.bharatiyajob.bharatiyajob.Json.BaseClient;
 import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.Json.UpdateCandidateProfile.UpdateCandidateProfileResponse;
-import com.bharatiyajob.bharatiyajob.ProfileSettingActivity;
 import com.bharatiyajob.bharatiyajob.R;
 import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 import retrofit2.Call;
@@ -85,7 +83,9 @@ public class UpdateCompanyPassword extends AppCompatActivity {
     }
 
     private void getCompanyDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(this);
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
         userId = loginOtpResponse.getId();
     }
 }

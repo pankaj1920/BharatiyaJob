@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginStart="10dp"
     android:background="#FFFFFF">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
         <ImageView
-            android:id="@+id/jobComponayogo"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:scaleType="fitCenter"
@@ -25,7 +16,7 @@
             android:background="@drawable/circular_image_view"
             android:src="@drawable/wipro_logo"
             android:translationZ="100dp"
-           />
+            android:contentDescription="@string/imagedescription" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -59,7 +50,7 @@
                         android:layout_marginStart="70dp"
                         android:layout_marginTop="10dp"
                         android:maxLines="2"
-                        android:text="Senior web developer"
+                        android:text="@string/senior_web_developer"
                         android:textColor="@color/Blue"
                         android:textSize="20sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +65,8 @@
                         android:layout_marginEnd="10dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:contentDescription="@string/imagedescription" />
 
                     <ImageView
                         android:id="@+id/bookmarkedStar"
@@ -87,7 +79,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="#FFC107"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:contentDescription="@string/imagedescription" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -124,16 +117,17 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/Darkgrey" />
+                        app:tint="@color/Darkgrey"
+                        android:contentDescription="@string/imagedescription" />
 
                     <TextView
                         android:id="@+id/jobExperience"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10sp"
-                        android:text="3 - 4 Years"
+                        android:text="@string/_3_4_years"
                         android:textColor="@color/Darkgrey"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/expLogo"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -146,16 +140,17 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/jobExperience"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/Darkgrey" />
+                        app:tint="@color/Darkgrey"
+                        android:contentDescription="@string/imagedescription" />
 
                     <TextView
                         android:id="@+id/jobLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10sp"
-                        android:text="Delhi, Banglore"
+                        android:text="@string/delhi_banglore"
                         android:textColor="@color/Darkgrey"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/jobLoc"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -178,7 +173,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/Darkgrey" />
+                        app:tint="@color/Darkgrey"
+                        android:contentDescription="@string/imagedescription" />
 
                     <TextView
                         android:id="@+id/jobSkill"
@@ -186,9 +182,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10sp"
                         android:maxLines="2"
-                        android:text="android, android develo, java, flutter react navite,angular, Retrofit  "
+                        android:text="@string/android_android_develo_java_flutter_react_navite_angular_retrofit"
                         android:textColor="@color/Darkgrey"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/skillLogo"
@@ -200,8 +196,8 @@
                     android:id="@+id/postedText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Posted on"
-                    android:textSize="10sp"
+                    android:text="@string/posted_on"
+                    android:textSize="12sp"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginStart="10sp"
@@ -214,7 +210,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2020-09-04"
+                    android:text="@string/_2020_09_04"
                     android:layout_marginStart="5sp"
                     android:textSize="12sp"
                     app:layout_constraintStart_toEndOf="@id/postedText"
@@ -226,7 +222,7 @@
                     android:layout_width="110dp"
                     android:layout_height="40dp"
                     android:background="@drawable/select_education_selected_radiobtn"
-                    android:text="Apply"
+                    android:text="@string/apply"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="20dp"
                     android:textColor="@color/white"
@@ -240,7 +236,7 @@
                     android:layout_width="110dp"
                     android:layout_height="40dp"
                     android:background="@drawable/select_education_selected_radiobtn"
-                    android:text="Applied"
+                    android:text="@string/applied"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="20dp"
                     android:visibility="gone"
@@ -255,4 +251,3 @@
         </androidx.cardview.widget.CardView>
 
     </FrameLayout>
-</LinearLayout>

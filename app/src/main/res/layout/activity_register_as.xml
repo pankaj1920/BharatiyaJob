@@ -18,13 +18,14 @@
             android:src="@drawable/bhartiyajob"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/imagedescription" />
 
         <TextView
             android:id="@+id/txt1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Create Account"
+            android:text="@string/create_account"
             android:textSize="22sp"
             android:layout_marginTop="40dp"
             android:textColor="@color/black"
@@ -43,7 +44,7 @@
             android:layout_marginRight="30dp"
             android:layout_marginTop="60dp"
             android:background="@drawable/select_education_selected_radiobtn"
-            android:text="Candidate"
+            android:text="@string/candidate"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +58,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/select_education_selected_radiobtn"
-            android:text="Recruiter"
+            android:text="@string/recruiter"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -51,7 +51,7 @@ public class ForgotPassword extends AppCompatActivity {
         bundle.putString("mobNum", mobNum);
 
         if (mobNum.equals("") || mobNum.length() != 10){
-            forgetPasswordNum.setText("Enter vaild number");
+            forgetPasswordNum.setText(R.string.enter_valid_number);
             forgetPasswordNum.requestFocus();
         }else {
 

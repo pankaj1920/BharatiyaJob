@@ -13,7 +13,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/account_image_layout"
@@ -29,7 +29,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20sp"
                     android:layout_marginTop="40dp"
-                    android:text="Make your profile"
+                    android:text="@string/make_your_profile"
                     android:textColor="@color/black"
                     android:textSize="22sp"
                     android:textStyle="bold"
@@ -52,14 +52,15 @@
                     android:id="@+id/formCameraPick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="57dp"
+                    android:layout_marginStart="57dp"
                     android:layout_marginTop="8dp"
                     android:padding="2.5dp"
                     android:background="@android:color/transparent"
                     android:tint="@color/black"
                     android:src="@drawable/ic_camera"
                     app:layout_constraintEnd_toEndOf="@id/userImage"
-                    app:layout_constraintTop_toTopOf="@id/userImage" />
+                    app:layout_constraintTop_toTopOf="@id/userImage"
+                    android:contentDescription="@string/imagedescription" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -78,10 +79,11 @@
                     android:id="@+id/R_fname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Full Name"
+                    android:hint="@string/full_name"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:importantForAutofill="no" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20sp"
                 android:layout_marginTop="25dp"
-                android:text="Gender"
+                android:text="@string/gender"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -135,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20sp"
                 android:layout_marginTop="30dp"
-                android:text="Higher Qualification"
+                android:text="@string/higher_qualification"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -159,7 +161,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20sp"
                     android:onClick="selectQulification"
-                    android:text="Below 10th"
+                    android:text="@string/below_10th"
                     android:textSize="14sp"
                     android:paddingStart="14dp"
                     android:paddingEnd="14dp"
@@ -182,7 +184,7 @@
                     android:elevation="4dp"
                     android:onClick="selectQulification"
                     android:padding="10dp"
-                    android:text="10th Pass"
+                    android:text="@string/_10th_pass"
                     android:textSize="12sp" />
 
                 <RadioButton
@@ -191,7 +193,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20sp"
                     android:onClick="selectQulification"
-                    android:text="12th Pass"
+                    android:text="@string/_12th_pass"
                     android:textSize="14sp"
                     android:paddingStart="14dp"
                     android:paddingEnd="14dp"
@@ -221,7 +223,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20sp"
                     android:onClick="selectQulification"
-                    android:text="Diploma"
+                    android:text="@string/diploma"
                     android:textSize="14sp"
                     android:paddingStart="14dp"
                     android:paddingEnd="14dp"
@@ -238,7 +240,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20sp"
                     android:onClick="selectQulification"
-                    android:text="Graduate"
+                    android:text="@string/graduate"
                     android:textSize="14sp"
                     android:paddingStart="14dp"
                     android:paddingEnd="14dp"
@@ -254,7 +256,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20sp"
                     android:onClick="selectQulification"
-                    android:text="Post Graduate"
+                    android:text="@string/post_graduate"
                     android:textSize="14sp"
                     android:paddingStart="14dp"
                     android:paddingEnd="14dp"
@@ -273,7 +275,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20sp"
                 android:layout_marginTop="30dp"
-                android:text="Work Experience"
+                android:text="@string/work_experience"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -297,7 +299,7 @@
                     android:layout_marginStart="20sp"
                     android:onClick="selectExperience"
                     android:padding="8dp"
-                    android:text="Experienced"
+                    android:text="@string/experienced"
                     android:background="@drawable/form_experience_selector"
                     android:textColor="@drawable/form_experience_txt_color"
                     android:elevation="4dp"
@@ -310,7 +312,7 @@
                     android:layout_marginStart="20sp"
                     android:background="@drawable/form_experience_selector"
                     android:textColor="@drawable/form_experience_txt_color"
-                    android:text="Fresher"
+                    android:text="@string/fresher"
                     android:padding="8dp"
                     android:textSize="14sp"
                     android:onClick="selectExperience" />
@@ -328,10 +330,10 @@
                     android:id="@+id/skillTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginRight="20sp"
-                    android:text="Skills"
+                    android:layout_marginEnd="20sp"
+                    android:text="@string/skills"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -347,11 +349,13 @@
                     android:minHeight="30dp"
                     android:paddingTop="10dp"
                     android:textSize="14sp"
-                    android:hint="Skills"
+                    android:hint="@string/skills"
                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/skillTxt" />
+                    app:layout_constraintTop_toBottomOf="@id/skillTxt"
+                    android:importantForAutofill="no"
+                    />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -367,10 +371,10 @@
                     android:id="@+id/locationTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginRight="20sp"
-                    android:text="Where are you currently staying?"
+                    android:layout_marginEnd="20sp"
+                    android:text="@string/where_are_you_currently_staying"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -386,11 +390,13 @@
                     android:minHeight="30dp"
                     android:paddingTop="10dp"
                     android:textSize="14sp"
-                    android:hint="Location"
+                    android:hint="@string/location"
                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/locationTxt" />
+                    app:layout_constraintTop_toBottomOf="@id/locationTxt"
+                    android:importantForAutofill="no"
+                    />
 
 
                 <TextView
@@ -400,7 +406,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="20dp"
-                    android:text="Complete address"
+                    android:text="@string/complete_address"
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -415,11 +421,12 @@
                     android:layout_marginRight="20dp"
                     android:inputType="none"
                     android:textSize="14sp"
-                    android:hint="Current Locality"
+                    android:hint="@string/current_locality"
                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/currentLocalityTxt" />
+                    app:layout_constraintTop_toBottomOf="@id/currentLocalityTxt"
+                    android:importantForAutofill="no" />
 
 
                 <Button
@@ -427,10 +434,10 @@
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/select_education_selected_radiobtn"
-                    android:text="Submit"
+                    android:text="@string/submit"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"

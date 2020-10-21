@@ -19,7 +19,7 @@
             android:minHeight="?attr/actionBarSize"
             android:textColor="@color/white"
             android:textSize="22sp"
-            android:text="Profile"
+            android:text="@string/profile"
             android:gravity="center"
             android:textAlignment="center"
             app:titleTextColor="@color/white"
@@ -36,7 +36,6 @@
             app:layout_constraintTop_toBottomOf="@id/Caccount_setting_toolbar"
             app:layout_constraintBottom_toBottomOf="parent">
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/account_layout1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -45,7 +44,6 @@
                 app:layout_constraintTop_toBottomOf="@id/account_setting_toolbar">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout1"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginStart="30dp"
@@ -72,7 +70,7 @@
                             android:layout_width="90dp"
                             android:layout_height="90dp"
                             android:layout_marginTop="30dp"
-                            android:layout_marginLeft="15dp"
+                            android:layout_marginStart="15dp"
                             android:src="@drawable/company"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -95,9 +93,10 @@
                             android:id="@+id/first_name1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="15dp"
+                            android:paddingStart="15dp"
+                            android:paddingEnd="15dp"
                             android:paddingTop="25dp"
-                            android:text="First Name"
+                            android:text="@string/first_name"
                             android:textColor="@color/Darkgrey"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -107,17 +106,18 @@
                             android:id="@+id/CNameTextView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="15dp"
-                            android:paddingLeft="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:paddingStart="15dp"
+                            android:paddingEnd="15dp"
                             android:paddingTop="15dp"
-                            android:text="Enter Name"
-                            android:drawableRight="@drawable/ic_edit"
+                            android:text="@string/enter_name"
                             android:textColor="@color/black"
-                            android:textSize="17dp"
+                            android:textSize="17sp"
                             android:onClick="updateCompanyName"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/first_name1" />
+                            app:layout_constraintTop_toBottomOf="@id/first_name1"
+                            app:drawableEndCompat="@drawable/ic_edit" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -135,9 +135,10 @@
                             android:id="@+id/mobile_number_name1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="15dp"
+                            android:paddingStart="15dp"
+                            android:paddingEnd="15dp"
                             android:paddingTop="25dp"
-                            android:text="Phone Number"
+                            android:text="@string/phone_number"
                             android:textColor="@color/Darkgrey"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -147,16 +148,17 @@
                             android:id="@+id/CNumberTextView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="15dp"
-                            android:paddingLeft="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:paddingStart="15dp"
+                            android:paddingEnd="15dp"
                             android:paddingTop="15dp"
-                            android:text="Mobile No"
-                            android:drawableRight="@drawable/ic_lok"
+                            android:text="@string/mobile_no"
                             android:textColor="@color/black"
-                            android:textSize="17dp"
+                            android:textSize="17sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/mobile_number_name1" />
+                            app:layout_constraintTop_toBottomOf="@id/mobile_number_name1"
+                            app:drawableRightCompat="@drawable/ic_lok" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -173,9 +175,10 @@
                             android:id="@+id/email_name1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="15dp"
+                            android:paddingStart="15dp"
+                            android:paddingEnd="15dp"
                             android:paddingTop="25dp"
-                            android:text="Email"
+                            android:text="@string/email"
                             android:textColor="@color/Darkgrey"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -185,16 +188,17 @@
                             android:id="@+id/CEmailTextView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="15dp"
-                            android:paddingLeft="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:paddingStart="15dp"
+                            android:paddingEnd="15dp"
                             android:paddingTop="15dp"
-                            android:drawableRight="@drawable/ic_lok"
-                            android:text="Email Address"
+                            android:text="@string/email_address"
                             android:textColor="@color/black"
-                            android:textSize="17dp"
+                            android:textSize="17sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/email_name1" />
+                            app:layout_constraintTop_toBottomOf="@id/email_name1"
+                            app:drawableEndCompat="@drawable/ic_lok" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -211,9 +215,10 @@
                             android:id="@+id/password_name1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="15dp"
+                            android:paddingStart="15dp"
+                            android:paddingEnd="15dp"
                             android:paddingTop="25dp"
-                            android:text="Password"
+                            android:text="@string/password"
                             android:textColor="@color/Darkgrey"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -223,17 +228,18 @@
                             android:id="@+id/CPasswordTextView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="15dp"
-                            android:paddingLeft="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:paddingStart="15dp"
+                            android:paddingEnd="15dp"
                             android:paddingTop="15dp"
-                            android:text="********"
+                            android:text="@string/pass"
                             android:onClick="updateCompanyPassword"
                             android:textColor="@color/black"
-                            android:textSize="17dp"
-                            android:drawableRight="@drawable/ic_edit"
+                            android:textSize="17sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/password_name1" />
+                            app:layout_constraintTop_toBottomOf="@id/password_name1"
+                            app:drawableEndCompat="@drawable/ic_edit" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -251,9 +257,10 @@
                             android:id="@+id/CAdress"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="15dp"
+                            android:paddingStart="15dp"
+                            android:paddingEnd="15dp"
                             android:paddingTop="25dp"
-                            android:text="Address"
+                            android:text="@string/address"
                             android:textColor="@color/Darkgrey"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -263,18 +270,19 @@
                             android:id="@+id/CAdressTextView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="15dp"
-                            android:paddingLeft="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:paddingEnd="15dp"
+                            android:paddingStart="15dp"
                             android:paddingTop="15dp"
                             android:maxLines="1"
                             android:onClick="updateCompanyAddress"
-                            android:text="Electronic City Banglore"
+                            android:text="@string/electronic_city_banglore"
                             android:textColor="@color/black"
-                            android:textSize="17dp"
-                            android:drawableRight="@drawable/ic_edit"
+                            android:textSize="17sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/CAdress" />
+                            app:layout_constraintTop_toBottomOf="@id/CAdress"
+                            app:drawableRightCompat="@drawable/ic_edit" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

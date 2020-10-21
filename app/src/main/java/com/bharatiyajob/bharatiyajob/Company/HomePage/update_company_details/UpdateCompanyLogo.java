@@ -37,7 +37,7 @@ import retrofit2.Retrofit;
 public class UpdateCompanyLogo extends AppCompatActivity {
 
     ImageView comImgPick;
-    int IMAGE_PICK_REQUEST_CODE=101;
+    final int IMAGE_PICK_REQUEST_CODE=101;
     Uri imageuri;
     Bitmap bitmap;
     CircleImageView comProfileImage;
@@ -85,7 +85,7 @@ public class UpdateCompanyLogo extends AppCompatActivity {
 
     public void uploadProfileImage(){
         uploadComImgBtn.setClickable(false);
-        uploadComImgBtn.setText("Uploading...");
+        uploadComImgBtn.setText(R.string.uploading);
         comUpLayout.setAlpha(0.5f);
         File file=new File(filepath);
         ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
@@ -111,7 +111,7 @@ public class UpdateCompanyLogo extends AppCompatActivity {
                 Toast.makeText(UpdateCompanyLogo.this, "failed", Toast.LENGTH_SHORT).show();
 
                 uploadComImgBtn.setClickable(true);
-                uploadComImgBtn.setText("Uploading");
+                uploadComImgBtn.setText(R.string.uploading);
                 comUpLayout.setAlpha(0.9f);
             }
         });

@@ -86,7 +86,7 @@ public class ProfileFragment extends Fragment {
         PRateLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                rateUs();
+
             }
         });
 
@@ -150,9 +150,6 @@ public class ProfileFragment extends Fragment {
         startActivity(intent);
     }
 
-    private void rateUs() {
-    }
-
     private void shareApp() {
         Intent intent = new Intent(getActivity(), ShareAppActivity.class);
         startActivity(intent);
@@ -171,7 +168,9 @@ public class ProfileFragment extends Fragment {
 
     public void Signout() {
         //we are callin Logout Method from SharePrefManager will will delet all user detail from share prefrences
-        LoginDetailSharePref.getInstance(getActivity()).Logout();
+//        LoginDetailSharePref.getInstance(getActivity()).Logout();
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(getActivity());
+        loginDetailSharePref.Logout();
 
         Toast.makeText(getActivity(), "SignOut", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), LoginActivity.class);
@@ -179,15 +178,10 @@ public class ProfileFragment extends Fragment {
         getActivity().finish();
     }
 
-    @Override
-    public void onStart() {
-
-        super.onStart();
-    }
-
     private void getCanDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
-
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(getActivity());
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
         userId = loginOtpResponse.getId();
         regType = loginOtpResponse.getReg_type();
 

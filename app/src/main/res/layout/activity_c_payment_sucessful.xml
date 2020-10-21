@@ -13,7 +13,7 @@
             android:id="@+id/transactionTxt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Transaction ID : "
+            android:text="@string/transaction_id"
             android:textColor="@color/black"
             android:layout_marginBottom="50dp"
             android:textSize="17sp"
@@ -26,7 +26,7 @@
             android:id="@+id/transactionID"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="sdkfakdls156"
+            android:text="@string/sdkfakdls156"
             android:textColor="@color/colorPrimary"
             android:layout_marginBottom="50dp"
             android:textSize="17sp"
@@ -43,7 +43,8 @@
             android:layout_marginBottom="50dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/FPCSText"/>
+            app:layout_constraintBottom_toTopOf="@id/FPCSText"
+            android:contentDescription="@string/successimg" />
 
         <TextView
             android:id="@+id/FPCSText"
@@ -53,7 +54,7 @@
             android:textSize="20sp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:text=" Payment done successfully "
+            android:text="@string/payment_done_successfully"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -63,7 +64,7 @@
             android:id="@+id/paymentSucessBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="OK"
+            android:text="@string/ok"
             android:textColor="@color/white"
             android:background="@color/green"
             android:layout_marginTop="40dp"

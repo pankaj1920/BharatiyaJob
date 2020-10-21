@@ -86,13 +86,13 @@ public class BookmarkCandidateFragment extends Fragment {
 
                     adapter.setOnUnBcItemClickListner(new GetBookMarkCandidateRecylerAdapter.OnUnBcItemClickListner() {
                         @Override
-                        public void onUnBookmarkCanClicked(View view, int position) {
+                        public void onUnBookmarkCanClicked(int position) {
                             canId = getBookMarkedCanResponse.getData().get(position).getCandidate_id();
                             removeBookMarkCandidate();
                         }
 
                         @Override
-                        public void onBookCanViewDetailCilcked(View view, int position) {
+                        public void onBookCanViewDetailCilcked(int position) {
                             String canDetId = getBookMarkedCanResponse.getData().get(position).getCandidate_id();
                             Bundle bundle = new Bundle();
                             bundle.putString("canDetId",canDetId);
@@ -102,7 +102,7 @@ public class BookmarkCandidateFragment extends Fragment {
                         }
 
                         @Override
-                        public void onBCanRemoveCilcked(View view, String canId, String jobId) {
+                        public void onBCanRemoveCilcked(String canId, String jobId) {
                             removeCandidate(canId, jobId);
                         }
                     });
@@ -177,8 +177,10 @@ public class BookmarkCandidateFragment extends Fragment {
     }
 
     private void getCompanyDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
 
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(getActivity());
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
         companyId = loginOtpResponse.getId();
     }
 }

@@ -35,7 +35,7 @@ public class RegistrationActivity extends AppCompatActivity {
     String name, email,password,mobile;
     SignInButton R_googleSign;
     GoogleSignInClient googleSignInClient;
-    int RC_Sign_In = 0;
+    final int RC_Sign_In = 0;
     String G_email,personEmail;
     String canId;
 

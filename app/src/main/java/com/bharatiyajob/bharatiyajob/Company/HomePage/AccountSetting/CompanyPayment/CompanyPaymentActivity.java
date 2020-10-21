@@ -21,7 +21,6 @@ import com.bharatiyajob.bharatiyajob.R;
 import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
 import com.bharatiyajob.bharatiyajob.User.CPaymentSucessfulActivity;
 import com.bharatiyajob.bharatiyajob.User.CandidatePaymentAdapter;
-import com.bharatiyajob.bharatiyajob.User.UserPaymentActivity;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
@@ -97,7 +96,7 @@ public class CompanyPaymentActivity extends AppCompatActivity implements Payment
 
                     candidatePaymentAdapter.setOnItemClickListner(new CandidatePaymentAdapter.OnItemClickListner() {
                         @Override
-                        public void onSubscriptionLayoutClicked(View itemview, int position, String price, String days) {
+                        public void onSubscriptionLayoutClicked(String price, String days) {
                                 SubscriptionFee = price;
                             subscriptionDays =days;
                         }
@@ -221,7 +220,10 @@ public class CompanyPaymentActivity extends AppCompatActivity implements Payment
     }
 
     private void getCandidateDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(this);
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
+
         customerId = loginOtpResponse.getId();
         registrationType = loginOtpResponse.getReg_type();
         customerName = loginOtpResponse.getName();

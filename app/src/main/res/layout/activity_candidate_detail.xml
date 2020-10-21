@@ -11,7 +11,6 @@
 
 
         <ScrollView
-            android:id="@+id/jobDetailScroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
@@ -38,11 +37,11 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginStart="5dp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:contentDescription="@string/jdbackbtn" />
 
 
                     <ImageView
-                        android:id="@+id/jdBookmark"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:src="@drawable/ic_star_filled"
@@ -50,7 +49,8 @@
                         android:layout_marginEnd="20dp"
                         android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:contentDescription="@string/imagedescription" />
 
                     <TextView
                         android:id="@+id/canDetName"
@@ -60,7 +60,7 @@
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/prompt"
                         android:maxLines="1"
-                        android:text="Pankaj Bohra"
+                        android:text="@string/pankaj_bohra"
                         android:textColor="@color/white"
                         android:textSize="22sp"
                         android:textStyle="bold"
@@ -68,7 +68,6 @@
                         app:layout_constraintTop_toBottomOf="@id/jdBackBtn" />
 
                     <ImageView
-                        android:id="@+id/canDetLogo"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginEnd="16dp"
@@ -76,23 +75,24 @@
                         android:src="@drawable/accont_img"
                         app:layout_constraintBottom_toTopOf="@id/verifiedJobTxt"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:contentDescription="@string/candetlogo" />
 
                     <ImageView
-                        android:id="@+id/verifiedJobImg"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:src="@drawable/ic_verified"
                         android:layout_marginEnd="5dp"
                         app:layout_constraintTop_toTopOf="@id/verifiedJobTxt"
                         app:layout_constraintEnd_toStartOf="@id/verifiedJobTxt"
-                        app:layout_constraintBottom_toBottomOf="@id/verifiedJobTxt"/>
+                        app:layout_constraintBottom_toBottomOf="@id/verifiedJobTxt"
+                        android:contentDescription="@string/imagedescription" />
 
                     <TextView
                         android:id="@+id/verifiedJobTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Verified Candidate"
+                        android:text="@string/verified_candidate"
                         android:textColor="@color/white"
                         android:layout_marginBottom="20dp"
                         android:layout_marginEnd="20dp"
@@ -108,13 +108,14 @@
                         app:layout_constraintTop_toTopOf="@id/canDetName"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:tint="@color/white" />
+                        app:tint="@color/white"
+                        android:contentDescription="@string/imagedescription" />
 
                     <TextView
                         android:id="@+id/CanDetState"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Banglore"
+                        android:text="@string/banglore"
                         android:layout_marginStart="5dp"
                         android:textColor="@color/white"
                         app:layout_constraintStart_toEndOf="@id/JdJobLocationImg"
@@ -144,7 +145,7 @@
                                 android:id="@+id/JdTitleTxt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Candidate Detail"
+                                android:text="@string/candidate_detail"
                                 android:textStyle="bold"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
@@ -152,7 +153,6 @@
                                 app:layout_constraintTop_toTopOf="parent"/>
 
                             <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/jobPostedLayout"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
@@ -163,7 +163,7 @@
                                     android:id="@+id/canNamTxt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Name"
+                                    android:text="@string/name"
                                     android:textSize="16sp"
                                     android:textColor="@color/Darkergrey"
                                     android:layout_marginTop="10dp"
@@ -174,7 +174,7 @@
                                     android:id="@+id/canNam"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Pankaj Bohra"
+                                    android:text="@string/pankaj_bohra"
                                     android:textSize="16sp"
                                     android:textColor="@color/Darkergrey"
                                     android:layout_marginTop="10dp"
@@ -186,7 +186,7 @@
                                     android:id="@+id/canDetExpTxt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Experience"
+                                    android:text="@string/experience"
                                     android:textSize="16sp"
                                     android:textColor="@color/Darkergrey"
                                     android:layout_marginTop="10dp"
@@ -197,7 +197,7 @@
                                     android:id="@+id/canDetExperience"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Fresher"
+                                    android:text="@string/fresher"
                                     android:textSize="16sp"
                                     android:textColor="@color/Darkergrey"
                                     android:layout_marginTop="10dp"
@@ -206,10 +206,9 @@
                                     />
 
                                 <TextView
-                                    android:id="@+id/CanDetAddressTxt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Address"
+                                    android:text="@string/address"
                                     android:textSize="16sp"
                                     android:textColor="@color/Darkergrey"
                                     android:layout_marginTop="10dp"
@@ -220,7 +219,7 @@
                                     android:id="@+id/canDetAddress"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:text="Electronic City Phase 1 Banglore"
+                                    android:text="@string/electronic_city_phase_1_banglore"
                                     android:textSize="16sp"
                                     android:maxLines="2"
                                     android:textColor="@color/Darkergrey"
@@ -262,7 +261,7 @@
                                 android:id="@+id/jobOtherDetailTxt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Other Detail"
+                                android:text="@string/other_detail"
                                 android:textStyle="bold"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
@@ -270,7 +269,6 @@
                                 app:layout_constraintTop_toTopOf="parent"/>
 
                             <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/jobOtherLayout"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
@@ -283,7 +281,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
-                                    android:text="Qualification"
+                                    android:text="@string/qualification"
                                     android:textColor="@color/Darkergrey"
                                     android:textSize="16sp"
                                     app:layout_constraintStart_toStartOf="parent"
@@ -296,7 +294,7 @@
                                     android:layout_marginStart="30dp"
                                     android:layout_marginTop="10dp"
                                     android:maxLines="1"
-                                    android:text="Degree"
+                                    android:text="@string/degree"
                                     android:textColor="@color/Darkergrey"
                                     android:textSize="16sp"
                                     app:layout_constraintEnd_toEndOf="parent"
@@ -304,11 +302,10 @@
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
-                                    android:id="@+id/canDetSkillTxt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
-                                    android:text="Skills"
+                                    android:text="@string/skills"
                                     android:textColor="@color/Darkergrey"
                                     android:textSize="16sp"
                                     app:layout_constraintStart_toStartOf="parent"
@@ -319,7 +316,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
-                                    android:text="Java,php developerJava,php developerJava,php developer"
+                                    android:text="@string/java_php_developerjava_php_developerjava_php_developer"
                                     android:textColor="@color/Darkergrey"
                                     android:textSize="16sp"
                                     android:maxLines="3"
@@ -334,7 +331,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/jobContactDetailsLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -356,7 +352,7 @@
                                 android:id="@+id/JdContactDetailTxt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Contact Details"
+                                android:text="@string/contact_details"
                                 android:textStyle="bold"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
@@ -371,13 +367,14 @@
                                 android:layout_marginTop="10dp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/JdContactDetailTxt"
-                                app:tint="@color/LightGrey" />
+                                app:tint="@color/LightGrey"
+                                android:contentDescription="@string/imagedescription" />
 
                             <TextView
                                 android:id="@+id/candDetEmail"
                                 android:layout_width="wrap_content"
                                 android:layout_height="0dp"
-                                android:text="info@unitedsoftek.com"
+                                android:text="@string/info_unitedsoftek_com"
                                 android:textColor="@color/DarkBlue"
                                 android:textSize="16sp"
                                 android:layout_marginStart="20dp"
@@ -394,13 +391,14 @@
                                 android:layout_marginTop="10dp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/JdMailIcon"
-                                app:tint="@color/LightGrey" />
+                                app:tint="@color/LightGrey"
+                                android:contentDescription="@string/imagedescription" />
 
                             <TextView
                                 android:id="@+id/canDetNumber"
                                 android:layout_width="wrap_content"
                                 android:layout_height="0dp"
-                                android:text="8755420120"
+                                android:text="@string/_0987654321"
                                 android:textColor="@color/DarkBlue"
                                 android:textSize="16sp"
                                 android:layout_marginStart="20dp"
@@ -418,11 +416,10 @@
         </ScrollView>
 
         <Button
-            android:id="@+id/viewResume"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:background="@drawable/select_education_selected_radiobtn"
-            android:text="Resume"
+            android:text="@string/resume"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:textAllCaps="false"

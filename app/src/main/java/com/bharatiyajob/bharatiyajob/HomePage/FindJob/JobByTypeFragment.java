@@ -119,7 +119,7 @@ public class JobByTypeFragment extends Fragment {
 
                         homeJobAdapter.setOnItemClickListner(new HomeJobAdapter.OnItemClickListner() {
                             @Override
-                            public void onJobLayoutClicked(View itemview, int position) {
+                            public void onJobLayoutClicked(int position) {
                                 jobId = jobResponse.getData().get(position).getJob_id();
                                 jobTitle = jobResponse.getData().get(position).getJob_title();
 
@@ -139,7 +139,7 @@ public class JobByTypeFragment extends Fragment {
                             }
 
                             @Override
-                            public void onUnBookmarkBtnClicked(View itemview, int position) {
+                            public void onUnBookmarkBtnClicked(int position) {
                                 unBookmarkJob();
                             }
 
@@ -241,7 +241,10 @@ public class JobByTypeFragment extends Fragment {
 
 
     private void getCanDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(getActivity()).getDetail();
+
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(getActivity());
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
 
         userId = loginOtpResponse.getId();
     }

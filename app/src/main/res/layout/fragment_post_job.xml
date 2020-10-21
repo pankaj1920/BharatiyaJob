@@ -17,7 +17,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cJobPostLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/account_image_layout"
@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20sp"
                     android:layout_marginTop="40dp"
-                    android:text="Post Job"
+                    android:text="@string/post_job"
                     android:textColor="@color/black"
                     android:textSize="22sp"
                     android:textStyle="bold"
@@ -57,14 +57,15 @@
                     android:id="@+id/formCameraPick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="57dp"
+                    android:layout_marginStart="57dp"
                     android:layout_marginTop="8dp"
                     android:background="@android:color/transparent"
                     android:padding="2.5dp"
                     android:src="@drawable/ic_camera"
                     android:tint="@color/colorPrimaryDark"
                     app:layout_constraintEnd_toEndOf="@id/PcompanyLogo"
-                    app:layout_constraintTop_toTopOf="@id/PcompanyLogo" />
+                    app:layout_constraintTop_toTopOf="@id/PcompanyLogo"
+                    android:contentDescription="@string/imagedescription" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -76,12 +77,14 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="20dp"
-                android:hint="Company Name"
+                android:hint="@string/company_name"
                 android:padding="10dp"
                 android:background="@drawable/edit_text_border_1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/account_image_layout" />
+                app:layout_constraintTop_toBottomOf="@id/account_image_layout"
+                android:importantForAutofill="no"
+                />
 
             <EditText
                 android:id="@+id/JPJobTitle"
@@ -90,12 +93,14 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:hint="Job Title"
+                android:hint="@string/job_title"
                 android:padding="10dp"
                 android:background="@drawable/edit_text_border_1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/JPCompanyName" />
+                app:layout_constraintTop_toBottomOf="@id/JPCompanyName"
+                android:importantForAutofill="no"
+                />
 
             <EditText
                 android:id="@+id/JPJobLocation"
@@ -104,12 +109,14 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:hint="City"
+                android:hint="@string/city"
                 android:padding="10dp"
                 android:background="@drawable/edit_text_border_1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/JPJobTitle" />
+                app:layout_constraintTop_toBottomOf="@id/JPJobTitle"
+                android:importantForAutofill="no"
+                />
 
 
             <RadioGroup
@@ -128,7 +135,7 @@
                     android:layout_height="70dp"
                     android:layout_marginStart="20sp"
                     android:padding="8dp"
-                    android:text="Experienced"
+                    android:text="@string/experienced"
                     android:background="@drawable/form_experience_selector"
                     android:textColor="@drawable/form_experience_txt_color"
                     android:elevation="4dp"
@@ -141,7 +148,7 @@
                     android:layout_marginStart="20sp"
                     android:background="@drawable/form_experience_selector"
                     android:textColor="@drawable/form_experience_txt_color"
-                    android:text="Fresher"
+                    android:text="@string/fresher"
                     android:padding="8dp"
                     android:textSize="14sp" />
 
@@ -154,12 +161,14 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:hint="Enter Skill"
+                android:hint="@string/enter_skill"
                 android:padding="10dp"
                 android:background="@drawable/edit_text_border_1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/JPExperience" />
+                app:layout_constraintTop_toBottomOf="@id/JPExperience"
+                android:importantForAutofill="no"
+                />
 
             <EditText
                 android:id="@+id/JPExprencieRequried"
@@ -168,13 +177,15 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:hint="Experience "
+                android:hint="@string/experience"
                 android:padding="11dp"
                 android:textSize="15sp"
                 android:background="@drawable/edit_text_border_1dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/JPSalary"
-                app:layout_constraintTop_toBottomOf="@id/JPSkill" />
+                app:layout_constraintTop_toBottomOf="@id/JPSkill"
+                android:importantForAutofill="no"
+                />
 
             <EditText
                 android:id="@+id/JPSalary"
@@ -182,13 +193,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:hint="Enter Salary"
+                android:hint="@string/enter_salary"
                 android:padding="11dp"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:background="@drawable/edit_text_border_1dp"
                 app:layout_constraintStart_toEndOf="@id/JPExprencieRequried"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/JPSkill" />
+                app:layout_constraintTop_toBottomOf="@id/JPSkill"
+                android:importantForAutofill="no"
+                />
 
             <EditText
                 android:id="@+id/JPLanguageKnown"
@@ -197,13 +210,15 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:hint="Language Known"
+                android:hint="@string/language_known"
                 android:padding="11dp"
                 android:textSize="15sp"
                 android:background="@drawable/edit_text_border_1dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/JPVacancy"
-                app:layout_constraintTop_toBottomOf="@id/JPExprencieRequried" />
+                app:layout_constraintTop_toBottomOf="@id/JPExprencieRequried"
+                android:importantForAutofill="no"
+                />
 
             <EditText
                 android:id="@+id/JPVacancy"
@@ -211,13 +226,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:hint="No. of Vacancy"
+                android:hint="@string/no_of_vacancy"
                 android:padding="11dp"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:background="@drawable/edit_text_border_1dp"
                 app:layout_constraintStart_toEndOf="@id/JPLanguageKnown"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/JPSalary" />
+                app:layout_constraintTop_toBottomOf="@id/JPSalary"
+                android:importantForAutofill="no"
+                />
 
             <EditText
                 android:id="@+id/JPJobRole"
@@ -226,12 +243,14 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:hint="Job Role"
+                android:hint="@string/job_role"
                 android:padding="10dp"
                 android:background="@drawable/edit_text_border_1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/JPVacancy" />
+                app:layout_constraintTop_toBottomOf="@id/JPVacancy"
+                android:importantForAutofill="no"
+                />
 
 
             <EditText
@@ -241,13 +260,15 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:hint="Industry Type"
+                android:hint="@string/industry_type"
                 android:padding="11dp"
                 android:textSize="15sp"
                 android:background="@drawable/edit_text_border_1dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/JPFunctionalArea"
-                app:layout_constraintTop_toBottomOf="@id/JPJobRole" />
+                app:layout_constraintTop_toBottomOf="@id/JPJobRole"
+                android:importantForAutofill="no"
+                />
 
             <EditText
                 android:id="@+id/JPFunctionalArea"
@@ -255,13 +276,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:hint="Functional Area"
+                android:hint="@string/functional_area"
                 android:padding="11dp"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:background="@drawable/edit_text_border_1dp"
                 app:layout_constraintStart_toEndOf="@id/JPIndustryType"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/JPJobRole" />
+                app:layout_constraintTop_toBottomOf="@id/JPJobRole"
+                android:importantForAutofill="no"
+                />
 
             <EditText
                 android:id="@+id/JPInterviewVenue"
@@ -270,12 +293,14 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:hint="Interview Venue"
+                android:hint="@string/interview_venue"
                 android:padding="10dp"
                 android:background="@drawable/edit_text_border_1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/JPFunctionalArea" />
+                app:layout_constraintTop_toBottomOf="@id/JPFunctionalArea"
+                android:importantForAutofill="no"
+                />
 
 
             <EditText
@@ -285,12 +310,14 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:padding="10dp"
                 android:background="@drawable/edit_text_border_1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/JPInterviewVenue" />
+                app:layout_constraintTop_toBottomOf="@id/JPInterviewVenue"
+                android:importantForAutofill="no"
+                />
 
             <EditText
                 android:id="@+id/JPMobile"
@@ -299,12 +326,14 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:hint="Mobile No"
+                android:hint="@string/mobile_no"
                 android:padding="10dp"
                 android:background="@drawable/edit_text_border_1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/JPEmail" />
+                app:layout_constraintTop_toBottomOf="@id/JPEmail"
+                android:importantForAutofill="no"
+                />
 
             <EditText
                 android:id="@+id/JPJobDescription"
@@ -314,23 +343,25 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:hint="Description"
+                android:hint="@string/description"
                 android:padding="10dp"
                 android:gravity="top"
                 android:background="@drawable/edit_text_border_1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/JPMobile" />
+                app:layout_constraintTop_toBottomOf="@id/JPMobile"
+                android:importantForAutofill="no"
+                />
 
             <Button
                 android:id="@+id/submitPostBtn"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/select_education_selected_radiobtn"
-                android:text="Submit"
+                android:text="@string/submit"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"

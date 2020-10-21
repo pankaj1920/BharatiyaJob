@@ -39,7 +39,7 @@ import retrofit2.Retrofit;
 
 public class UpdateProfileImageActivity extends AppCompatActivity {
     ImageView ibpick;
-    int IMAGE_PICK_REQUEST_CODE=101;
+    final int IMAGE_PICK_REQUEST_CODE=101;
     Uri imageuri;
     Bitmap bitmap;
     CircleImageView ProfileImage;
@@ -48,6 +48,7 @@ public class UpdateProfileImageActivity extends AppCompatActivity {
     ProgressBar progrssbar_image_uplaod;
     LazyLoader CuiLazyloader;
     ConstraintLayout cuiLayout;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,8 @@ public class UpdateProfileImageActivity extends AppCompatActivity {
         CuiLazyloader=findViewById(R.id.CuiLazyloader);
         cuiLayout=findViewById(R.id.cuiLayout);
 //        progrssbar_image_uplaod=findViewById(R.id.progrssbar_image_uplaod);
+
+        getCanDetail();
 
 
     }
@@ -89,7 +92,7 @@ public class UpdateProfileImageActivity extends AppCompatActivity {
 
     public void uploadProfileImage(){
         upladBtn.setClickable(false);
-        upladBtn.setText("Uploading...");
+        upladBtn.setText(R.string.uploading);
         cuiLayout.setAlpha(0.5f);
         File file=new File(filepath);
         ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
@@ -97,9 +100,11 @@ public class UpdateProfileImageActivity extends AppCompatActivity {
         byte[] imageInbyte=byteArrayOutputStream.toByteArray();
         String ImageInString = Base64.encodeToString(imageInbyte,Base64.DEFAULT);
 
+        String ImgName= randomName(6);
+
         Retrofit retrofit= BaseClient.getBaseClient();
         JobApi jobApi=retrofit.create(JobApi.class);
-        Call<UpdateImageResponse> call=jobApi.updateCanImage(ImageInString,file.getName(),"89");
+        Call<UpdateImageResponse> call=jobApi.updateCanImage(ImageInString,ImgName,userId);
 
         call.enqueue(new Callback<UpdateImageResponse>() {
             @Override
@@ -115,7 +120,7 @@ public class UpdateProfileImageActivity extends AppCompatActivity {
                 Toast.makeText(UpdateProfileImageActivity.this, "failed", Toast.LENGTH_SHORT).show();
 
                 upladBtn.setClickable(true);
-                upladBtn.setText("Uploading");
+                upladBtn.setText(R.string.uploading);
                 cuiLayout.setAlpha(0.9f);
             }
         });
@@ -138,6 +143,23 @@ public class UpdateProfileImageActivity extends AppCompatActivity {
         uploadProfileImage();
         CuiLazyloader.setVisibility(View.VISIBLE);
 
+    }
 
+    public String randomName(int length){
+        String passworwdSet="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%";
+        char[] password=new char[length];
+        for (int i=0;i<length;i++){
+            int random=(int)(Math.random()*passworwdSet.length());
+            password[i]=passworwdSet.charAt(random);
+        }
+        return new String(password);
+
+    }
+
+    private void getCanDetail() {
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(this);
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
+        userId = loginOtpResponse.getId();
     }
 }

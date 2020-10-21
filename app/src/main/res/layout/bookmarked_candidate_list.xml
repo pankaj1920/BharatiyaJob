@@ -36,7 +36,8 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="30dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/imagedescription" />
 
                 <ImageView
                     android:id="@+id/BCanStar"
@@ -47,7 +48,8 @@
                     android:layout_marginEnd="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="#FFC107" />
+                    app:tint="#FFC107"
+                    android:contentDescription="@string/imagedescription" />
 
                 <TextView
                     android:id="@+id/BCanName"
@@ -56,7 +58,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:maxLines="2"
-                    android:text="Pankaj Bohra"
+                    android:text="@string/pankaj_bohra"
                     android:textColor="@color/Blue"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -64,14 +66,13 @@
                     />
 
                 <TextView
-                    android:id="@+id/BCanEmail"
                     android:layout_width="220dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="7dp"
                     android:maxLines="2"
                     android:textStyle="bold"
-                    android:text="bohrapankaj1920@gmail.com"
+                    android:text="@string/bohrapankaj1920_gmail_com"
                     android:textColor="@color/Darkergrey"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -113,16 +114,17 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/Darkgrey" />
+                    app:tint="@color/Darkgrey"
+                    android:contentDescription="@string/imagedescription" />
 
                 <TextView
                     android:id="@+id/BcanJobExperience"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10sp"
-                    android:text="Fresher"
+                    android:text="@string/fresher"
                     android:textColor="@color/Darkgrey"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/BexpLogo"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -136,16 +138,16 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/BcanJobExperience"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/Darkgrey" />
+                    app:tint="@color/Darkgrey"
+                    android:contentDescription="@string/imagedescription" />
 
                 <TextView
-                    android:id="@+id/BCanjobLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10sp"
-                    android:text="Delhi, Banglore"
+                    android:text="@string/delhi_banglore"
                     android:textColor="@color/Darkgrey"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/BjobLoc"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -169,17 +171,17 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/Darkgrey" />
+                    app:tint="@color/Darkgrey"
+                    android:contentDescription="@string/imagedescription" />
 
                 <TextView
-                    android:id="@+id/BCanJobSkill"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10sp"
                     android:maxLines="2"
-                    android:text="android, android develo, java, flutter react navite,angular, Retrofit  "
+                    android:text="@string/android_android_develo_java_flutter_react_navite_angular_retrofit"
                     android:textColor="@color/Darkgrey"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/BskillLogo"
@@ -192,7 +194,7 @@
                 android:layout_width="130dp"
                 android:layout_height="40dp"
                 android:background="@drawable/select_education_selected_radiobtn"
-                android:text="Remove"
+                android:text="@string/remove"
                 android:backgroundTint="@android:color/holo_red_light"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="20dp"
@@ -207,7 +209,7 @@
                 android:layout_width="130dp"
                 android:layout_height="40dp"
                 android:background="@drawable/select_education_selected_radiobtn"
-                android:text="View"
+                android:text="@string/view"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="20dp"
                 android:textColor="@color/white"

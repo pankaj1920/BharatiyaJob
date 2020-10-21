@@ -36,7 +36,9 @@ public class SplashScreen extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (LoginDetailSharePref.getInstance(SplashScreen.this).UserAlreadyLoggedIn()){
+                LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(SplashScreen.this);
+
+                if (loginDetailSharePref.getInstance(SplashScreen.this).UserAlreadyLoggedIn()){
                     if (regType.equals("candidate")){
                         Toast.makeText(SplashScreen.this, "Home Page", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(SplashScreen.this, HomePageActivity.class);
@@ -64,7 +66,9 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     private void getCandidateDetail() {
-        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(this);
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
 
         regType = loginOtpResponse.getReg_type();
     }

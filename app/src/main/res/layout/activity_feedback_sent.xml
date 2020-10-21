@@ -17,7 +17,8 @@
             android:layout_marginTop="150dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/imagedescription" />
 
         <TextView
             android:id="@+id/thanktxt"
@@ -25,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="Thank You!"
+            android:text="@string/thank_you"
             android:textColor="@color/green"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +55,7 @@
             android:layout_marginBottom="40dp"
             android:padding="10dp"
             android:background="@drawable/blue_btn_ripple_effect"
-            android:text="OK"
+            android:text="@string/ok"
             android:textAllCaps="false"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"

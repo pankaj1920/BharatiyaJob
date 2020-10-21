@@ -1,7 +1,5 @@
 package com.bharatiyajob.bharatiyajob.Json.Candidate.JobDetails;
 
-import java.util.List;
-
 public class JobDetailsResponse {
     private String status;
     private  JobDetailsData data;

@@ -9,26 +9,14 @@
     <color name="white">#ffffff</color>
     <color name="googleColor">#D0483A</color>
     <color name="fbColor">#3B5998</color>
-    <color name="HtextColor">#2C2261</color>
     <color name="Blue">#2C1DEC</color>
     <color name="grey">#A2A1A1</color>
-    <color name="edtText">#DAE2E1E1</color>
     <color name="LightGrey">#D6D4D4</color>
     <color name="LighterGrey">#F8F4F4</color>
-    <color name="Darkgreen">#0A6B0E</color>
     <color name="red">#F71202</color>
     <color name="DarkBlue">#0928D6</color>
     <color name="green">#53B501</color>
-    <color name="blue">#3176D7</color>
     <color name="contactUS">#F3F1F1</color>
-    <color name="retyButton">#22A5A4</color>
-    <color name="retyBackground">#EAEDF2</color>
-    <color name="Dblue">#673AB7</color>
-    <color name="signupBackground">#D4EDF2</color>
-    <color name="serviceTextBackground">#C4948F8F</color>
-    <color name="cancle_bookink_submitBtn">#FF1D1E</color>
-    <color name="place_holder_background">#dddddd</color>
-    <color name="notificationBg">#F9F9F9</color>
     <color name="yellow">#FFC107</color>
 
     <color name="pink_selected">#E91E63</color>

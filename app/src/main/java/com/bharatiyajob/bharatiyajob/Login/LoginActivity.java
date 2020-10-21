@@ -109,7 +109,6 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     loginEditext.setError("Enter valid number");
                     loginEditext.requestFocus();
-                    return;
                 }
 
             } else {
