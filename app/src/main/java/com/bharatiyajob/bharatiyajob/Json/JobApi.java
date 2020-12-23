@@ -35,11 +35,15 @@ import com.bharatiyajob.bharatiyajob.Json.SubscriptionPackage.SubscriptionRespon
 import com.bharatiyajob.bharatiyajob.Json.UpdateCanImage.UpdateImageResponse;
 import com.bharatiyajob.bharatiyajob.Json.UpdateCandidateProfile.UpdateCandidateProfileResponse;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 public interface JobApi {
@@ -414,6 +418,23 @@ public interface JobApi {
     Call<RemoveAlertResponse>removeAlert(
             @Field("can_id") String can_id,
             @Field("alert_id") String alert_id
+    );
+
+//    Update Company Logo
+@FormUrlEncoded
+@POST("update_company_profile.php")
+Call<UpdateImageResponse> updateCompanyImage(
+        @Field("profile_pic") String profile_pic,
+        @Field("profile_name") String profile_name,
+        @Field("can_id") String can_id
+);
+
+    @FormUrlEncoded
+    @POST("upload_file.php")
+    Call<UpdateImageResponse> uploadResume(
+            @Field("profile_pic") String profile_pic,
+            @Field("profile_name") String profile_name,
+            @Field("can_id") String can_id
     );
 
 }

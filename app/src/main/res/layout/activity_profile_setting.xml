@@ -320,6 +320,7 @@
                         android:src="@drawable/pickup_image"
                         android:layout_marginTop="10dp"
                         android:layout_marginStart="15dp"
+                        android:onClick="goToUploadResume"
                         app:layout_constraintStart_toEndOf="@id/DocumentImage"
                         app:layout_constraintTop_toBottomOf="@id/documentName"
                         android:contentDescription="@string/imagedescription" />

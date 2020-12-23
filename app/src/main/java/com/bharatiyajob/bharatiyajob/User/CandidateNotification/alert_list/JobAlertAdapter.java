@@ -59,7 +59,9 @@ public class JobAlertAdapter extends RecyclerView.Adapter<JobAlertAdapter.JobAle
     @Override
     public int getItemCount() {
         return jobAlertDataList.size();
+
     }
+
 
     static class JobAlert_VH extends RecyclerView.ViewHolder{
 

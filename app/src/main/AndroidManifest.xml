@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.INTERNET" />
+        <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -20,6 +20,7 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
+        android:name=".CheckMemoryLeak"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
@@ -30,12 +31,17 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".Company.HomePage.CandidateDetail.ResumePdfActivity">
+
+        </activity>
         <activity android:name=".Company.HomePage.update_company_details.UpdateCompanyPassword" />
         <activity android:name=".Company.HomePage.update_company_details.UpdateCompanyAddress" />
         <activity android:name=".Company.HomePage.update_company_details.UpdateCompanyLogo" />
         <activity android:name=".Company.HomePage.update_company_details.UpdateCompanyName" />
         <activity android:name=".User.CandidateNotification.recommended_job.RecommendedJobActivity" />
-        <activity android:name=".User.UpdateDetails.UploadResumeActivity" />
+        <activity android:name=".User.UpdateDetails.UploadResumeActivity" >
+
+        </activity>
         <activity android:name=".CustomerCare.FeedbackSentActivity" />
         <activity android:name=".RegisterAsActivity" />
         <activity android:name=".User.CreateJobAlert.CreateJobAlertActivity" />

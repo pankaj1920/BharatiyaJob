@@ -40,6 +40,7 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/yellow_circle_background"
             android:padding="4dp"
+            android:onClick="selectPdfFromGallery"
             android:src="@drawable/ic_pen"
             app:layout_constraintStart_toStartOf="@id/DocImg"
             app:layout_constraintTop_toTopOf="@id/DocImg"
@@ -47,6 +48,7 @@
 
 
         <Button
+            android:id="@+id/upladResumeBtn"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -65,15 +67,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/DocImg" />
 
-        <ProgressBar
+        <com.agrawalsuneet.dotsloader.loaders.LazyLoader
+            android:id="@+id/ResumeLazyloader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_marginTop="30dp"
+            app:lazyloader_animDur="800"
+            app:lazyloader_dotsDist="10dp"
+            android:visibility="gone"
+            app:lazyloader_dotsRadius="13dp"
+            app:lazyloader_firstDelayDur="150"
+            app:lazyloader_firstDotColor="@color/red"
+            app:lazyloader_interpolator="@android:anim/decelerate_interpolator"
+            app:lazyloader_secondDelayDur="300"
+            app:lazyloader_secondDotColor="@color/green"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:backgroundTint="@color/colorPrimaryDark"
-            android:visibility="gone"/>
+            app:lazyloader_thirdDotColor="@color/yellow"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

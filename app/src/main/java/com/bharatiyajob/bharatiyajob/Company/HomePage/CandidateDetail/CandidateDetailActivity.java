@@ -2,7 +2,11 @@ package com.bharatiyajob.bharatiyajob.Company.HomePage.CandidateDetail;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,9 +21,10 @@ import retrofit2.Response;
 
 public class CandidateDetailActivity extends AppCompatActivity {
 
-    TextView canDetName,CanDetState,canNam,canDetExperience,canDetAddress,canQualification,
-            canDetSkil,candDetEmail,canDetNumber;
-    String canDetId;
+    TextView canDetName, CanDetState, canNam, canDetExperience, canDetAddress, canQualification,
+            canDetSkil, candDetEmail, canDetNumber;
+    String canDetId,Resume;
+    Button canResume;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,7 @@ public class CandidateDetailActivity extends AppCompatActivity {
         canDetSkil = findViewById(R.id.canDetSkil);
         candDetEmail = findViewById(R.id.candDetEmail);
         canDetNumber = findViewById(R.id.canDetNumber);
+        canResume = findViewById(R.id.canResume);
 
         Bundle bundle = getIntent().getExtras();
         canDetId = bundle.getString("canDetId");
@@ -51,7 +57,7 @@ public class CandidateDetailActivity extends AppCompatActivity {
 
                 GetCandidateDetaiResponse candidateDetaiResponse = response.body();
 
-                if (response.isSuccessful() && candidateDetaiResponse.getStatus().equals("1")){
+                if (response.isSuccessful() && candidateDetaiResponse.getStatus().equals("1")) {
 
                     canDetName.setText(candidateDetaiResponse.getData().getName());
                     CanDetState.setText(candidateDetaiResponse.getData().getState());
@@ -63,7 +69,13 @@ public class CandidateDetailActivity extends AppCompatActivity {
                     candDetEmail.setText(candidateDetaiResponse.getData().getEmail());
                     canDetNumber.setText(candidateDetaiResponse.getData().getMobile());
 
-                }else {
+                    if (candidateDetaiResponse.getData().getResume()!=null && !candidateDetaiResponse.getData().getResume().isEmpty()){
+                        canResume.setVisibility(View.VISIBLE);
+                        Resume = candidateDetaiResponse.getData().getResume();
+                    }
+
+
+                } else {
                     Toast.makeText(CandidateDetailActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -73,5 +85,11 @@ public class CandidateDetailActivity extends AppCompatActivity {
                 Toast.makeText(CandidateDetailActivity.this, "On Failure" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void viewResume(View view) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(Resume));
+        startActivity(intent);
     }
 }

@@ -137,8 +137,8 @@ public class UserPaymentActivity extends AppCompatActivity implements PaymentRes
 
         final Activity activity = this;
 
-        /**
-         * Pass your payment options to the Razorpay Checkout as a JSONObject
+        /*
+          Pass your payment options to the Razorpay Checkout as a JSONObject
          */
         try {
             JSONObject options = new JSONObject();

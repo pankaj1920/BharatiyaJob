@@ -19,6 +19,7 @@ import com.bharatiyajob.bharatiyajob.User.UpdateDetails.UpdateNameActivity;
 import com.bharatiyajob.bharatiyajob.User.UpdateDetails.UpdatePasswordActivity;
 import com.bharatiyajob.bharatiyajob.User.UpdateDetails.UpdateProfileImageActivity;
 import com.bharatiyajob.bharatiyajob.User.UpdateDetails.UpdateSkillsActivity;
+import com.bharatiyajob.bharatiyajob.User.UpdateDetails.UploadResumeActivity;
 import com.squareup.picasso.Picasso;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -146,4 +147,8 @@ public class ProfileSettingActivity extends AppCompatActivity {
         userId = loginOtpResponse.getId();
     }
 
+    public void goToUploadResume(View view) {
+        Intent intent = new Intent(ProfileSettingActivity.this, UploadResumeActivity.class);
+        startActivity(intent);
+    }
 }

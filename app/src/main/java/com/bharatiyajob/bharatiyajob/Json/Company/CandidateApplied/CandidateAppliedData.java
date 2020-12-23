@@ -16,132 +16,59 @@ public class CandidateAppliedData {
     private String resume;
     private String skill;
 
-    public CandidateAppliedData(String name, String mobile, String email, String job_id, String candidate_id, String gender, String heighest_qualification, String work_experience, String state, String address, String membership_plan, String profile_pic, String resume, String skill) {
-        this.name = name;
-        this.mobile = mobile;
-        this.email = email;
-        this.job_id = job_id;
-        this.candidate_id = candidate_id;
-        this.gender = gender;
-        this.heighest_qualification = heighest_qualification;
-        this.work_experience = work_experience;
-        this.state = state;
-        this.address = address;
-        this.membership_plan = membership_plan;
-        this.profile_pic = profile_pic;
-        this.resume = resume;
-        this.skill = skill;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getMobile() {
         return mobile;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getJob_id() {
         return job_id;
     }
 
-    public void setJob_id(String job_id) {
-        this.job_id = job_id;
-    }
-
     public String getCandidate_id() {
         return candidate_id;
-    }
-
-    public void setCandidate_id(String candidate_id) {
-        this.candidate_id = candidate_id;
     }
 
     public String getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public String getHeighest_qualification() {
         return heighest_qualification;
-    }
-
-    public void setHeighest_qualification(String heighest_qualification) {
-        this.heighest_qualification = heighest_qualification;
     }
 
     public String getWork_experience() {
         return work_experience;
     }
 
-    public void setWork_experience(String work_experience) {
-        this.work_experience = work_experience;
-    }
-
     public String getState() {
         return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
     }
 
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getMembership_plan() {
         return membership_plan;
-    }
-
-    public void setMembership_plan(String membership_plan) {
-        this.membership_plan = membership_plan;
     }
 
     public String getProfile_pic() {
         return profile_pic;
     }
 
-    public void setProfile_pic(String profile_pic) {
-        this.profile_pic = profile_pic;
-    }
-
     public String getResume() {
         return resume;
     }
 
-    public void setResume(String resume) {
-        this.resume = resume;
-    }
-
     public String getSkill() {
         return skill;
-    }
-
-    public void setSkill(String skill) {
-        this.skill = skill;
     }
 }

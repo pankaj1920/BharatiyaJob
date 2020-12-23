@@ -19,11 +19,14 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.agrawalsuneet.dotsloader.loaders.LazyLoader;
+import com.bharatiyajob.bharatiyajob.Company.HomePage.AccountSetting.CompanyProfile.CompanyProfileSetting;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
+import com.bharatiyajob.bharatiyajob.Json.Candidate.Login.LoginOtpResponse;
 import com.bharatiyajob.bharatiyajob.Json.JobApi;
 import com.bharatiyajob.bharatiyajob.Json.UpdateCanImage.UpdateImageResponse;
-import com.bharatiyajob.bharatiyajob.ProfileSettingActivity;
 import com.bharatiyajob.bharatiyajob.R;
+import com.bharatiyajob.bharatiyajob.SharePrefeManger.LoginDetailSharePref;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -46,6 +49,7 @@ public class UpdateCompanyLogo extends AppCompatActivity {
     ProgressBar progrssbar_image_uplaod;
     LazyLoader CuiLazyloader;
     ConstraintLayout comUpLayout;
+    String companyId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,8 @@ public class UpdateCompanyLogo extends AppCompatActivity {
         uploadComImgBtn = findViewById(R.id.uploadComImgBtn);
         CuiLazyloader = findViewById(R.id.CuiLazyloader);
         comUpLayout = findViewById(R.id.comUpLayout);
+
+        getCompanyDetail();
     }
 
 
@@ -85,23 +91,24 @@ public class UpdateCompanyLogo extends AppCompatActivity {
 
     public void uploadProfileImage(){
         uploadComImgBtn.setClickable(false);
-        uploadComImgBtn.setText(R.string.uploading);
+        uploadComImgBtn.setText("Uploading...");
         comUpLayout.setAlpha(0.5f);
         File file=new File(filepath);
         ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
         byte[] imageInbyte=byteArrayOutputStream.toByteArray();
         String ImageInString = Base64.encodeToString(imageInbyte,Base64.DEFAULT);
+        String imageName = randomName(8);
 
         Retrofit retrofit= BaseClient.getBaseClient();
         JobApi jobApi=retrofit.create(JobApi.class);
-        Call<UpdateImageResponse> call=jobApi.updateCanImage(ImageInString,file.getName(),"89");
+        Call<UpdateImageResponse> call=jobApi.updateCompanyImage(ImageInString,imageName,companyId);
 
         call.enqueue(new Callback<UpdateImageResponse>() {
             @Override
             public void onResponse(Call<UpdateImageResponse> call, Response<UpdateImageResponse> response) {
                 Toast.makeText(UpdateCompanyLogo.this, "success", Toast.LENGTH_SHORT).show();
-                Intent intent_gobackprofilesetting=new Intent(UpdateCompanyLogo.this, ProfileSettingActivity.class);
+                Intent intent_gobackprofilesetting=new Intent(UpdateCompanyLogo.this, CompanyProfileSetting.class);
                 startActivity(intent_gobackprofilesetting);
                 finish();
             }
@@ -111,7 +118,7 @@ public class UpdateCompanyLogo extends AppCompatActivity {
                 Toast.makeText(UpdateCompanyLogo.this, "failed", Toast.LENGTH_SHORT).show();
 
                 uploadComImgBtn.setClickable(true);
-                uploadComImgBtn.setText(R.string.uploading);
+                uploadComImgBtn.setText("Uploading");
                 comUpLayout.setAlpha(0.9f);
             }
         });
@@ -135,5 +142,23 @@ public class UpdateCompanyLogo extends AppCompatActivity {
         CuiLazyloader.setVisibility(View.VISIBLE);
 
 
+    }
+
+    public String randomName(int length){
+        String passworwdSet="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%";
+        char[] password=new char[length];
+        for (int i=0;i<length;i++){
+            int random=(int)(Math.random()*passworwdSet.length());
+            password[i]=passworwdSet.charAt(random);
+        }
+        return new String(password);
+
+    }
+
+    private void getCompanyDetail() {
+//        LoginOtpResponse loginOtpResponse = LoginDetailSharePref.getInstance(this).getDetail();
+        LoginDetailSharePref loginDetailSharePref = new LoginDetailSharePref(this);
+        LoginOtpResponse loginOtpResponse = loginDetailSharePref.getDetail();
+        companyId = loginOtpResponse.getId();
     }
 }

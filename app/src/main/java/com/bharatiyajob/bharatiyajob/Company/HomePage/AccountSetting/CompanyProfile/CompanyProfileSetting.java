@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bharatiyajob.bharatiyajob.Company.HomePage.update_company_details.UpdateCompanyAddress;
+import com.bharatiyajob.bharatiyajob.Company.HomePage.update_company_details.UpdateCompanyLogo;
 import com.bharatiyajob.bharatiyajob.Company.HomePage.update_company_details.UpdateCompanyName;
 import com.bharatiyajob.bharatiyajob.Company.HomePage.update_company_details.UpdateCompanyPassword;
 import com.bharatiyajob.bharatiyajob.Json.BaseClient;
@@ -91,6 +92,11 @@ public class CompanyProfileSetting extends AppCompatActivity {
 
     public void updateCompanyAddress(View view) {
         Intent intent = new Intent(CompanyProfileSetting.this, UpdateCompanyAddress.class);
+        startActivity(intent);
+    }
+
+    public void updateCompanyLogo(View view) {
+        Intent intent = new Intent(CompanyProfileSetting.this, UpdateCompanyLogo.class);
         startActivity(intent);
     }
 }

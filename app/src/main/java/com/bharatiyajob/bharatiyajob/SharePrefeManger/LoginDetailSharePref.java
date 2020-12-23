@@ -13,7 +13,7 @@ public class LoginDetailSharePref {
 
     //to handle we need Context object
 //    private final Context context;
-    private WeakReference<Context> context;
+    private final WeakReference<Context> context;
 
     public LoginDetailSharePref(Context context) {
 //        this.context = context;

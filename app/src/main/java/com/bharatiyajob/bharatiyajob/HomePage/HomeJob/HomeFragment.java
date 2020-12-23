@@ -289,9 +289,8 @@ public class HomeFragment extends Fragment {
                     bookmarkStar.setVisibility(View.VISIBLE);
                     bookmarkedStar.setVisibility(View.GONE);
 //                    Toast.makeText(getActivity(), unBookmarJobResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                }else {
-//                    Toast.makeText(getActivity(), "Try Again Unnbookmark", Toast.LENGTH_SHORT).show();
-                }
+                } //                    Toast.makeText(getActivity(), "Try Again Unnbookmark", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
